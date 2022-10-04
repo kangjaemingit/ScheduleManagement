@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
-
+const checkAuth = require('../config/auth').checkAuth;
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Express' });
-});
+
+
 router.get('/calender', function(req, res, next) {
   res.render('calender', { title: 'Express' });
 });
-router.get('/dashboard', function(req, res, next) {
+router.get('/', checkAuth, function(req, res, next) {
   res.render('dashboard', { title: 'Express' });
 });
+
 module.exports = router;

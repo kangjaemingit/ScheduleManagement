@@ -15,23 +15,30 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const mongoConfig = require('./config/key');
-const mongoose = require('mongoose');
-mongoose.connect(mongoConfig.mongoURI, {
-  dbName : 'ScheduleManagement',
-  authMechanism: 'DEFAULT',
-})
-    .then(() => console.log("MongoDB connected"))
-    .catch((err) => {
-      console.log("mongoDB connection ERROR : " + err);
-    })
+// env 설정
+const dotenv = require('dotenv');
+dotenv.config();
+
+// 세션 설정
+const configSession = require('./config/session');
+configSession(app);
+
+// passport 설정
+const configPassport = require('./config/passport');
+configPassport(app);
+
+// DB 연결
+const database = require('./config/database');
+database();
 
 // Router 연결
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const loginRouter = require('./routes/login');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login', loginRouter);
 
 
 // catch 404 and forward to error handler

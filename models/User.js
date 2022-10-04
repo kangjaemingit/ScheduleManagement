@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
     navBgColor : {
         type : String
     },
-    loginAuth:{
+    provider:{
         type : String
     }
 
