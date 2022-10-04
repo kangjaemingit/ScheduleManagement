@@ -1,12 +1,12 @@
 /*=============== HEADER ===============*/
-.container{
+#headerContainer{
     display: flex;
     justify-content: space-around;
     border-bottom-style: solid;
     background-color: white;
     border-bottom-width: 1px;
 }
-.container ul{
+#headerContainer ul{
     display: flex;
 }
 a{
