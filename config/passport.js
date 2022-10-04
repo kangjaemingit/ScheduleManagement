@@ -9,12 +9,12 @@ module.exports = (app) => {
 
     // Serialize
     passport.serializeUser((user, done) => {
-        done(null, user.userId);
+        done(null, user);
     })
 
     // DeSerialize
-    passport.deserializeUser((id, done) => {
-        User.findOne({userId : id})
+    passport.deserializeUser((user, done) => {
+        User.findOne({userId : user.userId})
             .then((user => done(null, user)))
             .catch(err => done(err));
     })
