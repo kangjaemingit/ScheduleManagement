@@ -1,0 +1,56 @@
+/*=============== HEADER ===============*/
+.container{
+    display: flex;
+    justify-content: space-around;
+    border-bottom-style: solid;
+    background-color: white;
+    border-bottom-width: 1px;
+}
+.container ul{
+    display: flex;
+}
+a{
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+#changeLogo{
+    height: 30px;
+    width: 30px;
+}
+#profilePhoto{
+    height: 30px;
+    width: 30px;
+}
+#logo{
+    height: 50px;
+    width: 50px;
+}
+#show{
+    margin-right: 0px;
+    margin-left:10px;
+    height: 30px;
+    width: 30px;
+}
+.modal-bg {
+    display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index:999;
+}
+.modal-wrap {
+    display:none;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:300px;
+    height:300px;
+    background:#fff;
+    z-index:1000;
+}

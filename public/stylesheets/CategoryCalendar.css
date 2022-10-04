@@ -1,0 +1,15 @@
+#indexLeft{
+    border-right-style: solid;
+    width: 20%;
+    background-position: left;
+}
+#indexRight{
+    width:80%;
+    background-position: right;
+
+}
+html{
+    width: 100%;
+    height: 100%;
+    height: 100%;
+}
