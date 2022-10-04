@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='stylesheets/main.css' rel='stylesheet' />
+    <script src='javascripts/main.js'></script>
+    <link rel="stylesheet" href="/stylesheets/calendar.css"/>
+<!--    <script src="javascripts/calendar.js"></script>-->
+    <script>
+    // - title : 캘린더에 표시되는 일정의 이름
+    // - start : 캘린더에 표시되는 일정 시작 일
+    // - end : 캘린더에 표시되는 일정 마지막 일
+    // - allDay : 일정이 하루 전체인지 여부(True, false)
+    document.addEventListener('DOMContentLoaded', function() {
+    let calendarEl = document.getElementById('calendar');
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            start: 'dayGridMonth,timeGridWeek,timeGridDay',
+            center: 'title',
+            end: 'prevYear,prev,next,nextYear'
+        },
+        editable:true,
+        firstDay:1,
+        titleFormat:function(date){
+            let year = date.date.year;
+            let month = date.date.month+1;
+            return year+"년"+month+"월";
+        },
+    events:[
+    {
+    // title  : '프로젝트',//일정정보 제목
+    // url    : '',//지도 주소 넣어서 지도 찾아갈 수 있게 하면 될듯
+    // start  : '2022-10-03',//시작 일시
+    // end    : '2022-10-30',//끝나는 일시
+    // allDay : false ? 0 : 1//하루종일인지 아닌지 확인
+    }
+    ],
+    });
+    calendar.render();
+    });
+    </script>
+</head>
+<body>
+<div id='calendar'></div>
+</body>
+</html>
