@@ -1,11 +1,7 @@
-<div class="modal-bg" onClick="javascript:popClose();"></div>
-<div class="modal-wrap">
+<script defer src='javascripts/header.js'></script>
+<div id="modal-bg" class="modal-bg"></div>
+<div id="modal-wrap" class="modal-wrap">
     <input id="color" type="color">
-    <button onclick="colorChange();">변경</button>
-    <button class="modal-close" onClick="close()">확인</button>
+    <button id="changeColor" onclick="colorChange();">변경</button>
+    <button id="modal-close" class="modal-close" onclick="closed()">확인</button>
 </div>
-<script>
-    function colorChange(){
-        document.getElementById("area1").style.backgroundColor = document.getElementById("color").value
-    };
-</script>
