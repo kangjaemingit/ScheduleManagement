@@ -15,7 +15,7 @@ html{
     float: left;
 }
 #update_date{
-    width: 300px;
+    width: 100px;
     background-color: #00BBFE;
     border-radius: 10px 10px 0px 0px;
     float: top;
@@ -23,7 +23,7 @@ html{
 }
 #scadule{
     border:0px;
-    width:300px;
+    width:100px;
     height:65px;
     background-color: white;
     border-radius: 0px 0px 10px 10px;
@@ -33,7 +33,7 @@ html{
 #anything{
     background-color: white;
     border-radius: 0px 0px 10px 10px;
-    width:50px;
+    width:10px;
     height:65px;
     float:right;
 }

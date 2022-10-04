@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>header</title>
+    <link   rel="stylesheet" href="/stylesheets/header.css"/>
+    <script defer src='javascripts/header.js'></script>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <img id="logo" src=""/>
+        <ul>
+            <a type="button" value="Calendar">Calendar</a>
+            <a type="button" value="Dashboard">Dashboard</a>
+            <a type="button" value="TagStatistics">TagStatistics</a>
+        </ul>
+        <ul>
+            <img id="changeLogo" src="../../images/btnG_아이콘원형.png"/>
+            <img id="profilePhoto"/>
+            <p id="userInfo"></p>
+            <input type="button" value="logout"></input>
+            <img id="show" src="../../images/setting.png" onclick="show()"/>
+        </ul>
+    </div>
+</div>
+<!--modal 영역-->
+
+<%- include('settingModal.ejs') %>
+
+</body>
+</html>

@@ -30,8 +30,10 @@ mongoose.connect(mongoConfig.mongoURI, {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 
 
 // catch 404 and forward to error handler
