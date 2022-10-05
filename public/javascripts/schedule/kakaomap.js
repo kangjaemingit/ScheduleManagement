@@ -98,7 +98,7 @@ function displayPlaces(places) {
             kakao.maps.event.addListener(marker, 'click', function() {
                 removeMarker();
                 addMarker(kakao.maps.LatLng(place.y, place.x), 1);
-                console.log(place.address_name);
+                setAddress(place)
             })
 
             itemEl.onmouseover =  function () {
@@ -112,7 +112,7 @@ function displayPlaces(places) {
             itemEl.onclick = function(){
                 removeMarker();
                 addMarker(new kakao.maps.LatLng(place.y, place.x), 0);
-                console.log(place.address_name);
+                setAddress(place)
             }
         })(marker, places[i]);
 
@@ -224,4 +224,8 @@ function removeAllChildNods(el) {
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
+}
+
+function setAddress(place){
+    document.getElementById('address').value = `${place.road_address_name} ${place.place_name}`;
 }

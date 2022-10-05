@@ -6,20 +6,25 @@
             <button onclick="scheduleModalClose()">X</button>
         </div>
         <div class="scheduleModalContents" id="scheduleModalContents">
-            <label class="scheduleModalLabel">제목 <input type="text" id="title"></label>
+            <label class="scheduleModalLabel">제목 <input type="text" id="scheduleTitle"></label>
             <label class="scheduleModalLabel">내용 <input type="text" id="contents"></label>
             <label class="scheduleModalLabel">시작일 <input type="datetime-local" id="startDate"></label>
             <label class="scheduleModalLabel">마감일 <input type="datetime-local" id="endDate"></label>
             <label class="scheduleModalLabel">우선순위 <select id="priority">
-                <option>아주 높음</option>
-                <option>높음</option>
-                <option>보통</option>
-                <option>낮음</option>
-                <option>매우 낮음</option>
+                <option value="5">아주 높음</option>
+                <option value="4">높음</option>
+                <option value="3">보통</option>
+                <option value="2">낮음</option>
+                <option value="1">매우 낮음</option>
                 </select></label>
             <label class="scheduleModalLabel">태그 <textarea id="tag" rows=3></textarea></label>
-            <label class="scheduleModalLabel">주소 사용<input type="checkbox" id="addressExist"></label>
+            <label class="scheduleModalLabel"><input type="checkbox" id="addressExist">주소 입력 하기</label>
+            <input type="text" readonly id="address" placeholder="입력한 주소가 표시됩니다."></p>
         </div>
         <%- include('./kakaomap.ejs')%>
+        <div>
+            <button onclick="saveSchedule()">완료</button>
+            <button>취소</button>
+        </div>
     </div>
 </div>

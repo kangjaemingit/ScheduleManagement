@@ -8,13 +8,16 @@ const scheduleController = {
             priority : req.body.priority,
             tag : req.body.tag,
             address : req.body.address,
-            writer : req.body.writer,
+            writer : req.session.passport.user.userId,
             date : {
                 startDate : req.body.startDate,
                 endDate : req.body.endDate
             }
         }, (err, result) => {
-            console.log("new Schedule create Error : " + err);
+            if(err){
+                console.log("new Schedule create Error : " + err);
+                return res.json({message : err});
+            }
             return res.json({createSuccess : true})
                 .status(200);
         })
