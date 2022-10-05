@@ -9,7 +9,7 @@
 <body>
 <div class="header">
     <div id="headerContainer" class="container">
-        <img id="logo" src=""/>
+        <img id="logo" src="../../images/heventreelogo.png"/>
         <ul>
             <a href="#" type="button" id="scaduleAdd">
                 <p>SceduleCreate</p>
@@ -25,9 +25,13 @@
             </a>
         </ul>
         <ul>
+            <% if(user.provider==="naver"){%>
             <img id="changeLogo" src="../../images/btnG_아이콘원형.png"/>
-            <img id="profilePhoto"/>
-            <p id="userInfo"></p>
+            <%} else if(user.provider==="kakao"){%>
+                <img id="changeLogo" src="../../images/kakao_logo.png"/>
+                <%}%>
+            <img id="profilePhoto" src="<%=user.profilePhoto%>"/>
+            <p id="userInfo"><%=user.name%></p>
             <a href="/login/logout" id="logout" type="button" ><p>logout</p></a>
             <input id="color" type="color" list="colors" onchange="colorChange()" value="#fff">
                 <img id="show" src="../../images/paintblack.png"/>
