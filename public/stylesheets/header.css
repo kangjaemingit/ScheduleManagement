@@ -6,6 +6,7 @@
     background-color: white;
     border-bottom-width: 1px;
     align-items: center;
+    height: 80px;
 }
 #headerContainer ul{
     display: flex;
@@ -17,17 +18,21 @@ a{
     text-decoration: none;
 }
 #changeLogo{
+    margin-left: 5px;
+    margin-right: 5px;
     height: 30px;
     width: 30px;
 }
 #profilePhoto{
+    margin-left: 5px;
+    margin-right: 5px;
     height: 30px;
     width: 30px;
 }
 #logo{
     align-items: center;
     height: 50px;
-    width: 50px;
+    width: auto;
 }
 #show{
     margin-right: 0px;

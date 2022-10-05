@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="/stylesheets/calendar.css"/>
 <!--    <script src="javascripts/calendar.js"></script>-->
     <script>
-    // - title : 캘린더에 표시되는 일정의 이름
-    // - start : 캘린더에 표시되는 일정 시작 일
-    // - end : 캘린더에 표시되는 일정 마지막 일
-    // - allDay : 일정이 하루 전체인지 여부(True, false)
     document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.getElementById('calendar');
     let calendar = new FullCalendar.Calendar(calendarEl, {
@@ -43,5 +39,7 @@
 </head>
 <body>
 <div id='calendar'></div>
+<div id="movemodal" onclick="movemodal();">dfaad</div>
+<% include('category/categoryRootModal')%>
 </body>
 </html>
