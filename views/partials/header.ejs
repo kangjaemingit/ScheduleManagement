@@ -11,22 +11,29 @@
     <div id="headerContainer" class="container">
         <img id="logo" src=""/>
         <ul>
-            <a type="button" value="Calendar">Calendar</a>
-            <a type="button" value="Dashboard">Dashboard</a>
-            <a type="button" value="TagStatistics">TagStatistics</a>
+            <a href="#" type="button" id="scaduleAdd">
+                <p>SceduleCreate</p>
+            </a>
+            <a href="#" type="button" id="Calendar">
+                <p>Calendar</p>
+            </a>
+            <a href="#" type="button" id="Dashboard">
+                <p>Dashboard</p>
+            </a>
+            <a href="#" type="button" id="TagStatistics">
+                <p>TagStatistics</p>
+            </a>
         </ul>
         <ul>
             <img id="changeLogo" src="../../images/btnG_아이콘원형.png"/>
             <img id="profilePhoto"/>
             <p id="userInfo"></p>
-            <input type="button" value="logout"></input>
-            <img id="show" src="../../images/setting.png" onclick="show()"/>
+            <a href="/login/logout" id="logout" type="button" ><p>logout</p></a>
+            <input id="color" type="color" list="colors" onchange="colorChange()" value="#fff">
+                <img id="show" src="../../images/paintblack.png"/>
+            </input>
         </ul>
     </div>
 </div>
-<!--modal 영역-->
-
-<%- include('settingModal.ejs') %>
-
 </body>
 </html>
