@@ -1,0 +1,25 @@
+
+<div class="scheduleModal" id="scheduleModal">
+    <div class="scheduleModalBody" id="scheduleModalBody">
+        <div class="scheduleModalTitle" id="scheduleModalTitle">
+            <h2>새로운 일정 등록</h2>
+            <button onclick="scheduleModalClose()">X</button>
+        </div>
+        <div class="scheduleModalContents" id="scheduleModalContents">
+            <label class="scheduleModalLabel">제목 <input type="text" id="title"></label>
+            <label class="scheduleModalLabel">내용 <input type="text" id="contents"></label>
+            <label class="scheduleModalLabel">시작일 <input type="datetime-local" id="startDate"></label>
+            <label class="scheduleModalLabel">마감일 <input type="datetime-local" id="endDate"></label>
+            <label class="scheduleModalLabel">우선순위 <select id="priority">
+                <option>아주 높음</option>
+                <option>높음</option>
+                <option>보통</option>
+                <option>낮음</option>
+                <option>매우 낮음</option>
+                </select></label>
+            <label class="scheduleModalLabel">태그 <textarea id="tag" rows=3></textarea></label>
+            <label class="scheduleModalLabel">주소 사용<input type="checkbox" id="addressExist"></label>
+        </div>
+        <%- include('./kakaomap.ejs')%>
+    </div>
+</div>

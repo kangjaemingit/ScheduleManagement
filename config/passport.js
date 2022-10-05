@@ -28,6 +28,7 @@ module.exports = (app) => {
                 callbackURL : process.env['NAVER_CALLBACK'],
             },
             async function (accessToken, refreshToken, profile, cb) {
+
                 try{
                     const userExists = await User.exists({userId : profile.id}).exec();
 

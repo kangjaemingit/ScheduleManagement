@@ -35,12 +35,12 @@ database();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
-
+const scheduleRouter = require('./routes/schedule');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
-
+app.use('/schedule', scheduleRouter);
 
 
 // catch 404 and forward to error handler
