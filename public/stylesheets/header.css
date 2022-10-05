@@ -5,6 +5,7 @@
     border-bottom-style: solid;
     background-color: white;
     border-bottom-width: 1px;
+    align-items: center;
 }
 #headerContainer ul{
     display: flex;
@@ -13,6 +14,7 @@ a{
     margin-left: 5px;
     margin-right: 5px;
     text-align: center;
+    text-decoration: none;
 }
 #changeLogo{
     height: 30px;
@@ -23,6 +25,7 @@ a{
     width: 30px;
 }
 #logo{
+    align-items: center;
     height: 50px;
     width: 50px;
 }
@@ -31,26 +34,54 @@ a{
     margin-left:10px;
     height: 30px;
     width: 30px;
+    position: absolute;
+    right: 10%;
+    opacity: 100%;
 }
-.modal-bg {
-    display:none;
-    width:100%;
-    height:100%;
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index:999;
+#logout{
+    margin-top:0px;
 }
-.modal-wrap {
-    display:none;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:300px;
-    height:300px;
-    background:#fff;
-    z-index:1000;
+#color{
+    padding: 0;
+    mix-blend-mode: overlay;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 0%;
 }
+/* removes default styling from input color element */
+::-webkit-color-swatch {
+    border: none;
+    transition: background-color 600ms ease-out;
+}
+
+::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+::-moz-color-swatch,
+::-moz-focus-inner {
+    border: none;
+}
+
+::-moz-focus-inner {
+    padding: 0;
+}
+p{
+    color:black;
+    text-decoration: none;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+ul{
+    align-items: center;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+a:hover{
+    font-style: oblique;
+    background-color: darkgrey;
+    transition: 1s;
+    animation: opacity;
+}
+
