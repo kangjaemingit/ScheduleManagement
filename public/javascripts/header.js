@@ -19,7 +19,6 @@ function closed() {
     element2.style.display = 'none';
 }
 function colorChange(){
-<<<<<<< HEAD
     let colorval = document.getElementById("color").value;
         document.getElementById("headerContainer").style.backgroundColor = colorval;
     const c = colorval.substring(1)      // 색상 앞의 # 제거
@@ -49,11 +48,3 @@ function colorChange(){
 // document.getElementById('show').addEventListener('click',show);
 // document.querySelector('.modal-close').addEventListener('click',close);
 
-=======
-    document.getElementById("headerContainer").style.backgroundColor = document.getElementById("color").value;
-};
-
-// document.getElementById('show').addEventListener('click',show);
-// document.querySelector('.modal-close').addEventListener('click',close);
-// document.getElementById('changeColor').addEventListener('click',colorChange);
->>>>>>> 954fa296bb84f7dbbc482a5ed094c077ff1a44ee
