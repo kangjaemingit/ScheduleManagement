@@ -3,7 +3,7 @@ var markers = [];
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(35.85887501865242, 128.64468966220474), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
@@ -16,8 +16,15 @@ var ps = new kakao.maps.services.Places();
 // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
+function relayout() {
+    // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+    // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
+    // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+    map.relayout();
+}
+
 // 키워드로 장소를 검색합니다
-searchPlaces();
+
 
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
@@ -86,35 +93,21 @@ function displayPlaces(places) {
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, place) {
-            kakao.maps.event.addListener(marker, 'mouseover', function() {
-                displayInfowindow(marker, place.place_name);
-            });
-
-            kakao.maps.event.addListener(marker, 'mouseout', function() {
-                infowindow.close();
-            });
-
+        (function(marker, place, i) {
             kakao.maps.event.addListener(marker, 'click', function() {
                 removeMarker();
-                addMarker(kakao.maps.LatLng(place.y, place.x), 1);
+                addMarker(kakao.maps.LatLng(place.y, place.x), i);
+                displayInfowindow(marker, place.place_name);
                 setAddress(place)
             })
 
-            itemEl.onmouseover =  function () {
-                displayInfowindow(marker, place.place_name);
-            };
-
-            itemEl.onmouseout =  function () {
-                infowindow.close();
-            };
-
             itemEl.onclick = function(){
                 removeMarker();
-                addMarker(new kakao.maps.LatLng(place.y, place.x), 0);
+                addMarker(new kakao.maps.LatLng(place.y, place.x), i);
+                displayInfowindow(marker, place.place_name);
                 setAddress(place)
             }
-        })(marker, places[i]);
+        })(marker, places[i], i);
 
         fragment.appendChild(itemEl);
     }
@@ -227,5 +220,5 @@ function removeAllChildNods(el) {
 }
 
 function setAddress(place){
-    document.getElementById('address').value = `${place.road_address_name} ${place.place_name}`;
+    document.getElementById('address').value    = `${place.road_address_name} ${place.place_name}`;
 }

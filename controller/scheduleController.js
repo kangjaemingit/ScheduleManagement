@@ -1,7 +1,13 @@
 const { Schedule } = require("../models/Schedule");
+const { Tag } = require("../models/Tags");
 
 const scheduleController = {
     newSchedule : async (req, res) => {
+        req.body.tag.map((tag) => {
+            let tagExists = Tag.exists({tagName : tag}).exec;
+
+        })
+
         await Schedule.create({
             title: req.body.title,
             contents : req.body.contents,

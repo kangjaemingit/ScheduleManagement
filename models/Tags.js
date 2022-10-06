@@ -6,6 +6,9 @@ const TagSchema = mongoose.Schema({
     },
     tagWriter : {
         type : String
+    },
+    count : {
+        type : Number
     }
 })
 
