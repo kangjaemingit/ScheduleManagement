@@ -5,10 +5,10 @@ const CategorySchema = mongoose.Schema({
         type : String
     },
     Tags : {
-        type : [String]
+        type : [{type : mongoose.Schema.Types.ObjectId, ref:"Tags"}]
     },
     sharer : {
-        type : [String]
+        type : [{type : mongoose.Schema.Types.ObjectId, ref:"User"}]
     }
 });
 

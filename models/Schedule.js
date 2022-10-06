@@ -11,13 +11,13 @@ const ScheduleSchema = mongoose.Schema({
         type : Number
     },
     tag : {
-        type : [String]
+        type : [{type : mongoose.Schema.Types.ObjectId, ref:"Tag"}]
     },
     address : {
         type : String
     },
     writer : {
-        type : String
+        type : {type : mongoose.Schema.Types.ObjectId, ref:"User"}
     },
     date : {
         startDate : {

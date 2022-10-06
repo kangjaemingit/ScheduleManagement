@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
 
-const TagSchema = mongoose.Schema({
+const TagsSchema = mongoose.Schema({
     tagName : {
         type : String
     },
     tagWriter : {
         type : String
     },
-    count : {
-        type : Number
-    }
+    schedule : [{type : mongoose.Schema.Types.ObjectId, ref:"Schedule"}]
 })
 
-const Tag = mongoose.model('Tag', TagSchema);
+const Tags = mongoose.model('Tags', TagsSchema);
 
-module.exports = { Tag };
+module.exports = { Tags };
