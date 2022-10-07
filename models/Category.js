@@ -9,6 +9,9 @@ const CategorySchema = mongoose.Schema({
     },
     sharer : {
         type : [{type : mongoose.Schema.Types.ObjectId, ref:"User"}]
+    },
+    categoryWriter:{
+      type:String
     }
 });
 
