@@ -20,31 +20,3 @@ html, body {
     max-width: 900px;
     margin: 40px auto;
 }
-#movemodal{
-    border-style: solid;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    z-index: 10;
-    bottom: 30%;
-    border-radius: 10px 10px 10px 10px;
-}
-#categoryRootbg{
-    position: fixed;
-    left: 50%;
-    top: 0;
-    width: 800px;
-    padding: 20px;
-    background: #666;
-    overflow: hidden;
-    box-sizing: border-box;
-    transition: all .6s ease-in-out 0s;
-    -webkit-transform: translateY(-50%) scaleX(0);
-    -o-transform: translateY(-50%) scaleX(0);
-    -ms-transform: translateY(-50%) scaleX(0);
-    transform: translateY(-50%) scaleX(0);
-    -webkit-transform-origin: left;
-    -o-transform-origin: left;
-    -ms-transform-origin: left;
-    transform-origin: left;
-}
