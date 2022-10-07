@@ -7,7 +7,7 @@
 </head>
 <body>
 <header>
-    <%- include('layout/header.ejs'); %>
+    <%- include('../layout/header.ejs'); %>
 </header>
 <div id="indexWrap" class="container">
     <div id="indexLeft" class="mainIndex">
@@ -19,18 +19,18 @@
         <%- include('category.ejs'); %>
     </div>
     <div id="indexRight" class="mainIndex">
-        <%- include('calender.ejs'); %>
+        <%- include('calendar.ejs'); %>
     </div>
 </div>
 <div id="movemodal" onclick="movemodar();"></div>
 <div>
-    <%- include('category/categoryRootModal.ejs')%>
+    <%- include('../category/categoryRootModal.ejs')%>
 </div>
 <div>
-    <%- include('category/categorychildModal1.ejs')%>
+    <%- include('../category/categorychildModal1.ejs')%>
 </div>
 <div>
-    <%- include('category/categoryAdd.ejs')%>
+    <%- include('../category/categoryAdd.ejs')%>
 </div>
 <script src="javascripts/category/categoryAdd.js"></script>
 <script src="javascripts/category/categorychildModal1.js">

@@ -6,45 +6,45 @@ var logger = require('morgan');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'frontend/views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'frontend/public')));
 
 // env 설정
 const dotenv = require('dotenv');
 dotenv.config();
 
 // 세션 설정
-const configSession = require('./config/session');
+const configSession = require('./backend/config/session');
 configSession(app);
 
 // passport 설정
-const configPassport = require('./config/passport');
+const configPassport = require('./backend/config/passport');
 configPassport(app);
 
 // DB 연결
-const database = require('./config/database');
+const database = require('./backend/config/database');
 database();
 
 // Router 연결
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const loginRouter = require('./routes/login');
-const scheduleRouter = require('./routes/schedule');
-const layoutRouter = require('./routes/layout')
-const categoryRouter = require('./routes/categoryCRUD')
+const indexRouter = require('./backend/routes/index');
+const usersRouter = require('./backend/routes/users');
+const loginRouter = require('./backend/routes/login');
+const scheduleRouter = require('./backend/routes/schedule');
+const layoutRouter = require('./backend/routes/layout')
+const calendarRouter = require('./backend/routes/calender')
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/schedule', scheduleRouter);
 app.use('/layout',layoutRouter);
-app.use('/calendarPage',categoryRouter);
+app.use('/calendar',calendarRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
