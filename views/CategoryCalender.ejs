@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,16 +7,34 @@
 </head>
 <body>
 <header>
-    <%- include('partials/header.ejs'); %>
+    <%- include('layout/header.ejs'); %>
 </header>
 <div id="indexWrap" class="container">
     <div id="indexLeft" class="mainIndex">
-        <div id="movecategory" onclick="categoryModal();">C</div>
-        <%- include('dashboard.ejs'); %>
+        <div id="categoryButtonContainer">
+            <div id="categoryAdd" onclick="categoryadd();">추가</div>
+            <div id="categoryEdit" onclick="categoryedit();">수정</div>
+            <div id="categoryDelet" onclick="categorydelet();">삭제</div>
+        </div>
+        <%- include('category.ejs'); %>
     </div>
     <div id="indexRight" class="mainIndex">
         <%- include('calender.ejs'); %>
     </div>
 </div>
+<div id="movemodal" onclick="movemodar();"></div>
+<div>
+    <%- include('category/categoryRootModal.ejs')%>
+</div>
+<div>
+    <%- include('category/categorychildModal1.ejs')%>
+</div>
+<div>
+    <%- include('category/categoryAdd.ejs')%>
+</div>
+<script src="javascripts/category/categoryAdd.js"></script>
+<script src="javascripts/category/categorychildModal1.js">
+</script>
+
 </body>
 </html>

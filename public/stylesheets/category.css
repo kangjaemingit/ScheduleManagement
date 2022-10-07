@@ -1,0 +1,17 @@
+#categoryButtonContainer{
+    display: flex;
+    justify-content: center;
+    box-shadow: darkgrey 0 0 5px 0;
+}
+#categoryAdd{
+    margin: 5px 5px 0 5px;
+    box-shadow: darkgrey 0 0 5px 0;
+}
+#categoryEdit{
+    margin: 5px 5px 0 5px;
+    box-shadow: darkgrey 0 0 5px 0;
+}
+#categoryDelet{
+    margin: 5px 5px 0 5px;
+    box-shadow: darkgrey 0 0 5px 0;
+}

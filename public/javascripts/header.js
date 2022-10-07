@@ -23,6 +23,21 @@ function colorChange(){
         textcol.style.color = 'black';
         paint.src="../../images/paintblack.png";
     }
+    const  colorData={
+        navBgColor: colorval
+    }
+    fetch('layout/paint',{
+      method:'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body:JSON.stringify(colorData)
+    }).then((res) =>res.json())
+        .then((res)=>{
+            if(res.updateSuccess==false) {
+                window.alert(res.message)
+            }
+        })
 };
 
 

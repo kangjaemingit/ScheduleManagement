@@ -15,4 +15,73 @@ html{
     width: 100%;
     height: 100%;
 }
+#movemodal{
+    display: block;
+    left: 20%;
+    border-style: solid;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 10;
+    bottom: 30%;
+    border-radius: 10px 10px 10px 10px;
+}
 
+#categoryRootbg{
+    border-style:solid;
+    border-width: 1px;
+    position: absolute;
+    z-index: 2;
+    top:80px;
+    left: 20%;
+    height: 87%;
+    width: 15%;
+    background-color: white;
+    display: none;
+}
+#categorychild1bg{
+    border-style:solid;
+    border-width: 1px;
+    position: absolute;
+    z-index: 2;
+    top:80px;
+    left: 35%;
+    height: 87%;
+    width: 15%;
+    background-color: white;
+    display: none;
+}
+#categoryModalBg{
+    height: 87%;
+    width: 100%;
+    position: fixed;
+    top:80px; left: 0; bottom: 0; right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    display: none;
+}
+#categoryAddGround{
+    top:45%;
+    left: 45%;
+    display: none;
+    position: absolute;
+    z-index:2;
+    background-color: white;
+    box-shadow: darkgrey 5px 5px 0 0;
+}
+#tagselectList{
+    margin: 0 2px 0 2px;
+    border:darkgrey 1px solid;
+}
+#maybeProviderList,#providerList{
+    margin: 0 2px 0 2px;
+    border:darkgrey 1px solid;
+}
+#categorySaveButtonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#providerSelecter{
+    display: none;
+}
