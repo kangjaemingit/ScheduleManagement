@@ -47,7 +47,7 @@ function saveSchedule(){
         body: JSON.stringify(newSchedule)
     }).then((res) => res.json())
         .then((res) => {
-            if(res.createSuccess){
+            if(res.newScheduleSuccess){
                 window.alert("일정이 정상적으로 등록되었습니다.");
                 window.location.reload();
             } else{

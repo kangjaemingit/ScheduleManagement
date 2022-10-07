@@ -4,7 +4,7 @@ const authUtil = {
         if(!req.session.passport)
             return res.redirect('/login');
 
-        req.user = req.session.passport.user;
+        //req.user = req.session.passport.user;
         next();
     }
 }

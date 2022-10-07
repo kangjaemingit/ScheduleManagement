@@ -4,9 +4,7 @@ const TagsSchema = mongoose.Schema({
     tagName : {
         type : String
     },
-    tagWriter : {
-        type : String
-    },
+    tagWriter : {type : mongoose.Schema.Types.ObjectId, ref:"User"},
     schedule : [{type : mongoose.Schema.Types.ObjectId, ref:"Schedule"}]
 })
 
