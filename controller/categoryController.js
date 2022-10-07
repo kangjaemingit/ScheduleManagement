@@ -1,13 +1,16 @@
 const { Category } = require("../models/Category")
 const { User } = require("../models/User")
+const { Tags } = require("../models/Tags")
 
 const categoryController={
     newCategory : async (req,res)=>{
-        Category.create({
+        await Category.create({
             categoryName:req.body.categoryName,
-            Tags : req.body.Tags,
-            sharer:req.body.sharer
+            Tags : [{$in:{Tags:req.body.Tags._id}}],
+            sharer: [{$in:{sharer:req.body.sharer._id}}],
+            // categoryWriter:req.user._id
         }),(err,result)=>{
+            console.log("result1",res)
             if(err){
                 console.log("new Category create Error:"+err);
                 return res.json({message:err});
@@ -18,10 +21,10 @@ const categoryController={
         }
     },
     editCategory : async (req,res)=>{
-        Category.findOneAndUpdate({_id:req.body._id},
+        await Category.findOneAndUpdate({_id:req.body._id},
             {$set:{categoryName:req.body.categoryName,
-                    Tags:req.body.Tags,
-                    sharer:req.body.sharer}}
+                    Tags:req.body.Tags._id,
+                    sharer:req.body.sharer._id}}
         ),(err,result)=>{
             if(err){
                 console.log("Category update err:"+err)
@@ -34,7 +37,7 @@ const categoryController={
     },
     deleteCategory : async (req,res) =>{
 
-        Category.findOneAndDelete({_id:req.body._id}),
+        await Category.findOneAndDelete({_id:req.body._id}),
             (err,result)=>{
             if(err){
                 console.log("Category delete Error:"+err)
@@ -46,5 +49,6 @@ const categoryController={
             }
         }
     }
+
 }
 module.exports=categoryController;

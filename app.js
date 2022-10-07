@@ -37,12 +37,14 @@ const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const scheduleRouter = require('./routes/schedule');
 const layoutRouter = require('./routes/layout')
+const categoryRouter = require('./routes/categoryCRUD')
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/schedule', scheduleRouter);
 app.use('/layout',layoutRouter);
+app.use('/calendarPage',categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
