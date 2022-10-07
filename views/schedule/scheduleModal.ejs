@@ -1,4 +1,9 @@
-
+<link rel="stylesheet" href="/stylesheets/scheduleModal.css">
+<link rel="stylesheet" href="/stylesheets/autoCompleteModal.css">
+<link rel="stylesheet" href="/stylesheets/kakaomap.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee3f54e79d473881157156f79ed09cf8&libraries=services"></script>
+<script defer src='javascripts/schedule/kakaomap.js'></script>
+<script defer src='javascripts/schedule/scheduleModal.js'></script>
 <div class="scheduleModal" id="scheduleModal">
     <div class="scheduleModalBody" id="scheduleModalBody">
         <div class="scheduleModalTitle" id="scheduleModalTitle">
@@ -18,12 +23,13 @@
                 <option value="1" selected>매우 낮음</option>
                 </select></label>
             <label class="scheduleModalLabel">태그</label>
+            <%- include('./autoCompleteModal.ejs')%>
             <div class="tagListArea" id="tagListArea">
                 <div class="tagList" id="tagList">
 
                 </div>
                 <div class="tagInputDiv" id="tagInputDiv">
-                    <input type="text" class="tagInput" id="tagInput" placeholder="#해시태그">
+                    <input type="text" class="tagInput" id="tagInput" placeholder="#해시태그" oninput="autoComplete(this)">
                 </div>
             </div>
             <label class="scheduleModalLabel"><input type="checkbox" id="addressExist" onchange="useAddress(this)">주소 입력 하기</label>

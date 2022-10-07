@@ -4,14 +4,8 @@
     <meta charset="UTF-8">
     <title>Category</title>
     <link rel="stylesheet" href="/stylesheets/dashboard.css">
-    <link rel="stylesheet" href="/stylesheets/scheduleModal.css">
-    <link rel="stylesheet" href="/stylesheets/kakaomap.css">
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee3f54e79d473881157156f79ed09cf8&libraries=services"></script>
-    <script defer src='javascripts/schedule/kakaomap.js'></script>
-    <script defer src='javascripts/schedule/scheduleModal.js'></script>
 </head>
 <body>
-<div id="title" >Scedular</div>
 <%- include('./layout/header.ejs')%>
 <button id="newSchedule" onclick="scheduleModalOpen()">새로운 일정 추가</button>
 <% for(var i=0; i<5; i++) {%>

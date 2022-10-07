@@ -5,4 +5,5 @@ const checkAuth = require('../config/auth').checkAuth;
 
 router.post('/newSchedule', checkAuth, scheduleController.newSchedule);
 
+router.get('/autoComplete/:keyword', checkAuth, scheduleController.autoComplete);
 module.exports = router;

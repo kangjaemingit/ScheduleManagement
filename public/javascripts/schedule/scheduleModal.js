@@ -102,7 +102,7 @@ function tagRender(){
 }
 
 function newTag(){
-    let tag = document.getElementById('tagInput').value;
+    let tag = document.getElementById('tagInput').value.trim();
     if(tags.includes(tag)){
         window.alert("동일한 내용의 태그를 작성할 수 없습니다.");
         return;
@@ -126,3 +126,52 @@ function popTag(){
     tags.pop();
     tagRender();
 }
+
+const autoCompleteModal = document.querySelector('.autoCompleteModal');
+const autoCompleteModalBottom = document.querySelector('.autoCompleteModalBottom');
+function autoComplete(key){
+    const keyword = key.value;
+    if(keyword === ""){
+        autoCompleteModal.classList.remove('show');
+        autoCompleteModalBottom.innerHTML = "";
+        return;
+    }
+
+    fetch('schedule/autoComplete/' + keyword, {
+        method : 'get'
+    })
+        .then((res) => res.json())
+        .then((result) => {
+            if(result.autoComplete.length){
+                let rows = "";
+                result.autoComplete.map((k) => {
+                    rows += `<li class="autoCompleteLi" onclick="autoCompleteLiClick('${k.tagName}')">${k.tagName}</li>`
+                })
+                autoCompleteModalBottom.innerHTML = rows;
+                autoCompleteModal.classList.toggle('show');
+            } else{
+                    autoCompleteModal.classList.remove('show');
+                    autoCompleteModalBottom.innerHTML = "";
+            }
+
+        }).catch((err) => {
+            console.log(err);
+    })
+}
+
+function autoCompleteModalClose(){
+    autoCompleteModal.classList.remove('show');
+}
+
+function autoCompleteLiClick(tagName){
+    console.log("autoCompleteClick")
+    if(tags.includes(tagName)){
+        window.alert("동일한 내용의 태그를 작성할 수 없습니다.");
+        return;
+    }
+
+    tags.push(tagName);
+    tagRender();
+    autoCompleteModal.classList.remove('show');
+}
+
