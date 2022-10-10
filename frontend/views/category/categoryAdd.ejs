@@ -5,25 +5,27 @@
     <input type="text" id="subject" value=""/>
     <div id="tagSelect">태그</div>
     <div id="tagselectList">
-        <ul>
-            <li><p></p><input type="checkbox"></li>
-        </ul>
+        <p id="selectTag" onclick="selecttag();"></p>
+    </div>
+    <div id="tagList">
+        <p id="tag"></p>
+        <img src="" id="delettag" onclick="deltag();"/>
     </div>
     <div>
         <input id="selectProvider" onclick="selectprovider();" type="checkbox">
         공유자를 선택하시겠습니까?
             <div id="providerSelecter">
-            <div id="maybeProviderList">
-                <img src=""/>
-                <p id="userName"></p>
-                <p id="userEmail"></p>
-            </div>
-            <div id="providerList">
-                <img src=""/>
-                <p id="userName"></p>
-                <p id="userEmail"></p>
-                <img id="providerDelete" src="" onclick="providerDelet">
-            </div>
+                <div id="maybeProviderList">
+                    <img src=""/>
+                    <p id="userName"></p>
+                    <p id="userEmail"></p>
+                </div>
+                <div id="providerList">
+                    <img src=""/>
+                    <p id="userName"></p>
+                    <p id="userEmail"></p>
+                    <img id="providerDelete" src="" onclick="providerDelet">
+                </div>
             </div>
         </input>
         <div id="categorySaveButtonContainer">

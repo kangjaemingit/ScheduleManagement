@@ -39,7 +39,14 @@ function colorChange(){
             }
         })
 };
-
+function headerUrl(){
+    let left = document.getElementById('indexLeft')
+    let right = document.getElementById('indexRight')
+    left.style.translateY = '100%'
+    left.style.translateY = '1s'
+    right.style.translateX = '100%'
+    right.style.translateX = '1s'
+}
 
 // document.getElementById('show').addEventListener('click',show);
 // document.querySelector('.modal-close').addEventListener('click',close);

@@ -36,7 +36,6 @@ const categoryController={
         }
     },
     deleteCategory : async (req,res) =>{
-
         await Category.findOneAndDelete({_id:req.body._id}),
             (err,result)=>{
             if(err){

@@ -24,13 +24,33 @@
             let month = date.date.month+1;
             return year+"년"+month+"월";
         },
+        //날짜 클릭시 이벤트 함수
+        dateClick:function (){
+            console.log("날짜 클릭시 나타날 이벤트 작성해주세요")
+            fetch('calendar',{
+                method:'post',
+                headers : {
+                    'Content-Type' : 'application/json',
+                },
+                body:JSON.stringify(colorData)
+            }).then((res) =>res.json())
+                .then((res)=>{
+                    if(res.updateSuccess==false) {
+                        window.alert(res.message)
+                    }
+                })
+        },
+        //일정클릭시 이벤트
+        eventClick:function (){
+          console.log("일정클릭시 나타날 이벤트 추가해주세요")
+        },
     events:[
     {
-    // title  : '프로젝트',//일정정보 제목
-    // url    : '',//지도 주소 넣어서 지도 찾아갈 수 있게 하면 될듯
-    // start  : '2022-10-03',//시작 일시
-    // end    : '2022-10-30',//끝나는 일시
-    // allDay : false ? 0 : 1//하루종일인지 아닌지 확인
+    title  : '프로젝트',//일정정보 제목
+    url    : '',//지도 주소 넣어서 지도 찾아갈 수 있게 하면 될듯
+    start  : '2022-10-03',//시작 일시
+    end    : '2022-10-30',//끝나는 일시
+    allDay : false ? 0 : 1//하루종일인지 아닌지 확인
     }
     ],
     });
