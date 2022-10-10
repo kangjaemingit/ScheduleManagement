@@ -52,6 +52,12 @@ const scheduleController = {
             return res.json({newScheduleSuccess : false, message : e})
         }
     },
+    editSchedule : (req, res) => {
+
+    },
+    deleteSchedule : (req, res) => {
+
+    },
     autoComplete : (req, res) => {
         Tags.find({tagName : { $regex : req.params.keyword}})
             .exec((err, autoComplete) => {
