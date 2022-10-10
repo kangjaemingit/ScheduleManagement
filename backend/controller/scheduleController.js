@@ -18,14 +18,14 @@ const scheduleController = {
                 }
             })
 
-
-            req.body.tag.map(async (tag) => {
+            let tagArray = await Promise.all(req.body.tag.map(async (tag) => {
                 // 태그 존재 유무 확인
                 const tagExists = await Tags.findOne({tagName: tag}).exec();
 
                 if (tagExists) { // 태그가 존재한다면
                     await Tags.updateOne({_id : tagExists._id}, {$push : {schedule : newSchedule._id}}).exec() // 태그에 일정 ID UPDATE
-                    await newSchedule.updateOne({$push : {tag : tagExists._id}}).exec(); // 일정에 태그 ID UPDATE
+                    return tagExists._id
+                    // await newSchedule.updateOne({$push : {tag : tagExists._id}}).exec(); // 일정에 태그 ID UPDATE
                 } else { // 태그가 존재하지 않는다면
                     // 새로운 태그 생성
                     const newTag = await Tags.create({
@@ -34,12 +34,15 @@ const scheduleController = {
                         schedule : [newSchedule._id]
                     });
                     // 일정에 태그 ID UPDATE
-                    await newSchedule.updateOne({$push : {tag : newTag._id}}).exec();
+                    return newTag._id;
+                    // await newSchedule.updateOne({$push : {tag : newTag._id}}).exec();
                 }
-            });
+            }));
 
             // 일정 DB에 저장
             await Schedule.create(newSchedule)
+
+            await Schedule.updateOne({_id: newSchedule._id}, {$set : {tag : tagArray}}).exec();
 
             // 성공값 반환
             return res.json({newScheduleSuccess : true}).status(200);
