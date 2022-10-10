@@ -35,3 +35,37 @@ function selectprovider(){
        containerView.style.display='none'
    }
 }
+function providersave(){
+    const element1 = document.getElementById('categoryAddGround');
+    // 2. style 변경
+    element1.style.display = 'none';
+    const element2 = document.getElementById('categoryModalBg');
+    // 2. style 변경
+    element2.style.display = 'none';
+    const elementTag=document.getElementsByTagName("body")[0];
+    // 3. 스크롤 막기
+    elementTag.style.overflow='scroll'
+    // 4. 카테고리 저장
+    let subject=document.getElementById('subject').value
+    let tag = document.getElementById('tag').value
+    let sharer=document.getElementById()
+    console.log(subject)
+
+    const  categoryData={
+        categoryName : document.getElementById('subject').value,
+        Tags : [document.getElementById('tagList').value],
+        sharer : document.getElementsByTagName('span')
+    }
+    fetch('layout/paint',{
+        method:'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body:JSON.stringify(categoryData)
+    }).then((res) =>res.json())
+        .then((res)=>{
+            if(res.updateSuccess==false) {
+                window.alert(res.message)
+            }
+        })
+}

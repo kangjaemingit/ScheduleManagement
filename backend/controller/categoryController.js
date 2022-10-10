@@ -6,8 +6,8 @@ const categoryController={
     newCategory : async (req,res)=>{
         await Category.create({
             categoryName:req.body.categoryName,
-            Tags : [{$in:{Tags:req.body.Tags._id}}],
-            sharer: [{$in:{sharer:req.body.sharer._id}}],
+            Tags : [req.body.Tags._id],
+            sharer: [req.body.sharer._id],
             // categoryWriter:req.user._id
         }),(err,result)=>{
             console.log("result1",res)
@@ -36,7 +36,6 @@ const categoryController={
         }
     },
     deleteCategory : async (req,res) =>{
-
         await Category.findOneAndDelete({_id:req.body._id}),
             (err,result)=>{
             if(err){

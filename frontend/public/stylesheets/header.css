@@ -1,7 +1,7 @@
 /*=============== HEADER ===============*/
 #headerContainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     border-bottom-style: solid;
     /*background-color: white;*/
     border-bottom-width: 1px;
@@ -11,7 +11,7 @@
 #headerContainer ul{
     display: flex;
 }
-a{
+.headerbutton{
     margin-left: 5px;
     margin-right: 5px;
     text-align: center;
@@ -33,10 +33,10 @@ a{
     align-items: center;
     height: 50px;
     width: auto;
+    margin-left: 100%;
 }
 #show{
-    margin-right: 0px;
-    margin-left:10px;
+    margin-right: -8%;
     height: 30px;
     width: 30px;
     position: absolute;
@@ -83,10 +83,15 @@ ul{
     margin-bottom:0px;
 }
 
-a:hover{
+.headerbutton:hover{
     font-style: oblique;
     background-color: darkgrey;
     transition: 1s;
     animation: opacity;
 }
-
+#headerUrlBox{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    margin-left: 10%;
+}

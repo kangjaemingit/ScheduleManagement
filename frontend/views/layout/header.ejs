@@ -8,16 +8,16 @@
 </head>
 <body>
 <div class="header">
-    <div id="headerContainer" class="container" style="background-color: <%=user.navBgColor%>">
-        <a href="/"><img id="logo" src="../../images/heventreelogo.png"/></a>
-        <ul>
-            <a href="/calendar" type="button" id="Calendar">
+    <div id="headerContainer" class="headercontainer" style="background-color: <%=user.navBgColor%>">
+        <a href="/"><img id="logo" class="headerbutton" src="../../images/heventreelogo.png"/></a>
+        <ul id="headerUrlBox">
+            <a href="/calendar" class="headerbutton" onclick="headerUrl();" type="button" id="Calendar">
                 <p>Calendar</p>
             </a>
-            <a href="/" type="button" id="Dashboard">
+            <a href="/" class="headerbutton" type="button" onclick="headerUrl();" id="Dashboard">
                 <p>Dashboard</p>
             </a>
-            <a href="#" type="button" id="TagStatistics">
+            <a href="#" class="headerbutton" type="button" onclick="headerUrl();" id="TagStatistics">
                 <p>TagStatistics</p>
             </a>
         </ul>
@@ -29,8 +29,21 @@
                 <%}%>
             <img id="profilePhoto" src="<%=user.profilePhoto%>"/>
             <p id="userInfo"><%=user.name%></p>
-            <a href="/login/logout" id="logout" type="button" ><p>logout</p></a>
-            <input id="color" type="color" list="colors" onchange="colorChange()" value="#fff">
+            <a href="/login/logout" id="logout" class="headerbutton" type="button" ><p>logout</p></a>
+            <input id="color" type="color" list="presets" onchange="colorChange()" value="#fff">
+                <datalist id="presets">
+                    <option value="#C8707E"></option>
+                    <option value="#E28FAD"></option>
+                    <option value="#EF84C1"></option>
+                    <option value="#E48ES8"></option>
+                    <option value="#EDAA7D"></option>
+                    <option value="#5AA08D"></option>
+                    <option value="#4C92B1"></option>
+                    <option value="#A8C879"></option>
+                    <option value="#AC99C1"></option>
+                    <option value="#96B1D0"></option>
+                    <option value="#C8C2BD"></option>
+                </datalist>
                 <img id="show" src="../../images/paintblack.png"/>
             </input>
         </ul>
