@@ -2,7 +2,7 @@ const { Category } = require("../models/Category")
 const { User } = require("../models/User")
 const { Tags } = require("../models/Tags")
 
-const categoryController={
+const categoryController = {
     newCategory : async (req,res)=>{
         await Category.create({
             categoryName:req.body.categoryName,
@@ -47,6 +47,35 @@ const categoryController={
                 return res.status(200).json({DeleteSuccess:true})
             }
         }
+    },
+    getTagList : (req, res) => {
+        Tags.find({}, (err, result) => {
+            if(err){
+                console.log(err);
+                return res.json({getTagSuccess : false, message : err});
+            }
+            return res.json({getTagSuccess : true, tags : result});
+        })
+    },
+    getUserList : (req, res) => {
+        User.find({}, (err, result) => {
+            if(err){
+                console.log(err);
+                return res.json({getUserSuccess : false, message : err});
+            }
+            return res.json({getUserSuccess : true, users : result});
+        })
+    },
+    searchUser : (req, res) => {
+        User.find({$or : [{name : {$regex : req.body.keyword}}, {email : {$regex : req.body.keyword}}]}
+        , (err, result) => {
+            if(err){
+                console.log(err);
+                return res.json({searchUserSuccess : false, message : err});
+            }
+            return res.json({searchUserSuccess : true, users : result});
+            });
+
     }
 
 }

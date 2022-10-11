@@ -1,7 +1,7 @@
 const body = document.querySelector('body');
 const scheduleModal = document.querySelector('.scheduleModal');
 let tags = [];
-async function scheduleModalOpen(){
+function scheduleModalOpen(){
     scheduleModal.classList.toggle('show');
 
     if(scheduleModal.classList.contains('show')){

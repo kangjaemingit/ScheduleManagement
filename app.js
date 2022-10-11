@@ -37,7 +37,7 @@ const usersRouter = require('./backend/routes/users');
 const loginRouter = require('./backend/routes/login');
 const scheduleRouter = require('./backend/routes/schedule');
 const layoutRouter = require('./backend/routes/layout')
-const calendarRouter = require('./backend/routes/calender')
+const calendarRouter = require('./backend/routes/calendar')
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

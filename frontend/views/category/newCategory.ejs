@@ -1,0 +1,24 @@
+
+<div class="newCategoryModal" id="newCategoryModal">
+    <div class="newCategoryModalBody" id="newCategoryModalBody">
+        <div class="newCategoryModalTitle" id="newCategoryModalTitle">
+            <h2>새로운 카테고리 등록</h2>
+            <button onclick="newCategoryModalClose()">X</button>
+        </div>
+        <div class="newCategoryModalContents" id="newCategoryModalContents">
+            <label class="newCategoryModalLabel">제목 <input class="newCategoryModalInput" type="text" id="categoryTitle"></label>
+            <div class="tagSelectedArea" id="tagSelectedArea">
+
+            </div>
+            <div class="tagSelectArea" id="tagSelectArea">
+
+            </div>
+            <label class="newCategoryModalLabel"><input type="checkbox" id="sharerCheckBox" onchange="sharerChecked(this)">공유 여부</label>
+            <button style="display: none" id="chooseSharerBtn" onclick="chooseSharerModalOpen()">공유자 선택</button>
+        </div>
+        <div>
+            <button onclick="saveSchedule()">완료</button>
+            <button onclick="newCategoryModalClose()">취소</button>
+        </div>
+    </div>
+</div>

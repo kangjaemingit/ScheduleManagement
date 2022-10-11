@@ -1,0 +1,42 @@
+
+<div class="chooseSharerModal" id="chooseSharerModal">
+    <div class="chooseSharerModalBody" id="chooseSharerModalBody">
+        <div class="chooseSharerModalTitle" id="chooseSharerModalTitle">
+            <h2>공유자 선택</h2>
+            <button onclick="chooseSharerModalClose()">X</button>
+        </div>
+        <div class="chooseSharerModalContents" id="chooseSharerModalContents">
+            <div class="sharerArea">
+                <div class="chosenSharerArea">
+                    <div class="tableWrapper">
+                        <table id="chosenUserTable">
+                            <tbody id="chosenUserTableBody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="chooseSharerArea">
+                    <div class="searchUser" style="width: 100%">
+                        <form onsubmit="searchUser()">
+                            <label>사용자 검색<input type="text" id="searchKeyword"></label>
+                            <button type="submit">검색</button>
+                        </form>
+                    </div>
+                    <div class="tableWrapper">
+                        <table id="userTable">
+                            <tbody id="userTableBody">
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button onclick="saveSchedule()">완료</button>
+            <button onclick="chooseSharerModalClose()">취소</button>
+        </div>
+    </div>
+</div>

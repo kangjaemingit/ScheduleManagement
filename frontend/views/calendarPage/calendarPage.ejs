@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/stylesheets/calendarPage.css"/>
+    <script defer src="javascripts/category/newCategory.js"></script>
+    <script defer src="javascripts/category/chooseSharer.js"></script>
+    <script defer src="javascripts/category/categorychildModal1.js"></script>
 </head>
 <body>
 <header>
@@ -11,11 +14,6 @@
 </header>
 <div id="indexWrap" class="container">
     <div id="indexLeft" class="mainIndex">
-        <div id="categoryButtonContainer">
-            <div id="categoryAdd" onclick="categoryadd();">추가</div>
-            <div id="categoryEdit" onclick="categoryedit();">수정</div>
-            <div id="categoryDelet" onclick="categorydelet();">삭제</div>
-        </div>
         <%- include('category.ejs'); %>
     </div>
     <div id="indexRight" class="mainIndex">
@@ -29,12 +27,7 @@
 <div>
     <%- include('../category/categorychildModal1.ejs')%>
 </div>
-<div>
-    <%- include('../category/categoryAdd.ejs')%>
-</div>
-<script src="javascripts/category/categoryAdd.js"></script>
-<script src="javascripts/category/categorychildModal1.js">
-</script>
-
+<%- include('../category/newCategory.ejs')%>
+<%- include('../category/chooseSharer.ejs')%>
 </body>
 </html>
