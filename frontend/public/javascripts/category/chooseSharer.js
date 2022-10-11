@@ -67,14 +67,14 @@ function searchUser(){
 
 function userChecked(user, checkbox){
     console.log(user);
-    // if(checkbox.checked){
-    //     userIdList.push(id);
-    //     userList.push({id : id, profilePhoto : profilePhoto, name : name, email : email});
-    // } else{
-    //     userIdList = userIdList.filter((user) => user !== id);
-    //     userList = userList.filter((user) => user.id !== id);
-    // }
-    // chosenUserRender(userList);
+    if(checkbox.checked){
+        userIdList.push(user._id);
+        userList.push(user);
+    } else{
+        userIdList = userIdList.filter((u) => u !== user._id);
+        userList = userList.filter((u) => u._id !== user._id);
+    }
+    chosenUserRender(userList);
 }
 
 function chosenUserDelete(user){
