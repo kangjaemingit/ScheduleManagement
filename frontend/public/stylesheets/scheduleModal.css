@@ -111,3 +111,10 @@ body{
     margin:0px;
     padding: 0px;
 }
+#hurryup {
+    background: url("../images/setting.png") no-repeat calc(100% - 5px) center;
+    background-size: 20px;
+    padding: 5px 30px 5px 10px;
+    border-radius: 4px;
+    outline: 0 none;
+}

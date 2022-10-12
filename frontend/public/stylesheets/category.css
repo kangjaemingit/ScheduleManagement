@@ -19,3 +19,27 @@ body{
     height: 100%;
     width:100%;
 }
+#shareobject{
+    border:0px;
+    width:78%;
+    height:65px;
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+    float: left;
+    text-align: left;
+}
+#editDeletePlace{
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+    width:20%;
+    height:65px;
+    float:right;
+}
+#categoryContainer{
+    box-shadow: rgba(0,0,0,0.4);
+    float: left;
+    align-items: center;
+    width: 98%;
+    border: solid 1px;
+    border-radius: 2px 2px 2px 2px;
+}

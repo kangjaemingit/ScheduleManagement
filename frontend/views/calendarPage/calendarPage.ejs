@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/stylesheets/calendarPage.css"/>
 </head>
 <body>
+
 <header>
     <%- include('../layout/header.ejs'); %>
 </header>
@@ -13,8 +14,6 @@
     <div id="indexLeft" class="mainIndex">
         <div id="categoryButtonContainer">
             <div id="categoryAdd" onclick="categoryadd();">추가</div>
-            <div id="categoryEdit" onclick="categoryedit();">수정</div>
-            <div id="categoryDelet" onclick="categorydelet();">삭제</div>
         </div>
         <%- include('category.ejs'); %>
     </div>
@@ -33,8 +32,7 @@
     <%- include('../category/categoryAdd.ejs')%>
 </div>
 <script src="javascripts/category/categoryAdd.js"></script>
-<script src="javascripts/category/categorychildModal1.js">
-</script>
-
+<script src="javascripts/category/categorychildModal1.js"></script>
+<script src="javascripts/category/categoryPage.js"></script>
 </body>
 </html>

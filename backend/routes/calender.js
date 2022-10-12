@@ -6,8 +6,6 @@ var router = express.Router();
 router.get('/', checkAuth, function(req, res, next) {
     res.render('calendarPage/calendarPage', { title: 'Express',user : req.user  });
 });
-
 router.post('/categoryAdd',categoryController.newCategory);
-
 
 module.exports = router;

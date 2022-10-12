@@ -39,15 +39,14 @@ function colorChange(){
             }
         })
 };
-function headerUrl(){
-    let left = document.getElementById('indexLeft')
-    let right = document.getElementById('indexRight')
-    left.style.translateY = '100%'
-    left.style.translateY = '1s'
-    right.style.translateX = '100%'
-    right.style.translateX = '1s'
-}
 
+// function headerUrl(){
+//     console.log("들어가냐")
+//     let left = document.getElementById('indexLeft')
+//     let right = document.getElementById('indexRight')
+//     left.style.animation = 'slidedrop 1s linear reverse '
+//     right.style.animation = 'slideright 1s linear reverse'
+// }
 // document.getElementById('show').addEventListener('click',show);
 // document.querySelector('.modal-close').addEventListener('click',close);
 
