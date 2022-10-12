@@ -30,6 +30,8 @@ async function newCategoryModalOpen(){
 
 function newCategoryModalClose(){
     newCategoryModal.classList.toggle('show');
+
+    window.location.reload();
 }
 
 let tagIdList = [];
@@ -57,12 +59,40 @@ function tagChecked(t){
 function sharerChecked(check){
     if(check.checked){
         document.getElementById('chooseSharerBtn').style.display = 'block';
+        document.getElementById('chosenSharer').style.display = 'block';
     } else{
         document.getElementById('chooseSharerBtn').style.display = 'none';
+        document.getElementById('chosenSharer').style.display = 'none';
     }
 
 }
 
 function saveNewCategory(){
+
+    const newCategory = {
+        categoryName : document.getElementById('categoryName').value,
+        tags : tagIdList,
+        sharer : userIdList,
+    }
+
+    fetch('calendar/newCategory', {
+        method : 'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(newCategory)
+    }).then((res) => res.json())
+        .then((res) => {
+            if(res.newCategorySuccess){
+                window.alert("카테고리가 정상적으로 등록되었습니다.");
+                window.location.reload();
+            } else{
+                window.alert(res.message);
+            }
+        }).catch((err) => {
+        console.log(err);
+    })
+
+
 
 }

@@ -5,20 +5,20 @@ const { Tags } = require("../models/Tags")
 const categoryController = {
     newCategory : async (req,res)=>{
         await Category.create({
-            categoryName:req.body.categoryName,
-            Tags : [{Tags:req.body.Tags._id}],
-            sharer: [{sharer:req.body.sharer._id}],
-            // categoryWriter:req.user._id
-        }),(err,result)=>{
-            console.log("result1",res)
+            categoryName: req.body.categoryName,
+            tags : req.body.tags,
+            sharer: req.body.sharer,
+            categoryWriter: req.user._id
+        }, (err, result) => {
             if(err){
                 console.log("new Category create Error:"+err);
-                return res.json({message:err});
+                return res.json({newCategorySuccess : false, message:err});
             }
             else{
-                return res.status(200).json({createSuccess:true});
+                return res.json({newCategorySuccess:true})
+                    .status(200);
             }
-        }
+        });
     },
     editCategory : async (req,res)=>{
         await Category.findOneAndUpdate({_id:req.body._id},

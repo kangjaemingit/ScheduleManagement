@@ -4,7 +4,7 @@ const CategorySchema = mongoose.Schema({
     categoryName : {
         type : String
     },
-    Tags : {
+    tags : {
         type : [{type : mongoose.Schema.Types.ObjectId, ref:"Tags"}]
     },
     sharer : {
