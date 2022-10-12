@@ -4,7 +4,7 @@ const checkAuth = require('../config/auth').checkAuth;
 
 /* GET home page. */
 router.get('/', checkAuth, function(req, res, next) {
-  res.render('dashboard', { title: 'Express', user : req.user });
+  res.render('dashboard/dashboard', { title: 'Express', user : req.user });
 });
 
 
