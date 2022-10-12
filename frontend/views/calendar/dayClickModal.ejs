@@ -3,24 +3,22 @@
     <div class="dayModalBody" id="dayModalBody">
         <div class="dayModalTitle" id="dayModalTitle">
             <h2>해당 일자 일정 목록</h2>
-            <button onclick="dayModalClose()">X</button>
+            <button id="dayModalClose">X</button>
         </div>
         <div id="scheduleList">
             <th>
-                <td>
-                    <tr id="title">제목</tr>
-                    <tr id="startDay">시작일</tr>
-                    <tr id="endDay">종료일</tr>
-                </td>
-                <td>
-                    <tr id="title">제목</tr>
-                    <tr id="startDay">시작일</tr>
-                    <tr id="endDay">종료일</tr>
-                </td>
+                <div id="titleSort" onclick="titleSort();">제목</div>
             </th>
-
+            <th>
+                <div id="startDaySort" onclick="startDaySort();">시작일</div>
+            </th>
+            <th>
+                <div id="endDaySort" onclick="endDaySort();">종료일</div>
+            </th>
+            <table>
+            </table>
         </div>
-        <div>
+        <div id="dayModalButton">
             <button id="editSchedule">편집</button>
             <button id="dayModalClose">취소</button>
         </div>

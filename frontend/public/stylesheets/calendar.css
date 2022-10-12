@@ -47,3 +47,14 @@ html, body {
     transform: translateX(-50%) translateY(-50%);
     z-index: 3;
 }
+#scheduleList{
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 350px;
+    border: rgba(0,0,0,0.1) 1px solid;
+}
+#dayModalButton{
+    display: flex;
+    justify-content: space-around;
+}

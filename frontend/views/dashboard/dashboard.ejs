@@ -7,17 +7,9 @@
 </head>
 <body>
 <%- include('./layout/header.ejs')%>
+<%- include('scheduleScreen.ejs') %>
 <button id="newSchedule" onclick="scheduleModalOpen()">새로운 일정 추가</button>
-<% for(var i=0; i<5; i++) {%>
-<div id="scheduleContainer">
-    <div id="update_date">
-        1002
-        <div id="scadule">
-            ㅁ나ㅓㅇㄹㄴ
-        </div>
-    </div>
-</div>
-<%}%>
 <%- include('./schedule/scheduleModal.ejs')%>
+<%- include('chartScreen') %>
 </body>
 </html>
