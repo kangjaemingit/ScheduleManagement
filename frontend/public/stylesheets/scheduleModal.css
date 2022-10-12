@@ -55,6 +55,7 @@
     display : flex;
     flex-wrap: wrap;
     overflow: auto;
+    word-break: break-word;
 }
 
 .tagList{
@@ -112,9 +113,17 @@ body{
     padding: 0px;
 }
 #hurryup {
-    background: url("../images/setting.png") no-repeat calc(100% - 5px) center;
-    background-size: 20px;
-    padding: 5px 30px 5px 10px;
-    border-radius: 4px;
-    outline: 0 none;
+    background-color: rgba(255,0,0,0.5);
+}
+#high{
+    background-color: rgba(255,165,0,0.5);
+}
+#normal{
+    background-color: rgba(255,255,0,0.5);
+}
+#low{
+    background-color: rgba(0,0,255,0.5);
+}
+#laze{
+    background-color: rgba(0,255,0,0.5);
 }

@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
             let openSceduleModalBG = document.getElementById('scheduleModal');
             let openSceduleModalBody = document.getElementById('scheduleModalBody');
             let closeSceduleModal = document.getElementById('scheduleModalClosed');
+            let Xbutton = document.getElementById('dayModalClose');
             openDayModalBG.style.display='block'
             openDayModal.style.display='block'
             closeDayModal.addEventListener("click",function (){
@@ -46,6 +47,10 @@ document.addEventListener('DOMContentLoaded', function () {
             closeSceduleModal.addEventListener("click", function (){
                 openSceduleModalBG.style.display='none'
                 openSceduleModalBody.style.display='none'
+            })
+            Xbutton.addEventListener('click',function (){
+                openDayModalBG.style.display='none'
+                openDayModal.style.display='none'
             })
         },
         //일정클릭시 이벤트
