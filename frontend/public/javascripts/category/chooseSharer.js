@@ -20,7 +20,7 @@ function chosenUserRender(users){
         rows += `<tr><td><img class="chooseSharerProfilePhoto" src="${user.profilePhoto}"></td>`
             + `<td>${user.name}</td>`
             + `<td>${user.email}</td>`
-            + `<td><button onclick='chosenUserDelete(${JSON.stringify(user)})'>삭제</button></td></tr>`;
+            + `<td><img src="/images/trash.png" class="deleteBtn" onclick='chosenUserDelete(${JSON.stringify(user)})'></td></tr>`;
     })
 
     document.getElementById('chosenUserTableBody').innerHTML = rows;

@@ -7,7 +7,7 @@
     margin: 5px 5px 0 5px;
     box-shadow: darkgrey 0 0 5px 0;
 }
-#categoryDelet{
+#categoryDelete{
     margin: 5px 5px 0 5px;
     box-shadow: darkgrey 0 0 5px 0;
 }
@@ -103,4 +103,16 @@ body{
     width: 98%;
     border: solid 1px;
     border-radius: 2px 2px 2px 2px;
+}
+
+.modalCloseBtn{
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.deleteBtn{
+    width : 20px;
+    height : 20px;
+    cursor : pointer;
 }

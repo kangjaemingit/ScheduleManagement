@@ -48,3 +48,9 @@
     list-style: none;
     cursor: pointer;
 }
+
+.autoCompleteModalCloseBtn{
+    width : 15px;
+    height: 15px;
+    cursor: pointer;
+}

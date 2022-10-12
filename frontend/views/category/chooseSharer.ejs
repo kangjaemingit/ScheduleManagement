@@ -3,7 +3,7 @@
     <div class="chooseSharerModalBody" id="chooseSharerModalBody">
         <div class="chooseSharerModalTitle" id="chooseSharerModalTitle">
             <h2>공유자 선택</h2>
-            <button onclick="chooseSharerModalClose()">X</button>
+            <img src="/images/close_bg_none.png" class="modalCloseBtn" onclick="chooseSharerModalClose()">
         </div>
         <div class="chooseSharerModalContents" id="chooseSharerModalContents">
             <div class="sharerArea">
@@ -17,10 +17,10 @@
                     </div>
                 </div>
                 <div class="chooseSharerArea">
-                    <div class="searchUser" style="width: 100%">
+                    <div class="searchUser">
                         <form onsubmit="searchUser()">
                             <label>사용자 검색<input type="text" id="searchKeyword"></label>
-                            <button type="submit">검색</button>
+                            <button type="submit" style="background-color: #ffffff; border: none"><img class="searchBtn" src="/images/icon_search.png"></button>
                         </form>
                     </div>
                     <div class="tableWrapper">

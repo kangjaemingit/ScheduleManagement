@@ -8,6 +8,10 @@ router.get('/', checkAuth, calendarController.index);
 
 router.post('/newCategory',categoryController.newCategory);
 
+router.get('/getMyCategory', categoryController.getMyCategory);
+
+router.get('/deleteCategory/:id', categoryController.deleteCategory);
+
 router.get('/getTagList', checkAuth, categoryController.getTagList);
 
 router.get('/getUserList', checkAuth, categoryController.getUserList);

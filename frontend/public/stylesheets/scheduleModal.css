@@ -38,6 +38,10 @@
     border-bottom: solid 1px #e3e3e3;
 }
 
+.scheduleModalPartition{
+    display: flex;
+}
+
 .scheduleModalContents{
     display: flex;
     flex-direction: column;
@@ -46,6 +50,13 @@
 
 .scheduleModalInput{
     width: 100%;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
 }
 
 .tagListArea{
@@ -94,6 +105,7 @@
 .deleteTag{
     width: 12px;
     height: 12px;
+    margin-left: 3px;
     cursor: pointer;
     display: none;
 }
@@ -117,4 +129,14 @@ body{
     padding: 5px 30px 5px 10px;
     border-radius: 4px;
     outline: 0 none;
+}
+
+.scheduleModalInput{
+
+}
+
+.modalCloseBtn{
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
 }

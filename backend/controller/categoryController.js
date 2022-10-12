@@ -36,17 +36,23 @@ const categoryController = {
         }
     },
     deleteCategory : async (req,res) =>{
-        await Category.findOneAndDelete({_id:req.body._id}),
-            (err,result)=>{
+        Category.deleteOne({$and : [{_id : req.params.id}, {categoryWriter : req.user._id}]}, (err) => {
             if(err){
-                console.log("Category delete Error:"+err)
-                return res.json({messge:err});
+                console.log("deleteCategory Err : " + err);
+                return res.json({deleteCategorySuccess : false, message : err})
             }
-            else
-            {
-                return res.status(200).json({DeleteSuccess:true})
-            }
-        }
+            return res.json({deleteCategorySuccess : true}).status(200);
+        })
+    },
+    getMyCategory : (req, res) => {
+      Category.find({categoryWriter : req.user._id},
+          (err, result) =>{
+          if(err){
+              console.log(err);
+              return res.json({ getMyCategorySuccess : false, message : err });
+          }
+          return res.json({ categories : result }).status(200);
+      })
     },
     getTagList : (req, res) => {
         Tags.find({}, (err, result) => {

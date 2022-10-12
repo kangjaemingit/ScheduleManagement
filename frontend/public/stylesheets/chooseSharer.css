@@ -85,3 +85,17 @@ table{
     margin-left: auto;
     margin-right: auto;
 }
+
+.searchUser{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.searchBtn{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}

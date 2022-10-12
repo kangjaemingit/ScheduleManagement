@@ -1,7 +1,19 @@
+const { Category } = require('../models/Category');
 
 const calendarController={
-    index : (req, res) => {
-        res.render('calendarPage/calendarPage', { title: 'Express',user : req.user  });
+    index : async (req, res) => {
+        try{
+            const myCategories =
+                await Category.find({categoryWriter : req.user._id})
+                    .populate("tags")
+                    .populate("sharer")
+                    .exec();
+            console.log(myCategories);
+            res.render('calendarPage/calendarPage', { title: 'Express',user : req.user, myCategories});
+        } catch (e){
+            console.log(e);
+        }
+
     }
 
 }
