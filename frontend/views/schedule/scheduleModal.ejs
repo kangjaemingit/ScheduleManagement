@@ -4,6 +4,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee3f54e79d473881157156f79ed09cf8&libraries=services"></script>
 <script defer src='javascripts/schedule/kakaomap.js'></script>
 <script defer src='javascripts/schedule/scheduleModal.js'></script>
+
 <div class="scheduleModal" id="scheduleModal">
     <div class="scheduleModalBody" id="scheduleModalBody">
         <div class="scheduleModalTitle" id="scheduleModalTitle">
@@ -16,11 +17,12 @@
             <label class="scheduleModalLabel">시작일 <input class="scheduleModalInput" type="datetime-local" id="startDate"></label>
             <label class="scheduleModalLabel">마감일 <input class="scheduleModalInput" type="datetime-local" id="endDate"></label>
             <label class="scheduleModalLabel">우선순위 <select class="scheduleModalInput" id="priority">
-                <option value="5">아주 높음</option>
-                <option value="4">높음</option>
-                <option value="3">보통</option>
-                <option value="2">낮음</option>
-                <option value="1" selected>매우 낮음</option>
+                <option id="hurryup" value="5" ><option></optoin>아주 높음</option>
+                <option id="high" value="4">높음</option>
+                <option id="normal" value="3">보통</option>
+                <option id="low" value="2">낮음</option>
+                <option id="laze" value="1" selected>매우 낮음</option>
+
                 </select></label>
             <label class="scheduleModalLabel">태그</label>
             <%- include('./autoCompleteModal.ejs')%>
@@ -40,7 +42,7 @@
         </div>
         <div>
             <button onclick="saveSchedule()">완료</button>
-            <button onclick="scheduleModalClose()">취소</button>
+            <button id="scheduleModalClosed" onclick="scheduleModalClose()">취소</button>
         </div>
     </div>
 </div>

@@ -71,11 +71,36 @@ body{
     overflow: auto;
 }
 
-.tagSelectedArea{
+.tagSelectedArea {
     width: 100%;
     height: 40px;
     border: 1px lightgray solid;
-    display : flex;
+    display: flex;
     flex-wrap: wrap;
     overflow: auto;
+}
+
+#shareobject{
+    border:0px;
+    width:78%;
+    height:65px;
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+    float: left;
+    text-align: left;
+}
+#editDeletePlace{
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+    width:20%;
+    height:65px;
+    float:right;
+}
+#categoryContainer{
+    box-shadow: rgba(0,0,0,0.4);
+    float: left;
+    align-items: center;
+    width: 98%;
+    border: solid 1px;
+    border-radius: 2px 2px 2px 2px;
 }

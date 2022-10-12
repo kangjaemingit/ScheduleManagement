@@ -2,63 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href='stylesheets/main.css' rel='stylesheet' />
-    <script src='javascripts/main.js'></script>
-
+    <link href='stylesheets/fullCalendar.css' rel='stylesheet' />
+    <script src='javascripts/fullCalendar.js'></script>
     <link rel="stylesheet" href="/stylesheets/calendar.css"/>
-<!--    <script src="javascripts/calendar.js"></script>-->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    let calendarEl = document.getElementById('calendar');
-    let calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        headerToolbar: {
-            start: 'dayGridMonth,timeGridWeek,timeGridDay',
-            center: 'title',
-            end: 'prevYear,prev,next,nextYear'
-        },
-        editable:true,
-        firstDay:1,
-        titleFormat:function(date){
-            let year = date.date.year;
-            let month = date.date.month+1;
-            return year+"년"+month+"월";
-        },
-        //날짜 클릭시 이벤트 함수
-        dateClick:function (){
-            console.log("날짜 클릭시 나타날 이벤트 작성해주세요")
-            fetch('calendar',{
-                method:'post',
-                headers : {
-                    'Content-Type' : 'application/json',
-                },
-                body:JSON.stringify(colorData)
-            }).then((res) =>res.json())
-                .then((res)=>{
-                    if(res.updateSuccess==false) {
-                        window.alert(res.message)
-                    }
-                })
-        },
-        //일정클릭시 이벤트
-        eventClick:function (){
-          console.log("일정클릭시 나타날 이벤트 추가해주세요")
-        },
-    events:[
-    {
-    title  : '프로젝트',//일정정보 제목
-    url    : '',//지도 주소 넣어서 지도 찾아갈 수 있게 하면 될듯
-    start  : '2022-10-03',//시작 일시
-    end    : '2022-10-30',//끝나는 일시
-    allDay : false ? 0 : 1//하루종일인지 아닌지 확인
-    }
-    ],
-    });
-    calendar.render();
-    });
-    </script>
+    <script src="javascripts/calendar.js"></script>
 </head>
 <body>
 <div id='calendar'></div>
+<div>
+<%- include('../calendar/dayClickModal')%>
+</div>
+<div>
+    <%- include('../schedule/scheduleModal.ejs')%>
+</div>
 </body>
 </html>
