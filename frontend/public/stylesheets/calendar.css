@@ -58,3 +58,8 @@ html, body {
     display: flex;
     justify-content: space-around;
 }
+.fc-event-title-container{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

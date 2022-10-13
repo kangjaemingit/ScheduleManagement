@@ -67,7 +67,19 @@ const scheduleController = {
                 }
                 return res.json({ autoComplete }).status(200)
             })
+    },
+    getSchedule: (req,res)=>{
+        Schedule.find({scheduleWriter:req.user._id})
+            .populate("tag")
+            .exec((err,result)=>{
+                if(err){
+                    console.log(err)
+                    return res.json({scheduleRenderSuccess:false, message:err});
+                }
+                return res.json({scheduleRenderSuccess:true, scheduleData:result});
+            });
     }
+
 }
 
 module.exports = scheduleController;
