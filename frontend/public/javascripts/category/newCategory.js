@@ -1,5 +1,8 @@
 const body = document.querySelector('body');
 const newCategoryModal = document.querySelector('.newCategoryModal');
+
+let tagList = [];
+
 async function newCategoryModalOpen(){
 
     fetch('calendar/getTagList', {
@@ -12,8 +15,8 @@ async function newCategoryModalOpen(){
                 return;
             }
             let rows = "";
-            res.tags.map((t) => {
-                rows += `<label><input type="checkbox" name="${t.tagName}" value="${t._id}" onchange="tagChecked(this)">${t.tagName}</label>`
+            res.tags.map((tag) => {
+                rows += `<label><input type="checkbox" name='${tag.tagName}' value='${tag._id}' onchange='tagChecked(${JSON.stringify(tag)} ,this)'>${tag.tagName}</label>`
             })
             document.getElementById('tagSelectArea').innerHTML = rows;
         }).catch((err) => {
@@ -34,21 +37,17 @@ function newCategoryModalClose(){
     window.location.reload();
 }
 
-let tagIdList = [];
-let tagNameList = [];
-function tagChecked(t){
-    if(t.checked){
-        console.log(t.value);
-        tagIdList.push(t.value);
-        tagNameList.push(t.name);
+
+function tagChecked(tag, checkBox){
+    if(checkBox.checked){
+        tagList.push(tag);
     } else{
-        tagIdList = tagIdList.filter((tag) => tag !== t.value);
-        tagNameList = tagNameList.filter((tag) => tag !== t.name);
+        tagList = tagList.filter((t) => t._id !== tag._id)
     }
 
     let rows = [];
-    tagNameList.map((tag) => {
-        rows += `<p>${tag}</p>`
+    tagList.map((t) => {
+        rows += `<p>${t.tagName}</p>`
     })
 
     document.getElementById('tagSelectedArea').innerHTML = rows;
@@ -64,10 +63,16 @@ function sharerChecked(check){
         document.getElementById('chooseSharerBtn').style.display = 'none';
         document.getElementById('chosenSharer').style.display = 'none';
     }
-
 }
 
 function saveNewCategory(){
+    let tagIdList = tagList.map((tag) => {
+        return tag._id
+    })
+
+    let userIdList = userList.map((user) => {
+        return user._id;
+    })
 
     const newCategory = {
         categoryName : document.getElementById('categoryName').value,
@@ -92,7 +97,4 @@ function saveNewCategory(){
         }).catch((err) => {
         console.log(err);
     })
-
-
-
 }

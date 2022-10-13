@@ -1,16 +1,18 @@
-let userIdList = [];
 let userList = [];
+
 function userRender(users){
     let rows = [];
+
     users.map((user) => {
         rows += `<tr>`
-            + (userIdList.includes(user._id) ?
+            + (userList.some(u => u._id === user._id) ?
                 `<td><input type="checkbox" checked="true" id="cb_${user._id}" onchange='userChecked(${JSON.stringify(user)}, this)'></td>`
                 : `<td><input type="checkbox" id="cb_${user._id}" onchange='userChecked(${JSON.stringify(user)}, this)'></td>`)
             + `<td><img class="chooseSharerProfilePhoto" src="${user.profilePhoto}"></td>`
             + `<td>${user.name}</td>`
             + `<td>${user.email}</td></tr>`;
     })
+
     document.getElementById('userTableBody').innerHTML = rows;
 }
 
@@ -46,7 +48,7 @@ async function chooseSharerModalOpen(){
 function chooseSharerModalClose(){
     chooseSharerModal.classList.toggle('show');
     userList = [];
-    userIdList = [];
+    //userIdList = [];
     document.getElementById('chosenUserTableBody').innerHTML = null;
 }
 
@@ -73,23 +75,19 @@ function searchUser(){
 function userChecked(user, checkbox){
     console.log(user);
     if(checkbox.checked){
-        userIdList.push(user._id);
         userList.push(user);
     } else{
-        userIdList = userIdList.filter((u) => u !== user._id);
         userList = userList.filter((u) => u._id !== user._id);
     }
     chosenUserRender(userList);
 }
 
 function chosenUserDelete(user){
-    userIdList = userIdList.filter((u) => u !== user._id);
     userList = userList.filter((u) => u._id !== user._id);
 
     document.getElementById(`cb_${user._id}`).checked = false;
 
     chosenUserRender(userList);
-
 }
 
 function saveChooseSharer(){

@@ -26,7 +26,7 @@
             </div>
         </div>
         <div id="editDeletePlace">
-            <div id="categoryEdit" onclick="categoryEdit();">수정</div>
+            <div id="categoryEdit" onclick='categoryEditModalOpen(<%=JSON.stringify(category)%>)'>수정</div>
             <div id="categoryDelete" onclick='categoryDelete("<%=category._id%>");'>삭제</div>
         </div>
     </div>
