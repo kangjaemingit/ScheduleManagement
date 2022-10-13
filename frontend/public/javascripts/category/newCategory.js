@@ -1,4 +1,4 @@
-const body = document.querySelector('body');
+// const body = document.querySelector('body');
 const newCategoryModal = document.querySelector('.newCategoryModal');
 
 let tagList = [];
@@ -27,7 +27,7 @@ async function newCategoryModalOpen(){
     newCategoryModal.classList.toggle('show');
 
     if(newCategoryModal.classList.contains('show')){
-        body.style.overflow = 'hidden';
+        // body.style.overflow = 'hidden';
     }
 }
 

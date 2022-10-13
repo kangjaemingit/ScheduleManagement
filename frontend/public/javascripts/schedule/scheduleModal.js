@@ -1,11 +1,11 @@
-const body = document.querySelector('body');
+// const body = document.querySelector('body');
 const scheduleModal = document.querySelector('.scheduleModal');
 let tags = [];
 function scheduleModalOpen(){
     scheduleModal.classList.toggle('show');
 
     if(scheduleModal.classList.contains('show')){
-        body.style.overflow = 'hidden';
+        // body.style.overflow = 'hidden';
         relayout();
     }
 }

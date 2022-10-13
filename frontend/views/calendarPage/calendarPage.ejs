@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/stylesheets/calendarPage.css"/>
     <script defer src="javascripts/category/newCategory.js"></script>
     <script defer src="javascripts/category/chooseSharer.js"></script>
+    <script defer src="javascripts/schedule/scheduleModal.js"></script>
     <script defer src="javascripts/category/categorychildModal1.js"></script>
     <script defer src="javascripts/category/myCategory.js"></script>
 </head>
@@ -23,7 +24,7 @@
     </div>
 </div>
 <div id="movemodal" onclick="movemodar();"></div>
-<div >
+<div>
     <%- include('../category/categoryRootModal.ejs')%>
 </div>
 <div>
@@ -31,6 +32,6 @@
 </div>
 <%- include('../category/newCategory.ejs')%>
 <%- include('../category/chooseSharer.ejs')%>
-
+<%- include('../schedule/scheduleModal.ejs')%>
 </body>
 </html>
