@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+    <script defer src="javascripts/dayClickModal.js"></script>
     <link href='stylesheets/fullCalendar.css' rel='stylesheet' />
     <script src='javascripts/fullCalendar.js'></script>
     <link rel="stylesheet" href="/stylesheets/calendar.css"/>
-    <script src="javascripts/calendar.js"></script>
 </head>
 <body>
-
+<script src="javascripts/calendar.js"></script>
 <div id='calendar'></div>
 <div>
-<%- include('../calendar/dayClickModal')%>
+<%- include('../calendar/dayClickModal.ejs')%>
 </div>
 <div>
 

@@ -1,31 +1,38 @@
-var data = [
-];
+let openDayModalBG = document.getElementById('dayClickModalBG');
+let openDayModal = document.getElementById('dayClickModalBody');
+let closeDayModal = document.getElementById('dayModalClose');
+let editScheduleModal = document.getElementById('editSchedule');
+let Xbutton = document.getElementById('dayModalClosed');
 
-window.onload = function(){
-    var table = document.createElement('table');
-    var targetPn = document.getElementById ('targetPn');
-    targetPn.appendChild(table);
-    table.border = 1;
-    table.width = 200;
-    for (var i=0; i<data.length; i++){
-        var tr = document.createElement('tr');
-        table.appendChild(tr);
-        for (var j=0; j<data[i].length; j++){
-            var td = document.createElement('td');
-            tr.appendChild(td);
-            td.innerHTML = data[i][j];
-        }
+function dayClickModalOpen(schedule){
+    console.log("modal" + schedule[0]);
+    if(schedule){
+        let scheduleList = []
+
+        schedule.map((s)=>{
+            let startDay = s.start.toISOString().substring(0,10);
+            let endDay = s.end.toISOString().substring(0,10);
+            scheduleList += `<tr>`
+            + `<td>${s.title}</td>`
+            +`<td>${startDay}</td>`
+            +`<td>${endDay}</td>`
+            +`<td>${s._def.extendedProps.scheduleWriter}</td>`
+            +`</tr>`
+        })
+        document.getElementById('scheduleTableBody').innerHTML= scheduleList;
     }
+
+    openDayModalBG.style.display='block'
+    openDayModal.style.display='block'
 }
 
-function sortTable(){
-    var table = document.getElementsByTagName('table');
-    var rows = table[0].rows;
-    for (var i = 1; i < (rows.length - 1); i++) {
-        var fCell = rows[i].cells[0];
-        var sCell = rows[i + 1].cells[0];
-        if (fCell.innerHTML.toLowerCase() > sCell.innerHTML.toLowerCase()) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        }
-    }
+function dayModalClosed(){
+    openDayModalBG.style.display='none'
+    openDayModal.style.display='none'
 }
+
+editScheduleModal.addEventListener("click",function (){
+    scheduleModalOpen();
+    openDayModalBG.style.display='none'
+    openDayModal.style.display='none'
+})

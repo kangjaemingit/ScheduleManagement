@@ -71,6 +71,7 @@ const scheduleController = {
     getSchedule: (req,res)=>{
         Schedule.find({scheduleWriter:req.user._id})
             .populate("tag")
+            .populate("scheduleWriter")
             .exec((err,result)=>{
                 if(err){
                     console.log(err)
@@ -78,8 +79,7 @@ const scheduleController = {
                 }
                 return res.json({scheduleRenderSuccess:true, scheduleData:result});
             });
-    }
-
+    },
 }
 
 module.exports = scheduleController;
