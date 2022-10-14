@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Category</title>
     <link rel="stylesheet" href="/stylesheets/dashboard.css">
-    <script defer src='javascripts/schedule/scheduleModal.js'></script>
+
 </head>
 <body>
 <%- include('../layout/header.ejs')%>
 <%- include('./scheduleScreen.ejs') %>
-<button id="newSchedule" onclick="scheduleModalOpen()">새로운 일정 추가</button>
 <%- include('../schedule/scheduleModal.ejs')%>
 <%- include('./chartScreen') %>
+<button id="newSchedule" onclick="scheduleModalOpen()">새로운 일정 추가</button>
 </body>
 </html>

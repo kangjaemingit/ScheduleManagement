@@ -3,6 +3,15 @@ const newCategoryModal = document.querySelector('.newCategoryModal');
 
 let tagList = [];
 
+function selectedTagRender(){
+    let rows = [];
+    tagList.map((t) => {
+        rows += `<p>${t.tagName}</p>`
+    })
+
+    document.getElementById('tagSelectedArea').innerHTML = rows;
+}
+
 async function newCategoryModalOpen(){
 
     fetch('calendar/getTagList', {
@@ -44,14 +53,7 @@ function tagChecked(tag, checkBox){
     } else{
         tagList = tagList.filter((t) => t._id !== tag._id)
     }
-
-    let rows = [];
-    tagList.map((t) => {
-        rows += `<p>${t.tagName}</p>`
-    })
-
-    document.getElementById('tagSelectedArea').innerHTML = rows;
-
+    selectedTagRender();
 
 }
 

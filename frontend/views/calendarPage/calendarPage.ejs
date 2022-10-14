@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/stylesheets/calendarPage.css"/>
+    <link rel="stylesheet" href="/stylesheets/chooseSharer.css"/>
     <script defer src="javascripts/category/newCategory.js"></script>
     <script defer src="javascripts/category/chooseSharer.js"></script>
-    <script defer src="javascripts/schedule/scheduleModal.js"></script>
-    <script defer src="javascripts/category/categorychildModal1.js"></script>
     <script defer src="javascripts/category/myCategory.js"></script>
+    <script defer src="javascripts/category/sharedDirectory.js"></script>
 </head>
 <body>
 
@@ -23,9 +23,9 @@
         <%- include('calendar.ejs'); %>
     </div>
 </div>
-<div id="movemodal" onclick="movemodar();"></div>
+<div id="modalOpenBtn" onclick="sharedDirectoryModalOpen();"></div>
 <div>
-    <%- include('../category/categoryRootModal.ejs')%>
+    <%- include('../category/sharedDirectory.ejs')%>
 </div>
 <div>
     <%- include('../category/categorychildModal1.ejs')%>

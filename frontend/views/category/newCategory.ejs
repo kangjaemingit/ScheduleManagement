@@ -1,8 +1,7 @@
-
 <div class="newCategoryModal" id="newCategoryModal">
     <div class="newCategoryModalBody" id="newCategoryModalBody">
         <div class="newCategoryModalTitle" id="newCategoryModalTitle">
-            <h2>새로운 카테고리 등록</h2>
+            <h2 id="categoryModalTitle">새로운 카테고리 등록</h2>
             <img src="/images/close_bg_none.png" class="modalCloseBtn" onclick="newCategoryModalClose()">
         </div>
         <div class="newCategoryModalContents" id="newCategoryModalContents">
@@ -20,8 +19,9 @@
             <button style="display: none" id="chooseSharerBtn" onclick="chooseSharerModalOpen()">공유자 선택</button>
         </div>
         <div>
-            <button onclick="saveNewCategory()">완료</button>
+            <button id="saveCategoryButton" onclick="saveNewCategory()">완료</button>
             <button onclick="newCategoryModalClose()">취소</button>
         </div>
     </div>
 </div>
+

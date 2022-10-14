@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 text: '스케줄 추가!',
                 click: function() {
                     scheduleModalOpen();
+
                 }
             }
         },

@@ -7,11 +7,17 @@ var router = express.Router();
 
 router.get('/', checkAuth, calendarController.index);
 
+// create
 router.post('/newCategory',categoryController.newCategory);
 
+// read
 router.get('/getMyCategory', categoryController.getMyCategory);
 
-router.get('/deleteCategory/:id', categoryController.deleteCategory);
+// update
+router.post('/updateCategory', categoryController.updateCategory);
+
+// delete
+router.delete('/deleteCategory/:id', categoryController.deleteCategory);
 
 router.get('/getTagList', checkAuth, categoryController.getTagList);
 
