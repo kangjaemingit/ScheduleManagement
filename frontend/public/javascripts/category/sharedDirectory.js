@@ -1,11 +1,23 @@
 
 // 팝업 열기
-function movemodar() {
-    const element1 = document.getElementById('categoryRootbg');
+function sharedDirectoryModalOpen() {
+    const element1 = document.getElementById('sharedDirectoryModal');
     // 2. style 변경
     element1.style.display='block';
-    const moveModal=document.getElementById('movemodal');
+    const moveModal=document.getElementById('modalOpenBtn');
     moveModal.style.display='none'
+
+    fetch('calendar/getUserList', {
+        method:"get"
+    }).then((res) => res.json())
+        .then((res) => {
+            if(res.getUserSuccess === false){
+                console.log(res.message);
+                window.alert("유저정보 불러오기 실패");
+                return;
+            }
+
+        })
 }
 function movechildModal1(){
     const element2 = document.getElementById('categorychild1bg');

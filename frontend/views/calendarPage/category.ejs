@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/stylesheets/category.css"/>
-    <link rel="stylesheet" href="/stylesheets/chooseSharer.css"/>
 </head>
 <body>
     <div id="categoryButtonContainer">
@@ -25,9 +24,9 @@
                 <%})%>
             </div>
         </div>
-        <div id="editDeletePlace">
-            <div id="categoryEdit" onclick='categoryEditModalOpen(<%=JSON.stringify(category)%>)'>수정</div>
-            <div id="categoryDelete" onclick='categoryDelete("<%=category._id%>");'>삭제</div>
+        <div id="categoryControlArea">
+            <img src="/images/edit.png" class="categoryControl" id="categoryEdit" onclick='categoryEditModalOpen(<%=JSON.stringify(category)%>)'>
+            <img src="/images/delete.png" class="categoryControl" id="categoryDelete" onclick='categoryDelete("<%=category._id%>")'>
         </div>
     </div>
     <%})%>

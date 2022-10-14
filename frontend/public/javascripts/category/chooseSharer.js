@@ -16,9 +16,9 @@ function userRender(users){
     document.getElementById('userTableBody').innerHTML = rows;
 }
 
-function chosenUserRender(users){
+function chosenUserRender(){
     let rows = [];
-    users.map((user) => {
+    userList.map((user) => {
         rows += `<tr><td><img class="chooseSharerProfilePhoto" src="${user.profilePhoto}"></td>`
             + `<td>${user.name}</td>`
             + `<td>${user.email}</td>`
@@ -79,15 +79,16 @@ function userChecked(user, checkbox){
     } else{
         userList = userList.filter((u) => u._id !== user._id);
     }
-    chosenUserRender(userList);
+    chosenUserRender();
 }
 
 function chosenUserDelete(user){
     userList = userList.filter((u) => u._id !== user._id);
 
+
     document.getElementById(`cb_${user._id}`).checked = false;
 
-    chosenUserRender(userList);
+    chosenUserRender();
 }
 
 function saveChooseSharer(){
@@ -97,5 +98,5 @@ function saveChooseSharer(){
     })
 
     document.getElementById('chosenSharer').innerHTML = rows;
-    chooseSharerModal.classList.toggle('show');
+    chooseSharerModal.classList.remove('show');
 }

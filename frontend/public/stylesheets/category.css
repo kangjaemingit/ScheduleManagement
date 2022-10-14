@@ -3,14 +3,14 @@
     justify-content: center;
     box-shadow: darkgrey 0 0 5px 0;
 }
-#categoryEdit{
-    margin: 5px 5px 0 5px;
-    box-shadow: darkgrey 0 0 5px 0;
-}
-#categoryDelete{
-    margin: 5px 5px 0 5px;
-    box-shadow: darkgrey 0 0 5px 0;
-}
+/*#categoryEdit{*/
+/*    margin: 5px 5px 0 5px;*/
+/*    box-shadow: darkgrey 0 0 5px 0;*/
+/*}*/
+/*#categoryDelete{*/
+/*    margin: 5px 5px 0 5px;*/
+/*    box-shadow: darkgrey 0 0 5px 0;*/
+/*}*/
 body{
     height: 100%;
     width:100%;
@@ -94,13 +94,17 @@ body{
 #shareobject p{
     margin-bottom: 0px;
 }
-#editDeletePlace{
+#categoryControlArea{
     background-color: white;
     border-radius: 0px 0px 10px 10px;
     width:20%;
     height:65px;
     float:right;
     background-color: rgba(0,255,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 #categoryContainer{
     margin-top: 5px;
@@ -135,4 +139,10 @@ body{
 #categoryDelete{
     margin-top: 20%;
     margin-bottom:20%;
+}
+
+.categoryControl{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }

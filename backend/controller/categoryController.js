@@ -20,20 +20,19 @@ const categoryController = {
             }
         });
     },
-    editCategory : async (req,res)=>{
-        await Category.findOneAndUpdate({_id:req.body._id},
-            {$set:{categoryName:req.body.categoryName,
-                    Tags:req.body.Tags._id,
-                    sharer:req.body.sharer._id}}
-        ),(err,result)=>{
+    updateCategory : async (req,res)=>{
+        await Category.findOneAndUpdate({_id:req.body.categoryId},
+            {$set:{categoryName : req.body.categoryName, tags : req.body.tags, sharer : req.body.sharer}})
+            .exec((err,result) => {
             if(err){
-                console.log("Category update err:"+err)
-                return res.json({message:err});
+                console.log("Category update err:" + err)
+                return res.json({updateCategorySuccess:false, message:err});
             }
             else{
-                return res.status(200).json({updateSuccess:true});
+                return res.json({updateCategorySuccess:true}).status(200);
             }
-        }
+        });
+
     },
     deleteCategory : async (req,res) =>{
         Category.deleteOne({$and : [{_id : req.params.id}, {categoryWriter : req.user._id}]}, (err) => {

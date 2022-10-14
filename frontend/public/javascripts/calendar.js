@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     //     openScheduleModalBody.style.display='none'
                     // })
                     scheduleModalOpen();
+
                 }
             }
         },
@@ -47,21 +48,22 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks:true,//날짜 혹은 해당ㅇ 주에 해당하는 일정 클릭시 뷰를 따라가 보여줌
         selectable:true,
         selectMirror:true,
-        select: function (arg){
-          console.log(arg);
-          let calendar=[];
-          calendar.addEvent({
-              title  : arg.title,
-              start  : arg.startDate,
-              end    : arg.endDate,
-              // allDay     : arg.allDay,
-              backgroundColor : "pink",//일정추가시 원하는 색으로 지정
-              // textColor //원하는 글색으로 바꿀수있음
-          })
-          calendar.unselect()
-        },
+        // select: function (arg){
+        //   console.log(arg);
+        //   let calendar=[];
+        //   calendar.addEvent({
+        //       title  : arg.title,
+        //       start  : arg.startDate,
+        //       end    : arg.endDate,
+        //       // allDay     : arg.allDay,
+        //       backgroundColor : "pink",//일정추가시 원하는 색으로 지정
+        //       // textColor //원하는 글색으로 바꿀수있음
+        //   })
+        //   calendar.unselect()
+        // },
         //날짜 클릭시 이벤트 함수
         dateClick: function () {
+            console.log(JSON.stringify(calendar.getEvents()));
             console.log("날짜 클릭시 나타날 이벤트 작성해주세요")
             let openDayModalBG = document.getElementById('dayClickModalBG');
             let openDayModal = document.getElementById('dayClickModalBody');
@@ -119,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 for(let i=0; i<res.scheduleData.length;i++)
                 {
                     calendar.addEvent({
+                        _id : res.scheduleData[i]._id,
                         title : res.scheduleData[i].title,
                         start : res.scheduleData[i].date.startDate,
                         end : res.scheduleData[i].date.endDate,

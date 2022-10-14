@@ -1,7 +1,7 @@
 function categoryDelete(id){
     if(window.confirm("정말 카테고리를 삭제하시겠습니까?")){
         fetch('/calendar/deleteCategory/' + id, {
-            method : "get"
+            method : "delete"
         }).then((res) => res.json())
             .then((res) => {
                 if(res.deleteCategorySuccess){
@@ -18,7 +18,6 @@ function categoryDelete(id){
 }
 
 function categoryEditModalOpen(category){
-    console.log(category);
     userList = category.sharer;
     tagList = category.tags;
 
@@ -44,20 +43,11 @@ function categoryEditModalOpen(category){
         console.log(err);
     })
 
-    let tagRows = [];
-    tagList.map((t) => {
-        tagRows += `<p>${t.tagName}</p>`
-    });
-    document.getElementById('tagSelectedArea').innerHTML = tagRows;
+    selectedTagRender();
+    chosenUserRender();
+    saveChooseSharer();
 
-    chosenUserRender(userList);
-
-    let sharerRows = [];
-    userList.map((user) => {
-        sharerRows += `<div class="sharers"><span class="sharerSpan">${user.name}(${user.email})</span></div>`
-    })
-    document.getElementById('chosenSharer').innerHTML = sharerRows;
-
+    document.getElementById('categoryModalTitle').innerText = "카테고리 편집"
     document.getElementById('categoryName').value = category.categoryName;
 
     if(userList.length){
@@ -65,5 +55,42 @@ function categoryEditModalOpen(category){
         sharerChecked(document.getElementById('sharerCheckBox'));
     }
 
+    document.getElementById('saveCategoryButton').setAttribute("onClick", `categoryUpdate('${category._id}')`)
+
     newCategoryModal.classList.toggle('show');
+}
+
+function categoryUpdate(categoryId){
+    let tagIdList = tagList.map((tag) => {
+        return tag._id
+    })
+
+    let userIdList = userList.map((user) => {
+        return user._id;
+    })
+
+    const category = {
+        categoryId : categoryId,
+        categoryName : document.getElementById('categoryName').value,
+        tags : tagIdList,
+        sharer : userIdList,
+    }
+
+    fetch('calendar/updateCategory', {
+        method : 'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(category)
+    }).then((res) => res.json())
+        .then((res) => {
+            if(res.updateCategorySuccess){
+                window.alert("카테고리가 정상적으로 수정되었습니다.");
+                window.location.reload();
+            } else{
+                window.alert(res.message);
+            }
+        }).catch((err) => {
+        console.log(err);
+    })
 }
