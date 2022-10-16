@@ -94,3 +94,13 @@ function categoryUpdate(categoryId){
         console.log(err);
     })
 }
+
+function moreButton(){
+   let moreButton = document.getElementById('moreButton');
+   let categoryEdit = document.getElementById('categoryEdit');
+   let categoryDelete = document.getElementById('categoryDelete');
+   moreButton.style.display='none';
+   categoryEdit.style.display='block';
+   categoryDelete.style.display='block';
+
+}
