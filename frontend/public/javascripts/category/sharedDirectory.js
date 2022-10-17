@@ -45,7 +45,7 @@ async function sharedDirectoryModalOpen() {
             let rows = [];
             array.map((c) => {
                 rows += `<div class="sharerRootNode">`
-                    + `<img class='arrowIcon' id='arrow_${c.categoryWriterId}' onclick='sharerChildNodeControl("${c.categoryWriterId}")'>`
+                    + `<img class='arrowIcon' src="images/arrow-up.png" id='arrow_${c.categoryWriterId}' onclick='sharerChildNodeControl("${c.categoryWriterId}")'>`
                     + `<img class='sharerProfilePhoto' src='${c.writerProfile}'>`
                     + `<span>${c.writerName}</span></div>`
                     + `<div class="sharerChildNode" id='cn_${c.categoryWriterId}' style="display: none;">`;
@@ -65,10 +65,10 @@ function sharerChildNodeControl(id){
 
     if(childNode.style.display === 'none'){
         childNode.style.display = 'block';
-        document.getElementById('arrow_' + id).classList.add('Open');
+        document.getElementById('arrow_' + id).src = "/images/arrow-down.png"
     } else{
         childNode.style.display = 'none';
-        document.getElementById('arrow_' + id).classList.remove('Open');
+        document.getElementById('arrow_' + id).src = "/images/arrow-up.png";
     }
 
 

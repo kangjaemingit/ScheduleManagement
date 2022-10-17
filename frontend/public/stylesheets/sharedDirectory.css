@@ -45,16 +45,6 @@
 }
 
 .arrowIcon{
-    background : url("../images/arrow-up.png");
-    width: 12px;
-    height : 12px;
-    margin-left: 4px;
-    margin-right: 8px;
-    cursor: pointer;
-}
-
-.arrowIcon .Open{
-    background : url('/images/arrow-down.png');
     width: 12px;
     height : 12px;
     margin-left: 4px;
