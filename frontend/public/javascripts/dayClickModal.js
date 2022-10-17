@@ -1,8 +1,7 @@
 let openDayModalBG = document.getElementById('dayClickModalBG');
 let openDayModal = document.getElementById('dayClickModalBody');
-let closeDayModal = document.getElementById('dayModalClose');
-let editScheduleModal = document.getElementById('editSchedule');
-let Xbutton = document.getElementById('dayModalClosed');
+
+
 
 function dayClickModalOpen(schedule){
     console.log("modal" + schedule[0]);
@@ -12,7 +11,7 @@ function dayClickModalOpen(schedule){
         schedule.map((s)=>{
             let startDay = s.start.toISOString().substring(0,10);
             let endDay = s.end.toISOString().substring(0,10);
-            scheduleList += `<tr>`
+            scheduleList += `<tr onclick="editSchedule();">`
             + `<td>${s.title}</td>`
             +`<td>${startDay}</td>`
             +`<td>${endDay}</td>`
@@ -20,6 +19,7 @@ function dayClickModalOpen(schedule){
             +`</tr>`
         })
         document.getElementById('scheduleTableBody').innerHTML= scheduleList;
+
     }
 
     openDayModalBG.style.display='block'
@@ -31,8 +31,8 @@ function dayModalClosed(){
     openDayModal.style.display='none'
 }
 
-editScheduleModal.addEventListener("click",function (){
+function editSchedule(){
     scheduleModalOpen();
     openDayModalBG.style.display='none'
     openDayModal.style.display='none'
-})
+}
