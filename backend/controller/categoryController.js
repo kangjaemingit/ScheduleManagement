@@ -81,6 +81,18 @@ const categoryController = {
             return res.json({searchUserSuccess : true, users : result});
             });
 
+    },
+    sharedCategory : (req, res) => {
+        Category.find({sharer : {$in : req.user._id}})
+            .populate("categoryWriter")
+            .populate("sharer")
+            .exec((err, result) => {
+                if(err){
+                    console.log(err);
+                    return res.json({sharedCategorySuccess : false, message : err});
+                }
+                return res.json({sharedCategories : result}).status(200);
+            })
     }
 
 }

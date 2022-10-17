@@ -1,0 +1,63 @@
+#sharedDirectoryModal{
+    border-style:solid;
+    border-width: 1px;
+    position: absolute;
+    z-index: 2;
+    top:80px;
+    left: 200px;
+    height: 100%;
+    width: 200px;
+    background-color: white;
+    display: none;
+    animation: slideleft 1s;
+}
+@keyframes slideleft {
+    from{
+        z-index: -2;
+        opacity: 0;
+        transform: translate3d(-30px,0,0);
+    }
+    to{
+        z-index: 2;
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+}
+
+.sharerProfilePhoto{
+    width: 32px;
+    height: 32px;
+    border-radius: 10px 10px 10px 10px;
+    margin-right: 6px;
+}
+
+.sharerRootNode{
+    display: flex;
+
+    padding-left: 4px;
+    padding-top : 2px;
+    padding-bottom : 2px;
+
+    margin-top: 4px;
+    margin-bottom: 8px;
+    align-items: center;
+
+}
+
+.arrowIcon{
+    background : url("../images/arrow-up.png");
+    width: 12px;
+    height : 12px;
+    margin-left: 4px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.arrowIcon .Open{
+    background : url('/images/arrow-down.png');
+    width: 12px;
+    height : 12px;
+    margin-left: 4px;
+    margin-right: 8px;
+    cursor: pointer;
+}

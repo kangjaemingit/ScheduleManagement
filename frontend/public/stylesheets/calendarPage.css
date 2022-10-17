@@ -75,31 +75,7 @@ html{
 
 }
 
-#sharedDirectoryModal{
-    border-style:solid;
-    border-width: 1px;
-    position: absolute;
-    z-index: 2;
-    top:80px;
-    left: 200px;
-    height: 100%;
-    width: 200px;
-    background-color: white;
-    display: none;
-    animation: slideleft 1s;
-}
-@keyframes slideleft {
-    from{
-        z-index: -2;
-        opacity: 0;
-        transform: translate3d(-30px,0,0);
-    }
-    to{
-        z-index: 2;
-        opacity: 1;
-        transform: translate3d(0,0,0);
-    }
-}
+
 #categorychild1bg{
     border-style:solid;
     border-width: 1px;

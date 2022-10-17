@@ -27,5 +27,7 @@ router.post('/searchUser', checkAuth, categoryController.searchUser);
 
 router.get('/getSchedule',checkAuth,scheduleController.getSchedule);
 
+router.get('/sharedCategory', checkAuth, categoryController.sharedCategory);
+
 
 module.exports = router;
