@@ -29,5 +29,7 @@ router.get('/getSchedule',checkAuth,scheduleController.getSchedule);
 
 router.get('/sharedCategory', checkAuth, categoryController.sharedCategory);
 
+router.post('/getScheduleByCategory', checkAuth, scheduleController.getScheduleByCategory);
+
 
 module.exports = router;

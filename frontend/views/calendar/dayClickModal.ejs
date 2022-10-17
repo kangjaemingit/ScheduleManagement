@@ -7,26 +7,19 @@
             <button id="dayModalClose" onclick="dayModalClosed();">X</button>
         </div>
         <div id="scheduleList">
-            <table>
-            <thead>
-            <th onclick="tableSort(0)">제목
-            </th>
-            <th>
-                <div onclick="tableSort(1);">시작일</div>
-            </th>
-            <th>
-                <div onclick="tableSort(2);">종료일</div>
-            </th>
-            <th>
-                <div >작성자</div>
-            </th>
-            </thead>
+            <table id="dayClickModalTable">
+                <thead>
+                    <tr>
+                        <th scope="col" onclick="tableSort(0)">제목</th>
+                        <th scope="col" onclick="tableSort(1);">시작일</th>
+                        <th scope="col" onclick="tableSort(2);">종료일</th>
+                        <th scope="col" onclick="tableSort(3);">작성자</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleTableBody">
 
-            <tbody id="scheduleTableBody">
-
-            </tbody>
+                </tbody>
             </table>
-
         </div>
 <!--        <div id="dayModalButton">-->
 <!--            <button id="editSchedule">편집</button>-->

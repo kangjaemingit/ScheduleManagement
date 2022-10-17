@@ -1,8 +1,6 @@
 let openDayModalBG = document.getElementById('dayClickModalBG');
 let openDayModal = document.getElementById('dayClickModalBody');
 
-
-
 function dayClickModalOpen(schedule){
     console.log("modal" + schedule[0]);
     if(schedule){
@@ -12,28 +10,28 @@ function dayClickModalOpen(schedule){
             let startDay = s.start.toISOString().substring(0,10);
             let endDay = s.end.toISOString().substring(0,10);
             scheduleList += `<tr onclick="editSchedule();">`
-            + `<td>${s.title}</td>`
+            +`<td>${s.title}</td>`
             +`<td>${startDay}</td>`
             +`<td>${endDay}</td>`
             +`<td>${s._def.extendedProps.scheduleWriter}</td>`
             +`</tr>`
         })
 
-        document.getElementById('scheduleTableBody').innerHTML= scheduleList;
+        document.getElementById('scheduleTableBody').innerHTML = scheduleList;
     }
 
     openDayModalBG.style.display='block'
     openDayModal.style.display='block'
 }
 
+
 let sortType = 'asc';
 function tableSort(index) {
-    let table = document.getElementsByTagName('table');
-    console.log(index)
+    let table = document.getElementById('dayClickModalTable');
     sortType = (sortType =='asc')?'desc' : 'asc'; // 오름차순 내림차순 클릭 때마다 변경
 
     let checkSort = true;
-    let rows = table[0].rows;
+    let rows = table.rows;
 
     while (checkSort) { // 현재와 다음만 비교하기때문에 위치변경되면 다시 정렬해준다.
         checkSort = false;
@@ -55,7 +53,6 @@ function tableSort(index) {
         }
     }
 }
-
 
 function dayModalClosed(){
     openDayModalBG.style.display='none'

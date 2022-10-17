@@ -80,6 +80,31 @@ const scheduleController = {
                 return res.json({scheduleRenderSuccess:true, scheduleData:result});
             });
     },
+    getScheduleByCategory:(req, res) => {
+        // Tags.find({_id : req.body.tags})
+        //     .populate({
+        //         path : 'schedule',
+        //         match : {scheduleWriter : req.body.categoryWriter}
+        //     })
+        //     .exec((err, result) => {
+        //         if(err){
+        //             console.log(err);
+        //             return res.json({getScheduleSuccess : false, message : err})
+        //         }
+        //         console.log(result);
+        //         return res.json({schedule : result}).status(200);
+        //     })
+
+        Schedule.find({$and : [{tag : {$in : req.body.tags}}, {scheduleWriter: req.body.categoryWriter}]})
+            .exec((err, result) => {
+                if(err){
+                    console.log(err);
+                    return res.json({getScheduleSuccess : false, message : err})
+                }
+                console.log(result);
+                return res.json({schedule : result}).status(200);
+            })
+    }
 }
 
 module.exports = scheduleController;

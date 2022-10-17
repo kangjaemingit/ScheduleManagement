@@ -1,11 +1,10 @@
 
 // 팝업 열기
 async function sharedDirectoryModalOpen() {
-    const element1 = document.getElementById('sharedDirectoryModal');
-    // 2. style 변경
-    element1.style.display='block';
-    const moveModal=document.getElementById('modalOpenBtn');
-    moveModal.style.display='none'
+    const sharedDirectoryModal = document.getElementById('sharedDirectoryModal');
+    sharedDirectoryModal.style.display='block';
+    const modalOpenBtn = document.getElementById('modalOpenBtn');
+    modalOpenBtn.style.display='none'
 
     await fetch('calendar/sharedCategory', {
         method:"get"
@@ -51,13 +50,33 @@ async function sharedDirectoryModalOpen() {
                     + `<div class="sharerChildNode" id='cn_${c.categoryWriterId}' style="display: none;">`;
 
                 c.categories.map((c) => {
-                    rows += `<div class="sharerNodeCategory"><span>${c.categoryName}</span></div>`
-                })
+                    rows += `<div class="sharerNodeCategory" onclick='categorySelect(${JSON.stringify(c)})'><li class="sharerNodeCategoryLi">${c.categoryName}</li></div>`
+                });
 
-                rows += `</div>`
+                rows += `</div>`;
             })
             document.getElementById('sharerList').innerHTML = rows;
         })
+}
+
+function categorySelect(category){
+    const data = {
+        tags : category.tags,
+        categoryWriter : category.categoryWriter
+    }
+
+    fetch('calendar/getScheduleByCategory', {
+        method : 'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(data)
+    }).then((res) => res.json())
+        .then((res) => {
+            console.log(res.schedule);
+        }).catch((err) => {
+        console.log(err);
+    })
 }
 
 function sharerChildNodeControl(id){
@@ -65,14 +84,14 @@ function sharerChildNodeControl(id){
 
     if(childNode.style.display === 'none'){
         childNode.style.display = 'block';
-        document.getElementById('arrow_' + id).src = "/images/arrow-down.png"
+        document.getElementById('arrow_' + id).src = "/images/arrow-down.png";
     } else{
         childNode.style.display = 'none';
         document.getElementById('arrow_' + id).src = "/images/arrow-up.png";
     }
-
-
 }
+
+
 function movechildModal1(){
     const element2 = document.getElementById('categorychild1bg');
     // 2. style 변경
@@ -80,13 +99,13 @@ function movechildModal1(){
 }
 
 // 팝업 닫기
-function closed() {
-    const element1 = document.getElementById('categorychild1bg');
-    // 2. style 변경
-    element1.style.display = 'none';
-    const element2 = document.getElementById('categoryRootbg');
-    // 2. style 변경
-    element2.style.display = 'none';
-    const moveModal=document.getElementById('movemodal');
-    moveModal.style.display='block'
+function sharedDirectoryModalClose() {
+    const sharedDirectoryModal = document.getElementById('sharedDirectoryModal');
+    sharedDirectoryModal.style.display='none';
+    const modalOpenBtn =document.getElementById('modalOpenBtn');
+    modalOpenBtn.style.display='block'
+
+    // const element2 = document.getElementById('categoryRootbg');
+    // // 2. style 변경
+    // element2.style.display = 'none';
 }
