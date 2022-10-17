@@ -18,13 +18,44 @@ function dayClickModalOpen(schedule){
             +`<td>${s._def.extendedProps.scheduleWriter}</td>`
             +`</tr>`
         })
-        document.getElementById('scheduleTableBody').innerHTML= scheduleList;
 
+        document.getElementById('scheduleTableBody').innerHTML= scheduleList;
     }
 
     openDayModalBG.style.display='block'
     openDayModal.style.display='block'
 }
+
+let sortType = 'asc';
+function tableSort(index) {
+    let table = document.getElementsByTagName('table');
+    console.log(index)
+    sortType = (sortType =='asc')?'desc' : 'asc'; // 오름차순 내림차순 클릭 때마다 변경
+
+    let checkSort = true;
+    let rows = table[0].rows;
+
+    while (checkSort) { // 현재와 다음만 비교하기때문에 위치변경되면 다시 정렬해준다.
+        checkSort = false;
+
+        for (let i = 1; i < (rows.length - 1); i++) {
+            let fCell = rows[i].cells[index].innerHTML.toUpperCase();
+            let sCell = rows[i + 1].cells[index].innerHTML.toUpperCase();
+
+            let row = rows[i];
+
+            // 오름차순<->내림차순 ( 이부분이 이해 잘안됬는데 오름차순이면 >, 내림차순이면 <
+            //                        이고 if문의 내용은 동일하다 )
+            if ( (sortType == 'asc' && fCell > sCell) ||
+                (sortType == 'desc' && fCell < sCell) ) {
+
+                row.parentNode.insertBefore(row.nextSibling, row);
+                checkSort = true;
+            }
+        }
+    }
+}
+
 
 function dayModalClosed(){
     openDayModalBG.style.display='none'

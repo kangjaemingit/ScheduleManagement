@@ -50,4 +50,6 @@
     margin-left: 4px;
     margin-right: 8px;
     cursor: pointer;
+    border: none;
+    outline: none;
 }
