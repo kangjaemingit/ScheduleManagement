@@ -45,16 +45,19 @@
 }
 
 .arrowIcon{
-    background : url("../images/arrow-up.png");
+    background-image : linear-gradient(rgba(225,225,225,0.63),rgba(225,225,225,0.623)), url("../images/arrow-up.png");
+    background-size : 12px 12px;
     width: 12px;
     height : 12px;
     margin-left: 4px;
     margin-right: 8px;
     cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 .arrowIcon .Open{
-    background : url('/images/arrow-down.png');
+    background : url('../images/arrow-down.png');
     width: 12px;
     height : 12px;
     margin-left: 4px;
