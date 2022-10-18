@@ -6,11 +6,20 @@
         </div>
         <div class="newCategoryModalContents" id="newCategoryModalContents">
             <label class="newCategoryModalLabel">제목 <input class="input-primary" type="text" id="categoryName"></label>
-            <div class="tagSelectedArea" id="tagSelectedArea">
+            <div class="tagSelectPartition">
+                <div class="tagSelectedArea" id="tagSelectedArea">
+                    <div class="tagSelectedBox" id="tagSelectedBox">
 
-            </div>
-            <div class="tagSelectArea" id="tagSelectArea">
+                    </div>
+                </div>
+                <div class="tagSelectArea" id="tagSelectArea">
+                    <div class="tagSearchBox" style="width: 90%">
+                        <input type="text" class="input-primary" id="tagSearchInput" oninput="searchTag(this)" placeholder="#해시태그">
+                    </div>
+                    <div class="tagSelectBox" id="tagSelectBox">
 
+                    </div>
+                </div>
             </div>
             <label class="newCategoryModalLabel"><input type="checkbox" id="sharerCheckBox" onchange="sharerChecked(this)">공유 여부</label>
             <div class="chosenSharer" id="chosenSharer" style="display: none;">

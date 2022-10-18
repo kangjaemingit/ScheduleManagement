@@ -10,7 +10,6 @@ function scheduleModalOpen(){
 
     if(scheduleModal.classList.contains('show')){
         // body.style.overflow = 'hidden';
-        relayout();
     }
 }
 
@@ -174,14 +173,18 @@ const autoCompleteModal = document.querySelector('.autoCompleteModal');
 const autoCompleteModalBottom = document.querySelector('.autoCompleteModalBottom');
 function autoComplete(key){
     const keyword = key.value;
-    if(keyword === ""){
+    if(keyword.trim() === ""){
         autoCompleteModal.classList.remove('show');
         autoCompleteModalBottom.innerHTML = "";
         return;
     }
 
-    fetch('schedule/autoComplete/' + keyword, {
-        method : 'get'
+    fetch('schedule/autoComplete', {
+        method : 'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify({keyword : keyword})
     })
         .then((res) => res.json())
         .then((result) => {

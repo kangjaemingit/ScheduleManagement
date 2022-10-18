@@ -25,7 +25,7 @@ router.get('/getUserList', checkAuth, categoryController.getUserList);
 
 router.post('/searchUser', checkAuth, categoryController.searchUser);
 
-router.get('/getSchedule',checkAuth,scheduleController.getSchedule);
+router.get('/getScheduleByWriter',checkAuth,scheduleController.getScheduleByWriter);
 
 router.get('/sharedCategory', checkAuth, categoryController.sharedCategory);
 

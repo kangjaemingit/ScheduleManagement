@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         eventLimit:true,
         timeZone: 'local',
         events:[
-            fetch('calendar/getSchedule',{
+            fetch('calendar/getScheduleByWriter',{
                 method:'get',
             }).then((res)=>res.json())
                 .then(res=>{

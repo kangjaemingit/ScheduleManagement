@@ -59,7 +59,7 @@ const scheduleController = {
 
     },
     autoComplete : (req, res) => {
-        Tags.find({tagName : { $regex : req.params.keyword}})
+        Tags.find({tagName : { $regex : req.body.keyword}})
             .exec((err, autoComplete) => {
                 if(err){
                     console.log(err);
@@ -68,7 +68,7 @@ const scheduleController = {
                 return res.json({ autoComplete }).status(200)
             })
     },
-    getSchedule: (req,res)=>{
+    getScheduleByWriter: (req,res)=>{
         Schedule.find({scheduleWriter:req.user._id})
             .populate("tag")
             .populate("scheduleWriter")
@@ -79,6 +79,17 @@ const scheduleController = {
                 }
                 return res.json({scheduleRenderSuccess:true, scheduleData:result});
             });
+    },
+    getScheduleById : (req, res) => {
+      Schedule.findOne({_id : req.params.id})
+          .populate("tag")
+          .exec((err, result) => {
+              if(err){
+                  console.log(err);
+                  return res.json({getScheduleSuccess : false, message : err})
+              }
+              return res.json({schedule : result}).status(200);
+          })
     },
     getScheduleByCategory:(req, res) => {
         // Tags.find({_id : req.body.tags})

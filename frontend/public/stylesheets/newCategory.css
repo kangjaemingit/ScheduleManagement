@@ -1,0 +1,111 @@
+
+.newCategoryModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+.newCategoryModal.show {
+    display: block;
+}
+
+.newCategoryModalBody {
+    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: 500px;
+    padding: 40px;
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.newCategoryModalTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    border-bottom: solid 1px #e3e3e3;
+}
+
+.newCategoryModalContents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tagSelectPartition{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.tagSelectArea{
+    width: 50%;
+    height: 200px;
+    border: 1px lightgray solid;
+    display : flex;
+    flex-wrap: wrap;
+    justify-items: flex-start;
+    overflow: auto;
+}
+
+.tagSelectedArea {
+    width: 50%;
+    height: 200px;
+    border: 1px lightgray solid;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.tagSelectedBox{
+    width: 100%;
+    height: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.categoryCompleteBtnArea{
+    display: flex;
+    justify-content: center;
+}
+
+.tags{
+    display: flex;
+    height: 15px;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    margin : 3px;
+}
+
+.tags:hover .tagRemove{
+    display: block;
+}
+
+.tagSpan {
+    background-color: lightgray;
+    height: 15px;
+    font-size: 12px;
+    padding : 2px;
+}
+
+.tagRemove{
+    width: 12px;
+    height: 12px;
+    margin-left: 3px;
+    cursor: pointer;
+    display: none;
+}

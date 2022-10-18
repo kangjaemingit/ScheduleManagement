@@ -7,7 +7,7 @@ function dayClickModalOpen(schedule){
         schedule.map((s)=>{
             let startDay = s.start.toISOString().substring(0,10);
             let endDay = s.end.toISOString().substring(0,10);
-            scheduleList += `<tr onclick="editSchedule();">`
+            scheduleList += `<tr onclick="scheduleEditModalOpen('${s._def.extendedProps._id}');">`
             +`<td>${s.title}</td>`
             +`<td>${startDay}</td>`
             +`<td>${endDay}</td>`
@@ -51,8 +51,4 @@ function dayModalClosed(){
     openDayModal.style.display='none'
 }
 
-function editSchedule(){
-    scheduleModalOpen();
-    openDayModalBG.style.display='none'
-    openDayModal.style.display='none'
-}
+

@@ -2,18 +2,32 @@
 const newCategoryModal = document.querySelector('.newCategoryModal');
 
 let tagList = [];
+function selectTagRender(tags){
+    let rows = "";
+    tags.map((tag) => {
+        rows += (tagList.some(t => t._id === tag._id)) ?
+        `<label><input type="checkbox" checked name='${tag.tagName}' id='cb_${tag._id}' onchange='tagChecked(${JSON.stringify(tag)} ,this)'>${tag.tagName}</label>`
+        : `<label><input type="checkbox" name='${tag.tagName}' id='cb_${tag._id}' onchange='tagChecked(${JSON.stringify(tag)} ,this)'>${tag.tagName}</label>`
+    });
+    document.getElementById('tagSelectBox').innerHTML = rows;
+}
 
 function selectedTagRender(){
     let rows = [];
     tagList.map((t) => {
-        rows += `<p>${t.tagName}</p>`
+        rows += `<div class="tags"><span class="tagSpan">${t.tagName}</span><img class="tagRemove" id="tagRemove" onclick='tagRemove("${t._id}")' src="/images/tag_delete.png"></div>`
     })
 
-    document.getElementById('tagSelectedArea').innerHTML = rows;
+    document.getElementById('tagSelectedBox').innerHTML = rows;
+}
+
+function tagRemove(tagId){
+    tagList = tagList.filter((t) => t._id !== tagId)
+    document.getElementById('cb_' + tagId).checked = false;
+    selectedTagRender();
 }
 
 async function newCategoryModalOpen(){
-
     fetch('calendar/getTagList', {
         method : 'get'
     }).then((res) => res.json())
@@ -23,11 +37,7 @@ async function newCategoryModalOpen(){
                 console.log(res.message);
                 return;
             }
-            let rows = "";
-            res.tags.map((tag) => {
-                rows += `<label><input type="checkbox" name='${tag.tagName}' value='${tag._id}' onchange='tagChecked(${JSON.stringify(tag)} ,this)'>${tag.tagName}</label>`
-            })
-            document.getElementById('tagSelectArea').innerHTML = rows;
+            selectTagRender(res.tags);
         }).catch((err) => {
             window.alert("태그 불러오기 데이터 통신 실패");
             console.log(err);
@@ -110,6 +120,22 @@ function saveNewCategory(){
             } else{
                 window.alert(res.message);
             }
+        }).catch((err) => {
+        console.log(err);
+    })
+}
+
+function searchTag(key){
+    fetch('schedule/autoComplete', {
+        method : 'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify({keyword : key.value})
+    })
+        .then((res) => res.json())
+        .then((result) => {
+            selectTagRender(result.autoComplete);
         }).catch((err) => {
         console.log(err);
     })
