@@ -31,14 +31,7 @@ function categoryEditModalOpen(category){
                 console.log(res.message);
                 return;
             }
-            let rows = "";
-            res.tags.map((tag) => {
-                rows +=
-                tagList.some((t) => t.tagName === tag.tagName) ?
-                 `<label><input type="checkbox" name='${tag.tagName}' value='${tag._id}' checked onchange='tagChecked(${JSON.stringify(tag)} ,this)'>${tag.tagName}</label>`
-                    : `<label><input type="checkbox" name='${tag.tagName}' value='${tag._id}' onchange='tagChecked(${JSON.stringify(tag)} ,this)'>${tag.tagName}</label>`
-            })
-            document.getElementById('tagSelectArea').innerHTML = rows;
+            selectTagRender(res.tags);
         }).catch((err) => {
         window.alert("태그 불러오기 데이터 통신 실패");
         console.log(err);
