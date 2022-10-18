@@ -42,6 +42,26 @@ function colorChange(){
             }
         })
 };
+let buttonType='dropdown';
+function movePageModal(){
+    buttonType=(buttonType=="dropdown")?'up':"dropdown";
+    let movePage = document.getElementById('headerUrlBox');
+    if(buttonType=="dropdown"){movePage.style.display='block';}
+    else{movePage.style.display='none';}
+}
+let changeBrowseText=document.getElementById('browse-category');
+let moveCategoryPage=document.getElementById('Calendar');
+let moveDashboardPage=document.getElementById('Dashboard');
+let moveTagStatisticsPage=document.getElementById('TagStatistics')
+moveCategoryPage.addEventListener("click", function (){
+    changeBrowseText.innerText = "Calendar";
+})
+moveDashboardPage.addEventListener("click", function (){
+    changeBrowseText.innerText = "Dashboard";
+})
+moveTagStatisticsPage.addEventListener("click", function (){
+    changeBrowseText.innerText = "TagStatistics";
+})
 
 // function headerUrl(){
 //     console.log("들어가냐")

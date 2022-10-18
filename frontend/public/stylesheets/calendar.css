@@ -92,3 +92,8 @@ table thead tr{
 #scheduleTableBody tr td{
     text-align: center;
 }
+.fc-event-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

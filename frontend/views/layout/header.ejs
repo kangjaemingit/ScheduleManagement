@@ -9,11 +9,12 @@
 <body>
 <div class="header">
     <div id="headerContainer" class="headercontainer" style="background-color: <%=user.navBgColor%>">
-        <div class="browse-category">
+        <div id="browse-category" onclick="movePageModal();">
             Browse Category
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+            <svg id="dropDownArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
                 <path d="M6 9l6 6 6-6" /></svg>
         </div>
+        <%- include("movePageModal") %>
 <!--        <ul id="headerUrlBox">-->
 <!--            <a href="/calendar" class="headerbutton" type="button" onclick="moveCalendar();" id="Calendar">-->
 <!--                <p>Calendar</p>-->
