@@ -9,19 +9,24 @@
 <body>
 <div class="header">
     <div id="headerContainer" class="headercontainer" style="background-color: <%=user.navBgColor%>">
+        <div class="browse-category">
+            Browse Category
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                <path d="M6 9l6 6 6-6" /></svg>
+        </div>
+<!--        <ul id="headerUrlBox">-->
+<!--            <a href="/calendar" class="headerbutton" type="button" onclick="moveCalendar();" id="Calendar">-->
+<!--                <p>Calendar</p>-->
+<!--            </a>-->
+<!--            <a href="/" class="headerbutton" type="button" onclick="Dashboard();" id="Dashboard">-->
+<!--                <p>Dashboard</p>-->
+<!--            </a>-->
+<!--            <a href="#" class="headerbutton" type="button" onclick="TagStatistics();" id="TagStatistics">-->
+<!--                <p>TagStatistics</p>-->
+<!--            </a>-->
+<!--        </ul>-->
         <a href="/"><img id="logo" onclick="logo();" class="headerbutton" src="../../images/heventreelogo.png"/></a>
-        <ul id="headerUrlBox">
-            <a href="/calendar" class="headerbutton" type="button" onclick="moveCalendar();" id="Calendar">
-                <p>Calendar</p>
-            </a>
-            <a href="/" class="headerbutton" type="button" onclick="Dashboard();" id="Dashboard">
-                <p>Dashboard</p>
-            </a>
-            <a href="#" class="headerbutton" type="button" onclick="TagStatistics();" id="TagStatistics">
-                <p>TagStatistics</p>
-            </a>
-        </ul>
-        <ul>
+        <ul id="headerUserBox">
             <% if(user.provider==="naver"){%>
             <img id="changeLogo" src="../../images/btnG_아이콘원형.png"/>
             <%} else if(user.provider==="kakao"){%>
@@ -29,7 +34,7 @@
                 <%}%>
             <img id="profilePhoto" src="<%=user.profilePhoto%>"/>
             <p id="userInfo"><%=user.name%></p>
-            <a href="/login/logout" id="logout" class="headerbutton" type="button" ><p>logout</p></a>
+                <a href="/login/logout" id="logout" class="headerbutton" type="button"  ><img id="logoutImage" src="../../images/logoutBlack.png"/></a>
             <input id="color" type="color" list="presets" onchange="colorChange()" value="#fff">
                 <datalist id="presets">
                     <option value="#C8707E"></option>

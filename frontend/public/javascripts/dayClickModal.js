@@ -2,10 +2,8 @@ let openDayModalBG = document.getElementById('dayClickModalBG');
 let openDayModal = document.getElementById('dayClickModalBody');
 
 function dayClickModalOpen(schedule){
-    console.log("modal" + schedule[0]);
     if(schedule){
         let scheduleList = []
-
         schedule.map((s)=>{
             let startDay = s.start.toISOString().substring(0,10);
             let endDay = s.end.toISOString().substring(0,10);
@@ -16,10 +14,8 @@ function dayClickModalOpen(schedule){
             +`<td>${s._def.extendedProps.scheduleWriter}</td>`
             +`</tr>`
         })
-
         document.getElementById('scheduleTableBody').innerHTML = scheduleList;
     }
-
     openDayModalBG.style.display='block'
     openDayModal.style.display='block'
 }
