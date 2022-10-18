@@ -4,6 +4,7 @@ body{
 }
 #indexLeft{
     background-color: white;
+    height: 110%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,8 +20,8 @@ body{
         visibility: visible;
         z-index: -100;
     }
-    90%{
-        transform : translate3d(0,-10%,0) ;
+    99%{
+        transform : translate3d(0,-1%,0) ;
         visibility: visible;
         z-index: -100;
     }
@@ -34,6 +35,7 @@ body{
     right: 0px;
     margin-left: 21px;
     animation: slideright 1s ease forwards;
+    height: 110%;
 }
 @keyframes slideright {
     0%{
@@ -60,7 +62,7 @@ html{
     height: 25px;
     position: relative;
     z-index: 2;
-    bottom: 50%;
+    top: -45%;
     border-radius: 10px 10px 10px 10px;
     box-shadow: rgba(0,0,0,0.1);
 }
