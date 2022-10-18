@@ -5,7 +5,7 @@
             <img src="/images/close_bg_none.png" class="modalCloseBtn" onclick="newCategoryModalClose()">
         </div>
         <div class="newCategoryModalContents" id="newCategoryModalContents">
-            <label class="newCategoryModalLabel">제목 <input class="newCategoryModalInput" type="text" id="categoryName"></label>
+            <label class="newCategoryModalLabel">제목 <input class="input-primary" type="text" id="categoryName"></label>
             <div class="tagSelectedArea" id="tagSelectedArea">
 
             </div>
@@ -16,11 +16,11 @@
             <div class="chosenSharer" id="chosenSharer" style="display: none;">
 
             </div>
-            <button style="display: none" id="chooseSharerBtn" onclick="chooseSharerModalOpen()">공유자 선택</button>
+            <button class="btn-third" style="display: none" id="chooseSharerBtn" onclick="chooseSharerModalOpen()">공유자 선택</button>
         </div>
-        <div>
-            <button id="saveCategoryButton" onclick="saveNewCategory()">완료</button>
-            <button onclick="newCategoryModalClose()">취소</button>
+        <div class="categoryCompleteBtnArea">
+            <button class="btn-primary" id="saveCategoryButton" onclick="saveNewCategory()">완료</button>
+            <button class="btn-danger" onclick="newCategoryModalClose()">취소</button>
         </div>
     </div>
 </div>

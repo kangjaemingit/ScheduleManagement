@@ -18,6 +18,7 @@ function categoryDelete(id){
 }
 
 function categoryEditModalOpen(category){
+    console.log(category);
     userList = category.sharer;
     tagList = category.tags;
 
@@ -61,6 +62,20 @@ function categoryEditModalOpen(category){
 }
 
 function categoryUpdate(categoryId){
+    if(document.getElementById('categoryName').value.trim() === ""){
+        window.alert("카테고리 제목을 입력해주세요.")
+        return;
+    }
+
+    if(!tagList.length){
+        window.alert("태그를 1개 이상 선택해주세요.")
+        return;
+    }
+
+    if(!document.getElementById('sharerCheckBox').checked){
+        userList = [];
+    }
+
     let tagIdList = tagList.map((tag) => {
         return tag._id
     })
@@ -75,6 +90,8 @@ function categoryUpdate(categoryId){
         tags : tagIdList,
         sharer : userIdList,
     }
+
+
 
     fetch('calendar/updateCategory', {
         method : 'post',

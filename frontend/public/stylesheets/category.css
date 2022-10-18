@@ -79,6 +79,11 @@ body{
     overflow: auto;
 }
 
+.categoryCompleteBtnArea{
+    display: flex;
+    justify-content: center;
+}
+
 #shareobject{
     padding: 5px;
     border:0px;

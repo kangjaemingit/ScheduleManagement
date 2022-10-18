@@ -2,6 +2,10 @@
 const scheduleModal = document.querySelector('.scheduleModal');
 let tags = [];
 function scheduleModalOpen(){
+    const currTime = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+    document.getElementById('startDate').value = currTime;
+    document.getElementById('endDate').value = currTime;
+
     scheduleModal.classList.toggle('show');
 
     if(scheduleModal.classList.contains('show')){
@@ -24,9 +28,23 @@ function scheduleModalClose(){
     document.getElementById('tagList').innerHTML = null;
 
     document.getElementById('mapArea').style.display = 'none';
-    document.getElementById('scheduleModalBody').style.width = "30%"
-    document.getElementById('scheduleModalBody').style.height = "400px"
+    document.getElementById('scheduleModalBody').style.width = "25%";
+    document.getElementById('scheduleModalContents').style.width = "100%";
+}
 
+function changeStartDate(){
+    // 마감일이 선택한 시작일보다 이전일 경우 현재선택된 시작일로 변경
+    if(document.getElementById('endDate').value < document.getElementById('startDate').value){
+        document.getElementById('endDate').value = document.getElementById('startDate').value;
+        document.getElementById('endDate').min = document.getElementById('startDate').value;
+    }
+}
+
+function changeEndDate(){
+    if(document.getElementById('startDate').value >= document.getElementById('endDate').value){
+        document.getElementById('endDate').value = document.getElementById('startDate').value
+        return window.alert("마감일을 시작일과 같거나 시작시간 이전으로 설정할 수 없습니다.");
+    }
 }
 
 function saveSchedule(){
@@ -39,6 +57,31 @@ function saveSchedule(){
         tag : tags,
         address : document.getElementById('address').value
     }
+
+    if(newSchedule.title.trim() === ""){
+        window.alert("제목을 입력하세요")
+        return;
+    }
+
+    if(newSchedule.startDate.trim() === ""){
+        window.alert("시작일을 입력하세요")
+        return;
+    }
+
+    if(newSchedule.endDate.trim() === ""){
+        window.alert("마감일을 입력하세요")
+        return;
+    }
+
+    if(!document.getElementById('addressExist').checked){
+        newSchedule.address = "";
+    }
+
+    if(!newSchedule.tag.length){
+        window.alert("태그는 1개 이상 입력해야 합니다.")
+        return;
+    }
+
     fetch('schedule/newSchedule', {
         method : 'post',
         headers : {
@@ -60,17 +103,17 @@ function saveSchedule(){
 
 function useAddress(checked){
     if(checked.checked){
-        document.getElementById('scheduleModalBody').style.width = "50%"
-        document.getElementById('scheduleModalBody').style.height = "800px"
+        document.getElementById('scheduleModalBody').style.width = "60%";
         document.getElementById('mapArea').style.display = 'block';
+        document.getElementById('scheduleModalContents').style.width = "40%";
         setTimeout(function() {
             relayout();
         }, 700);
 
     } else{
         document.getElementById('mapArea').style.display = 'none';
-        document.getElementById('scheduleModalBody').style.width = "30%"
-        document.getElementById('scheduleModalBody').style.height = "400px"
+        document.getElementById('scheduleModalBody').style.width = "25%";
+        document.getElementById('scheduleModalContents').style.width = "100%";
         document.getElementById('address').value = null;
     }
 }

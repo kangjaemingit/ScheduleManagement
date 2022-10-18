@@ -34,7 +34,7 @@ function tableSort(index) {
     
     while (checkSort) { // 현재와 다음만 비교하기때문에 위치변경되면 다시 정렬해준다.
         checkSort = false;
-        for (let i = 0; i < (rows.length - 1); i++) {
+        for (let i = 1; i < (rows.length - 1); i++) {
             let fCell = rows[i].cells[index].innerHTML.toUpperCase();
             let sCell = rows[i + 1].cells[index].innerHTML.toUpperCase();
             let row = rows[i];
@@ -45,7 +45,6 @@ function tableSort(index) {
                 (sortType == 'desc' && fCell < sCell) ) {
                 row.parentNode.insertBefore(row.nextSibling, row);
                 checkSort = true;
-                console.log(checkSort)
             }
         }
     }

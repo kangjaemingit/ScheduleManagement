@@ -11,12 +11,12 @@
             <h2>새로운 일정 등록</h2>
             <img src="/images/close_bg_none.png" id="scheduleModalClose" class="modalCloseBtn" onclick="scheduleModalClose()">
         </div>
-
+        <div class="scheduleModalPartition">
         <div class="scheduleModalContents" id="scheduleModalContents">
             <label class="scheduleModalLabel">제목 <input class="scheduleModalInput" type="text" id="scheduleTitle"></label>
             <label class="scheduleModalLabel">내용 <input class="scheduleModalInput" type="text" id="contents"></label>
-            <label class="scheduleModalLabel">시작일 <input class="scheduleModalInput" type="datetime-local" id="startDate"></label>
-            <label class="scheduleModalLabel">마감일 <input class="scheduleModalInput" type="datetime-local" id="endDate"></label>
+            <label class="scheduleModalLabel">시작일 <input class="scheduleModalInput" type="datetime-local" id="startDate" onchange="changeStartDate()"></label>
+            <label class="scheduleModalLabel">마감일 <input class="scheduleModalInput" type="datetime-local" id="endDate" onchange="changeEndDate()"></label>
             <label class="scheduleModalLabel">우선순위 <select class="scheduleModalInput" id="priority">
                 <option id="hurryup" value="5" >아주 높음</option>
                 <option id="high" value="4">높음</option>
@@ -40,9 +40,10 @@
             <input class="scheduleModalInput" type="text" readonly id="address" placeholder="입력한 주소가 표시됩니다."></p>
             <%- include('./kakaomap.ejs')%>
         </div>
-        <div>
-            <button onclick="saveSchedule()">완료</button>
-            <button id="scheduleModalClosed" onclick="scheduleModalClose()">취소</button>
+        </div>
+        <div class="scheduleCompleteBtnArea">
+            <button class="btn-primary" onclick="saveSchedule()">완료</button>
+            <button class="btn-danger" id="scheduleModalClosed" onclick="scheduleModalClose()">취소</button>
         </div>
     </div>
 </div>

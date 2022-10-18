@@ -7,12 +7,12 @@
 </head>
 <body>
     <div id="categoryButtonContainer">
-        <div id="categoryAdd" onclick="newCategoryModalOpen();">카테고리 생성</div>
+        <button class="btn-secondary" onclick="newCategoryModalOpen();">카테고리 생성</button>
     </div>
     <% myCategories.map((category) => {%>
     <div id="categoryContainer">
         <div id="shareobject">
-            <div id="categoryName">
+            <div id="categoryNameGroup">
                 <p><%=category.categoryName%></p>
             </div>
             <div id="tagGroup">
