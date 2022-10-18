@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/stylesheets/category.css"/>
-    <link rel="stylesheet" href="/stylesheets/newCategory.css"/>
+    <link rel="stylesheet" href="/stylesheets/calendarPage/category/category.css"/>
+    <link rel="stylesheet" href="/stylesheets/calendarPage/category/newCategory.css"/>
 </head>
 <body>
     <div id="categoryButtonContainer">
@@ -30,8 +30,8 @@
 
         <div id="categoryControlArea">
 <!--            <div id="moreButton" onclick="moreButton();"></div>-->
-            <img src="/images/edit.png" class="categoryControl" id="categoryEdit" onclick='categoryEditModalOpen(<%=JSON.stringify(category)%>)'>
-            <img src="/images/delete.png" class="categoryControl" id="categoryDelete" onclick='categoryDelete("<%=category._id%>")'>
+            <img src="/images/category/edit.png" class="categoryControl" id="categoryEdit" onclick='categoryEditModalOpen(<%=JSON.stringify(category)%>)'>
+            <img src="/images/category/delete.png" class="categoryControl" id="categoryDelete" onclick='categoryDelete("<%=category._id%>")'>
         </div>
     </div>
     <%})%>

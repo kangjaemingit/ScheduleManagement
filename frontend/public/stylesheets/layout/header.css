@@ -110,6 +110,9 @@ ul{
 #browse-category[open] > #headerUrlBox~*{
     animation: dropDownContainer 5s ease forwards;
 }
+div,a,p,span,ul,li,button,i,input{
+    font-family: 'Pretendard-Regular';
+}
 /*@keyframes dropDownContainer {*/
 /*    from{*/
 /*        opacity: 0;*/

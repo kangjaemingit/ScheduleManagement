@@ -136,7 +136,7 @@ enterKey.addEventListener('keyup', event => tagKeyUpEvent(event));
 function tagRender(){
     let rows = ""
     tags.map((tag) => {
-        rows +=`<div class="tags"><span class="tagSpan">${tag}</span><img class="deleteTag" id="deleteTag" onclick="deleteTag('${tag}')" src="/images/tag_delete.png"></div>`
+        rows +=`<div class="tags"><span class="tagSpan">${tag}</span><img class="deleteTag" id="deleteTag" onclick="deleteTag('${tag}')" src="/images/schedule/tag_delete.png"></div>`
     });
 
     document.getElementById('tagList').innerHTML = rows;

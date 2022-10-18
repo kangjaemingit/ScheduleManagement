@@ -8,23 +8,22 @@ function colorChange(){
     const g = (rgb >>  8) & 0xff  // green 추출
     const b = (rgb >>  0) & 0xff  // blue 추출
     const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
-    const p = document.getElementsByTagName("p")
+    const p = document.getElementById("userInfo")
     const paint= document.getElementById('show')
     const logout = document.getElementById('logoutImage')
-    for(var i=0;i<p.length;i++)
     if(luma<127.5){
-        const textcol = p[i];
         // 2. style 변경
-        textcol.style.color = 'white';
-        paint.src="../../images/paintwhite.png";
-        logout.src="../../images/logoutWhite.png";
+        changeBrowseText.style.color = 'white';
+        p.style.color='white';
+        paint.src="../../images/layoutHeader/paintwhite.png";
+        logout.src="../../images/layoutHeader/logoutWhite.png";
     }
     else{
-        const textcol = p[i];
         // 2. style 변경
-        textcol.style.color = 'black';
-        paint.src="../../images/paintblack.png";
-        logout.src="../../images/logoutBlack.png"
+        p.style.color='black'
+        changeBrowseText.style.color = 'black';
+        paint.src="../../images/layoutHeader/paintblack.png";
+        logout.src="../../images/layoutHeader/logoutBlack.png"
     }
     const  colorData={
         navBgColor: colorval

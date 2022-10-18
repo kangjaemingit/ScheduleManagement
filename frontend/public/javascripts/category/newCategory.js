@@ -15,7 +15,7 @@ function selectTagRender(tags){
 function selectedTagRender(){
     let rows = [];
     tagList.map((t) => {
-        rows += `<div class="tags"><span class="tagSpan">${t.tagName}</span><img class="tagRemove" id="tagRemove" onclick='tagRemove("${t._id}")' src="/images/tag_delete.png"></div>`
+        rows += `<div class="tags"><span class="tagSpan">${t.tagName}</span><img class="tagRemove" id="tagRemove" onclick='tagRemove("${t._id}")' src="/images/schedule/tag_delete.png"></div>`
     })
 
     document.getElementById('tagSelectedBox').innerHTML = rows;

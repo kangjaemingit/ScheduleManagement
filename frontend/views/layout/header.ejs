@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>header</title>
-    <link   rel="stylesheet" href="/stylesheets/header.css"/>
-    <script defer src='javascripts/header.js'></script>
+    <link   rel="stylesheet" href="/stylesheets/layout/header.css"/>
+    <script defer src='javascripts/layout/header.js'></script>
 </head>
 <body>
 <div class="header">
@@ -26,16 +26,16 @@
 <!--                <p>TagStatistics</p>-->
 <!--            </a>-->
 <!--        </ul>-->
-        <a href="/"><img id="logo" onclick="logo();" class="headerbutton" src="../../images/heventreelogo.png"/></a>
+        <a href="/"><img id="logo" onclick="logo();" class="headerbutton" src="../../images/layoutHeader/heventreelogo.png"/></a>
         <ul id="headerUserBox">
             <% if(user.provider==="naver"){%>
-            <img id="changeLogo" src="../../images/btnG_아이콘원형.png"/>
+            <img id="changeLogo" src="../../images/layoutHeader/btnG_아이콘원형.png"/>
             <%} else if(user.provider==="kakao"){%>
-                <img id="changeLogo" src="../../images/kakao_logo.png"/>
+                <img id="changeLogo" src="../../images/layoutHeader/kakao_logo.png"/>
                 <%}%>
             <img id="profilePhoto" src="<%=user.profilePhoto%>"/>
             <p id="userInfo"><%=user.name%></p>
-                <a href="/login/logout" id="logout" class="headerbutton" type="button"  ><img id="logoutImage" src="../../images/logoutBlack.png"/></a>
+                <a href="/login/logout" id="logout" class="headerbutton" type="button"  ><img id="logoutImage" src="../../images/layoutHeader/logoutBlack.png"/></a>
             <input id="color" type="color" list="presets" onchange="colorChange()" value="#fff">
                 <datalist id="presets">
                     <option value="#C8707E"></option>
@@ -50,7 +50,7 @@
                     <option value="#96B1D0"></option>
                     <option value="#C8C2BD"></option>
                 </datalist>
-                <img id="show" src="../../images/paintblack.png"/>
+                <img id="show" src="../../images/layoutHeader/paintblack.png"/>
             </input>
         </ul>
     </div>
