@@ -38,17 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
         dateClick: function (arr) {
             //클릭한 날짜 값을 가져옴
             let clickDay = new Date(arr.date.toDateString()).getTime();
-            console.log("clickDate : "+ clickDay)
             //모든 이벤트 가져오기
             let scheduleArray=[]
             calendar.getEvents().map((date)=>{
                 let startDay = new Date(date.start.toDateString()).getTime();
                 let endDay = new Date(date.end.toDateString()).getTime();
-                console.log(startDay,","+endDay)
-                console.log("startGetTime : "+startDay,", endGetTime : "+endDay,", clickGetTime : "+clickDay)
                 if(clickDay>=startDay && clickDay<=endDay){
                     scheduleArray.push(date);
-                    console.log(date)
                 }
             })
             dayClickModalOpen(scheduleArray);
