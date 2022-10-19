@@ -5,7 +5,6 @@ async function sharedDirectoryModalOpen() {
     sharedDirectoryModal.style.display='block';
     const modalOpenBtn = document.getElementById('modalOpenBtn');
     modalOpenBtn.style.display='none'
-
     await fetch('calendar/sharedCategory', {
         method:"get"
     }).then((res) => res.json())
@@ -15,7 +14,6 @@ async function sharedDirectoryModalOpen() {
                 window.alert("공유받은 카테고리 정보 불러오기 실패");
                 return;
             }
-
             let array = [{}];
             await res.sharedCategories.map((c) => {
 
@@ -64,19 +62,84 @@ function categorySelect(category){
         tags : category.tags,
         categoryWriter : category.categoryWriter
     }
+    let calendarEl = document.getElementById('calendar');
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        customButtons:{
+            myCustomButton: {
+                text: '스케줄 추가!',
+                click: function() {
+                    scheduleModalOpen();
 
-    fetch('calendar/getScheduleByCategory', {
-        method : 'post',
-        headers : {
-            'Content-Type' : 'application/json',
+                }
+            }
         },
-        body: JSON.stringify(data)
-    }).then((res) => res.json())
-        .then((res) => {
-            console.log(res.schedule);
-        }).catch((err) => {
-        console.log(err);
+        headerToolbar: {
+            start: 'dayGridMonth,timeGridWeek,timeGridDay myCustomButton',
+            center: 'title',
+            end: 'prevYear,prev,today,next,nextYear'
+        },
+        select: function(start, end, allDay) {
+            console.log(start)
+            console.log(end)
+            calendar.start
+            calendar.end
+        },
+        firstDay: 1,
+        titleFormat: function (date) {
+            let year = date.date.year;
+            let month = date.date.month + 1;
+            return year + "년" + month + "월";
+        },
+        //날짜 클릭시 이벤트 함수
+        dateClick: function (arr) {
+            //클릭한 날짜 값을 가져옴
+            let clickDay = new Date(arr.date.toDateString()).getTime();
+            //모든 이벤트 가져오기
+            let scheduleArray=[]
+            calendar.getEvents().map((date)=>{
+                let startDay = new Date(date.start.toDateString()).getTime();
+                let endDay = new Date(date.end.toDateString()).getTime();
+                if(clickDay>=startDay && clickDay<=endDay){
+                    scheduleArray.push(date);
+                }
+            })
+            dayClickModalOpen(scheduleArray);
+        },
+        eventLimit:true,
+        timeZone: 'local',
+        events: [
+        fetch('calendar/getScheduleByCategory', {
+            method : 'post',
+            headers : {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).then((res) => res.json())
+            .then(async (res) => {
+                // console.log(res.schedule);
+                for(let i=0;i<res.schedule.length;i++){
+                    console.log(res.schedule[0]);
+                    calendar.addEvent({
+                        _id: res.schedule[i]._id,
+                        scheduleWriter: res.schedule[i].scheduleWriter.name,
+                        title: res.schedule[i].title,
+                        start: res.schedule[i].date.startDate,
+                        end: res.schedule[i].date.endDate
+                    })
+                }
+            }).catch((err) => {
+            console.log(err);
+        })
+            ],
+        //시간 포맷
+        eventTimeFormat: {
+            hour: 'numeric',
+            minute: '2-digit',
+            meridiem: 'short'
+        }
     })
+    calendar.render()
 }
 
 function sharerChildNodeControl(id){
@@ -90,14 +153,11 @@ function sharerChildNodeControl(id){
         document.getElementById('arrow_' + id).src = "/images/category/arrow-up.png";
     }
 }
-
-
 function movechildModal1(){
     const element2 = document.getElementById('categorychild1bg');
     // 2. style 변경
     element2.style.display = 'block';
 }
-
 // 팝업 닫기
 function sharedDirectoryModalClose() {
     const sharedDirectoryModal = document.getElementById('sharedDirectoryModal');

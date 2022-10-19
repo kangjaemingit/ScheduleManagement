@@ -31,8 +31,8 @@
 #logo{
     align-items: center;
     height: 50px;
-    width: auto;
-    margin-left: 100%;
+    max-width: 500px;
+    left: 20px;
 }
 #show{
     margin-right: -8%;
@@ -113,20 +113,18 @@ ul{
 div,a,p,span,ul,li,button,i,input{
     font-family: 'Pretendard-Regular';
 }
-/*@keyframes dropDownContainer {*/
-/*    from{*/
-/*        opacity: 0;*/
-/*        transform : translate3d(0,-100%,0) ;*/
-/*        visibility: visible;*/
-/*        z-index: -1;*/
-/*    }*/
-/*    to{*/
-/*        opacity: 1;*/
-/*        transform : translate3d(0,0%,0) ;*/
-/*        visibility: visible;*/
-/*        z-index:1;*/
-/*    }*/
-/*}*/
+@keyframes dropDownContainer {
+    from{
+        opacity: 0;
+        transform : translate3d(0,-100%,0) ;
+        visibility: visible;
+    }
+    to{
+        opacity: 1;
+        transform : translate3d(0,0%,0) ;
+        visibility: visible;
+    }
+}
 @font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -147,74 +145,6 @@ div,a,p,span,ul,li,button,i,input{
 }
 p{
     font-family: Pretendard-Regular ;
-}
-.btn-3 {
-    background: rgb(0,172,238);
-    background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
-    width: 130px;
-    height: 40px;
-    line-height: 42px;
-    padding: 0;
-    border: none;
-}
-.btn-3 span {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-.btn-3:before,
-.btn-3:after {
-    position: absolute;
-    content: "";
-    right: 0;
-    top: 0;
-    background: rgba(2,126,251,1);
-    transition: all 0.3s ease;
-}
-.btn-3:before {
-    height: 0%;
-    width: 2px;
-}
-.btn-3:after {
-    width: 0%;
-    height: 2px;
-}
-.btn-3:hover{
-    background: transparent;
-    box-shadow: none;
-}
-.btn-3:hover:before {
-    height: 100%;
-}
-.btn-3:hover:after {
-    width: 100%;
-}
-.btn-3 span:hover{
-    color: rgba(2,126,251,1);
-}
-.btn-3 span:before,
-.btn-3 span:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-    background: rgba(2,126,251,1);
-    transition: all 0.3s ease;
-}
-.btn-3 span:before {
-    width: 2px;
-    height: 0%;
-}
-.btn-3 span:after {
-    width: 0%;
-    height: 2px;
-}
-.btn-3 span:hover:before {
-    height: 100%;
-}
-.btn-3 span:hover:after {
-    width: 100%;
 }
 #logoutImage{
     width: 30px;
