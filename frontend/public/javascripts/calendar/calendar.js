@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 text: '스케줄 추가!',
                 click: function() {
                     scheduleModalOpen();
-
                 }
             }
         },
@@ -51,25 +50,24 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         eventLimit:true,
         timeZone: 'local',
-        events:[
-            fetch('calendar/getScheduleByWriter',{
-                method:'get',
-            }).then((res)=>res.json())
-                .then(res=>{
-                if(res.scheduleRenderSuccess==false){
-                    window.alert(res.message)
-                }
-                for(let i=0; i<res.scheduleData.length;i++)
-                {
-                    calendar.addEvent({
-                        _id : res.scheduleData[i]._id,
-                        scheduleWriter : res.scheduleData[i].scheduleWriter.name,
-                        title : res.scheduleData[i].title,
-                        start : res.scheduleData[i].date.startDate,
-                        end : res.scheduleData[i].date.endDate,
-                    })
-                }
-            }),
+        events: [
+            fetch('calendar/getScheduleByWriter', {
+                method: 'get',
+            }).then((res) => res.json())
+                .then(res => {
+                    if (res.scheduleRenderSuccess == false) {
+                        window.alert(res.message)
+                    }
+                    for (let i = 0; i < res.scheduleData.length; i++) {
+                        calendar.addEvent({
+                            _id: res.scheduleData[i]._id,
+                            scheduleWriter: res.scheduleData[i].scheduleWriter.name,
+                            title: res.scheduleData[i].title,
+                            start: res.scheduleData[i].date.startDate,
+                            end: res.scheduleData[i].date.endDate,
+                        })
+                    }
+                }),
         ],
 
         //시간 포맷
@@ -79,5 +77,14 @@ document.addEventListener('DOMContentLoaded', function () {
             meridiem: 'short'
         }
     })
+    // let categoryScheduleGroup=[];
+    // calendar.eventRemove();
+    // console.log(categoryScheduleGroup)
+    // categorySelect(categoryScheduleGroup);
     calendar.render();
 });
+function categoryScheduleClick(categoryScheduler){
+    let CSL=[];
+
+
+}

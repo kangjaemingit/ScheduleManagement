@@ -107,6 +107,7 @@ const scheduleController = {
         //     })
 
         Schedule.find({$and : [{tag : {$in : req.body.tags}}, {scheduleWriter: req.body.categoryWriter}]})
+            .populate('scheduleWriter')
             .exec((err, result) => {
                 if(err){
                     console.log(err);
