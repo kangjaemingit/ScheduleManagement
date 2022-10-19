@@ -1,5 +1,6 @@
 const { Schedule } = require("../models/Schedule");
 const { Tags } = require("../models/Tags");
+const {Category} = require("../models/Category");
 
 const scheduleController = {
     newSchedule : async (req, res) => {
@@ -117,7 +118,7 @@ const scheduleController = {
                 return res.json({ autoComplete }).status(200)
             })
     },
-    getScheduleByWriter: (req,res)=>{
+    getScheduleByWriter: async (req,res)=>{
         Schedule.find({scheduleWriter:req.user._id})
             .populate("tag")
             .populate("scheduleWriter")

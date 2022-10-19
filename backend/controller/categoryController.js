@@ -83,17 +83,17 @@ const categoryController = {
 
     },
     sharedCategory : (req, res) => {
-        Category.find({sharer : {$in : req.user._id}})
+        Category.find({sharer: {$in: req.user._id}})
             .populate("categoryWriter")
             .populate("sharer")
             .exec((err, result) => {
-                if(err){
+                if (err) {
                     console.log(err);
-                    return res.json({sharedCategorySuccess : false, message : err});
+                    return res.json({sharedCategorySuccess: false, message: err});
                 }
-                return res.json({sharedCategories : result}).status(200);
+                return res.json({sharedCategories: result}).status(200);
             })
-    }
 
+    }
 }
 module.exports=categoryController;
