@@ -8,7 +8,7 @@
 <div class="scheduleModal" id="scheduleModal">
     <div class="scheduleModalBody" id="scheduleModalBody">
         <div class="scheduleModalTitle" id="scheduleModalTitle">
-            <h2>새로운 일정 등록</h2>
+            <h2 id="scheduleModalName">새로운 일정 등록</h2>
             <img src="/images/category/close_bg_none.png" id="scheduleModalClose" class="modalCloseBtn" onclick="scheduleModalClose()">
         </div>
         <div class="scheduleModalPartition">
@@ -41,9 +41,10 @@
             <%- include('./kakaomap.ejs')%>
         </div>
         </div>
-        <div class="scheduleCompleteBtnArea">
-            <button class="btn-primary" onclick="saveSchedule()">완료</button>
+        <div class="scheduleCompleteBtnArea" id="scheduleCompleteBtnArea">
+            <button class="btn-primary" id="btnSaveSchedule" onclick="saveSchedule()">완료</button>
             <button class="btn-danger" id="scheduleModalClosed" onclick="scheduleModalClose()">취소</button>
+            <button class="btn-danger" id="btnDeleteSchedule" style="display: none">일정삭제</button>
         </div>
     </div>
 </div>

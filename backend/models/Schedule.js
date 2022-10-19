@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { Tags } = require('./Tags');
 
 const ScheduleSchema = mongoose.Schema({
     title : {
@@ -26,6 +27,15 @@ const ScheduleSchema = mongoose.Schema({
         }
     }
 });
+
+ScheduleSchema.pre('deleteOne', {document : false, query : true}, async function(next){
+    const { _id } = this.getFilter();
+
+    await Tags.updateMany({$in : {schedule : _id}}, {$pull : {schedule : _id}})
+    next();
+
+});
+
 
 const Schedule = mongoose.model('Schedule', ScheduleSchema);
 

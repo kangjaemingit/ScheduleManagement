@@ -52,11 +52,60 @@ const scheduleController = {
             return res.json({newScheduleSuccess : false, message : e})
         }
     },
-    editSchedule : (req, res) => {
+    updateSchedule : async (req, res) => {
+        try{
+            const oldTag = await Schedule.findOne({_id : req.body.scheduleId}).select('tag').exec();
+            await Tags.updateMany({_id: oldTag.tag}, {$pull: {schedule: req.body.scheduleId}}).exec();
 
+            let tagArray = await Promise.all(req.body.tag.map(async (tag) => {
+                // 태그 존재 유무 확인
+                const tagExists = await Tags.findOne({tagName: tag}).exec();
+
+                if (tagExists) { // 태그가 존재한다면
+                    await Tags.updateOne({_id : tagExists._id}, {$push : {schedule : req.body.scheduleId}}).exec() // 태그에 일정 ID UPDATE
+                    return tagExists._id
+                } else { // 태그가 존재하지 않는다면
+                    // 새로운 태그 생성
+                    const newTag = await Tags.create({
+                        tagName: tag,
+                        tagWriter: req.user._id,
+                        schedule : [req.body.scheduleId]
+                    });
+                    // 일정에 태그 ID UPDATE
+                    return newTag._id;
+                }
+            }));
+
+            await Schedule.updateOne({_id: req.body.scheduleId},
+                {$set : {
+                        title : req.body.title,
+                        contents : req.body.contents,
+                        "date.startDate" : req.body.startDate,
+                        "date.endDate" : req.body.endDate,
+                        priority : req.body.priority,
+                        tag : tagArray,
+                        address : req.body.address
+                }})
+                .exec();
+
+            // 성공값 반환
+            return res.json({updateScheduleSuccess : true}).status(200);
+
+        } catch (e){
+            console.log(e);
+            return res.json({updateScheduleSuccess : false, message : e})
+        }
     },
     deleteSchedule : (req, res) => {
-
+        console.log(req.body.scheduleId);
+        Schedule.deleteOne({_id : req.body.scheduleId})
+            .exec((err) => {
+                if(err){
+                    console.log(err);
+                    return res.json({deleteScheduleSuccess : false, message : err})
+                }
+                return res.json({deleteScheduleSuccess : true}).status(200)
+            });
     },
     autoComplete : (req, res) => {
         Tags.find({tagName : { $regex : req.body.keyword}})

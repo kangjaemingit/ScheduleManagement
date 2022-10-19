@@ -5,6 +5,7 @@ function scheduleModalOpen(){
     const currTime = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
     document.getElementById('startDate').value = currTime;
     document.getElementById('endDate').value = currTime;
+    document.getElementById('scheduleModalName').innerText = "새로운 일정 생성";
 
     scheduleModal.classList.toggle('show');
 
@@ -25,11 +26,20 @@ function scheduleModalClose(){
     document.getElementById('tagInput').value = null;
     document.getElementById('addressExist').checked = false;
     document.getElementById('tagList').innerHTML = null;
+    document.getElementById('keyword').value = "";
 
     document.getElementById('mapArea').style.display = 'none';
     document.getElementById('scheduleModalBody').style.width = "25%";
     document.getElementById('scheduleModalContents').style.width = "100%";
+
+    document.getElementById('btnSaveSchedule').setAttribute("onClick", `saveSchedule()`)
+
+    document.getElementById('btnDeleteSchedule').removeAttribute('onclick');
+    document.getElementById('btnDeleteSchedule').style.display = 'none';
+
 }
+
+
 
 function changeStartDate(){
     // 마감일이 선택한 시작일보다 이전일 경우 현재선택된 시작일로 변경
@@ -44,6 +54,32 @@ function changeEndDate(){
         document.getElementById('endDate').value = document.getElementById('startDate').value
         return window.alert("마감일을 시작일과 같거나 시작시간 이전으로 설정할 수 없습니다.");
     }
+
+    console.log(document.getElementById('startDate').value)
+}
+
+function validCheck(schedule){
+    if(schedule.title.trim() === ""){
+        window.alert("제목을 입력하세요")
+        return false;
+    }
+
+    if(schedule.startDate.trim() === ""){
+        window.alert("시작일을 입력하세요")
+        return false;
+    }
+
+    if(schedule.endDate.trim() === ""){
+        window.alert("마감일을 입력하세요")
+        return false;
+    }
+
+    if(!schedule.tag.length){
+        window.alert("태그는 1개 이상 입력해야 합니다.")
+        return false;
+    }
+
+    return true;
 }
 
 function saveSchedule(){
@@ -57,27 +93,11 @@ function saveSchedule(){
         address : document.getElementById('address').value
     }
 
-    if(newSchedule.title.trim() === ""){
-        window.alert("제목을 입력하세요")
-        return;
-    }
-
-    if(newSchedule.startDate.trim() === ""){
-        window.alert("시작일을 입력하세요")
-        return;
-    }
-
-    if(newSchedule.endDate.trim() === ""){
-        window.alert("마감일을 입력하세요")
-        return;
-    }
-
     if(!document.getElementById('addressExist').checked){
         newSchedule.address = "";
     }
 
-    if(!newSchedule.tag.length){
-        window.alert("태그는 1개 이상 입력해야 합니다.")
+    if(!validCheck(newSchedule)){
         return;
     }
 
