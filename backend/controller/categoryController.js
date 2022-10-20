@@ -63,7 +63,7 @@ const categoryController = {
         })
     },
     getUserList : (req, res) => {
-        User.find({}, (err, result) => {
+        User.find({_id : {$ne : req.user._id}}, (err, result) => {
             if(err){
                 console.log(err);
                 return res.json({getUserSuccess : false, message : err});
@@ -83,7 +83,7 @@ const categoryController = {
 
     },
     sharedCategory : (req, res) => {
-        Category.find({sharer: {$in: req.user._id}})
+        Category.find({$and : [{sharer: {$in: req.user._id}}, {$ne : {categoryWriter : req.user._id}}]})
             .populate("categoryWriter")
             .populate("sharer")
             .exec((err, result) => {

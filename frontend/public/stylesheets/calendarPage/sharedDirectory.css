@@ -88,3 +88,9 @@ h3{
 button{
     margin-right: 10px;
 }
+
+.sharedDirectoryModalCloseBtn{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}

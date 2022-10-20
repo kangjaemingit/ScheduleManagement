@@ -119,16 +119,38 @@ const scheduleController = {
             })
     },
     getScheduleByWriter: async (req,res)=>{
-        Schedule.find({scheduleWriter:req.user._id})
-            .populate("tag")
-            .populate("scheduleWriter")
-            .exec((err,result)=>{
-                if(err){
-                    console.log(err)
-                    return res.json({scheduleRenderSuccess:false, message:err});
-                }
-                return res.json({scheduleRenderSuccess:true, scheduleData:result});
-            });
+        try{
+            const sharedCategory = await Category.find({sharer : req.user._id}).exec()
+
+            let sharedSchedule = await Promise.all(sharedCategory.map(async (sc) => {
+                const schedule = await Schedule.find({$and : [{scheduleWriter : sc.categoryWriter}, {tag : { $in : sc.tags}}]})
+                    .populate("tag")
+                    .populate("scheduleWriter")
+                    .exec();
+                return schedule
+            }));
+
+            sharedSchedule = sharedSchedule.reduce(function (acc, cur){
+                return acc.concat(cur);
+            })
+
+            sharedSchedule = [...new Set(sharedSchedule)];
+
+            console.log(sharedSchedule);
+
+            const mySchedule = await Schedule.find({scheduleWriter:req.user._id})
+                .populate("tag")
+                .populate("scheduleWriter")
+                .exec();
+
+            return res.json({scheduleRenderSuccess:true, mySchedule, sharedSchedule});
+        } catch (e) {
+            if(e){
+                console.log(e)
+                return res.json({scheduleRenderSuccess:false, message:e});
+            }
+        }
+
     },
     getScheduleById : (req, res) => {
       Schedule.findOne({_id : req.params.id})

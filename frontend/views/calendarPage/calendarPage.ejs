@@ -18,6 +18,11 @@
 <header>
     <%- include('../layout/header.ejs'); %>
 </header>
+<script>
+    window.onload = function(){
+        document.getElementById('browse-category').innerText = 'Calendar';
+    }
+</script>
 <div id="indexWrap" class="container">
     <div id="indexLeft" class="mainIndex">
         <%- include('category.ejs'); %>

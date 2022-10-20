@@ -9,7 +9,6 @@ const calendarController={
                     .populate("tags")
                     .populate("sharer")
                     .exec();
-            console.log(myCategories);
             res.render('calendarPage/calendarPage', { title: 'Express',user : req.user, myCategories});
         } catch (e){
             console.log(e);

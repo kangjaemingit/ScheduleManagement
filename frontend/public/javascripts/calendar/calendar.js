@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         },
+        dayMaxEvents : true,
         headerToolbar: {
             start: 'dayGridMonth,timeGridWeek,timeGridDay myCustomButton',
             center: 'title',
@@ -58,13 +59,26 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (res.scheduleRenderSuccess == false) {
                         window.alert(res.message)
                     }
-                    for (let i = 0; i < res.scheduleData.length; i++) {
+                    for (let i = 0; i < res.mySchedule.length; i++) {
                         calendar.addEvent({
-                            _id: res.scheduleData[i]._id,
-                            scheduleWriter: res.scheduleData[i].scheduleWriter.name,
-                            title: res.scheduleData[i].title,
-                            start: res.scheduleData[i].date.startDate,
-                            end: res.scheduleData[i].date.endDate,
+                            _id: res.mySchedule[i]._id,
+                            scheduleWriter: res.mySchedule[i].scheduleWriter.name,
+                            title: res.mySchedule[i].title,
+                            start: res.mySchedule[i].date.startDate,
+                            end: res.mySchedule[i].date.endDate,
+                            color: "#4bc0c0",
+                        })
+                    }
+
+
+                    for (let i = 0; i < res.sharedSchedule.length; i++){
+                        calendar.addEvent({
+                            _id: res.sharedSchedule[i]._id,
+                            scheduleWriter: res.sharedSchedule[i].scheduleWriter.name,
+                            title: res.sharedSchedule[i].title,
+                            start: res.sharedSchedule[i].date.startDate,
+                            end: res.sharedSchedule[i].date.endDate,
+                            color: "#ff6384",
                         })
                     }
                 }),
