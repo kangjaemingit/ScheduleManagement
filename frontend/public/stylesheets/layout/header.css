@@ -30,8 +30,8 @@
 }
 #logo{
     align-items: center;
-    height: 50px;
-    max-width: 500px;
+    max-height: 50px;
+    max-width: 200px;
     left: 20px;
 }
 #show{

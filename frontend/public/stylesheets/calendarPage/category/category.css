@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     box-shadow: darkgrey 0 0 5px 0;
+    height: 6.3%;
 }
 body{
     height: 100%;
@@ -96,7 +97,11 @@ body{
     height: 20px;
     cursor: pointer;
 }
-
+.btn-secondary{
+    margin-right: 2.5px;
+    margin-left: 2.5px;
+    width: 95px;
+}
 /*#moreButton{*/
 /*    display: block;*/
 /*    margin-top:-80%;*/

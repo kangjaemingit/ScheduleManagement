@@ -6,7 +6,27 @@ body {
 /*a {*/
 /*  color: #00B7FF;*/
 /*}*/
+.newCategoryModal{
+  animation: modal-fadein 0.5s;
+}
+.modal{
+  animation: modal-fadein 0.5s;
+}
+.chooseSharerModalBody{
+  animation: modal-fadein 0.5s;
+}
+.dayClickModalBG,.dayClickModalBody,.scheduleModal{
+  animation: modal-fadein 0.5s;
+}
+@keyframes modal-fadein {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 
+}
 /* primary 버튼 */
 .btn-primary {
   box-shadow:inset 0px 1px 0px 0px #0098FE;
