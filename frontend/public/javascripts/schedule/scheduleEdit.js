@@ -28,7 +28,6 @@ function scheduleEditModalOpen(scheduleId){
                 searchPlaces();
             }
 
-
             tags = res.schedule.tag.map((t) => {
                 return t.tagName;
             })

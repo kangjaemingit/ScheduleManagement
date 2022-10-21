@@ -67,7 +67,7 @@ function categorySelect(category) {
         body: JSON.stringify(data)
     }).then((res) => res.json())
         .then(async (res) => {
-            changeSchedule(res.schedule);
+            changeCategorySchedule(res.schedule);
         }).catch((err) => {
         console.log(err);
     })

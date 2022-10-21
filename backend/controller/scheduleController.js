@@ -118,7 +118,7 @@ const scheduleController = {
                 return res.json({ autoComplete }).status(200)
             })
     },
-    getScheduleByWriter: async (req,res)=>{
+    getScheduleByUser: async (req,res)=>{
         try{
             const sharedCategory = await Category.find({sharer : req.user._id}).exec()
 
@@ -134,7 +134,8 @@ const scheduleController = {
                 return acc.concat(cur);
             })
 
-            sharedSchedule = [...new Set(sharedSchedule)];
+
+            sharedSchedule = [...new Set(sharedSchedule.map(JSON.stringify))].map(JSON.parse);
 
             console.log(sharedSchedule);
 
@@ -152,6 +153,18 @@ const scheduleController = {
         }
 
     },
+    getMySchedule : (req, res) => {
+        Schedule.find({scheduleWriter:req.user._id})
+            .populate("tag")
+            .populate("scheduleWriter")
+            .exec((err, result) => {
+                if(err){
+                    console.log(err);
+                    return res.json({getMyScheduleSuccess : false, message : err})
+                }
+                return res.json({getMyScheduleSuccess : true, schedule : result});
+            });
+    },
     getScheduleById : (req, res) => {
       Schedule.findOne({_id : req.params.id})
           .populate("tag")
@@ -160,7 +173,12 @@ const scheduleController = {
                   console.log(err);
                   return res.json({getScheduleSuccess : false, message : err})
               }
-              return res.json({schedule : result}).status(200);
+
+              if(result.scheduleWriter === req.body._id){
+                  return res.json({schedule : result, scheduleOwner : true}).status(200);
+              } else {
+                  return res.json({schedule : result, scheduleOwner : false}).status(200);
+              }
           })
     },
     getScheduleByCategory:(req, res) => {

@@ -74,10 +74,17 @@ function validCheck(schedule){
         return false;
     }
 
+    if(schedule.startDate >= schedule.endDate){
+        window.alert("시작시간과 마감시간이 동일하거나, 시작시간이 마감시간보다 늦을 수 없습니다.")
+        return false
+    }
+
     if(!schedule.tag.length){
         window.alert("태그는 1개 이상 입력해야 합니다.")
         return false;
     }
+
+
 
     return true;
 }
