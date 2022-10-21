@@ -59,75 +59,18 @@ function categorySelect(category) {
         tags: category.tags,
         categoryWriter: category.categoryWriter
     }
-    let calendarEl = document.getElementById('calendar');
-    let calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        customButtons: {
-            myCustomButton: {
-                text: '초기화',
-                click: function () {
-                    myschedule();
-                }
-            }
+    fetch('calendar/getScheduleByCategory', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
         },
-        headerToolbar: {
-            start: 'dayGridMonth,timeGridWeek,timeGridDay myCustomButton',
-            center: 'title',
-            end: 'prevYear,prev,today,next,nextYear'
-        },
-        firstDay: 1,
-        titleFormat: function (date) {
-            let year = date.date.year;
-            let month = date.date.month + 1;
-            return year + "년" + month + "월";
-        },
-        //날짜 클릭시 이벤트 함수
-        dateClick: function (arr) {
-            //클릭한 날짜 값을 가져옴
-            let clickDay = new Date(arr.date.toDateString()).getTime();
-            //모든 이벤트 가져오기
-            let scheduleArray = []
-            calendar.getEvents().map((date) => {
-                let startDay = new Date(date.start.toDateString()).getTime();
-                let endDay = new Date(date.end.toDateString()).getTime();
-                if (clickDay >= startDay && clickDay <= endDay) {
-                    scheduleArray.push(date);
-                }
-            })
-            dayClickModalOpen(scheduleArray);
-        },
-        eventLimit: true,
-        timeZone: 'local',
-        events: [
-            fetch('calendar/getScheduleByCategory', {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            }).then((res) => res.json())
-                .then(async (res) => {
-                    for (let i = 0; i < res.schedule.length; i++) {
-                        calendar.addEvent({
-                            _id: res.schedule[i]._id,
-                            scheduleWriter: res.schedule[i].scheduleWriter.name,
-                            title: res.schedule[i].title,
-                            start: res.schedule[i].date.startDate,
-                            end: res.schedule[i].date.endDate
-                        })
-                    }
-                }).catch((err) => {
-                console.log(err);
-            })
-        ],
-        //시간 포맷
-        eventTimeFormat: {
-            hour: 'numeric',
-            minute: '2-digit',
-            meridiem: 'short'
-        }
+        body: JSON.stringify(data)
+    }).then((res) => res.json())
+        .then(async (res) => {
+            changeSchedule(res.schedule);
+        }).catch((err) => {
+        console.log(err);
     })
-    calendar.render()
 }
 
 function sharerChildNodeControl(id) {
