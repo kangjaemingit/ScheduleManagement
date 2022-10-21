@@ -93,7 +93,35 @@ table{
     text-align: center;
     align-items: center;
 }
-
+#searchKeywordContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+#searchKeyword{
+    width: 90%;
+}
+#sharerTableTitle{
+    margin:5px 0 5px 0;
+    box-shadow: 0 1px 0 0 rgba(235,235,235,1);
+    width: 100%;
+    align-items: center;
+    height: 20px;
+}
+#selectSharer{
+    margin:5px 0 5px 0;
+    box-shadow: 0 1px 0 0 rgba(235,235,235,1);
+    width: 100%;
+    align-items: center;
+    height: 20px;
+}
+.searchButton{
+    background-color: #ffffff;
+    border: none;
+    width: 10%;
+}
 .searchBtn{
     width: 18px;
     height: 18px;

@@ -34,11 +34,18 @@ function defaultSchedule() {
             //모든 이벤트 가져오기
             let scheduleArray = []
             calendar.getEvents().map((date) => {
+                let startday = date.start.getTime();
+                let endday = date.end.getTime();
                 let startDay = new Date(date.start.toDateString()).getTime();
                 let endDay = new Date(date.end.toDateString()).getTime();
                 if (clickDay >= startDay && clickDay <= endDay) {
                     scheduleArray.push(date);
+                    if(startday===endday){
+                        if(startday===""||endday===""){}
+                        else alert("시작시간과 끝나는 시간이 동일합니다.")
+                    }
                 }
+
             })
             dayClickModalOpen(scheduleArray);
         },
@@ -63,7 +70,6 @@ function defaultSchedule() {
                         })
                     }
 
-
                     for (let i = 0; i < res.sharedSchedule.length; i++){
                         calendar.addEvent({
                             _id: res.sharedSchedule[i]._id,
@@ -76,7 +82,6 @@ function defaultSchedule() {
                     }
                 }),
         ],
-
         //시간 포맷
         eventTimeFormat: {
             hour: 'numeric',

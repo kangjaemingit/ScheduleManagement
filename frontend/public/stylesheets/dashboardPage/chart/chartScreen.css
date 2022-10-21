@@ -18,3 +18,11 @@
     margin-right: 5px;
     vertical-align: middle;
 }
+.row{
+    width: 200px;
+    height: 200px;
+}
+#pieChartCanvas{
+    width: 200px;
+    height: 200px;
+}
