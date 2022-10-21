@@ -5,15 +5,17 @@
             <img src="/images/category/close_bg_none.png" class="modalCloseBtn" onclick="newCategoryModalClose()">
         </div>
         <div class="newCategoryModalContents" id="newCategoryModalContents">
-            <label class="newCategoryModalLabel">제목 <input class="input-primary" type="text" id="categoryName"></label>
+            <label class="newCategoryModalLabel"><div id="newCategoryModalLabelTitle">제목</div> <input class="input-primary" type="text" id="categoryName"></label>
             <div class="tagSelectPartition">
                 <div class="tagSelectedArea" id="tagSelectedArea">
+                    <div class="titleContainer">검색 태그</div>
                     <div class="tagSelectedBox" id="tagSelectedBox">
 
                     </div>
                 </div>
                 <div class="tagSelectArea" id="tagSelectArea">
-                    <div class="tagSearchBox" style="width: 90%">
+                    <div class="titleContainer">선택한 태그</div>
+                    <div class="tagSearchBox">
                         <input type="text" class="input-primary" id="tagSearchInput" oninput="searchTag(this)" placeholder="#해시태그">
                     </div>
                     <div class="tagSelectBox" id="tagSelectBox">

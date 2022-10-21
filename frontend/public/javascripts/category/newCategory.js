@@ -70,7 +70,7 @@ function tagChecked(tag, checkBox){
 function sharerChecked(check){
     if(check.checked){
         document.getElementById('chooseSharerBtn').style.display = 'block';
-        document.getElementById('chosenSharer').style.display = 'block';
+        document.getElementById('chosenSharer').style.display = 'flex';
     } else{
         document.getElementById('chooseSharerBtn').style.display = 'none';
         document.getElementById('chosenSharer').style.display = 'none';
