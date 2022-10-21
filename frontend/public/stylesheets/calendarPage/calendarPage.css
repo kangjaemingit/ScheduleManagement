@@ -143,3 +143,6 @@ html{
 #providerSelecter{
     display: none;
 }
+#saveCategoryButton{
+    margin-right: 50px;
+}

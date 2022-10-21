@@ -94,6 +94,7 @@ body {
 
 /* danger 버튼 */
 .btn-danger {
+  margin-right: 0;
   background: white;
   border-radius:6px;
   border:1px solid #dc3545;
