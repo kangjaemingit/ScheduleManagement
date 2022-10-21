@@ -21,7 +21,7 @@
     top: 50%;
     left: 50%;
     width: 40%;
-    height: 500px;
+    max-height: 500px;
     padding: 40px;
     text-align: left;
     background-color: rgb(255, 255, 255);
@@ -49,13 +49,13 @@
     display: flex;
     flex-direction: row;
     margin-top: 10px;
+    width:103%;
 }
 
 .tagSelectArea{
     width: 50%;
     height: 200px;
     border: 1px lightgray solid;
-    display : flex;
     flex-wrap: wrap;
     justify-items: flex-start;
     overflow: auto;
@@ -66,25 +66,9 @@
     width: 50%;
     height: 200px;
     border: 1px lightgray solid;
-    display: flex;
     flex-wrap: wrap;
     overflow: auto;
     justify-content: center;
-}
-
-.tagSelectedBoxTitle{
-    width: 100%;
-    height: 20px;
-    box-shadow: 0 1px 0 0 rgba(235,235,235,1);
-    text-align: center;
-    line-height: 20px;
-}
-.tagSelectedAreaTitle{
-    width: 100%;
-    height: 20px;
-    box-shadow: 0 1px 0 0 rgba(235,235,235,1);
-    text-align: center;
-    line-height: 20px;
 }
 .tagSelectedBox{
     width: 100%;
@@ -97,8 +81,9 @@
 }
 
 .categoryCompleteBtnArea{
+    margin-top: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .tags{
@@ -130,4 +115,51 @@
 }
 #newCategoryModalLabelTitle{
     margin: 10px 0 10px 0;
+}
+.titleContainer{
+    margin-bottom: 5px;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    box-shadow: 0 1px 0 0 rgba(235,235,235,1);
+}
+.newCategoryModalLabel{
+    margin:10px 0 10px 0;
+}
+#chosenSharer{
+    margin-bottom: 10px;
+    display: flex;
+}
+.btn-third{
+    width: 103%;
+}
+.tagSearchBox{
+    margin-bottom: 5px;
+    width: 90%;
+    margin: 0 5% 0 5%;
+}
+
+.sharersP{
+    display: flex;
+}
+.sharerSpan{
+    visibility: hidden;
+    position: absolute;
+    z-index: 5;
+    background-color: #f9f9f9;
+    box-shadow: 1px 1px 0 0 rgba(235,235,235,1);
+    margin: 20px 30px;
+}
+.sharerSpan::after{
+    border-top:6px solid #f9f9f9;
+    border-left: 6px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: 0px solid transparent;
+    content:"";
+    position:absolute;
+    top:3px;
+    left:-6px;
+}
+.sharersP:hover span{
+    visibility: inherit;
 }
