@@ -76,6 +76,7 @@ function categorySelect(category) {
             end: 'prevYear,prev,today,next,nextYear'
         },
         firstDay: 1,
+        dayMaxEvents : true,
         titleFormat: function (date) {
             let year = date.date.year;
             let month = date.date.month + 1;

@@ -84,7 +84,6 @@ ul{
     margin-top:0px;
     margin-bottom:0px;
 }
-
 .headerbutton:hover{
     font-style: oblique;
     background-color: darkgrey;
@@ -100,6 +99,7 @@ ul{
     top: 80px;
     left: -40px;
     display: none;
+    box-shadow: 2px 2px 0 0 rgba(235,235,235,1);
 }
 #browse-category>#headerUrlBox::-webkit-details-marker{
     transform: rotate3d(0,0,1,90deg);
@@ -113,6 +113,7 @@ ul{
 div,a,p,span,ul,li,button,i,input{
     font-family: 'Pretendard-Regular';
 }
+
 @keyframes dropDownContainer {
     from{
         opacity: 0;
@@ -168,4 +169,8 @@ p{
 }
 #dropDownArrow{
     width: 25px;
+}
+#movePageText{
+    font-weight: 900;
+    font-size:19px;
 }

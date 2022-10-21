@@ -65,6 +65,7 @@ html{
     top: -45%;
     border-radius: 10px 10px 10px 10px;
     box-shadow: rgba(0,0,0,0.1);
+    animation: slidedrop 1s;
 }
 #modalOpenBtn::after{
     position: absolute;

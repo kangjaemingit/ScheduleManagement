@@ -8,6 +8,7 @@
         <div class="chooseSharerModalContents" id="chooseSharerModalContents">
             <div class="sharerArea">
                 <div class="chosenSharerArea">
+                    <div id="sharerTableTitle">공유자</div>
                     <div class="tableWrapper">
                         <table id="chosenUserTable">
                             <tbody id="chosenUserTableBody">
@@ -19,8 +20,11 @@
                 <div class="chooseSharerArea">
                     <div class="searchUser">
                         <form onsubmit="searchUser()">
-                            <label>사용자 검색<input type="text" id="searchKeyword"></label>
-                            <button type="submit" style="background-color: #ffffff; border: none"><img class="searchBtn" src="/images/category/icon_search.png"></button>
+                            <div id="selectSharer">공유자 선택</div>
+                            <div id="searchKeywordContainer">
+                            <input type="text" id="searchKeyword">
+                            <button type="submit" class="searchButton" style="background-color: #ffffff; border: none"><img class="searchBtn" src="/images/category/icon_search.png"></button>
+                            </div>
                         </form>
                     </div>
                     <div class="tableWrapper">

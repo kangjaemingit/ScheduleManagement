@@ -48,12 +48,12 @@ function movePageModal(){
     if(buttonType=="dropdown"){movePage.style.display='block';}
     else{movePage.style.display='none';}
 }
-let changeBrowseText=document.getElementById('browse-category');
+let changeBrowseText=document.getElementById('movePageText');
 let moveCategoryPage=document.getElementById('Calendar');
 let moveDashboardPage=document.getElementById('Dashboard');
 let moveTagStatisticsPage=document.getElementById('TagStatistics')
 moveCategoryPage.addEventListener("click", function (){
-    changeBrowseText.innerText = "Calendar";
+    changeBrowseText.innerText = `Calendar`;
 })
 moveDashboardPage.addEventListener("click", function (){
     changeBrowseText.innerText = "Dashboard";

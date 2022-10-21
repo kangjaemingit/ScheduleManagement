@@ -8,10 +8,21 @@
 
 </head>
 <body>
-<%- include('../layout/header.ejs')%>
-<%- include('./scheduleScreen.ejs') %>
+<header>
+    <%- include('../layout/header.ejs'); %>
+</header>
+<div id="indexWrap" class="container">
+    <div id="indexLeft" class="mainIndex">
+        <%- include('./chartScreen') %>
+    </div>
+    <div id="indexRight" class="mainIndex">
+        <button id="newSchedule" onclick="scheduleModalOpen()">새로운 일정 추가</button>
+        <%- include('./scheduleScreen.ejs') %>
+    </div>
+</div>
+
 <%- include('../schedule/scheduleModal.ejs')%>
-<%- include('./chartScreen') %>
-<button id="newSchedule" onclick="scheduleModalOpen()">새로운 일정 추가</button>
+
+
 </body>
 </html>

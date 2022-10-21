@@ -19,9 +19,10 @@ let pieChartDraw = function () {
         data: pieChartData,
         options: {
             responsive: false,
-
             legend: {
-                display: false,
+                display: {
+                    boolean:false,
+                },
                 // position
             },
             // legendCallback: customLegend
