@@ -2,9 +2,7 @@
 #headerContainer{
     display: flex;
     justify-content: space-between;
-    border-bottom-style: solid;
     /*background-color: white;*/
-    border-bottom-width: 1px;
     align-items: center;
     height: 80px;
     z-index: 100;
