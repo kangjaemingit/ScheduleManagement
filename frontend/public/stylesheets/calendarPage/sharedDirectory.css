@@ -23,18 +23,11 @@
     }
 }
 
-.sharerProfilePhoto{
+.dirSharerProfilePhoto{
     width: 32px;
-    height: 32px;
-    border-radius: 70px;
-    margin-right: -20px;
-    display:inline-block;
-    z-index: 0;
-}
-.sharerProfilePhoto:hover
-{
-    z-index: 1;
-    margin-right: -20px;
+    height : 32px;
+    border-radius: 70%;
+    margin-right: 5px;
 }
 
 .sharerRootNode{

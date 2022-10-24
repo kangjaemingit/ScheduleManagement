@@ -47,10 +47,6 @@ async function chooseSharerModalOpen(){
 
 function chooseSharerModalClose(){
     chooseSharerModal.classList.toggle('show');
-    userList = [];
-
-    document.getElementById('chosenSharer').innerHTML = null;
-    document.getElementById('chosenUserTableBody').innerHTML = null;
 }
 
 function searchUser(){

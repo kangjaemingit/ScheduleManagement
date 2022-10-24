@@ -78,6 +78,11 @@ body{
     height : 20px;
     cursor : pointer;
 }
+
+#categoryNameGroup{
+    cursor: pointer;
+}
+
 #tagGroup{
     overflow: hidden;
     text-overflow: ellipsis;

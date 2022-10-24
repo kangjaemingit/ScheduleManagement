@@ -22,6 +22,15 @@ function selectedTagRender(){
     document.getElementById('tagSelectedBox').innerHTML = rows;
 }
 
+function selectedTagRenderNotDeleteBtn(){
+    let rows = [];
+    tagList.map((t) => {
+        rows += `<div class="tags"><span class="tagSpan">${t.tagName}</span></div>`
+    })
+
+    document.getElementById('tagSelectedBox').innerHTML = rows;
+}
+
 function tagRemove(tagId){
     tagList = tagList.filter((t) => t._id !== tagId)
     document.getElementById('cb_' + tagId).checked = false;
@@ -29,6 +38,8 @@ function tagRemove(tagId){
 }
 
 async function newCategoryModalOpen(){
+    document.getElementById('categoryModalTitle').innerText = "새로운 카테고리 등록"
+
     fetch('calendar/getTagList', {
         method : 'get'
     }).then((res) => res.json())
@@ -53,9 +64,25 @@ async function newCategoryModalOpen(){
 }
 
 function newCategoryModalClose(){
+    userList = [];
+    tagList = [];
+
+    document.getElementById('categoryName').value = "";
+    document.getElementById('tagSelectArea').style.display = 'block';
+    document.getElementById('categoryName').innerText = "새로운 카테고리 등록";
+    document.getElementById('sharerCheckBox').disabled = false;
+    document.getElementById('categoryCompleteBtnArea').style.display = 'block';
+    document.getElementById('tagSelectedArea').style.width = '50%';
+    document.getElementById('sharerCheckBox').checked = false;
+    sharerChecked(document.getElementById('sharerCheckBox'));
+    document.getElementById('tagSelectedBox').innerHTML = "";
+    document.getElementById('chosenUserTableBody').innerHTML = "";
+    document.getElementById('chosenSharer').innerHTML = "";
+
+    document.getElementById('saveCategoryButton').setAttribute("onClick", `saveNewCategory()`)
+
     newCategoryModal.classList.toggle('show');
     bodyScrollHidden[0].style.overflow='auto'
-    window.location.reload();
 }
 
 

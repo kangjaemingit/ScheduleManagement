@@ -17,6 +17,30 @@ function categoryDelete(id){
     }
 }
 
+function categoryDetailModalOpen(category){
+    userList = category.sharer;
+    tagList = category.tags;
+
+    document.getElementById('tagSelectArea').style.display = 'none';
+
+    selectedTagRenderNotDeleteBtn();
+    saveChooseSharer();
+
+    document.getElementById('categoryModalTitle').innerText = `<${category.categoryName}> 카테고리 상세정보`
+    document.getElementById('categoryName').value = category.categoryName;
+    document.getElementById('sharerCheckBox').disabled = true;
+    document.getElementById('categoryCompleteBtnArea').style.display = 'none';
+    document.getElementById('tagSelectedArea').style.width = '100%';
+
+    if(userList.length){
+        document.getElementById('sharerCheckBox').checked = true;
+        sharerChecked(document.getElementById('sharerCheckBox'));
+        document.getElementById('chooseSharerBtn').style.display = 'none';
+    }
+
+    newCategoryModal.classList.toggle('show');
+}
+
 function categoryEditModalOpen(category){
     console.log(category);
     userList = category.sharer;

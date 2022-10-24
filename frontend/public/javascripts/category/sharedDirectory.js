@@ -45,7 +45,7 @@ async function sharedDirectoryModalOpen() {
             array.map((c) => {
                 rows += `<div class="sharerRootNode">`
                     + `<img class='arrowIcon' src="images/category/arrow-up.png" id='arrow_${c.categoryWriterId}' onclick='sharerChildNodeControl("${c.categoryWriterId}")'>`
-                    + `<img class='sharerProfilePhoto' src='${c.writerProfile}'>`
+                    + `<img class='dirSharerProfilePhoto' src='${c.writerProfile}'>`
                     + `<span>${c.writerName}</span></div>`
                     + `<div class="sharerChildNode" id='cn_${c.categoryWriterId}' style="display: none;">`;
 
