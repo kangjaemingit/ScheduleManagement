@@ -76,7 +76,7 @@ function scheduleEditModalOpen(scheduleId){
     document.getElementById('addressExist').disabled = false
 
     document.getElementById('menu_wrap').style.display = 'block'
-    document.getElementById('scheduleCompleteBtnArea').style.display = 'block';
+    document.getElementById('scheduleCompleteBtnArea').style.display = 'flex';
     document.getElementById('tagInputDiv').style.display = 'block';
     document.getElementById('editModeBtn').style.display = 'none';
 

@@ -8,7 +8,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
+    width: 250px;
     background-position: left;
     min-width: 300px;
     animation: slidedrop 1s ease forwards;
@@ -149,7 +149,4 @@ html{
 }
 #providerSelecter{
     display: none;
-}
-#saveCategoryButton{
-    margin-right: 50px;
 }
