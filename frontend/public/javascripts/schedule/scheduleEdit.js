@@ -1,9 +1,4 @@
-function scheduleEditModalOpen(scheduleId){
-    console.log(scheduleId);
-    // scheduleModalOpen();
-    // openDayModalBG.style.display='none'
-    // openDayModal.style.display='none'
-
+function scheduleDetailModalOpen(scheduleId){
     fetch('/schedule/getScheduleById/' + scheduleId, {
         method : "get"
     }).then((res) => res.json())
@@ -14,7 +9,8 @@ function scheduleEditModalOpen(scheduleId){
                 return;
             }
 
-            document.getElementById('scheduleModalName').innerText = "일정 편집";
+            // 데이터 바인딩
+            document.getElementById('scheduleModalName').innerText = `<${res.schedule.title}>`;
             document.getElementById('scheduleTitle').value = res.schedule.title;
             document.getElementById('contents').value = res.schedule.contents;
             document.getElementById('startDate').value = res.schedule.date.startDate.slice(0, 16);
@@ -27,22 +23,64 @@ function scheduleEditModalOpen(scheduleId){
                 useAddress(document.getElementById('addressExist'));
                 searchPlaces();
             }
-
             tags = res.schedule.tag.map((t) => {
                 return t.tagName;
             })
-            tagRender();
+            tagRenderNotDeleteBtn();
 
-            document.getElementById('btnDeleteSchedule').setAttribute("onclick", `deleteSchedule('${scheduleId}')`);
-            document.getElementById('btnDeleteSchedule').style.display = 'block';
+            // 뷰에서 readOnly 처리
+            document.getElementById('scheduleModalName').readOnly = true
+            document.getElementById('scheduleTitle').readOnly = true
+            document.getElementById('contents').readOnly = true
+            document.getElementById('startDate').readOnly = true
+            document.getElementById('endDate').readOnly = true
+            document.getElementById('priority').disabled = true
+            document.getElementById('addressExist').disabled = true
+            document.getElementById('menu_wrap').style.display = 'none';
+            document.getElementById('scheduleCompleteBtnArea').style.display = 'none';
+            document.getElementById('tagInputDiv').style.display = 'none';
 
-            document.getElementById('btnSaveSchedule').setAttribute("onclick", `updateSchedule('${scheduleId}')`)
+            // 일정 작성자이면 편집모드 버튼 보이게함
+            if(res.scheduleOwner){
+                document.getElementById('editModeBtn').style.display = 'block';
+                document.getElementById('editModeBtn').setAttribute("onclick", `scheduleEditModalOpen('${scheduleId}')`)
+            }
 
-            scheduleModal.classList.toggle('show');
-            console.log(res.schedule);
+            // 태그 삭제 버튼 보이지 않게 함
+            let tagsEl = document.getElementsByClassName('deleteTag')
+
         }).catch((e) => {
-            console.log(e);
+        console.log(e);
     })
+
+    scheduleModal.classList.toggle('show');
+}
+
+function scheduleEditModalOpen(scheduleId){
+    // scheduleModalOpen();
+    // openDayModalBG.style.display='none'
+    // openDayModal.style.display='none'
+
+    document.getElementById('scheduleModalName').innerText += " 일정 편집";
+    tagRender();
+    // readOnly 해제
+    document.getElementById('scheduleModalName').readOnly = false
+    document.getElementById('scheduleTitle').readOnly = false
+    document.getElementById('contents').readOnly = false
+    document.getElementById('startDate').readOnly = false
+    document.getElementById('endDate').readOnly = false
+    document.getElementById('priority').disabled = false
+    document.getElementById('addressExist').disabled = false
+
+    document.getElementById('menu_wrap').style.display = 'block'
+    document.getElementById('scheduleCompleteBtnArea').style.display = 'block';
+    document.getElementById('tagInputDiv').style.display = 'block';
+    document.getElementById('editModeBtn').style.display = 'none';
+
+    document.getElementById('btnDeleteSchedule').setAttribute("onclick", `deleteSchedule('${scheduleId}')`);
+    document.getElementById('btnDeleteSchedule').style.display = 'block';
+
+    document.getElementById('btnSaveSchedule').setAttribute("onclick", `updateSchedule('${scheduleId}')`)
 }
 
 function updateSchedule(scheduleId){

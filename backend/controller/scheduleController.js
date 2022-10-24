@@ -174,9 +174,11 @@ const scheduleController = {
                   return res.json({getScheduleSuccess : false, message : err})
               }
 
-              if(result.scheduleWriter === req.body._id){
+              if(result.scheduleWriter.toString() === req.user._id.toString()){
+                  console.log("true");
                   return res.json({schedule : result, scheduleOwner : true}).status(200);
               } else {
+                  console.log("false");
                   return res.json({schedule : result, scheduleOwner : false}).status(200);
               }
           })
