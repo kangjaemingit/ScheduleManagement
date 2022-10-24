@@ -18,7 +18,10 @@ function scheduleModalOpen(){
 
 function scheduleModalClose(){
     scheduleModal.classList.toggle('show');
-    bodyScrollHidden[0].style.overflow='auto'
+    bodyScrollHidden[0].style.overflow='auto';
+
+    // 값 비우기
+    tags = [];
     document.getElementById('scheduleTitle').value = null;
     document.getElementById('contents').value = null;
     document.getElementById('startDate').value = null;
@@ -29,6 +32,19 @@ function scheduleModalClose(){
     document.getElementById('addressExist').checked = false;
     document.getElementById('tagList').innerHTML = null;
     document.getElementById('keyword').value = "";
+
+    // readOnly 해제
+    document.getElementById('scheduleModalName').readOnly = false
+    document.getElementById('scheduleTitle').readOnly = false
+    document.getElementById('contents').readOnly = false
+    document.getElementById('startDate').readOnly = false
+    document.getElementById('endDate').readOnly = false
+    document.getElementById('priority').disabled = false
+    document.getElementById('addressExist').disabled = false
+    document.getElementById('menu_wrap').style.display = 'block'
+    document.getElementById('scheduleCompleteBtnArea').style.display = 'block';
+    document.getElementById('tagInputDiv').style.display = 'block';
+    document.getElementById('editModeBtn').style.display = 'none';
 
     document.getElementById('mapArea').style.display = 'none';
     document.getElementById('scheduleModalBody').style.width = "25%";
@@ -85,8 +101,6 @@ function validCheck(schedule){
         window.alert("태그는 1개 이상 입력해야 합니다.")
         return false;
     }
-
-
 
     return true;
 }
@@ -170,6 +184,15 @@ function tagRender(){
 
     document.getElementById('tagList').innerHTML = rows;
     document.getElementById('tagInput').value = "";
+}
+
+function tagRenderNotDeleteBtn(){
+    let rows = ""
+    tags.map((tag) => {
+        rows +=`<div class="tags"><span class="tagSpan">${tag}</span></div>`
+    });
+
+    document.getElementById('tagList').innerHTML = rows;
 }
 
 function newTag(){

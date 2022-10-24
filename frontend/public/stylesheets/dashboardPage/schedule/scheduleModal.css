@@ -93,6 +93,15 @@
     display: block;
 }
 
+.tagsView{
+    display: flex;
+    height: 15px;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+}
+
 .tagInput{
     width: 50%;
     height: 15px;
@@ -112,6 +121,7 @@
     height: 12px;
     margin-left: 3px;
     cursor: pointer;
+    border : none;
     display: none;
 }
 
@@ -128,9 +138,6 @@
     justify-content: center;
 }
 
-.deleteTag{
-    border : none;
-}
 body{
     margin:0px;
     padding: 0px;
