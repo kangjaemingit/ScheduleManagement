@@ -10,6 +10,7 @@
     <div id="categoryButtonContainer">
         <button class="btn-secondary" onclick="newCategoryModalOpen();">카테고리 생성</button>
         <button class="btn-secondary" onclick="scheduleModalOpen();">일정 생성</button>
+        <button id="modalOpenBtn" class="btn-secondary" onclick="sharedDirectoryModalOpen();">공유함</button>
     </div>
     <% myCategories.map((category) => {%>
     <div id="categoryContainer">
@@ -27,7 +28,7 @@
 <!--                <img src="images/icon-share.png" style="width: 12px; height: 12px;">-->
 
                 <% category.sharer.map((user) => {%>
-                <div id="imageContainer"><img src="<%=user.profilePhoto%>" style="width: 18px; height: 18px; border-radius: 70%"><span id="userNameContainer"><%=user.name%></span></div>
+                <div id="imageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>
                 <%})%>
 
             </div>

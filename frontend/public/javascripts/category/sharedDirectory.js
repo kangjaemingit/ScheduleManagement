@@ -2,8 +2,13 @@
 async function sharedDirectoryModalOpen() {
     const sharedDirectoryModal = document.getElementById('sharedDirectoryModal');
     sharedDirectoryModal.style.display = 'block';
-    const modalOpenBtn = document.getElementById('modalOpenBtn');
-    modalOpenBtn.style.display = 'none'
+    const moveRightContainer = document.getElementById('indexRight');
+    moveRightContainer.style.marginLeft = '301px';
+    moveRightContainer.style.transition = '1s'
+    const bodyScrollHidden=document.getElementsByTagName('body');
+    bodyScrollHidden[0].style.overflow = 'hidden';
+    // const modalOpenBtn = document.getElementById('modalOpenBtn');
+    // modalOpenBtn.style.display = 'none'
     await fetch('calendar/sharedCategory', {
         method: "get"
     }).then((res) => res.json())
@@ -95,8 +100,13 @@ function movechildModal1() {
 function sharedDirectoryModalClose() {
     const sharedDirectoryModal = document.getElementById('sharedDirectoryModal');
     sharedDirectoryModal.style.display = 'none';
-    const modalOpenBtn = document.getElementById('modalOpenBtn');
-    modalOpenBtn.style.display = 'block'
+    const moveRightContainer = document.getElementById('indexRight');
+    moveRightContainer.style.marginLeft = '0px'
+    moveRightContainer.style.transition = '1s'
+    const bodyScrollHidden=document.getElementsByTagName('body');
+    bodyScrollHidden[0].style.overflow = 'auto';
+    // const modalOpenBtn = document.getElementById('modalOpenBtn');
+    // modalOpenBtn.style.display = 'flex'
 
     // const element2 = document.getElementById('categoryRootbg');
     // // 2. style 변경

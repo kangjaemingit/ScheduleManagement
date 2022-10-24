@@ -10,6 +10,7 @@
 }
 .scheduleModal.show {
     display: block;
+
 }
 
 .scheduleModalBody {
@@ -20,7 +21,7 @@
     top: 50%;
     left: 50%;
     width: 25%;
-    height: 500px;
+    height: 550px;
     padding: 40px;
     text-align: left;
     background-color: rgb(255, 255, 255);
@@ -39,7 +40,7 @@
 }
 
 .scheduleModalPartition{
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
 }
@@ -122,6 +123,7 @@
 }
 
 .scheduleCompleteBtnArea{
+    margin-top:10px ;
     display: flex;
     justify-content: center;
 }

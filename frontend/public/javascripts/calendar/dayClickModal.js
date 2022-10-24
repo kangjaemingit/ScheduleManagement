@@ -1,6 +1,7 @@
 let openDayModalBG = document.getElementById('dayClickModalBG');
 let openDayModal = document.getElementById('dayClickModalBody');
 
+
 function dayClickModalOpen(schedule){
     if(schedule){
         let scheduleList = []
@@ -16,6 +17,7 @@ function dayClickModalOpen(schedule){
         })
         document.getElementById('scheduleTableBody').innerHTML = scheduleList;
     }
+    bodyScrollHidden[0].style.overflow='hidden'
     openDayModalBG.style.display='block'
     openDayModal.style.display='block'
 }
@@ -47,8 +49,10 @@ function tableSort(index) {
 }
 
 function dayModalClosed(){
-    openDayModalBG.style.display='none'
-    openDayModal.style.display='none'
+
+    openDayModalBG.style.display='none';
+    openDayModal.style.display='none';
+    bodyScrollHidden[0].style.overflow='auto';
 }
 
 

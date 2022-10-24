@@ -3,9 +3,9 @@
     position: absolute;
     z-index: 2;
     top:81px;
-    left: 202px;
+    left: 300px;
     height: 110%;
-    width: 200px;
+    width: 301px;
     background-color: white;
     display: none;
     animation: slideleft 1s;
@@ -27,8 +27,14 @@
     width: 32px;
     height: 32px;
     border-radius: 70px;
-    margin-right: 6px;
+    margin-right: -20px;
     display:inline-block;
+    z-index: 0;
+}
+.sharerProfilePhoto:hover
+{
+    z-index: 1;
+    margin-right: -20px;
 }
 
 .sharerRootNode{

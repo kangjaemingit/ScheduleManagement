@@ -1,5 +1,6 @@
 // const body = document.querySelector('body');
 const newCategoryModal = document.querySelector('.newCategoryModal');
+const bodyScrollHidden=document.getElementsByTagName('body');
 
 let tagList = [];
 function selectTagRender(tags){
@@ -37,6 +38,7 @@ async function newCategoryModalOpen(){
                 console.log(res.message);
                 return;
             }
+            bodyScrollHidden[0].style.overflow='hidden'
             selectTagRender(res.tags);
         }).catch((err) => {
             window.alert("태그 불러오기 데이터 통신 실패");
@@ -52,7 +54,7 @@ async function newCategoryModalOpen(){
 
 function newCategoryModalClose(){
     newCategoryModal.classList.toggle('show');
-
+    bodyScrollHidden[0].style.overflow='auto'
     window.location.reload();
 }
 

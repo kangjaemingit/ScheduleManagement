@@ -1,8 +1,8 @@
 function scheduleEditModalOpen(scheduleId){
     console.log(scheduleId);
     // scheduleModalOpen();
-    // openDayModalBG.style.display='none'
-    // openDayModal.style.display='none'
+    openDayModalBG.style.display='none'
+    openDayModal.style.display='none'
 
     fetch('/schedule/getScheduleById/' + scheduleId, {
         method : "get"

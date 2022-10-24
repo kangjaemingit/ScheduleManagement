@@ -13,18 +13,18 @@
         </div>
         <div class="scheduleModalPartition">
         <div class="scheduleModalContents" id="scheduleModalContents">
-            <label class="scheduleModalLabel">제목 <input class="scheduleModalInput" type="text" id="scheduleTitle"></label>
-            <label class="scheduleModalLabel">내용 <input class="scheduleModalInput" type="text" id="contents"></label>
-            <label class="scheduleModalLabel">시작일 <input class="scheduleModalInput" type="datetime-local" id="startDate" onchange="changeStartDate()"></label>
-            <label class="scheduleModalLabel">마감일 <input class="scheduleModalInput" type="datetime-local" id="endDate" onchange="changeEndDate()"></label>
-            <label class="scheduleModalLabel">우선순위 <select class="scheduleModalInput" id="priority">
+            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">제목</div> <input class="scheduleModalInput" type="text" id="scheduleTitle"></label>
+            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">내용</div> <input class="scheduleModalInput" type="text" id="contents"></label>
+            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">시작일</div> <input class="scheduleModalInput" type="datetime-local" id="startDate" onchange="changeStartDate()"></label>
+            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">마감일</div> <input class="scheduleModalInput" type="datetime-local" id="endDate" onchange="changeEndDate()"></label>
+            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">우선순위</div> <select class="scheduleModalInput" id="priority">
                 <option id="hurryup" value="5" >아주 높음</option>
                 <option id="high" value="4">높음</option>
                 <option id="normal" value="3">보통</option>
                 <option id="low" value="2">낮음</option>
                 <option id="laze" value="1" selected>매우 낮음</option>
                 </select></label>
-            <label class="scheduleModalLabel">태그</label>
+            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">태그</div></label>
             <%- include('./autoCompleteModal.ejs')%>
             <div class="tagListArea" id="tagListArea">
                 <div class="tagList" id="tagList">
@@ -43,7 +43,7 @@
         </div>
         <div class="scheduleCompleteBtnArea" id="scheduleCompleteBtnArea">
             <button class="btn-primary" id="btnSaveSchedule" onclick="saveSchedule()">완료</button>
-            <button class="btn-danger" id="scheduleModalClosed" onclick="scheduleModalClose()">취소</button>
+<!--            <button class="btn-danger" id="scheduleModalClosed" onclick="scheduleModalClose()">취소</button>-->
             <button class="btn-danger" id="btnDeleteSchedule" style="display: none">일정삭제</button>
         </div>
     </div>

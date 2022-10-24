@@ -19,6 +19,7 @@
     <%- include('../layout/header.ejs'); %>
 </header>
 <div id="indexWrap" class="container">
+    <%- include('../calendar/dayClickModal.ejs')%>
     <div id="indexLeft" class="mainIndex">
         <%- include('category.ejs'); %>
     </div>
@@ -26,7 +27,8 @@
         <%- include('calendar.ejs'); %>
     </div>
 </div>
-<div id="modalOpenBtn" onclick="sharedDirectoryModalOpen();"></div>
+<!--<div id="modalOpenBtn" onclick="sharedDirectoryModalOpen();"><img src="images/category/shardfolder.png" onclick="sharedDirectoryModalOpen();"/></div>-->
+
 <div>
     <%- include('../category/sharedDirectory.ejs')%>
 </div>

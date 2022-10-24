@@ -1,5 +1,7 @@
 // const body = document.querySelector('body');
 const scheduleModal = document.querySelector('.scheduleModal');
+
+
 let tags = [];
 function scheduleModalOpen(){
     const currTime = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
@@ -8,7 +10,7 @@ function scheduleModalOpen(){
     document.getElementById('scheduleModalName').innerText = "새로운 일정 생성";
 
     scheduleModal.classList.toggle('show');
-
+    bodyScrollHidden[0].style.overflow='hidden'
     if(scheduleModal.classList.contains('show')){
         // body.style.overflow = 'hidden';
     }
@@ -16,7 +18,7 @@ function scheduleModalOpen(){
 
 function scheduleModalClose(){
     scheduleModal.classList.toggle('show');
-
+    bodyScrollHidden[0].style.overflow='auto'
     document.getElementById('scheduleTitle').value = null;
     document.getElementById('contents').value = null;
     document.getElementById('startDate').value = null;
