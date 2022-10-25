@@ -21,7 +21,6 @@ let pieChartDraw = function () {
         options: {
             legend:{
               display:false,
-              position:bottom,
             },
             responsive: false,// legendCallback: customLegend
         }

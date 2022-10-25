@@ -32,7 +32,7 @@ const database = require('./backend/config/database');
 database();
 
 // Router 연결
-const indexRouter = require('./backend/routes/index');
+const dashboardRouter = require('./backend/routes/dashboard');
 const usersRouter = require('./backend/routes/users');
 const loginRouter = require('./backend/routes/login');
 const scheduleRouter = require('./backend/routes/schedule');
@@ -40,7 +40,7 @@ const layoutRouter = require('./backend/routes/layout');
 const calendarRouter = require('./backend/routes/calendar');
 const tagStatisticsRouter = require('./backend/routes/tagStatistics');
 
-app.use('/', indexRouter);
+app.use('/', dashboardRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/schedule', scheduleRouter);
