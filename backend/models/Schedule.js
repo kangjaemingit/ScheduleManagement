@@ -25,6 +25,10 @@ const ScheduleSchema = mongoose.Schema({
         endDate : {
             type : Date
         }
+    },
+    complete : {
+        type : Boolean,
+        default : false
     }
 });
 

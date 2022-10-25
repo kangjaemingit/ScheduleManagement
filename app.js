@@ -36,8 +36,9 @@ const indexRouter = require('./backend/routes/index');
 const usersRouter = require('./backend/routes/users');
 const loginRouter = require('./backend/routes/login');
 const scheduleRouter = require('./backend/routes/schedule');
-const layoutRouter = require('./backend/routes/layout')
-const calendarRouter = require('./backend/routes/calendar')
+const layoutRouter = require('./backend/routes/layout');
+const calendarRouter = require('./backend/routes/calendar');
+const tagStatisticsRouter = require('./backend/routes/tagStatistics');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -45,6 +46,7 @@ app.use('/login', loginRouter);
 app.use('/schedule', scheduleRouter);
 app.use('/layout',layoutRouter);
 app.use('/calendar',calendarRouter);
+app.use('/tagStatistics', tagStatisticsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
