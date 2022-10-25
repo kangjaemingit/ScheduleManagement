@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>태그 통계</title>
+
+    <!--    chart.js chart만들기 위한 주소-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/Chart.min.css">-->
+
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/tagStatistics/totalScheduleMarkArea.css">
 </head>
 <body>
 <header>
     <%- include('../layout/header.ejs'); %>
 </header>
-
+<div id="indexTop">
+    <div class="countContainer"><div class="countContainer2">총 일정 개수</div><span id="totalScheduleCount">총 일정 수 세는 곳</span></div>
+    <div class="countContainer"><div class="countContainer2">사용한 태그 수</div><span id="useTagCount">사용한 태그 수 세는 곳</span></div>
+    <div class="countContainer"><div class="countContainer2">사용자 태그 개수</div><span id="userTagCount">사용자가 사용한 태그 수 세는 곳</span></div>
+</div>
+<div id="indexWrap" class="container">
+    <div id="indexLeft" class="mainIndex">
+        <%- include('tagLeftBarChartScreen.ejs')%>
+<!--            <span class="tagsName">태그명</span>-->
+<!--            <div class="percentageBarContainer" style="height: 100%; width: 100%">-->
+<!--                <div class="percentageBar" style="background-color: lightgreen; border-radius:10px; height: 100%; width: 100%">-->
+<!--                </div>-->
+<!--            </div>-->
+    </div>
+    <div id="indexRight" class="mainIndex">
+        <%- include('tagRightPieChartScreen.ejs')%>
+    </div>
+</div>
 </body>
 </html>

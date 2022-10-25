@@ -67,6 +67,7 @@ html,body{
     }
 }
 #indexRight{
+    display: flex;
     width:80%;
     background-position: right;
     right: 0px;
@@ -87,4 +88,8 @@ html,body{
 #indexWrap{
     display: flex;
     height: 100%;
+}
+#newSchedule{
+    position: absolute;
+    right: 0;
 }

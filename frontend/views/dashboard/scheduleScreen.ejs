@@ -5,15 +5,50 @@
     <title>Title</title>
 </head>
 <body>
-<% for(var i=0; i<5; i++) {%>
-    <div id="scheduleContainer">
-        <div id="update_date">
-            1002
-            <div id="scadule">
-                ㅁ나ㅓㅇㄹㄴ
+<div style="display:flex; margin-left:10px; width: 33%; align-items:start;">
+<div style="display:flex; margin-top: 80px; width: 100%; align-items: center; flex-direction: column; background-color: rgba(235,235,0,0.5);">
+    <div style="align-items: center; display: flex">오늘할일<p>11</p><p>사용자 지정 순</p><img/></div>
+<!--<% for(var i=0; i<5; i++) {%>-->
+<!--    <div id="scheduleContainer">-->
+<!--        <div id="update_date">-->
+<!--            1002-->
+<!--            <div id="scadule">-->
+<!--                ㅁ나ㅓㅇㄹㄴ-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--<%}%>-->
+</div>
+</div>
+<div style="display:flex; margin-left:10px;width: 33%; align-items:start;">
+<div style="display:flex; margin-top: 80px; width: 100%; margin-left:10px; align-items: center; flex-direction: column; background-color: rgba(0,235,0,0.5);">
+    <div style="align-items: center; display: flex">완료<p></p><p>사용자 지정 순</p><img/></div>
+    <% for(var i=0; i<5; i++) {%>
+        <div id="scheduleContainer">
+            <div id="update_date">
+                1002
+                <div id="scadule">
+                    ㅁ나ㅓㅇㄹㄴ
+                </div>
             </div>
         </div>
-    </div>
-<%}%>
+    <%}%>
+</div>
+</div>
+<div style="display:flex; margin-left:10px; width: 33%; align-items:start;">
+<div style="display:flex; margin-top: 80px; width: 100%; margin-left:10px; align-items: center; flex-direction: column; background-color: rgba(235,0,0,0.5);">
+    <div style="align-items: center; display: flex">미완료<p></p><p>사용자 지정 순</p><img/></div>
+    <% for(var i=0; i<5; i++) {%>
+        <div id="scheduleContainer">
+            <div id="update_date">
+                1002
+                <div id="scadule">
+                    ㅁ나ㅓㅇㄹㄴ
+                </div>
+            </div>
+        </div>
+    <%}%>
+</div>
+</div>
 </body>
 </html>
