@@ -1,3 +1,4 @@
+// import {Chart} from "chart.js";
 
 window.onload = function () {
     pieChartDraw();
@@ -18,14 +19,11 @@ let pieChartDraw = function () {
         type: 'pie',
         data: pieChartData,
         options: {
-            responsive: false,
-            legend: {
-                display: {
-                    boolean:false,
-                },
-                // position
+            legend:{
+              display:false,
+              position:bottom,
             },
-            // legendCallback: customLegend
+            responsive: false,// legendCallback: customLegend
         }
     });
 };

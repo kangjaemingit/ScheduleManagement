@@ -39,7 +39,7 @@ function tagRemove(tagId){
 
 async function newCategoryModalOpen(){
     document.getElementById('categoryModalTitle').innerText = "새로운 카테고리 등록"
-
+    bodyScrollHidden[0].style.overflow='hidden'
     fetch('calendar/getTagList', {
         method : 'get'
     }).then((res) => res.json())

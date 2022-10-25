@@ -10,9 +10,9 @@
 <div class="header">
     <div id="headerContainer" class="headercontainer" style="background-color: <%=user.navBgColor%>">
         <div id="browse-category" onclick="movePageModal();">
-            <div id="movePageText">Browse Category</div>
-            <svg id="dropDownArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                <path d="M6 9l6 6 6-6" /></svg>
+            <div id="movePageText">
+                <img id="hamburgerToggle" src="images/layoutHeader/hamburgerblack.png"/>
+            </div>
         </div>
         <%- include("movePageModal") %>
 <!--        <ul id="headerUrlBox">-->
