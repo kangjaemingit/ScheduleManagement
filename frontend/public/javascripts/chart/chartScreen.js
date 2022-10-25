@@ -19,10 +19,12 @@ let pieChartDraw = function () {
         type: 'pie',
         data: pieChartData,
         options: {
-            legend:{
-              display:false,
-            },
-            responsive: false,// legendCallback: customLegend
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                responsive: false,// legendCallback: customLegend
+            }
         }
     });
 };

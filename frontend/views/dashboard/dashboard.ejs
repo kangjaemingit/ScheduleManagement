@@ -11,12 +11,14 @@
 <header>
     <%- include('../layout/header.ejs'); %>
 </header>
+<button id="newSchedule" onclick="scheduleModalOpen()">새로운 일정 추가</button>
 <div id="indexWrap" class="container">
     <div id="indexLeft" class="mainIndex">
         <%- include('./chartScreen') %>
     </div>
+
     <div id="indexRight" class="mainIndex">
-        <button id="newSchedule" onclick="scheduleModalOpen()">새로운 일정 추가</button>
+
         <%- include('./scheduleScreen.ejs') %>
     </div>
 </div>
