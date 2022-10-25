@@ -20,6 +20,7 @@ function categoryDelete(id){
 function categoryDetailModalOpen(category){
     userList = category.sharer;
     tagList = category.tags;
+    bodyScrollHidden[0].style.overflow='hidden'
 
     document.getElementById('tagSelectArea').style.display = 'none';
 
@@ -45,6 +46,7 @@ function categoryEditModalOpen(category){
     console.log(category);
     userList = category.sharer;
     tagList = category.tags;
+    bodyScrollHidden[0].style.overflow='hidden'
 
     fetch('calendar/getTagList', {
         method : 'get'

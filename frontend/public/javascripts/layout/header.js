@@ -11,19 +11,23 @@ function colorChange(){
     const p = document.getElementById("userInfo")
     const paint= document.getElementById('show')
     const logout = document.getElementById('logoutImage')
+    const hamburger = document.getElementById('hamburgerToggle')
     if(luma<127.5){
         // 2. style 변경
         changeBrowseText.style.color = 'white';
         p.style.color='white';
         paint.src="../../images/layoutHeader/paintwhite.png";
         logout.src="../../images/layoutHeader/logoutWhite.png";
+        hamburger.src="../../images/layoutHeader/hamburger.png";
+
     }
     else{
         // 2. style 변경
         p.style.color='black'
         changeBrowseText.style.color = 'black';
         paint.src="../../images/layoutHeader/paintblack.png";
-        logout.src="../../images/layoutHeader/logoutBlack.png"
+        logout.src="../../images/layoutHeader/logoutBlack.png";
+        hamburger.src="../../images/layoutHeader/hamburgerblack.png";
     }
     const  colorData={
         navBgColor: colorval
@@ -45,22 +49,36 @@ let buttonType='dropdown';
 function movePageModal(){
     buttonType=(buttonType=="dropdown")?'up':"dropdown";
     let movePage = document.getElementById('headerUrlBox');
-    if(buttonType=="dropdown"){movePage.style.display='block';}
-    else{movePage.style.display='none';}
+    const hamburger = document.getElementById('hamburgerToggle')
+    if(buttonType=="dropdown"){
+        movePage.style.display='flex';
+        hamburger.src='../../images/category/close_bg_none.png';
+        hamburger.style.width='25px';
+        hamburger.style.height='25px';
+    }
+    else{
+        movePage.style.display='none';
+        hamburger.src='../../images/layoutHeader/hamburgerblack.png';
+        hamburger.style.width='50px';
+        hamburger.style.height='50px';
+    }
 }
-let changeBrowseText=document.getElementById('movePageText');
-let moveCategoryPage=document.getElementById('Calendar');
-let moveDashboardPage=document.getElementById('Dashboard');
-let moveTagStatisticsPage=document.getElementById('TagStatistics')
-moveCategoryPage.addEventListener("click", function (){
-    changeBrowseText.innerText = `Calendar`;
-})
-moveDashboardPage.addEventListener("click", function (){
-    changeBrowseText.innerText = "Dashboard";
-})
-moveTagStatisticsPage.addEventListener("click", function (){
-    changeBrowseText.innerText = "TagStatistics";
-})
+// let changeBrowseText=document.getElementById('movePageText');
+// let moveCategoryPage=document.getElementById('Calendar');
+// let moveDashboardPage=document.getElementById('Dashboard');
+// let moveTagStatisticsPage=document.getElementById('TagStatistics')
+// moveCategoryPage.addEventListener("click", function (){
+//     changeBrowseText.style.marginLeft='65px'
+//     changeBrowseText.innerText = `Calendar`;
+// })
+// moveDashboardPage.addEventListener("click", function (){
+//     changeBrowseText.innerText = "Dashboard";
+//     changeBrowseText.style.marginLeft='65px'
+// })
+// moveTagStatisticsPage.addEventListener("click", function (){
+//     changeBrowseText.innerText = "TagStatistics";
+//     changeBrowseText.style.marginLeft='65px'
+// })
 
 // function headerUrl(){
 //     console.log("들어가냐")

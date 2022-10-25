@@ -17,7 +17,7 @@
         transform: translate3d(-30px,0,0);
     }
     to{
-        z-index: 2;
+        z-index: 1;
         opacity: 1;
         transform: translate3d(0,0,0);
     }
