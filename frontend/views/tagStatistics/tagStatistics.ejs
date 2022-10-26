@@ -15,23 +15,34 @@
 <header>
     <%- include('../layout/header.ejs'); %>
 </header>
-<div id="indexTop">
-    <div class="countContainer"><div class="countContainer2">총 일정 개수</div><span id="totalScheduleCount">총 일정 수 세는 곳</span></div>
-    <div class="countContainer"><div class="countContainer2">사용한 태그 수</div><span id="useTagCount">사용한 태그 수 세는 곳</span></div>
-    <div class="countContainer"><div class="countContainer2">사용자 태그 개수</div><span id="userTagCount">사용자가 사용한 태그 수 세는 곳</span></div>
-</div>
-<div id="indexWrap" class="container">
-    <div id="indexLeft" class="mainIndex">
+
+<div id="indexWrap" class="container" style="padding-left: 20px; padding-right: 20px;">
+
+    <div id="indexLeft" class="mainIndex" >
+        <div style="padding: 20px 0 0 0">
+        <div style="text-align: center">태그별 그래프</div>
+        <%- include('tagRightPieChartScreen.ejs')%>
+        </div>
+        <div style="padding: 20px 0 0 0">
+        <div style="text-align: center">태그별 사용횟수</div>
         <%- include('tagLeftBarChartScreen.ejs')%>
-<!--            <span class="tagsName">태그명</span>-->
-<!--            <div class="percentageBarContainer" style="height: 100%; width: 100%">-->
-<!--                <div class="percentageBar" style="background-color: lightgreen; border-radius:10px; height: 100%; width: 100%">-->
-<!--                </div>-->
-<!--            </div>-->
+        </div>
     </div>
     <div id="indexRight" class="mainIndex">
-        <%- include('tagRightPieChartScreen.ejs')%>
+        <div id="indexTop">
+            <div class="countContainer"><div class="countContainer2">총 일정 개수</div>:<span id="totalScheduleCount">총 일정 수 세는 곳</span></div>
+            <div class="countContainer"><div class="countContainer2">사용한 태그 수</div>:<span id="useTagCount">사용한 태그 수 세는 곳</span></div>
+            <div class="countContainer"><div class="countContainer2">사용자 태그 개수</div>:<span id="userTagCount">사용자가 사용한 태그 수 세는 곳</span></div>
+        </div>
+        <div>
+        <div style="padding: 20px">
+            <div style="text-align: center">
+                총 일정 표시 영역
+            </div>
+        </div>
+        </div>
     </div>
 </div>
+<script src="../javascripts/tagStatistics.js"></script>
 </body>
 </html>

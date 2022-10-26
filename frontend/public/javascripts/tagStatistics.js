@@ -1,10 +1,10 @@
-
 window.onload = function () {
     pieChartDraw();
     barChartDraw();
+    customLagend();
 }
 
-let pieData = {
+let piesData = {
     labels: ['i', 'd', 'o', 'l', 'b', 'a'],
     datasets: [{
         data: [30, 20, 10, 5, 15, 20],
@@ -17,13 +17,26 @@ let pieChartDraw = function () {
 
     window.pieChart = new Chart(piePainter, {
         type: 'pie',
-        data: pieData,
+        data: piesData,
+        borderRadius: 20,
         options: {
             responsive: false,// legendCallback: customLegend
             plugins: {
                 legend: {
-                    display: true,
-                },
+                    display: false,
+                    position: 'right',
+                    generateLabels:
+                        function customLagend() {
+                            let ul = document.createElement("ul");
+                            let label = piesData.labels[0];
+                            let legendColor = piesData.datasets[0].backgroundColor[0];
+                            console.log(label)
+                            console.log(legendColor)
+                            for (let i = 0; i < piesData.datasets.length; i++) {
+                                ul.innerHTML += `<li><span style="width:20px; height: 50px; background-color: ${legendColor[i]}; border-radius: 20px"></span>${label[i]}</li>`;
+                            }
+                        }
+                }
             },
         },
     });
@@ -44,24 +57,34 @@ let barChartDraw = function () {
         type: 'bar',
         data: Data,
         options: {
-            parsing:{},
-            barPercentage:0.5,
+            parsing: {},
+            barPercentage: 0.5,
             borderRadius: 20,
-            borderColor:'transparent',
+            barRadius: 20,
+            borderSkipped: false,
             scales: {
                 xAxis: {
-                    display:false,
+                    display: false,
                 },
-                yAxis:{
-
-                }
             },
             plugins: {
                 legend: {
                     display: false,
                 }
             },
-            indexAxis:'y',
+            indexAxis: 'y',
         },
     });
 };
+
+function customLagend(chart){
+    console.log("chart"+chart);
+    let ul = document.createElement("ul");
+    let label = piesData.labels[0];
+    let legendColor = piesData.datasets[0].backgroundColor[0];
+    console.log(label)
+    console.log(legendColor)
+    for(let i=0; i<piesData.datasets.length;i++) {
+        ul.innerHTML += `<li><span style="width:20px; height: 50px; background-color: ${legendColor[i]}; border-radius: 20px"></span>${label[i]}</li>`;
+    }
+}
