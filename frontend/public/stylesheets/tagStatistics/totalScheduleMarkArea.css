@@ -78,7 +78,7 @@ html,body{
     border-radius: 10px 10px 0 0;
     background-color: rgba(235,235,235,0.2);
 }
-#totalScheduleCount{
+#scheduleAllCount{
     margin-top:5px;
     height: 100px;
     width: 100px;
@@ -87,7 +87,7 @@ html,body{
     align-items: center;
     background-color: rgba(235,235,235,0.2);
 }
-#useTagCount{
+#usedTagAllCount{
     margin-top:5px;
     height: 100px;
     width: 100px;
@@ -96,7 +96,7 @@ html,body{
     align-items: center;
     background-color: rgba(235,235,235,0.2);
 }
-#userTagCount{
+#usedTagKindCount{
     margin-top:5px;
     height: 100px;
     width: 100px;
