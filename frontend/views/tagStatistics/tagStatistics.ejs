@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <title>태그 통계</title>
 
-    <!--    chart.js chart만들기 위한 주소-->
-<!--    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/Chart.min.css">-->
-
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/tagStatistics/totalScheduleMarkArea.css">
 </head>
@@ -16,25 +12,29 @@
     <%- include('../layout/header.ejs'); %>
 </header>
 <div id="indexWrap" class="container" style="padding-left: 20px; padding-right: 20px;">
-
     <div id="indexLeft" class="mainIndex" >
-        <div style="padding: 20px 0 0 0">
-        <div style="text-align: center">태그별 그래프</div>
         <%- include('tagRightPieChartScreen.ejs')%>
-        </div>
-        <div style="padding: 20px 0 0 0">
-        <div style="text-align: center">태그별 사용횟수</div>
         <%- include('tagLeftBarChartScreen.ejs')%>
-        </div>
     </div>
     <div id="indexRight" class="mainIndex">
         <div id="indexTop">
-            <div class="countContainer"><div class="countContainer2">총 일정 개수</div><span id="scheduleAllCount">0</span></div>
-            <div class="countContainer"><div class="countContainer2">사용한 태그 종류</div><span id="usedTagKindCount">0</span></div>
-            <div class="countContainer"><div class="countContainer2">사용한 태그 총 갯수</div><span id="usedTagAllCount">0</span></div>
+            <div class="countContainer">
+                <div class="countContainer2">총 일정 개수</div>
+                <span>:</span>
+                <span id="scheduleAllCount">0</span></div>
+            <div class="countContainer">
+                <div class="countContainer2">사용한 태그 종류</div>
+                <span>:</span>
+                <span id="usedTagKindCount">0</span></div>
+            <div class="countContainer">
+                <div class="countContainer2">사용한 태그 총 갯수</div>
+                <span>:</span>
+                <span id="usedTagAllCount">0</span></div>
         </div>
-        <div>
         <div style="padding: 20px">
+            <div class="totalScheduleGroupBox">
+                <div class="totalScheduleHeader">제목</div><div class="totalScheduleHeader">시작일</div><div class="totalScheduleHeader">종료일</div>
+            </div>
             <%mySchedule.map((s) => {%>
             <div>
                 <%if(s.complete){%>

@@ -113,7 +113,7 @@ let barChartDraw = function () {
         data: barData,
         options: {
             parsing: {},
-            barPercentage: 0.5,
+            barPercentage: 0.1,
             borderRadius: 20,
             barRadius: 20,
             borderSkipped: false,
@@ -121,9 +121,14 @@ let barChartDraw = function () {
               borderWidth : 0,
             },
             scales: {
-                xAxis: {
+                xAxes: {
                     display: false,
                 },
+                yAxes:{
+                    grid:{
+                        borderColor:'#fff'
+                    }
+                }
             },
             plugins: {
                 legend: {

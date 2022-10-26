@@ -14,7 +14,7 @@ function colorChange(){
     const hamburger = document.getElementById('hamburgerToggle')
     if(luma<127.5){
         // 2. style 변경
-        changeBrowseText.style.color = 'white';
+        // changeBrowseText.style.color = 'white';
         p.style.color='white';
         paint.src="../../images/layoutHeader/paintwhite.png";
         logout.src="../../images/layoutHeader/logoutWhite.png";
@@ -24,7 +24,7 @@ function colorChange(){
     else{
         // 2. style 변경
         p.style.color='black'
-        changeBrowseText.style.color = 'black';
+        // changeBrowseText.style.color = 'black';
         paint.src="../../images/layoutHeader/paintblack.png";
         logout.src="../../images/layoutHeader/logoutBlack.png";
         hamburger.src="../../images/layoutHeader/hamburgerblack.png";
