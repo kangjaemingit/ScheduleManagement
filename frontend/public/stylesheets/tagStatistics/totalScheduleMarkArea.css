@@ -4,8 +4,10 @@ html,body{
     height: 100%;
 }
 #indexWrap{
+    padding: 0 20px 0 20px;
     display: flex;
     height: 100%;
+    display: flex;
 }
 #indexTop{
     display: flex;
@@ -15,12 +17,13 @@ html,body{
     box-shadow: 0 2px 0 0 rgba(235, 235, 235, 1);
 }
 #indexLeft{
+    padding-right: 10px;
     background-color: white;
     height: 110%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
+    width: 40%;
     background-position: left;
     min-width: 300px;
     animation: slidedrop 1s ease forwards;
@@ -42,10 +45,9 @@ html,body{
     }
 }
 #indexRight{
-    width:80%;
+    width:60%;
     background-position: right;
     right: 0px;
-    margin-left: 21px;
     animation: slideright 1s ease forwards;
     height: 110%;
 }
@@ -63,7 +65,6 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     margin: 0 20px 0 20px;
     border-radius: 10px;
 }
@@ -74,13 +75,11 @@ html,body{
     flex-direction: column;
     margin: 0 10px 0 10px;
     width: 100%;
-    height: 30px;
     border-radius: 10px 10px 0 0;
     background-color: rgba(235,235,235,0.2);
 }
 #scheduleAllCount{
     margin-top:5px;
-    height: 100px;
     width: 100px;
     display: flex;
     justify-content: center;
@@ -89,7 +88,7 @@ html,body{
 }
 #usedTagAllCount{
     margin-top:5px;
-    height: 100px;
+
     width: 100px;
     display: flex;
     justify-content: center;
@@ -98,7 +97,6 @@ html,body{
 }
 #usedTagKindCount{
     margin-top:5px;
-    height: 100px;
     width: 100px;
     display: flex;
     justify-content: center;

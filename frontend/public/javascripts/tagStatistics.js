@@ -16,8 +16,6 @@ window.onload = function () {
         window.alert("통계데이터 불러오기 데이터 통신 실패");
         console.log(err);
     })
-
-
 }
 
 let pieData = {
@@ -81,12 +79,25 @@ let pieChartDraw = function () {
     window.pieChart  = new Chart(piePainter, {
         type: 'pie',
         data: pieData,
+        borderRadius: 20,
         options: {
             responsive: false,// legendCallback: customLegend
             plugins: {
                 legend: {
-                    display: true,
-                },
+                    display: false,
+                    position: 'right',
+                    generateLabels:
+                        function customLagend() {
+                            let ul = document.createElement("ul");
+                            let label = piesData.labels[0];
+                            let legendColor = piesData.datasets[0].backgroundColor[0];
+                            console.log(label)
+                            console.log(legendColor)
+                            for (let i = 0; i < piesData.datasets.length; i++) {
+                                ul.innerHTML += `<li><span style="width:20px; height: 50px; background-color: ${legendColor[i]}; border-radius: 20px"></span>${label[i]}</li>`;
+                            }
+                        }
+                }
             },
         },
     });
@@ -101,24 +112,34 @@ let barChartDraw = function () {
         type: 'bar',
         data: barData,
         options: {
-            parsing:{},
-            barPercentage:0.5,
+            parsing: {},
+            barPercentage: 0.5,
             borderRadius: 20,
-            borderColor:'transparent',
+            barRadius: 20,
+            borderSkipped: false,
             scales: {
                 xAxis: {
-                    display:false,
+                    display: false,
                 },
-                yAxis:{
-
-                }
             },
             plugins: {
                 legend: {
                     display: false,
                 }
             },
-            indexAxis:'y',
+            indexAxis: 'y',
         },
     });
 };
+
+function customLagend(chart){
+    console.log("chart"+chart);
+    let ul = document.createElement("ul");
+    let label = piesData.labels[0];
+    let legendColor = piesData.datasets[0].backgroundColor[0];
+    console.log(label)
+    console.log(legendColor)
+    for(let i=0; i<piesData.datasets.length;i++) {
+        ul.innerHTML += `<li><span style="width:20px; height: 50px; background-color: ${legendColor[i]}; border-radius: 20px"></span>${label[i]}</li>`;
+    }
+}
