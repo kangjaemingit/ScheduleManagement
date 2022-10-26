@@ -117,6 +117,9 @@ let barChartDraw = function () {
             borderRadius: 20,
             barRadius: 20,
             borderSkipped: false,
+            line : {
+              borderWidth : 0,
+            },
             scales: {
                 xAxis: {
                     display: false,

@@ -2,7 +2,16 @@ const {Schedule} = require("../models/Schedule");
 
 const tagStatisticsController={
     index : async (req, res) => {
-        res.render('tagStatistics/tagStatistics', {user : req.user});
+        try{
+            const mySchedule = await Schedule.find({scheduleWriter : req.user._id})
+                .sort({"date.startDate" : -1})
+                .populate("tag")
+                .exec();
+            res.render('tagStatistics/tagStatistics', {user : req.user, mySchedule});
+        } catch (e){
+            console.log(e);
+        }
+
     },
     tagStatisticsData : async (req, res) => {
         try{
