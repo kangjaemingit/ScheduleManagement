@@ -81,27 +81,26 @@ let pieChartDraw = function () {
         data: pieData,
         borderRadius: 20,
         options: {
-            responsive: false,// legendCallback: customLegend
+            responsive: true,// legendCallback: customLegend
             plugins: {
                 legend: {
-                    display: false,
-                    position: 'right',
-                    generateLabels:
-                        function customLagend() {
-                            let ul = document.createElement("ul");
-                            let label = piesData.labels[0];
-                            let legendColor = piesData.datasets[0].backgroundColor[0];
-                            console.log(label)
-                            console.log(legendColor)
-                            for (let i = 0; i < piesData.datasets.length; i++) {
-                                ul.innerHTML += `<li><span style="width:20px; height: 50px; background-color: ${legendColor[i]}; border-radius: 20px"></span>${label[i]}</li>`;
-                            }
-                        }
+                    display : false,
+                },
+                htmlLegend : function(chart) {
+                    console.log(chart);
                 }
             },
         },
+        plugins: [htmlLegendPlugin],
     });
 };
+
+const htmlLegendPlugin = {
+    id : 'htmlLegend',
+    afterUpdate(chart, args, options){
+        console.log(chart);
+    }
+}
 
 
 
