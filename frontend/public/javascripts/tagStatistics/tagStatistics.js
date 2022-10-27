@@ -81,7 +81,7 @@ function setDefaultData(data){
         labels: pieTagName,
         datasets: [{
             data: pieTagCount,
-            backgroundColor: pieColors
+            backgroundColor: pieColors,
         }]
     };
 
@@ -119,7 +119,7 @@ const htmlLegendPlugin = {
         let allCount = document.getElementById('usedTagAllCount').text;
 
         chart.legend.legendItems.map((item, index) => {
-            rows += `<div class="legendComponent" onclick='pieLegendChangeSchedule("${item.text}")'>` +
+            rows += `<div class="legendComponent" onclick='changeSchedule("${item.text}")'>` +
                 `<div class="legendColor" style="background-color: ${item.fillStyle};"></div>` +
                 `<span>${item.text} : ${tagPercentage(pieData.datasets[0].data[index])}% (${pieData.datasets[0].data[index]})</span>` +
                 `</div>`
@@ -129,7 +129,7 @@ const htmlLegendPlugin = {
     }
 }
 
-function pieLegendChangeSchedule(tag){
+function changeSchedule(tag){
     if(tag === "기타"){
         return;
     }
@@ -147,10 +147,12 @@ function pieLegendChangeSchedule(tag){
             let rows= "";
 
             res.tagInfo.schedule.map((s) => {
-                rows += `<div>`
-                    + (s.complete ? `<img class="completeImg" src="/images/complete.png">` : `<img class="completeImg" src="/images/ready.png">`)
-                    + `<span>${s.title}</span>`
-                    + `<span>${s.date.startDate} ~ ${s.date.endDate}</span></div>`
+                rows += `<div style="overflow: auto; display: flex; justify-content: space-around; margin-top: 5px;">`
+                    + (s.complete ? `<div class="totalScheduleHeader"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>` : `<div class="totalScheduleHeader"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>`)
+                    + `<div class="totalScheduleHeader">${s.title}</div>`
+                    + `<div class="totalScheduleHeader">${new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
+                    + `<div class="totalScheduleHeader">${new Date(s.date.endDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
+                    + `</div>`
             })
 
             document.getElementById('tagStatisticsSchedule').innerHTML = rows
@@ -219,7 +221,8 @@ let barChartDraw = function () {
                 }
             },
             onClick:(e)=>{
-                console.log(e.chart.tooltip.title)
+                changeSchedule(e.chart.tooltip.title);
+                console.log(e.chart)
                 console.log(e.chart.canvas.style.height)
                 console.log(e.size)
             },

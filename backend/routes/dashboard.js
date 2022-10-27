@@ -6,6 +6,6 @@ const checkAuth = require('../config/auth').checkAuth;
 /* GET home page. */
 router.get('/', checkAuth, dashboardController.index);
 
-
+router.post('/updateComplete', checkAuth, dashboardController.updateScheduleComplete);
 
 module.exports = router;
