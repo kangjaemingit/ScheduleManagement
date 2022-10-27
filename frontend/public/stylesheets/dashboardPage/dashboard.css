@@ -93,3 +93,42 @@ html,body{
     position: absolute;
     right: 0;
 }
+
+.dashboardScheduleBox{
+    width: 90%;
+    height: 70px;
+    background-color: white;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.titleBox{
+    margin-top : 10px;
+    margin-left: 10px;
+}
+
+.completeImg{
+    width: 14px;
+    height: 14px;
+}
+
+.dateBox{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+
+}
+
+.dashboardScheduleContainer{
+    display:flex;
+    margin-left:10px;
+    width: 33%;
+    align-items:start;
+}
+
+.dashboardScheduleWrap{
+    display:flex;
+    margin-top: 80px; width: 100%;
+    align-items: center;
+    flex-direction: column;
+}

@@ -1,4 +1,5 @@
 const {Schedule} = require("../models/Schedule");
+const {Tags} = require("../models/Tags");
 
 const tagStatisticsController={
     index : async (req, res) => {
@@ -51,8 +52,6 @@ const tagStatisticsController={
 
             usedTagKindCount = usedTags.length;
 
-            console.log("총 일정 수 : " + scheduleAllCount + " / 사용된 태그 종류 수 : " + usedTagKindCount + " / 사용된 태그 수 : " + usedTagAllCount);
-            console.log(usedTags);
 
             return res.json({
                 statisticsDataSuccess : true,
@@ -67,6 +66,20 @@ const tagStatisticsController={
             return res.json({statisticsDataSuccess : false, message : e})
         }
 
+    },
+    findMyTagByTagName : (req, res) => {
+        Tags.findOne({tagName : req.params.tagName})
+            .populate({
+                path : 'schedule',
+                match : {scheduleWriter : req.user._id}
+            })
+            .exec((err, result) => {
+                if(err){
+                    console.log(err);
+                    return res.json({getTagSuccess : false, message : err})
+                }
+                return res.json({tagInfo : result}).status(200);
+            })
     }
 
 }

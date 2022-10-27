@@ -86,6 +86,7 @@ const categoryController = {
         Category.find({$and : [{sharer: {$in: req.user._id}}, {$ne : {categoryWriter : req.user._id}}]})
             .populate("categoryWriter")
             .populate("sharer")
+            .populate("tags")
             .exec((err, result) => {
                 if (err) {
                     console.log(err);

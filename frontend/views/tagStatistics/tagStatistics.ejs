@@ -35,21 +35,23 @@
             <div class="totalScheduleGroupBox">
                 <div class="totalScheduleHeader">제목</div><div class="totalScheduleHeader">시작일</div><div class="totalScheduleHeader">종료일</div>
             </div>
+            <div id="tagStatisticsSchedule">
             <%mySchedule.map((s) => {%>
             <div>
                 <%if(s.complete){%>
-                    <img src="/images/complete.png" style="width: 15px; height: 15px">
+                    <img class="completeImg" src="/images/complete.png">
                 <%} else {%>
-                    <img src="/images/ready.png" style="width: 15px; height: 15px">
+                    <img class="completeImg" src="/images/ready.png">
                 <%}%>
                 <span><%=s.title%></span>
                 <span><%=s.date.startDate%> ~ <%=s.date.endDate%></span>
             </div>
             <%});%>
+            </div>
         </div>
         </div>
     </div>
 </div>
-<script src="../javascripts/tagStatistics.js"></script>
+<script src="../javascripts/tagStatistics/tagStatistics.js"></script>
 </body>
 </html>

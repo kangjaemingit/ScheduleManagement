@@ -118,6 +118,39 @@ function changeCategorySchedule(schedule){
     calendar.render()
 }
 
+function changeCategoryMySchedule(category){
+    calendar.removeAllEvents();
+    const tags = category.tags.map((t) => {return t._id});
+
+    fetch('calendar/getMyScheduleByTag', {
+        method: 'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify({tag : tags})
+    }).then((res) => res.json())
+        .then(res => {
+            if(res.getMyScheduleSuccess == false){
+                window.alert(res.message)
+                return;
+            }
+            for (let i = 0; i < res.schedule.length; i++) {
+                calendar.addEvent({
+                    _id: res.schedule[i]._id,
+                    scheduleWriter: res.schedule[i].scheduleWriter.name,
+                    title: res.schedule[i].title,
+                    start: res.schedule[i].date.startDate,
+                    end: res.schedule[i].date.endDate,
+                    color: "#4bc0c0",
+                })
+            }
+
+            calendar.render()
+        });
+
+
+}
+
 function MyScheduleRender(){
     calendar.removeAllEvents();
     fetch('calendar/getMySchedule', {

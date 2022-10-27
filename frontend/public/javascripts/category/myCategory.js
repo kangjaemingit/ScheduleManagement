@@ -17,6 +17,11 @@ function categoryDelete(id){
     }
 }
 
+function myCategorySelect(category){
+    changeCategoryMySchedule(category);
+    categoryDetailModalOpen(category);
+}
+
 function categoryDetailModalOpen(category){
     userList = category.sharer;
     tagList = category.tags;

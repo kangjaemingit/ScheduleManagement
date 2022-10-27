@@ -42,31 +42,48 @@ function dynamicColors(){
 };
 
 function setDefaultData(data){
-    let tagName = [];
-    let tagCount = [];
-    let colors = [];
+    let barTagName = [];
+    let barTagCount = [];
+    let barColors = [];
 
     data.map((el) => {
-        tagName.push(el.tagName);
-        tagCount.push(el.count);
-        colors.push(dynamicColors());
+        barTagName.push(el.tagName);
+        barTagCount.push(el.count);
+        barColors.push(dynamicColors());
     })
 
-    pieData = {
-        labels: tagName,
+    barData = {
+        labels: barTagName,
         datasets: [{
-            data: tagCount,
-            backgroundColor: colors
+            data : barTagCount,
+            backgroundColor: barColors
+        }]
+    }
+
+    let pieTagName = [];
+    let pieTagCount = [];
+    let pieColors = ['#fbb9ba', '#fdd3ba', '#fcecb9', '#c2fdb9', '#b9e8fc', '#c1bafd', '#eebbfe', '#e3e3e3'];
+    let etcCount = 0;
+
+    for(let i = 0; i < data.length; i++){
+        if(i < 7){
+           pieTagName.push(data[i].tagName);
+           pieTagCount.push(data[i].count);
+        } else{
+            etcCount += data[i].count;
+        }
+    }
+    pieTagName.push("기타");
+    pieTagCount.push(etcCount);
+
+    pieData = {
+        labels: pieTagName,
+        datasets: [{
+            data: pieTagCount,
+            backgroundColor: pieColors
         }]
     };
 
-    barData = {
-        labels: tagName,
-        datasets: [{
-            data : tagCount,
-            backgroundColor: colors
-        }]
-    }
     barChartDraw();
     pieChartDraw();
 }
@@ -81,13 +98,10 @@ let pieChartDraw = function () {
         data: pieData,
         borderRadius: 20,
         options: {
-            responsive: true,// legendCallback: customLegend
+            responsive: false,// legendCallback: customLegend
             plugins: {
                 legend: {
                     display : false,
-                },
-                htmlLegend : function(chart) {
-                    console.log(chart);
                 }
             },
         },
@@ -99,11 +113,60 @@ const htmlLegendPlugin = {
     id : 'htmlLegend',
     afterUpdate(chart, args, options){
         console.log(chart);
+        let rows = "";
+
+        let allCount = document.getElementById('usedTagAllCount').text;
+
+        chart.legend.legendItems.map((item, index) => {
+            rows += `<div class="legendComponent" onclick='pieLegendChangeSchedule("${item.text}")'>` +
+                `<div class="legendColor" style="background-color: ${item.fillStyle};"></div>` +
+                `<span>${item.text} : ${tagPercentage(pieData.datasets[0].data[index])}% (${pieData.datasets[0].data[index]})</span>` +
+                `</div>`
+        })
+
+        document.getElementById('div-legend').innerHTML = rows;
     }
 }
 
+function pieLegendChangeSchedule(tag){
+    if(tag === "기타"){
+        return;
+    }
 
+    fetch('tagStatistics/findMyTagByTagName/' + tag, {
+        method : 'get'
+    }).then((res) => res.json())
+        .then((res) => {
+            if(res.getTagSuccess === false){
+                window.alert("태그로 일정을 불러오는데 실패했습니다.");
+                console.log(res.message);
+                return;
+            }
 
+            let rows= "";
+
+            res.tagInfo.schedule.map((s) => {
+                rows += `<div>`
+                    + (s.complete ? `<img class="completeImg" src="/images/complete.png">` : `<img class="completeImg" src="/images/ready.png">`)
+                    + `<span>${s.title}</span>`
+                    + `<span>${s.date.startDate} ~ ${s.date.endDate}</span></div>`
+            })
+
+            document.getElementById('tagStatisticsSchedule').innerHTML = rows
+
+        }).catch((err) => {
+        window.alert("태그로 일정 불러오기 실패");
+        console.log(err);
+    })
+}
+
+function tagPercentage(count){
+    let allCount = document.getElementById('usedTagAllCount').innerText;
+
+    console.log(allCount);
+    return ((count/allCount) * 100).toFixed(1);
+
+}
 
 let barChartDraw = function () {
     let piePainter = document.getElementById('barChart').getContext('2d');
@@ -111,6 +174,7 @@ let barChartDraw = function () {
         type: 'bar',
         data: barData,
         options: {
+            responsive: false,
             parsing: {},
             barPercentage: 0.1,
             borderRadius: 20,
@@ -138,15 +202,3 @@ let barChartDraw = function () {
         },
     });
 };
-
-function customLagend(chart){
-    console.log("chart"+chart);
-    let ul = document.createElement("ul");
-    let label = piesData.labels[0];
-    let legendColor = piesData.datasets[0].backgroundColor[0];
-    console.log(label)
-    console.log(legendColor)
-    for(let i=0; i<piesData.datasets.length;i++) {
-        ul.innerHTML += `<li><span style="width:20px; height: 50px; background-color: ${legendColor[i]}; border-radius: 20px"></span>${label[i]}</li>`;
-    }
-}

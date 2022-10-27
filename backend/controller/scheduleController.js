@@ -98,7 +98,6 @@ const scheduleController = {
         }
     },
     deleteSchedule : (req, res) => {
-        console.log(req.body.scheduleId);
         Schedule.deleteOne({_id : req.body.scheduleId})
             .exec((err) => {
                 if(err){
@@ -137,7 +136,6 @@ const scheduleController = {
 
             sharedSchedule = [...new Set(sharedSchedule.map(JSON.stringify))].map(JSON.parse);
 
-            console.log(sharedSchedule);
 
             const mySchedule = await Schedule.find({scheduleWriter:req.user._id})
                 .populate("tag")
@@ -165,6 +163,18 @@ const scheduleController = {
                 return res.json({getMyScheduleSuccess : true, schedule : result});
             });
     },
+    getMyScheduleByTag : (req, res) => {
+        Schedule.find({$and : [{scheduleWriter:req.user._id}, {tag : {$in : req.body.tag}}]})
+            .populate("tag")
+            .populate("scheduleWriter")
+            .exec((err, result) => {
+                if(err){
+                    console.log(err);
+                    return res.json({getMyScheduleSuccess : false, message : err})
+                }
+                return res.json({getMyScheduleSuccess : true, schedule : result});
+            });
+    },
     getScheduleById : (req, res) => {
       Schedule.findOne({_id : req.params.id})
           .populate("tag")
@@ -175,10 +185,8 @@ const scheduleController = {
               }
 
               if(result.scheduleWriter.toString() === req.user._id.toString()){
-                  console.log("true");
                   return res.json({schedule : result, scheduleOwner : true}).status(200);
               } else {
-                  console.log("false");
                   return res.json({schedule : result, scheduleOwner : false}).status(200);
               }
           })
@@ -205,7 +213,6 @@ const scheduleController = {
                     console.log(err);
                     return res.json({getScheduleSuccess : false, message : err})
                 }
-                console.log(result);
                 return res.json({schedule : result}).status(200);
             })
     }

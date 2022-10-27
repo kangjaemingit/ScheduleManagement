@@ -7,4 +7,6 @@ router.get('/', checkAuth, tagStatisticsController.index);
 
 router.get('/data', checkAuth, tagStatisticsController.tagStatisticsData);
 
+router.get('/findMyTagByTagName/:tagName', checkAuth, tagStatisticsController.findMyTagByTagName);
+
 module.exports = router;

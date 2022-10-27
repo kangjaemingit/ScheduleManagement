@@ -76,6 +76,8 @@ function categorySelect(category) {
         }).catch((err) => {
         console.log(err);
     })
+
+    categoryDetailModalOpen(category);
 }
 
 function sharerChildNodeControl(id) {

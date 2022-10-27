@@ -5,50 +5,101 @@
     <title>Title</title>
 </head>
 <body>
-<div style="display:flex; margin-left:10px; width: 33%; align-items:start;">
-<div style="display:flex; margin-top: 80px; width: 100%; align-items: center; flex-direction: column; background-color: rgba(235,235,0,0.5);">
-    <div style="align-items: center; display: flex">오늘할일<p>11</p><p>사용자 지정 순</p><img/></div>
-<!--<% for(var i=0; i<5; i++) {%>-->
-<!--    <div id="scheduleContainer">-->
-<!--        <div id="update_date">-->
-<!--            1002-->
-<!--            <div id="scadule">-->
-<!--                ㅁ나ㅓㅇㄹㄴ-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--<%}%>-->
-</div>
-</div>
-<div style="display:flex; margin-left:10px;width: 33%; align-items:start;">
-<div style="display:flex; margin-top: 80px; width: 100%; margin-left:10px; align-items: center; flex-direction: column; background-color: rgba(0,235,0,0.5);">
-    <div style="align-items: center; display: flex">완료<p></p><p>사용자 지정 순</p><img/></div>
-    <% for(var i=0; i<5; i++) {%>
-        <div id="scheduleContainer">
-            <div id="update_date">
-                1002
-                <div id="scadule">
-                    ㅁ나ㅓㅇㄹㄴ
-                </div>
+<div class="dashboardScheduleContainer">
+<div class="dashboardScheduleWrap" style="background-color: #fcecb9;">
+    <div style="align-items: center; display: flex">오늘일정<p>11</p><p>사용자 지정 순</p><img/></div>
+    <%schedule.map((s) => {%>
+        <div class="dashboardScheduleBox">
+            <div class="titleBox">
+                <%if(s.complete){%>
+                    <img class="completeImg" src="images/complete.png">
+                <%} else {%>
+                    <img class="completeImg" src="images/ready.png">
+                <%}%>
+                <span><%=s.title%></span>
+            </div>
+            <div class="dateBox">
+                <span><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
+                    ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
+                </span>
             </div>
         </div>
-    <%}%>
+    <%});%>
 </div>
 </div>
-<div style="display:flex; margin-left:10px; width: 33%; align-items:start;">
-<div style="display:flex; margin-top: 80px; width: 100%; margin-left:10px; align-items: center; flex-direction: column; background-color: rgba(235,0,0,0.5);">
-    <div style="align-items: center; display: flex">미완료<p></p><p>사용자 지정 순</p><img/></div>
-    <% for(var i=0; i<5; i++) {%>
-        <div id="scheduleContainer">
-            <div id="update_date">
-                1002
-                <div id="scadule">
-                    ㅁ나ㅓㅇㄹㄴ
-                </div>
+
+<div class="dashboardScheduleContainer">
+    <div class="dashboardScheduleWrap" style="background-color: #b9e8fc;">
+        <div style="align-items: center; display: flex">미완료<p>11</p><p>사용자 지정 순</p><img/></div>
+        <%schedule.map((s) => {%>
+        <%if(s.complete === false){%>
+        <div class="dashboardScheduleBox">
+            <div class="titleBox">
+                <%if(s.complete){%>
+                    <img class="completeImg" src="images/complete.png">
+                <%} else {%>
+                    <img class="completeImg" src="images/ready.png">
+                <%}%>
+                <span><%=s.title%></span>
+            </div>
+            <div class="dateBox">
+                <span><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
+                    ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
+                </span>
             </div>
         </div>
-    <%}%>
+        <%}%>
+        <%});%>
+    </div>
 </div>
+
+<div class="dashboardScheduleContainer">
+    <div class="dashboardScheduleWrap" style="background-color: #c2fdb9;">
+        <div style="align-items: center; display: flex">완료<p>11</p><p>사용자 지정 순</p><img/></div>
+        <%schedule.map((s) => {%>
+        <%if(s.complete){%>
+        <div class="dashboardScheduleBox">
+            <div class="titleBox">
+                <%if(s.complete){%>
+                    <img class="completeImg" src="images/complete.png">
+                <%} else {%>
+                    <img class="completeImg" src="images/ready.png">
+                <%}%>
+                <span><%=s.title%></span>
+            </div>
+            <div class="dateBox">
+                <span><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
+                    ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
+                </span>
+            </div>
+        </div>
+        <%}
+        });%>
+    </div>
 </div>
+
+<div class="dashboardScheduleContainer">
+    <div class="dashboardScheduleWrap" style="background-color: #eebbfe;">
+        <div style="align-items: center; display: flex">공유받은 오늘일정<p>11</p><p>사용자 지정 순</p><img/></div>
+        <%schedule.map((s) => {%>
+        <div class="dashboardScheduleBox">
+            <div class="titleBox">
+                <%if(s.complete){%>
+                    <img class="completeImg" src="images/complete.png">
+                <%} else {%>
+                    <img class="completeImg" src="images/ready.png">
+                <%}%>
+                <span><%=s.title%></span>
+            </div>
+            <div class="dateBox">
+                <span><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
+                    ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
+                </span>
+            </div>
+        </div>
+        <%});%>
+    </div>
+</div>
+
 </body>
 </html>

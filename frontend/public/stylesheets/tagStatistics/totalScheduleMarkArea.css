@@ -101,3 +101,8 @@ html,body{
     align-items: center;
     background-color: rgba(235,235,235,0.2);
 }
+
+.completeImg{
+    width: 15px;
+    height: 15px;
+}

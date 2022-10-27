@@ -13,7 +13,6 @@ router.get('/naver', passport.authenticate('naver'));
 // 네이버 아이디 로그인 콜백
 router.get('/auth/naver', passport.authenticate('naver', {failureRedirect:'/login'}), function(req, res){
     console.log('callback login from naver');
-    console.log(req.session.passport);
     res.redirect('/')
 });
 
@@ -21,7 +20,7 @@ router.get('/auth/naver', passport.authenticate('naver', {failureRedirect:'/logi
 router.get('/kakao', passport.authenticate('kakao'));
 // 카카오 아이디 로그인 콜백
 router.get('/auth/kakao', passport.authenticate('kakao', {failureRedirect: '/login'}) ,function(req, res){
-    console.log('callback login from kakao', req.user);
+    console.log('callback login from kakao');
     res.redirect('/')
 });
 

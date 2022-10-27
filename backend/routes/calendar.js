@@ -29,6 +29,8 @@ router.get('/getScheduleByUser',checkAuth,scheduleController.getScheduleByUser);
 
 router.get('/getMySchedule',checkAuth,scheduleController.getMySchedule);
 
+router.post('/getMyScheduleByTag', checkAuth, scheduleController.getMyScheduleByTag);
+
 router.get('/sharedCategory', checkAuth, categoryController.sharedCategory);
 
 router.post('/getScheduleByCategory', checkAuth, scheduleController.getScheduleByCategory);

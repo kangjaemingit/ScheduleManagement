@@ -15,7 +15,7 @@
     <% myCategories.map((category) => {%>
     <div id="categoryContainer">
         <div id="shareobject">
-            <div id="categoryNameGroup" onclick="categoryDetailModalOpen(<%=JSON.stringify(category)%>)">
+            <div id="categoryNameGroup" onclick="myCategorySelect(<%=JSON.stringify(category)%>)">
                 <p><%=category.categoryName%></p>
             </div>
             <div id="tagGroup">

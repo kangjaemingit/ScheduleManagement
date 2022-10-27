@@ -15,9 +15,8 @@ const dashboardController={
             .populate('tag')
             .exec();
 
-        console.log("dashboard : " + schedule);
 
-        res.render('dashboard/dashboard', { title: 'Express', user : req.user });
+        res.render('dashboard/dashboard', { title: 'Express', user : req.user, schedule });
     }
 }
 module.exports = dashboardController;
