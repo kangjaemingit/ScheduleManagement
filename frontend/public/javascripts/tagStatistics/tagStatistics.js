@@ -149,9 +149,9 @@ function changeSchedule(tag){
             res.tagInfo.schedule.map((s) => {
                 rows += `<div style="overflow: auto; display: flex; justify-content: space-around; margin-top: 5px;">`
                     + (s.complete ? `<div class="totalScheduleHeader"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>` : `<div class="totalScheduleHeader"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>`)
-                    + `<div class="totalScheduleHeader">${s.title}</div>`
-                    + `<div class="totalScheduleHeader">${new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
-                    + `<div class="totalScheduleHeader">${new Date(s.date.endDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
+                    + `<div class="totalScheduleHeader2">${s.title}</div>`
+                    + `<div class="totalScheduleHeader2">${new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
+                    + `<div class="totalScheduleHeader2">${new Date(s.date.endDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
                     + `</div>`
             })
 
