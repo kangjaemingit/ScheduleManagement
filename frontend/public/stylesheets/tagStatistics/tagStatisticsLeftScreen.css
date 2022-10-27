@@ -1,7 +1,9 @@
 .tagStatisticsGroup{
+    margin-top: 25px;
     padding: 20px 0 0 0;
     border: 1px solid rgba(235,235,235,1);
     padding: 10px;
+    height: 350px;
 }
 .tagStatisticsTitle{
     text-align: center;
@@ -32,8 +34,16 @@
     margin-right: 5px;
 }
 
-.legendComponent{
+.legendComponent {
     margin-bottom: 5px;
     display: flex;
     cursor: pointer;
+}
+
+#paintBarChart{
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    justify-content: center;
+    display: flex;
 }

@@ -12,6 +12,7 @@ window.onload = function () {
             document.getElementById('usedTagKindCount').innerText = res.usedTagKindCount
             document.getElementById('usedTagAllCount').innerText = res.usedTagAllCount
             setDefaultData(res.usedTags);
+
         }).catch((err) => {
         window.alert("통계데이터 불러오기 데이터 통신 실패");
         console.log(err);
@@ -170,26 +171,45 @@ function tagPercentage(count){
 
 let barChartDraw = function () {
     let piePainter = document.getElementById('barChart').getContext('2d');
+    let canvasHeight = document.getElementById("barChart");
+        let h = barData.labels.length * 50;
+        canvasHeight.style.height=h+'px';
     window.pieChart = new Chart(piePainter, {
         type: 'bar',
         data: barData,
         options: {
             responsive: false,
             parsing: {},
-            barPercentage: 0.1,
+            barPercentage: 0.5,
+            categoryPercentage:0.5,
             borderRadius: 20,
             barRadius: 20,
             borderSkipped: false,
+            maintainAspectRatio:false,
             line : {
               borderWidth : 0,
             },
             scales: {
                 xAxes: {
-                    display: false,
+                    grid:{
+                        drawBorder:false,
+                        drawTicks:false,
+                        drawOnChartArea:false,
+
+                    },
+                    title:{
+                        display:false,
+                    },
+                    ticks:{
+                        display:false,
+                    }
                 },
                 yAxes:{
                     grid:{
-                        borderColor:'#fff'
+                        borderColor:'#fff',
+                        drawBorder:false,
+                        drawTicks:false,
+                        drawOnChartArea:false,
                     }
                 }
             },
@@ -197,6 +217,11 @@ let barChartDraw = function () {
                 legend: {
                     display: false,
                 }
+            },
+            onClick:(e)=>{
+                console.log(e.chart.tooltip.title)
+                console.log(e.chart.canvas.style.height)
+                console.log(e.size)
             },
             indexAxis: 'y',
         },
