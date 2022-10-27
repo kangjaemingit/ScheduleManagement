@@ -41,6 +41,7 @@
                 <div class="totalScheduleHeader1" >시작일</div>
                 <div class="totalScheduleHeader1" >종료일</div>
             </div>
+            <div id="tagStatisticsSchedule">
             <% mySchedule.map((s) => { %>
             <div style="overflow: auto; display: flex; justify-content: space-around; margin-top: 10px;">
                 <% if(s.complete){ %>
@@ -51,7 +52,8 @@
                 <div class="totalScheduleHeader2"><%= s.title %></div>
                 <div class="totalScheduleHeader2"><%= new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16) %></div>
                 <div class="totalScheduleHeader2"><%= new Date(s.date.endDate).toISOString().replace('T', ' ').substring(0, 16) %></div>
-                </span>
+            </div>
+            <%});%>
             </div>
         </div>
     </div>
