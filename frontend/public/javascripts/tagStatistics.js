@@ -12,6 +12,7 @@ window.onload = function () {
             document.getElementById('usedTagKindCount').innerText = res.usedTagKindCount
             document.getElementById('usedTagAllCount').innerText = res.usedTagAllCount
             setDefaultData(res.usedTags);
+
         }).catch((err) => {
         window.alert("통계데이터 불러오기 데이터 통신 실패");
         console.log(err);
@@ -108,25 +109,45 @@ let pieChartDraw = function () {
 
 let barChartDraw = function () {
     let piePainter = document.getElementById('barChart').getContext('2d');
+    let canvasHeight = document.getElementById("barChart");
+        let h = barData.labels.length * 50;
+        canvasHeight.style.height=h+'px';
     window.pieChart = new Chart(piePainter, {
         type: 'bar',
         data: barData,
         options: {
+            responsive: false,
             parsing: {},
-            barPercentage: 0.1,
+            barPercentage: 0.5,
+            categoryPercentage:0.5,
             borderRadius: 20,
             barRadius: 20,
             borderSkipped: false,
+            maintainAspectRatio:false,
             line : {
               borderWidth : 0,
             },
             scales: {
                 xAxes: {
-                    display: false,
+                    grid:{
+                        drawBorder:false,
+                        drawTicks:false,
+                        drawOnChartArea:false,
+
+                    },
+                    title:{
+                        display:false,
+                    },
+                    ticks:{
+                        display:false,
+                    }
                 },
                 yAxes:{
                     grid:{
-                        borderColor:'#fff'
+                        borderColor:'#fff',
+                        drawBorder:false,
+                        drawTicks:false,
+                        drawOnChartArea:false,
                     }
                 }
             },
@@ -134,6 +155,11 @@ let barChartDraw = function () {
                 legend: {
                     display: false,
                 }
+            },
+            onClick:(e)=>{
+                console.log(e.chart.tooltip.title)
+                console.log(e.chart.canvas.style.height)
+                console.log(e.size)
             },
             indexAxis: 'y',
         },
@@ -151,3 +177,22 @@ function customLagend(chart){
         ul.innerHTML += `<li><span style="width:20px; height: 50px; background-color: ${legendColor[i]}; border-radius: 20px"></span>${label[i]}</li>`;
     }
 }
+function updateCanvasHeight(){
+    let canvas = document.getElementById("barChart");
+    for (i; i < barData.labels.length; i ++) {
+        let h = i*50;
+        canvas.style.height=h+'px';
+    }
+}
+// let canvas = document.getElementById("barChart");
+// let context = canvas.getContext('2d');
+// let i = 0;
+//
+// context.lineWidth = 1;
+// context.strokeStyle = 'pink';
+//
+// for (i; i < canvas.height; i ++) {
+//     context.moveTo(i, 0);
+//     context.lineTo(0, i);
+// }
+// context.stroke();
