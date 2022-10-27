@@ -178,6 +178,7 @@ let barChartDraw = function () {
         type: 'bar',
         data: barData,
         options: {
+            onresize:true,
             responsive: false,
             parsing: {},
             barPercentage: 0.5,
