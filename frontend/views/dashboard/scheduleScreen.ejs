@@ -37,11 +37,11 @@
 </div>
 </div>
 
-<div class="dashboardScheduleContainer">
+<div class="dashboardScheduleContainer" ondragover="dragover_handler(event);" ondrop="drop_handler(event);">
     <div class="dashboardScheduleWrap" style="background-color: #b9e8fc;">
         <div style="align-items: center; display: flex">미완료<p><%=readySchedule.length%></p><p>사용자 지정 순</p><img/></div>
         <%readySchedule.map((s) => {%>
-        <div class="dashboardScheduleBox">
+        <div class="dashboardScheduleBox" draggable="true" ondrag="drag_handler(event);">
             <div class="titleBox">
                 <img class="completeImg" src="images/ready.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', true)">
                 <span><%=s.title%></span>
@@ -56,11 +56,11 @@
     </div>
 </div>
 
-<div class="dashboardScheduleContainer">
+<div class="dashboardScheduleContainer" ondragover="dragover_handler(event);" ondrop="drop_handler(event);">
     <div class="dashboardScheduleWrap" style="background-color: #c2fdb9;">
         <div style="align-items: center; display: flex">완료<p><%=completeSchedule.length%></p><p>사용자 지정 순</p><img/></div>
         <%completeSchedule.map((s) => {%>
-        <div class="dashboardScheduleBox">
+        <div class="dashboardScheduleBox" draggable="true" ondrag="drag_handler(event);">
             <div class="titleBox">
                 <img class="completeImg" src="images/complete.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', false)">
                 <span><%=s.title%></span>

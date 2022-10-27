@@ -9,7 +9,6 @@ html,body{
     height: 100%;
 }
 #indexTop{
-    margin-top: 25px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -26,7 +25,6 @@ html,body{
     background-position: left;
     min-width: 300px;
     animation: slidedrop 1s ease forwards;
-    box-shadow : 2px 0 0 0 rgba(0,0,0,0.1);
 }
 @keyframes slidedrop {
     0%{
@@ -76,6 +74,8 @@ html,body{
     width: 100%;
     border-radius: 10px 10px 0 0;
     background-color: rgba(235,235,235,0.2);
+    font-size: 16px;
+    font-weight: 600;
 }
 #scheduleAllCount{
     margin-top:5px;
@@ -108,7 +108,16 @@ html,body{
     height: 15px;
 }
 
-.totalScheduleHeader{
+.totalScheduleHeader1{
     width: 195px;
+    height: 20px;
     text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.totalScheduleHeader2{
+    width: 195px;
+    height: 20px;
+    text-align: center;
+    font-size: 14px;
 }
