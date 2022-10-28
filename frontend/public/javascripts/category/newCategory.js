@@ -1,6 +1,6 @@
 // const body = document.querySelector('body');
 const newCategoryModal = document.querySelector('.newCategoryModal');
-const bodyScrollHidden=document.getElementsByTagName('body');
+const bodyScrollHidden = document.getElementsByTagName('body');
 
 let tagList = [];
 function selectTagRender(tags){

@@ -30,6 +30,7 @@ body::-webkit-scrollbar-track {
 #tagStatisticsSchedule{
   overflow: auto;
   max-height: 100%;
+  background: repeating-linear-gradient(#fff, #fff 35px, rgba(0,150,255,0.05) 0, rgba(0,150,255,0.05) 60px);
 }
 #tagStatisticsSchedule::-webkit-scrollbar{
   width: 7px;
