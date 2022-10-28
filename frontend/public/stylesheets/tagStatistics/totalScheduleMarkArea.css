@@ -9,11 +9,12 @@ html,body{
     height: 100%;
 }
 #indexTop{
+    height: 32px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 0 0 rgba(235, 235, 235, 1);
+    box-shadow: 0 1px 0 0 rgba(235, 235, 235, 1);
 }
 #indexLeft{
     padding-right: 10px;
@@ -42,6 +43,7 @@ html,body{
     }
 }
 #indexRight{
+    padding-left:10px;
     width:60%;
     background-position: right;
     right: 0px;

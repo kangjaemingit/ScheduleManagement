@@ -231,3 +231,7 @@ let barChartDraw = function () {
         },
     });
 };
+
+function reloadSchedule(){
+
+}

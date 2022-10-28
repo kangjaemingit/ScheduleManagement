@@ -1,7 +1,47 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  overflow: auto;
 }
-
+body::-webkit-scrollbar{
+  width: 7px;
+}
+body::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: #bfbfbf;
+}
+body::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
+  border-radius: 5px;
+}
+#indexLeft{
+  overflow: auto;
+}
+#indexLeft::-webkit-scrollbar{
+  width: 7px;
+}
+#indexLeft::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: #bfbfbf;
+}
+#indexLeft::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
+  border-radius: 5px;
+}
+#tagStatisticsSchedule{
+  overflow: auto;
+  max-height: 100%;
+}
+#tagStatisticsSchedule::-webkit-scrollbar{
+  width: 7px;
+}
+#tagStatisticsSchedule::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: #bfbfbf;
+}
+#tagStatisticsSchedule::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
+  border-radius: 5px;
+}
 /*a {*/
 /*  color: #00B7FF;*/
 /*}*/
@@ -70,15 +110,14 @@ body {
 
 /* third 버튼 */
 .btn-third {
-  box-shadow:inset 0px 1px 0px 0px #f6f6f8;
+  width: 32px;
+  height: 32px;
   background: #ececef;
-  border-radius:6px;
-  border:1px solid #575757;
+  border-radius:15px;
+  border:1px dashed #575757;
   display:inline-block;
   cursor:pointer;
   color: #575757;
-  font-size:12px;
-  padding:6px 12px;
   text-decoration:none;
 }
 .btn-third:hover {

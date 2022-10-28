@@ -15,9 +15,9 @@
                 <span><%=s.title%></span>
             </div>
             <div class="dateBox">
-                <span><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
-                    ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
-                </span>
+                <div class="dashboardScheduleStartDay"><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%></div>
+                <div style="line-height: 15px">~</div><div class="dashboardScheduleStartDay"> <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
+                </div>
             </div>
         </div>
     <%});%>
@@ -28,9 +28,9 @@
             <span><%=s.title%></span>
         </div>
         <div class="dateBox">
-                <span><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
-                    ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
-                </span>
+            <div class="dashboardScheduleStartDay"><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%></div>
+            <div style="line-height: 15px">~</div><div class="dashboardScheduleStartDay"> <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
+            </div>
         </div>
     </div>
     <%});%>
@@ -47,9 +47,9 @@
                 <span><%=s.title%></span>
             </div>
             <div class="dateBox">
-                <span><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
-                    ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
-                </span>
+                <div class="dashboardScheduleStartDay"><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%></div>
+                <div style="line-height: 15px">~</div><div class="dashboardScheduleStartDay"> <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
+                </div>
             </div>
         </div>
         <%});%>
@@ -66,9 +66,9 @@
                 <span><%=s.title%></span>
             </div>
             <div class="dateBox">
-                <span><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
-                    ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
-                </span>
+                <div class="dashboardScheduleStartDay"><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%></div>
+                <div style="line-height: 15px">~</div><div class="dashboardScheduleStartDay"> <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
+                </div>
             </div>
         </div>
         <%});%>
@@ -90,9 +90,9 @@
                 <span> : <%=s.scheduleWriter.name%></span>
             </div>
             <div class="dateBox">
-                <span><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
-                    ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
-                </span>
+                <div class="dashboardScheduleStartDay"><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%></div>
+                <div style="text-align: center">~</div><div class="dashboardScheduleStartDay"> <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
+                </div>
             </div>
         </div>
         <%});%>

@@ -109,6 +109,9 @@ ul{
     display: none;
     box-shadow: 2px 2px 2px 4px rgba(235,235,235,0.5);
 }
+.headerUrlBox{
+    display: none;
+}
 /*#headerUrlBox:after{*/
 /*    content:"";*/
 /*    position: absolute;*/

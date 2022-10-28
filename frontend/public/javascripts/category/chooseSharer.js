@@ -90,11 +90,11 @@ function chosenUserDelete(user){
 
 function saveChooseSharer(){
     let rows = [];
+    ;
     userList.map((user) => {
         rows += `<div class="sharersP" style="margin-left: 5px"><img id="sharerProfilePhoto" class="sharerProfilePhoto" src="${user.profilePhoto}"><span class="sharerSpan">${user.name}</span></img></div>`
             // `<div class="sharersP" style="margin-left: 5px"><span class="sharerSpan">${user.name}(${user.email})</span></div>`
     })
-
     document.getElementById('chosenSharer').innerHTML = rows;
     chooseSharerModal.classList.remove('show');
 }
