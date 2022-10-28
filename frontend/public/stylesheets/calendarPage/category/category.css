@@ -58,8 +58,7 @@ body{
     height: 90px;
 }
 #categoryContainer:hover {
-    transform: scale(1.02);
-
+    transform: scale(0.98);
 }
 #categoryContainer:hover #categoryEdit{
     display: block;

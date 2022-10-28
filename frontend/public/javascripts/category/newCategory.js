@@ -98,10 +98,10 @@ function tagChecked(tag, checkBox){
 
 function sharerChecked(check){
     if(check.checked){
-        document.getElementById('chooseSharerBtn').style.display = 'block';
+        document.getElementById('chosenSharerContainer').style.display = 'flex';
         document.getElementById('chosenSharer').style.display = 'flex';
     } else{
-        document.getElementById('chooseSharerBtn').style.display = 'none';
+        document.getElementById('chosenSharerContainer').style.display = 'none';
         document.getElementById('chosenSharer').style.display = 'none';
     }
 }

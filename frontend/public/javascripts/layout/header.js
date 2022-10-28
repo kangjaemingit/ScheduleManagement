@@ -45,12 +45,12 @@ function colorChange(){
             }
         })
 };
-let buttonType='dropdown';
+let movePage = document.getElementById('headerUrlBox');
+const hamburger = document.getElementById('hamburgerToggle')
+let buttonType='up';
 function movePageModal(){
     buttonType=(buttonType=="dropdown")?'up':"dropdown";
-    let movePage = document.getElementById('headerUrlBox');
-    const hamburger = document.getElementById('hamburgerToggle')
-    if(buttonType=="dropdown"){
+    if(buttonType==="dropdown"){
         movePage.style.display='flex';
         hamburger.src='../../images/category/close_bg_none.png';
         hamburger.style.width='25px';

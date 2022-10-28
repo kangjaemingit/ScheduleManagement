@@ -106,6 +106,9 @@ html,body{
     margin-top : 10px;
     margin-left: 10px;
 }
+.titleBox span{
+    font-size: 16px;
+}
 
 .completeImg{
     width: 14px;
@@ -114,11 +117,12 @@ html,body{
 
 .dateBox{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-top: 5px;
+}
+.dateBox div{
 
 }
-
 .dashboardScheduleContainer{
     display:flex;
     margin-left:10px;
@@ -131,4 +135,16 @@ html,body{
     margin-top: 80px; width: 100%;
     align-items: center;
     flex-direction: column;
+    overflow: auto;
+    max-height: 100%;
+}
+.dashboardScheduleStartDay{
+    width: 100px;
+    text-align:center ;
+    font-size: 12px;
+}
+.dashboardScheduleEndDay{
+    width: 100px;
+    text-align:center ;
+    font-size: 12px;
 }

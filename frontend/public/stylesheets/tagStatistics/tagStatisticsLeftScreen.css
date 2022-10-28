@@ -49,3 +49,26 @@
     justify-content: center;
     display: flex;
 }
+#paintBarChart::-webkit-scrollbar{
+    width: 7px;
+}
+#paintBarChart::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: #bfbfbf;
+}
+#paintBarChart::-webkit-scrollbar-track {
+    background-color: #e5e5e5;
+    border-radius: 5px;
+}
+#resetBtn{
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+}
+#resetBtn:hover{
+    background-color: lightgrey;
+}
+#resetBtn:hover img{
+    transition: 1s;
+    transform: rotate(-360deg);
+}
