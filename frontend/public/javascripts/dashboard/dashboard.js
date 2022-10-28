@@ -60,8 +60,10 @@ function moveScheduleBox(id, bool){
 
 }
 
+let ___id;
 function readyDragStart(event) {
     event.dataTransfer.setData("scheduleBox", event.target.id);
+    ___id = event.target.id;
 }
 
 function readyToCompleteDrop(event) {
@@ -82,6 +84,17 @@ function completeToReadyDrop(event){
 
 function dragover_handler(event) {
     event.preventDefault();
+    //
+    // let id = event.dataTransfer.getData("scheduleBox");
+    //
+    //
+    // const readyArea = document.getElementById('readyArea');
+    // const completeArea = document.getElementById('completeArea');
+    // const component = document.getElementById(`${___id}`);
+    // console.log(___id);
+    //
+    // readyArea.removeChild(component);
+    // completeArea.appendChild(component);
 }
 
 
