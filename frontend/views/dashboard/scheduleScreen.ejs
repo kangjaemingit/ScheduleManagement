@@ -11,7 +11,7 @@
     <%readySchedule.map((s) => {%>
         <div class="dashboardScheduleBox">
             <div class="titleBox">
-                <img class="completeImg" src="images/ready.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', true)">
+                <img class="completeImg" id="icon_all_<%=s._id%>" src="images/ready.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', true)">
                 <span><%=s.title%></span>
             </div>
             <div class="dateBox">
@@ -24,7 +24,7 @@
     <%completeSchedule.map((s) => {%>
     <div class="dashboardScheduleBox">
         <div class="titleBox">
-            <img class="completeImg" src="images/complete.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', false)">
+            <img class="completeImg" id="icon_all_<%=s._id%>" src="images/complete.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', false)">
             <span><%=s.title%></span>
         </div>
         <div class="dateBox">
@@ -37,13 +37,13 @@
 </div>
 </div>
 
-<div class="dashboardScheduleContainer" ondragover="dragover_handler(event);" ondrop="drop_handler(event);">
-    <div class="dashboardScheduleWrap" style="background-color: #b9e8fc;">
-        <div style="align-items: center; display: flex">미완료<p><%=readySchedule.length%></p><p>사용자 지정 순</p><img/></div>
+<div class="dashboardScheduleContainer readyArea" ondragover="dragover_handler(event);" ondrop="completeToReadyDrop(event);">
+    <div class="dashboardScheduleWrap" id="completeArea" style="background-color: #b9e8fc;">
+        <div style="align-items: center; display: flex">미완료<p id="readyScheduleCount"><%=readySchedule.length%></p><p>사용자 지정 순</p><img/></div>
         <%readySchedule.map((s) => {%>
-        <div class="dashboardScheduleBox" draggable="true" ondrag="drag_handler(event);">
+        <div class="dashboardScheduleBox readyBox" id="<%=s._id%>" draggable="true" ondragstart="readyDragStart(event);">
             <div class="titleBox">
-                <img class="completeImg" src="images/ready.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', true)">
+                <img class="completeImg" id="icon_<%=s._id%>" src="images/ready.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', true)">
                 <span><%=s.title%></span>
             </div>
             <div class="dateBox">
@@ -56,13 +56,13 @@
     </div>
 </div>
 
-<div class="dashboardScheduleContainer" ondragover="dragover_handler(event);" ondrop="drop_handler(event);">
-    <div class="dashboardScheduleWrap" style="background-color: #c2fdb9;">
-        <div style="align-items: center; display: flex">완료<p><%=completeSchedule.length%></p><p>사용자 지정 순</p><img/></div>
+<div class="dashboardScheduleContainer completeArea" ondragover="dragover_handler(event);" ondrop="readyToCompleteDrop(event);">
+    <div class="dashboardScheduleWrap" id="readyArea" style="background-color: #c2fdb9;">
+        <div style="align-items: center; display: flex">완료<p id="completeScheduleCount"><%=completeSchedule.length%></p><p>사용자 지정 순</p><img/></div>
         <%completeSchedule.map((s) => {%>
-        <div class="dashboardScheduleBox" draggable="true" ondrag="drag_handler(event);">
+        <div class="dashboardScheduleBox completeBox" id="<%=s._id%>" draggable="true" ondragstart="readyDragStart(event);">
             <div class="titleBox">
-                <img class="completeImg" src="images/complete.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', false)">
+                <img class="completeImg" id="icon_<%=s._id%>" src="images/complete.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', false)">
                 <span><%=s.title%></span>
             </div>
             <div class="dateBox">

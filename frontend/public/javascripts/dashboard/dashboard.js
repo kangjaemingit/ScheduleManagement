@@ -1,8 +1,3 @@
-function drag_handler(event) {
-//  ondrag =  드래그할때 동작 
-    console.log("Drag");
-}
-
 function changeComplete(id, bool){
     const data = {
         id : id,
@@ -21,25 +16,73 @@ function changeComplete(id, bool){
                 window.alert(res.message);
             }
             else{
-                window.location.reload();
+                moveScheduleBox(id, bool);
             }
         }).catch((err) => {
         console.log(err);
     })
 }
 
+function moveScheduleBox(id, bool){
+    const readyArea = document.getElementById('readyArea');
+    const completeArea = document.getElementById('completeArea');
+    const component = document.getElementById(id);
+    const readyScheduleCount = document.getElementById('readyScheduleCount');
+    const completeScheduleCount = document.getElementById('completeScheduleCount');
+
+    const icon = document.getElementById(`icon_${id}`)
+    const iconAll = document.getElementById(`icon_all_${id}`)
+
+    if(!bool){
+        readyArea.removeChild(component);
+        completeArea.appendChild(component);
+        component.classList.replace('completeBox', 'readyBox');
+        icon.src = "/images/ready.png";
+        iconAll.src = "/images/ready.png";
+
+        icon.setAttribute('onclick', `changeComplete('${id}', true)`);
+        iconAll.setAttribute('onclick', `changeComplete('${id}', true)`);
+
+    } else{
+        completeArea.removeChild(component);
+        readyArea.appendChild(component);
+        component.classList.replace('readyBox', 'completeBox');
+        document.getElementById(`icon_${id}`).src = "/images/complete.png";
+        document.getElementById(`icon_all_${id}`).src = "/images/complete.png";
+
+        icon.setAttribute('onclick', `changeComplete('${id}', false)`);
+        iconAll.setAttribute('onclick', `changeComplete('${id}', false)`);
+    }
+
+    readyScheduleCount.innerText = document.getElementsByClassName('readyBox').length.toString()
+    completeScheduleCount.innerText = document.getElementsByClassName('completeBox').length.toString()
+
+
+}
+
+function readyDragStart(event) {
+    event.dataTransfer.setData("scheduleBox", event.target.id);
+}
+
+function readyToCompleteDrop(event) {
+    event.preventDefault();
+
+    let id = event.dataTransfer.getData("scheduleBox");
+    if(id === undefined || null) return;
+    else changeComplete(id, true)
+}
+
+function completeToReadyDrop(event){
+    event.preventDefault();
+
+    let id = event.dataTransfer.getData("scheduleBox");
+    if(id === undefined || null) return;
+    else changeComplete(id, false)
+}
+
 function dragover_handler(event) {
-    //ondragover = draggable 엘리먼트가 drop영역위에 올라가면
-    console.log("dragOver");
     event.preventDefault();
 }
 
-function drop_handler(event) {
-    //ondrop = draggable 엘리먼트를 drop영역위에 떨어트리면
-    console.log(event)
-    console.log("droooop!");
-    document.getElementsByClassName("dashboardScheduleBox")[0].style.top=event.layerX+"px";
-    document.getElementsByClassName("dashboardScheduleBox")[0].style.left=event.layerY+"px";
-    event.preventDefault();
-}
+
 

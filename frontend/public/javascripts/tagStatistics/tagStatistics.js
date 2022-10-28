@@ -45,12 +45,12 @@ function dynamicColors(){
 function setDefaultData(data){
     let barTagName = [];
     let barTagCount = [];
-    let barColors = [];
+    let barColors = ['#ffafb0', '#ffafd8', '#eeb7b4', '#f2cfa5', '#fcffb0', '#aee4ff', '#b5c7ed', '#c4f4fe', '#bee9b4', '#fdfa87', '#fcc6f7', '#caa6fe', '#ffafd8', '#afffba', '#e2ffaf', '#fcffb0', '#f2cfa5', '#83a7a3', '#acb890', '#dfd4e4'];
 
     data.map((el) => {
         barTagName.push(el.tagName);
         barTagCount.push(el.count);
-        barColors.push(dynamicColors());
+        // barColors.push(dynamicColors());
     })
 
     barData = {

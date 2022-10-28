@@ -58,10 +58,13 @@ const dashboardController={
             .exec((err) => {
                 if(err){
                     console.log(err);
-                    res.json({updateCompleteSuccess : false, message : err})
+                    return res.json({updateCompleteSuccess : false, message : err})
                 }
 
-                res.json({updateCompleteSuccess : true}).status(200);
+                return res.json({updateCompleteSuccess : true}).status(200);
+
+
+
             })
     }
 }
