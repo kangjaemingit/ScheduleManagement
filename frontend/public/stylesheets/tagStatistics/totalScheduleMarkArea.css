@@ -123,3 +123,19 @@ html,body{
     text-align: center;
     font-size: 14px;
 }
+.totalScheduleContents{
+    overflow: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+.totalScheduleContentsGroup{
+    overflow: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.totalScheduleContentsGroup:hover{
+    background-color: lightgrey;
+    transform: scale(0.98);
+}
