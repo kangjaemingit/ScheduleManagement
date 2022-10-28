@@ -25,6 +25,7 @@ function myCategorySelect(category){
 function categoryDetailModalOpen(category){
     userList = category.sharer;
     tagList = category.tags;
+    const bodyScrollHidden=document.getElementsByTagName('body');
     bodyScrollHidden[0].style.overflow='hidden'
 
     document.getElementById('tagSelectArea').style.display = 'none';
@@ -51,6 +52,7 @@ function categoryEditModalOpen(category){
     console.log(category);
     userList = category.sharer;
     tagList = category.tags;
+    const bodyScrollHidden=document.getElementsByTagName('body');
     bodyScrollHidden[0].style.overflow='hidden'
 
     fetch('calendar/getTagList', {

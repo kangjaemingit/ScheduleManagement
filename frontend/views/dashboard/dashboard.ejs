@@ -2,10 +2,12 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Category</title>
-    <link rel="stylesheet" href="/stylesheets/dashboardPage/dashboard.css">
+    <title>일정관리시스템 :: 대시보드</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/dashboardPage/dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/dashboardPage/schedule/scheduleModal.css">
     <script src="../javaScripts/dashboard/dashboard.js"></script>
+
 
 </head>
 <body>
@@ -25,7 +27,8 @@
 </div>
 
 <%- include('../schedule/scheduleModal.ejs')%>
-
+<script defer src="../javaScripts/schedule/scheduleModal.js"></script>
+<script defer src="../javaScripts/schedule/scheduleEdit.js"></script>
 
 </body>
 </html>

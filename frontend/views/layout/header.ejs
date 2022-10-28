@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>header</title>
-    <link   rel="stylesheet" href="/stylesheets/layout/header.css"/>
-    <script defer src='javascripts/layout/header.js'></script>
-</head>
-<body>
+<link   rel="stylesheet" href="/stylesheets/layout/header.css"/>
+<script defer src='javascripts/layout/header.js'></script>
 <div class="header">
     <div id="headerContainer" class="headercontainer" style="background-color: <%=user.navBgColor%>">
         <div id="browse-category" onclick="movePageModal()">
@@ -15,17 +8,6 @@
             </div>
         </div>
         <%- include("movePageModal") %>
-<!--        <ul id="headerUrlBox">-->
-<!--            <a href="/calendar" class="headerbutton" type="button" onclick="moveCalendar();" id="Calendar">-->
-<!--                <p>Calendar</p>-->
-<!--            </a>-->
-<!--            <a href="/" class="headerbutton" type="button" onclick="Dashboard();" id="Dashboard">-->
-<!--                <p>Dashboard</p>-->
-<!--            </a>-->
-<!--            <a href="#" class="headerbutton" type="button" onclick="TagStatistics();" id="TagStatistics">-->
-<!--                <p>TagStatistics</p>-->
-<!--            </a>-->
-<!--        </ul>-->
         <a href="/"><img id="logo" onclick="logo();" class="headerbutton" src="../../images/layoutHeader/heaventreeLogo.png"/></a>
         <ul id="headerUserBox">
             <% if(user.provider==="naver"){%>
@@ -58,5 +40,3 @@
         </ul>
     </div>
 </div>
-</body>
-</html>

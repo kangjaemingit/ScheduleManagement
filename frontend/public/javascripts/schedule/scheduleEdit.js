@@ -1,7 +1,9 @@
 function scheduleDetailModalOpen(scheduleId){
+    const bodyScrollHidden=document.getElementsByTagName('body');
+    bodyScrollHidden[0].style.overflow='hidden'
 
-    openDayModalBG.style.display='none'
-    openDayModal.style.display='none'
+    // openDayModalBG.style.display='none'
+    // openDayModal.style.display='none'
     fetch('/schedule/getScheduleById/' + scheduleId, {
         method : "get"
     }).then((res) => res.json())

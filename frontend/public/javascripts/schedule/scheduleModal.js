@@ -1,9 +1,8 @@
-// const body = document.querySelector('body');
 const scheduleModal = document.querySelector('.scheduleModal');
-
 
 let tags = [];
 function scheduleModalOpen(){
+    const bodyScrollHidden=document.getElementsByTagName('body');
     const currTime = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
     document.getElementById('startDate').value = currTime;
     document.getElementById('endDate').value = currTime;
@@ -17,6 +16,7 @@ function scheduleModalOpen(){
 }
 
 function scheduleModalClose(){
+    const bodyScrollHidden=document.getElementsByTagName('body');
     scheduleModal.classList.toggle('show');
     bodyScrollHidden[0].style.overflow='auto';
 

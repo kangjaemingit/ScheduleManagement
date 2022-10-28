@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 <div class="dashboardScheduleContainer">
 <div class="dashboardScheduleWrap" style="background-color: #fcecb9;">
     <div style="align-items: center; display: flex">오늘일정<p><%=readySchedule.length + completeSchedule.length%></p><p>사용자 지정 순</p><img/></div>
     <%readySchedule.map((s) => {%>
-        <div class="dashboardScheduleBox">
+        <div class="dashboardScheduleBox" onclick="scheduleDetailModalOpen('<%=s._id%>')">
             <div class="titleBox">
                 <img class="completeImg" id="icon_all_<%=s._id%>" src="images/ready.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', true)">
                 <span><%=s.title%></span>
@@ -22,7 +15,7 @@
         </div>
     <%});%>
     <%completeSchedule.map((s) => {%>
-    <div class="dashboardScheduleBox">
+    <div class="dashboardScheduleBox" onclick="scheduleDetailModalOpen('<%=s._id%>')">
         <div class="titleBox">
             <img class="completeImg" id="icon_all_<%=s._id%>" src="images/complete.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', false)">
             <span><%=s.title%></span>
@@ -41,7 +34,7 @@
     <div class="dashboardScheduleWrap" id="completeArea" style="background-color: #b9e8fc;">
         <div style="align-items: center; display: flex">미완료<p id="readyScheduleCount"><%=readySchedule.length%></p><p>사용자 지정 순</p><img/></div>
         <%readySchedule.map((s) => {%>
-        <div class="dashboardScheduleBox readyBox" id="<%=s._id%>" draggable="true" ondragstart="readyDragStart(event);">
+        <div class="dashboardScheduleBox readyBox" id="<%=s._id%>" draggable="true" ondragstart="readyDragStart(event);" onclick="scheduleDetailModalOpen('<%=s._id%>')">
             <div class="titleBox">
                 <img class="completeImg" id="icon_<%=s._id%>" src="images/ready.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', true)">
                 <span><%=s.title%></span>
@@ -60,7 +53,7 @@
     <div class="dashboardScheduleWrap" id="readyArea" style="background-color: #c2fdb9;">
         <div style="align-items: center; display: flex">완료<p id="completeScheduleCount"><%=completeSchedule.length%></p><p>사용자 지정 순</p><img/></div>
         <%completeSchedule.map((s) => {%>
-        <div class="dashboardScheduleBox completeBox" id="<%=s._id%>" draggable="true" ondragstart="readyDragStart(event);">
+        <div class="dashboardScheduleBox completeBox" id="<%=s._id%>" draggable="true" ondragstart="readyDragStart(event);" onclick="scheduleDetailModalOpen('<%=s._id%>')">
             <div class="titleBox">
                 <img class="completeImg" id="icon_<%=s._id%>" src="images/complete.png" style="cursor: pointer" onclick="changeComplete('<%=s._id%>', false)">
                 <span><%=s.title%></span>
@@ -79,7 +72,7 @@
     <div class="dashboardScheduleWrap" style="background-color: #eebbfe;">
         <div style="align-items: center; display: flex">공유받은 오늘일정<p><%=sharedSchedule.length%></p><p>사용자 지정 순</p><img/></div>
         <%sharedSchedule.map((s) => {%>
-        <div class="dashboardScheduleBox">
+        <div class="dashboardScheduleBox" onclick="scheduleDetailModalOpen('<%=s._id%>')">
             <div class="titleBox">
                 <%if(s.complete){%>
                     <img class="completeImg" src="images/complete.png">
@@ -98,6 +91,3 @@
         <%});%>
     </div>
 </div>
-
-</body>
-</html>

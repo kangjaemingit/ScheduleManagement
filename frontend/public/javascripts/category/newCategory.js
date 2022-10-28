@@ -1,6 +1,5 @@
 // const body = document.querySelector('body');
 const newCategoryModal = document.querySelector('.newCategoryModal');
-const bodyScrollHidden=document.getElementsByTagName('body');
 
 let tagList = [];
 function selectTagRender(tags){
@@ -38,6 +37,7 @@ function tagRemove(tagId){
 }
 
 async function newCategoryModalOpen(){
+    const bodyScrollHidden=document.getElementsByTagName('body');
     document.getElementById('categoryModalTitle').innerText = "새로운 카테고리 등록"
     bodyScrollHidden[0].style.overflow='hidden'
     fetch('calendar/getTagList', {
@@ -64,6 +64,7 @@ async function newCategoryModalOpen(){
 }
 
 function newCategoryModalClose(){
+    const bodyScrollHidden=document.getElementsByTagName('body');
     userList = [];
     tagList = [];
 
