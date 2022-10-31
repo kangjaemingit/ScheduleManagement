@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/stylesheets/dashboardPage/totalScheduleArea/totalScheduleArea.css">
+
+<div class="todaySchedule">
+    <div class="styleBox">
+    <div class="todayScheduleTitle"> 할 일 </div>
+    <div class="todaySelectBox"><input type="text" id="todaySelect"><div onclick="addList();">확인</div></div>
+<div style="display: flex;flex-direction: column">
+    <div id="todayScheduleBox">
+<!--        <input type="checkbox"><div id="scheduleName"></div><div class="scheduleDate"></div>-->
+    </div>
+</div>
+    </div>
+</div>
+<div class="feed">
+    <div class="styleBox">
+<div class="feedTitleContainer"><img><div class="feedTitle">피드</div></div>
+<div class="feedSelectContainer"><input type="text" id="feedSelectContent"><div onclick="feedAddSelect();">확인</div></div>
+
+<div id="feedContentContainer"><div><img id="feedUserImage"><span id="feedContent">내용</span><div id="feedDate">날짜가 들어감</div></div></div>
+    </div>
+</div>
+<script src="../javascripts/totalScheduleArea/totalScheduleArea.js"></script>
