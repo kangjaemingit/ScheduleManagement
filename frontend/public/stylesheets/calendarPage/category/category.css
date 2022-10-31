@@ -164,20 +164,9 @@ body{
 #imageContainer:hover #userNameContainer{
     visibility: inherit;
 }
-.categoryContents{
+#categoryContents{
     overflow: hidden;
 }
-.categoryContents:hover{
+#categoryContents:hover{
     overflow: auto;
-}
-.categoryContents::-webkit-scrollbar{
-    width: 7px;
-}
-.categoryContents::-webkit-scrollbar-thumb{
-    border-radius: 5px;
-    background-color: #bfbfbf;
-}
-.categoryContents::-webkit-scrollbar-track {
-    background-color: #e5e5e5;
-    border-radius: 5px;
 }

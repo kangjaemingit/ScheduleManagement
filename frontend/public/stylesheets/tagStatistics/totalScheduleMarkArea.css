@@ -133,13 +133,12 @@ html,body{
     overflow: auto;
     display: flex;
     justify-content: space-around;
-    margin-top: 10px;
+    height: 30px;
     align-items: center;
-
 }
 .totalScheduleContentsGroup:hover{
     background-color: lightgrey;
-    /*transform: scale(0.98);*/
+    transform: scale(0.98);
     height: 30px;
     margin: 0;
     align-items: center;
