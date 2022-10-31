@@ -165,6 +165,9 @@ body{
     visibility: inherit;
 }
 .categoryContents{
+    overflow: hidden;
+}
+.categoryContents:hover{
     overflow: auto;
 }
 .categoryContents::-webkit-scrollbar{

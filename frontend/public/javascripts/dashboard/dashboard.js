@@ -52,11 +52,11 @@ function moveScheduleBox(id, bool){
 
         icon.setAttribute('onclick', `changeComplete('${id}', false)`);
         iconAll.setAttribute('onclick', `changeComplete('${id}', false)`);
+
     }
 
-    readyScheduleCount.innerText = document.getElementsByClassName('readyBox').length.toString()
+    readyScheduleCount.innerText = document.getElementsByClassName('readyBox').length.toString(),
     completeScheduleCount.innerText = document.getElementsByClassName('completeBox').length.toString()
-
 
 }
 

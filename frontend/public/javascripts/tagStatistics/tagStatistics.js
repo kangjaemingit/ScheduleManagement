@@ -1,3 +1,4 @@
+
 window.onload = function () {
     fetch('tagStatistics/data', {
         method : 'get'
@@ -31,7 +32,8 @@ let barData = {
     labels: ['su', 'ji', 'i', 'u', 'jee', 'su'],
     datasets: [{
         data: [60, 2, 8, 7, 13, 10],
-        backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)']
+        backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+
     }]
 };
 
@@ -57,7 +59,8 @@ function setDefaultData(data){
         labels: barTagName,
         datasets: [{
             data : barTagCount,
-            backgroundColor: barColors
+            backgroundColor: barColors,
+            datalabels: { anchor:'center',color:'black',align:'center',font:{size:12}}
         }]
     }
 
@@ -179,6 +182,7 @@ let barChartDraw = function () {
     window.pieChart = new Chart(piePainter, {
         type: 'bar',
         data: barData,
+        plugins:[ChartDataLabels],
         options: {
             onresize:true,
             responsive: false,
@@ -219,9 +223,14 @@ let barChartDraw = function () {
             plugins: {
                 legend: {
                     display: false,
+                },
+                datalabels: {
+                    formatter: function (value, context) {
+                        return value+'개'
+                    }
                 }
             },
-            onClick:(e)=>{
+        onClick:(e)=>{
                 changeSchedule(e.chart.tooltip.title);
                 console.log(e.chart)
                 console.log(e.chart.canvas.style.height)
