@@ -21,7 +21,7 @@ body{
     width:80%;
     border-radius: 5px 0px 0px 5px;
     text-align: left;
-    background-color: rgba(0,255,0,0.1);
+    background-color: rgba(0,255,120,0.04);
     height: 90%;
 }
 #shareobject p{
@@ -41,7 +41,7 @@ body{
     justify-content: center;
     width:20%;
     height: 100%;
-    background-color: rgba(0,255,0,0.1);
+    background-color: rgba(0,255,120,0.04);
     display: flex;
     margin: 1% 0 1% 0;
     border-radius: 0 5px 5px 0;
@@ -152,7 +152,7 @@ body{
     margin: 20px 30px;
 }
 #userNameContainer:after{
-    border-top:6px solid #f9f9f9;
+    border-top:6px solid rgba(120,120,0,0.1);
     border-left: 6px solid transparent;
     border-right: 0px solid transparent;
     border-bottom: 0px solid transparent;
@@ -163,4 +163,21 @@ body{
 }
 #imageContainer:hover #userNameContainer{
     visibility: inherit;
+}
+.categoryContents{
+    overflow: hidden;
+}
+.categoryContents:hover{
+    overflow: auto;
+}
+.categoryContents::-webkit-scrollbar{
+    width: 7px;
+}
+.categoryContents::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: #bfbfbf;
+}
+.categoryContents::-webkit-scrollbar-track {
+    background-color: #e5e5e5;
+    border-radius: 5px;
 }
