@@ -141,7 +141,8 @@ html,body{
 
 .dashboardScheduleWrap{
     display:flex;
-    margin-top: 80px; width: 100%;
+    margin-top: 20px;
+    width: 100%;
     align-items: center;
     flex-direction: column;
     overflow: auto;

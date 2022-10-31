@@ -122,9 +122,10 @@ body{
 }
 
 .categoryControl{
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
+    opacity: 0.8;
 }
 .btn-secondary{
     margin-right: 2.5px;

@@ -55,15 +55,20 @@ function moveScheduleBox(id, bool){
 
     }
 
-    readyScheduleCount.innerText = document.getElementsByClassName('readyBox').length.toString(),
-    completeScheduleCount.innerText = document.getElementsByClassName('completeBox').length.toString()
+    const readyCount = document.getElementsByClassName('readyBox').length;
+    const completeCount = document.getElementsByClassName('completeBox').length;
+    const allCount = readyCount + completeCount;
 
+    readyScheduleCount.innerText = readyCount.toString();
+    completeScheduleCount.innerText = completeCount.toString();
+
+    const completeRate = ((completeCount / allCount) * 100).toFixed(1);
+    document.getElementById('completeBar').style.width = completeRate + '%';
+    document.getElementById('completeBar').innerText = completeRate + '%';
 }
 
-let ___id;
 function readyDragStart(event) {
     event.dataTransfer.setData("scheduleBox", event.target.id);
-    ___id = event.target.id;
 }
 
 function readyToCompleteDrop(event) {

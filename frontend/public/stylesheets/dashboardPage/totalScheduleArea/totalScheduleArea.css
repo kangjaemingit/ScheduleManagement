@@ -16,10 +16,10 @@
     font-weight: 600;
     line-height: 50px;
 }
-.todaySelectBox,.feedSelectContainer{
+.todaySelectBox.feedSelectContainer{
     height: 50px;
     display: flex;
-    display: flex;
+
     justify-content: center;
     align-items: center;
 }

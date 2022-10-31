@@ -6,7 +6,7 @@ function createTodoList()  {
 
     // 2. 추가할 li element 생성
     // 2-1. 추가할 li element 생성
-    const input=document.createElement('input');
+    const input = document.createElement('input');
     const div1 = document.createElement("div");
     const div2 = document.createElement('div');
     const div3 = document.createElement('div');

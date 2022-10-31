@@ -1,9 +1,22 @@
+<link rel="stylesheet" href="/stylesheets/dashboardPage/feed.css">
 <div class="feed">
     <div class="styleBox">
         <div class="feedTitleContainer"><img><div class="feedTitle">피드</div></div>
-        <div class="feedSelectContainer"><input type="text" id="feedSelectContent"><div onclick="createFeed();">확인</div></div>
-
-        <div id="feedContentContainer"><div><img id="feedUserImage"><span id="feedContent">내용</span><div id="feedDate">날짜가 들어감</div></div></div>
+        <div class="feedSelectContainer">
+            <form onsubmit="createFeed()">
+                <input type="text" id="feedContentsInput">
+                <div class="btn-secondary" type="submit" onclick="createFeed();">확인</div>
+            </form>
+        </div>
+        <div class="feedContentContainer">
+            <div class="feedTitleArea">
+                <div class="feedProfilePhoto"></div>
+                <h4>강재민</h4>
+            </div>
+            <div class="feedContents">
+                <p>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
+            </div>
+        </div>
     </div>
 </div>
 
