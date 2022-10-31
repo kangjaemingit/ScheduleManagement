@@ -195,3 +195,33 @@
     /* 세로로 200픽셀씩 자릅니다. */
     grid-template-columns: 50% 50%;
 }
+.categoryDetailSchedule{
+    display: flex;
+    flex-direction: column;
+}
+
+.categoryDetailScheduleBox{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.listIcon{
+    width: 5px;
+    height: 5px;
+    border-radius: 70%;
+    background-color: #0073E6;
+    margin-left: 8px;
+}
+
+.categoryDetailScheduleArea{
+    display: none;
+    width: 101.7%;
+    height: 150px;
+    border: 1px lightgray solid;
+    flex-wrap: wrap;
+    overflow: auto;
+    justify-content: center;
+    margin-top: 10px;
+}

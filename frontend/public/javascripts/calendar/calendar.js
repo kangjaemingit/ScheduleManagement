@@ -130,7 +130,7 @@ function changeCategoryMySchedule(category){
         body: JSON.stringify({tag : tags})
     }).then((res) => res.json())
         .then(res => {
-            if(res.getMyScheduleSuccess == false){
+            if(res.getMyScheduleSuccess === false){
                 window.alert(res.message)
                 return;
             }
@@ -144,8 +144,9 @@ function changeCategoryMySchedule(category){
                     color: "#4bc0c0",
                 })
             }
-
             calendar.render()
+            categoryDetailScheduleRender(res.schedule);
+
         });
 
 
