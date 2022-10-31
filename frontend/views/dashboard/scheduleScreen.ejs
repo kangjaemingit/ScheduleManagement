@@ -11,7 +11,7 @@
                 <div class="dashboardScheduleStartDay"><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>~<%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
                 </div>
             </div>
-            <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>
+<!--            <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>-->
         </div>
     <%});%>
     <%completeSchedule.map((s) => {%>
@@ -25,7 +25,7 @@
             ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
             </div>
         </div>
-        <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>
+<!--        <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>-->
     </div>
     <%});%>
 </div>
@@ -45,7 +45,7 @@
                 ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
                 </div>
             </div>
-            <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>
+<!--            <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>-->
         </div>
         <%});%>
     </div>
@@ -64,7 +64,7 @@
                 <div class="dashboardScheduleStartDay"><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
                     ~<%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%></div>
             </div>
-            <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>
+<!--            <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>-->
         </div>
         <%});%>
     </div>

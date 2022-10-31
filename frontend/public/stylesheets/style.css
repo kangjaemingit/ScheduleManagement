@@ -13,22 +13,23 @@ body::-webkit-scrollbar-track {
   background-color: #e5e5e5;
   border-radius: 5px;
 }
+.scrollBox::-webkit-scrollbar{
+  width: 7px;
+}
+.scrollBox::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: #bfbfbf;
+}
+.scrollBox::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
+  border-radius: 5px;
+}
 #tagStatisticsSchedule{
   overflow: auto;
   max-height: 100%;
   background: repeating-linear-gradient(#fff, #fff 30px, rgba(0,150,255,0.05) 0, rgba(0,150,255,0.05) 60px);
 }
-#tagStatisticsSchedule::-webkit-scrollbar{
-  width: 7px;
-}
-#tagStatisticsSchedule::-webkit-scrollbar-thumb{
-  border-radius: 5px;
-  background-color: #bfbfbf;
-}
-#tagStatisticsSchedule::-webkit-scrollbar-track {
-  background-color: #e5e5e5;
-  border-radius: 5px;
-}
+
 /*a {*/
 /*  color: #00B7FF;*/
 /*}*/
