@@ -113,7 +113,6 @@ let pieChartDraw = function () {
 const htmlLegendPlugin = {
     id : 'htmlLegend',
     afterUpdate(chart, args, options){
-        console.log(chart);
         let rows = "";
 
         let allCount = document.getElementById('usedTagAllCount').text;
@@ -127,6 +126,22 @@ const htmlLegendPlugin = {
 
         document.getElementById('div-legend').innerHTML = rows;
     }
+}
+
+function scheduleRender(schedule){
+    let rows= "";
+
+    schedule.map((s) => {
+        rows += `<div class="totalScheduleContents">`
+            + (s.complete ? `<div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>` : `<div class="totalScheduleHeader2"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>`)
+            + `<div class="totalScheduleHeader2">${s.title}</div>`
+            + `<div class="totalScheduleHeader2">${new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
+            + `<div class="totalScheduleHeader2">${new Date(s.date.endDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
+            + `</div>`
+    })
+
+    document.getElementById('tagStatisticsSchedule').innerHTML = rows
+
 }
 
 function changeSchedule(tag){
@@ -143,19 +158,7 @@ function changeSchedule(tag){
                 console.log(res.message);
                 return;
             }
-
-            let rows= "";
-
-            res.tagInfo.schedule.map((s) => {
-                rows += `<div class="totalScheduleContents">`
-                    + (s.complete ? `<div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>` : `<div class="totalScheduleHeader2"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>`)
-                    + `<div class="totalScheduleHeader2">${s.title}</div>`
-                    + `<div class="totalScheduleHeader2">${new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
-                    + `<div class="totalScheduleHeader2">${new Date(s.date.endDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
-                    + `</div>`
-            })
-
-            document.getElementById('tagStatisticsSchedule').innerHTML = rows
+            scheduleRender(res.tagInfo.schedule)
 
         }).catch((err) => {
         window.alert("태그로 일정 불러오기 실패");
@@ -166,7 +169,6 @@ function changeSchedule(tag){
 function tagPercentage(count){
     let allCount = document.getElementById('usedTagAllCount').innerText;
 
-    console.log(allCount);
     return ((count/allCount) * 100).toFixed(1);
 
 }
@@ -233,5 +235,19 @@ let barChartDraw = function () {
 };
 
 function reloadSchedule(){
+    fetch('calendar/getMySchedule', {
+        method : 'get'
+    }).then((res) => res.json())
+        .then((res) => {
+            if(res.getMyScheduleSuccess === false){
+                window.alert("일정을 불러오는데 실패했습니다.");
+                console.log(res.message);
+                return;
+            }
+            scheduleRender(res.schedule)
 
+        }).catch((err) => {
+        window.alert("내 일정 불러오기 실패");
+        console.log(err);
+    })
 }
