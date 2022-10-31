@@ -74,11 +74,15 @@ function newCategoryModalClose(){
     document.getElementById('sharerCheckBox').disabled = false;
     document.getElementById('categoryCompleteBtnArea').style.display = 'block';
     document.getElementById('tagSelectedArea').style.width = '50%';
+    document.getElementById('tagSelectedArea').style.height = '200px';
     document.getElementById('sharerCheckBox').checked = false;
     sharerChecked(document.getElementById('sharerCheckBox'));
     document.getElementById('tagSelectedBox').innerHTML = "";
     document.getElementById('chosenUserTableBody').innerHTML = "";
     document.getElementById('chosenSharer').innerHTML = "";
+    document.getElementById('categoryDetailSchedule').innerHTML = "";
+    document.getElementById('categoryDetailScheduleArea').style.display = 'none';
+
 
     document.getElementById('saveCategoryButton').setAttribute("onClick", `saveNewCategory()`)
 

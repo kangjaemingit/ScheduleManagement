@@ -135,7 +135,7 @@ function scheduleRender(schedule){
     let rows= "";
 
     schedule.map((s) => {
-        rows += `<div class="totalScheduleContents">`
+        rows += `<div class="totalScheduleContentsGroup">`
             + (s.complete ? `<div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>` : `<div class="totalScheduleHeader2"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>`)
             + `<div class="totalScheduleHeader2">${s.title}</div>`
             + `<div class="totalScheduleHeader2">${new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
@@ -177,6 +177,7 @@ function tagPercentage(count){
 }
 
 let barChartDraw = function () {
+    let usedTagAllCount = document.getElementById('usedTagAllCount').innerText
     let piePainter = document.getElementById('barChart').getContext('2d');
     let canvasHeight = document.getElementById("barChart");
         let h = barData.labels.length * 50;
@@ -228,7 +229,7 @@ let barChartDraw = function () {
                 },
                 datalabels: {
                     formatter: function (value, context) {
-                        return value+'개'
+                        return value+' / '+usedTagAllCount + ' (' + ((value / usedTagAllCount) * 100).toFixed(1) + '%)';
                     }
                 }
             },

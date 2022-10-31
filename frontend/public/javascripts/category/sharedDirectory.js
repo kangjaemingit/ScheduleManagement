@@ -73,6 +73,7 @@ function categorySelect(category) {
     }).then((res) => res.json())
         .then(async (res) => {
             changeCategorySchedule(res.schedule);
+            categoryDetailScheduleRender(res.schedule);
         }).catch((err) => {
         console.log(err);
     })

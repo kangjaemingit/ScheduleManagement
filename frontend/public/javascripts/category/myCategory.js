@@ -19,7 +19,23 @@ function categoryDelete(id){
 
 function myCategorySelect(category){
     changeCategoryMySchedule(category);
+
     categoryDetailModalOpen(category);
+}
+
+function categoryDetailScheduleRender(schedule){
+    let rows = "";
+
+    schedule.map((s) => {
+        let startDate = new Date(s.date.startDate);
+        let endDate = new Date(s.date.endDate);
+        rows += `<div class="categoryDetailScheduleBox"><div class="listIcon"></div>`
+            + `<span style="margin-left: 5px; margin-right: 5px">${startDate.getFullYear()}.${startDate.getMonth() + 1}.${startDate.getDate()}
+                - ${endDate.getFullYear()}.${endDate.getMonth() + 1}.${endDate.getDate()}</span>`
+            + `<span>${s.title}</span></div>`
+    });
+
+    document.getElementById('categoryDetailSchedule').innerHTML = rows;
 }
 
 function categoryDetailModalOpen(category){
@@ -38,6 +54,8 @@ function categoryDetailModalOpen(category){
     document.getElementById('sharerCheckBox').disabled = true;
     document.getElementById('categoryCompleteBtnArea').style.display = 'none';
     document.getElementById('tagSelectedArea').style.width = '100%';
+    document.getElementById('tagSelectedArea').style.height = '100px';
+    document.getElementById('categoryDetailScheduleArea').style.display = 'block';
 
     if(userList.length){
         document.getElementById('sharerCheckBox').checked = true;
