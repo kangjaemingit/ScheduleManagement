@@ -8,14 +8,24 @@
                 <div class="btn-secondary" type="submit" onclick="createFeed();">확인</div>
             </form>
         </div>
-        <div class="feedContentContainer">
-            <div class="feedTitleArea">
-                <div class="feedProfilePhoto"></div>
-                <h4>강재민</h4>
+
+        <div class="feedArea scrollBox" id="feedArea">
+            <%feed.map((f) => {%>
+            <div class="feedContentContainer" id="<%=f._id%>">
+                <div class="feedTitleArea">
+                    <div style="display: flex; align-items: center">
+                        <img class="feedProfilePhoto" src="<%=f.feedWriter.profilePhoto%>"/>
+                        <h4><%=f.feedWriter.name%></h4>
+                    </div>
+                    <div class="feedControlBox">
+                        <img class="feedDeleteBtn" src="/images/trash.png" style="width: 15px; height: 15px;" onclick="deleteFeed('<%=f._id%>')"/>
+                    </div>
+                </div>
+                <div class="feedContents">
+                    <p><%=f.feedContents%></p>
+                </div>
             </div>
-            <div class="feedContents">
-                <p>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
-            </div>
+            <%});%>
         </div>
     </div>
 </div>

@@ -5,6 +5,10 @@
     <title>일정관리시스템 :: 태그통계</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/tagStatistics/totalScheduleMarkArea.css">
+    <link rel="stylesheet" href="/stylesheets/dashboardPage/schedule/scheduleModal.css">
+
+    <script src="../javascripts/schedule/scheduleModal.js"></script>
+    <script src="../javascripts/schedule/scheduleEdit.js"></script>
 
 </head>
 <body>
@@ -46,7 +50,7 @@
             </div>
             <div id="tagStatisticsSchedule" class="scrollBox">
             <% mySchedule.map((s) => { %>
-            <div class="totalScheduleContentsGroup">
+            <div class="totalScheduleContentsGroup" onclick="scheduleDetailModalOpen('<%=s._id%>')">
                 <% if(s.complete){ %>
                     <div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>
                 <% } else { %>
@@ -63,6 +67,7 @@
     </div>
 </div>
 </div>
+<%- include('../schedule/scheduleModal.ejs') %>
 <script src="../javascripts/tagStatistics/tagStatistics.js"></script>
 </body>
 </html>

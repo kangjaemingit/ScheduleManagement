@@ -1,5 +1,6 @@
 const {Schedule} = require("../models/Schedule");
 const {Category} = require("../models/Category");
+const { Feed } = require("../models/Feed");
 
 const dashboardController={
     index : async (req, res) => {
@@ -47,7 +48,11 @@ const dashboardController={
 
             sharedSchedule = [...new Set(sharedSchedule.map(JSON.stringify))].map(JSON.parse);
 
-            res.render('dashboard/dashboard', { title: 'Express', user : req.user, completeSchedule, readySchedule, sharedSchedule });
+            const feed = await Feed.find({})
+                .populate('feedWriter')
+                .exec();
+
+            res.render('dashboard/dashboard', { title: 'Express', user : req.user, completeSchedule, readySchedule, sharedSchedule, feed });
         } catch (e) {
             console.log(e);
         }

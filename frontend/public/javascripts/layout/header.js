@@ -1,7 +1,8 @@
 
 function colorChange(){
-    let colorval = document.getElementById("color").value;
-        document.getElementById("headerContainer").style.backgroundColor = colorval;
+    let colorval = document.getElementById('color').value;
+    console.log(colorval);
+    document.getElementById("headerContainer").style.backgroundColor = colorval;
     const c = colorval.substring(1)      // 색상 앞의 # 제거
     const rgb = parseInt(c, 16)   // rrggbb를 10진수로 변환
     const r = (rgb >> 16) & 0xff  // red 추출
@@ -29,7 +30,7 @@ function colorChange(){
         logout.src="../../images/layoutHeader/logoutBlack.png";
         hamburger.src="../../images/layoutHeader/hamburgerblack.png";
     }
-    const  colorData={
+    const colorData = {
         navBgColor: colorval
     }
     fetch('layout/paint',{
@@ -37,7 +38,7 @@ function colorChange(){
         headers : {
             'Content-Type' : 'application/json',
         },
-        body:JSON.stringify(colorData)
+        body : JSON.stringify(colorData)
     }).then((res) =>res.json())
         .then((res)=>{
             if(res.updateSuccess==false) {

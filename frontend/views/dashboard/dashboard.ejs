@@ -15,7 +15,8 @@
 <!--<button id="newSchedule" onclick="scheduleModalOpen()">새로운 일정 추가</button>-->
 <div style="width: 100%;height: 50px; background-color: white"></div>
 <div class="todayScheduleChart">
-    <% const completeRate = ((completeSchedule.length/(readySchedule.length + completeSchedule.length)) * 100).toFixed(1)%>
+    <% let completeRate = ((completeSchedule.length/(readySchedule.length + completeSchedule.length)) * 100).toFixed(1)%>
+    <%if(completeRate === "NaN") completeRate = 0;%>
     <div class="todayScheduleChartBox"><p>완료률</p><div style="width: 97%; display: flex; border-radius: 10px;background-color: rgba(235,235,235,1);"><div class="completeBar" id="completeBar" style="width: <%=completeRate%>%"><%=completeRate%>%</div></div></div>
 </div>
 <div id="indexWrap" class="container">

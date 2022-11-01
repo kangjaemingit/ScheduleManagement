@@ -1,4 +1,5 @@
 function scheduleDetailModalOpen(scheduleId){
+    const scheduleModal = document.querySelector('.scheduleModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
     bodyScrollHidden[0].style.overflow='hidden'
 

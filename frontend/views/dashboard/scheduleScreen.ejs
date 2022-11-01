@@ -1,6 +1,6 @@
 <div class="dashboardScheduleContainer">
 <div class="dashboardScheduleWrap" style="background-color: #fcecb9;">
-    <div style="align-items: center; display: flex">오늘일정<p><%=readySchedule.length + completeSchedule.length%></p><p>사용자 지정 순</p><img/></div>
+    <div style="align-items: center; display: flex; font-size: 16px;">오늘일정<p><%=readySchedule.length + completeSchedule.length%></p><p>사용자 지정 순</p><img/></div>
     <%readySchedule.map((s) => {%>
         <div class="dashboardScheduleBox" onclick="event.stopImmediatePropagation(); scheduleDetailModalOpen('<%=s._id%>')">
             <div class="titleBox">
@@ -11,7 +11,7 @@
                 <div class="dashboardScheduleStartDay"><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>~<%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
                 </div>
             </div>
-<!--            <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>-->
+            <div class="dashbo"></div>
         </div>
     <%});%>
     <%completeSchedule.map((s) => {%>
@@ -82,14 +82,13 @@
                     <img class="completeImg" src="images/ready.png">
                 <%}%>
                 <span><%=s.title%></span>
-                <span> : <%=s.scheduleWriter.name%></span>
             </div>
             <div class="dateBox">
                 <div class="dashboardScheduleStartDay"><%=new Date(s.date.startDate).toISOString().replace('T',' ').substring(0,16)%>
                 ~ <%=new Date(s.date.endDate).toISOString().replace('T',' ').substring(0,16)%>
                 </div>
             </div>
-            <div id="dashboardScheduleImageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>
+            <div id="dashboardScheduleImageContainer"><img src="<%=s.scheduleWriter.profilePhoto%>"><span id="userNameContainer"><%=s.scheduleWriter.name%></span></div>
         </div>
         <%});%>
     </div>

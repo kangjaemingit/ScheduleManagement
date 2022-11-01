@@ -18,25 +18,24 @@
             <img id="profilePhoto" src="<%=user.profilePhoto%>"/>
             <p id="userInfo"><%=user.name%></p>
                 <a href="/login/logout" id="logout" class="headerbutton" type="button"  ><img id="logoutImage" src="../../images/layoutHeader/logoutBlack.png"/></a>
-            <input id="color" type="color" list="presets" onchange="colorChange()" value="#fff">
-                <datalist id="presets">
-                    <option value="#f9f9f9"></option>
-                    <option value="#ffe1e1"></option>
-                    <option value="#ffdaca"></option>
-                    <option value="#e8e2d5"></option>
-                    <option value="#d3eaf7"></option>
-                    <option value="#d9f1e9"></option>
-                    <option value="#ffb1b1"></option>
-                    <option value="#ffca96"></option>
-                    <option value="#ffe398"></option>
-                    <option value="#a5dac5"></option>
-                    <option value="#add2e7"></option>
-                    <option value="#505d72"></option>
-                    <option value="#4c7465"></option>
-                    <option value="#4c4f50"></option>
-                </datalist>
-                <img id="show" src="../../images/layoutHeader/paintblack.png"/>
-            </input>
+            <input list="presets" id="color" type="color" onchange="colorChange()" value="#ffffff">
+            <datalist id="presets">
+                <option>#f9f9f9</option>
+                <option>#ffe1e1</option>
+                <option>#ffdaca</option>
+                <option>#e8e2d5</option>
+                <option>#d3eaf7</option>
+                <option>#d9f1e9</option>
+                <option>#ffb1b1</option>
+                <option>#ffca96</option>
+                <option>#ffe398</option>
+                <option>#a5dac5</option>
+                <option>#add2e7</option>
+                <option>#505d72</option>
+                <option>#4c7465</option>
+                <option>#4c4f50</option>
+            </datalist>
+            <img id="show" src="../../images/layoutHeader/paintblack.png"/>
         </ul>
     </div>
 </div>

@@ -3,15 +3,14 @@ const { Feed } = require("../models/Feed")
 const feedController = {
     createFeed : async (req, res) => {
         await Feed.create({
-            feedContents : req.body.feedContents,
+            feedContents : req.body.contents,
             feedWriter : req.user._id
-        }, (err) => {
+        }, (err, result) => {
             if(err){
                 console.log(err);
                 return res.json({createFeedSuccess : false, message : err})
             }
-
-            return res.json({createFeedSuccess : true}).status(200);
+            return res.json({createFeedSuccess : true, feed : result, user : req.user}).status(200);
         })
     },
     updateFeed : (req, res) => {
