@@ -1,0 +1,9 @@
+.todaySelectBox{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin-left: 5%;
+}
+#todaySelect{
+    margin-right: 4px;
+}

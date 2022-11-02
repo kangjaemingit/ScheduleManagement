@@ -45,13 +45,13 @@ html,body{
 }
 #indexLeft{
     background-color: white;
-    height: 110%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
+    width: 30%;
     background-position: left;
-    min-width: 40%;
+    min-width: 30%;
     animation: slidedrop 1s ease forwards;
     box-shadow : 2px 0 0 0 rgba(0,0,0,0.1);
 }
@@ -73,6 +73,11 @@ html,body{
         transform : translate3d(0,0,0) ;
     }
 }
+#indexLeft-top{
+    display: flex;
+    height: 40%;
+    width: 100%;
+}
 #indexRight{
     display: flex;
     width:80%;
@@ -80,7 +85,7 @@ html,body{
     right: 0px;
     margin-left: 21px;
     animation: slideright 1s ease forwards;
-    height: 110%;
+    height: 100%;
 }
 @keyframes slideright {
     0%{

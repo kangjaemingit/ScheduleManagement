@@ -40,6 +40,7 @@ const layoutRouter = require('./backend/routes/layout');
 const calendarRouter = require('./backend/routes/calendar');
 const tagStatisticsRouter = require('./backend/routes/tagStatistics');
 const feedRouter = require('./backend/routes/feed');
+const todoListRouter = require('./backend/routes/todoList')
 
 app.use('/', dashboardRouter);
 app.use('/users', usersRouter);
@@ -49,6 +50,7 @@ app.use('/layout',layoutRouter);
 app.use('/calendar',calendarRouter);
 app.use('/tagStatistics', tagStatisticsRouter);
 app.use('/feed', feedRouter);
+app.use('/todoList',todoListRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
