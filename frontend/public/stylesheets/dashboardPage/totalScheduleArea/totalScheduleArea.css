@@ -1,6 +1,3 @@
-#indexLeft{
-    padding: 10px;
-}
 .todaySchedule{
     width: 100%;
     height: 100%;
@@ -16,7 +13,6 @@
     width: 100%;
     height: 70%;
     display: flex;
-    /*justify-content: center;*/
     border: 1px solid rgba(235,235,235,1);
 }
 
