@@ -18,6 +18,7 @@ window.onload = function () {
         window.alert("통계데이터 불러오기 데이터 통신 실패");
         console.log(err);
     })
+
 }
 
 let pieData = {
@@ -33,7 +34,6 @@ let barData = {
     datasets: [{
         data: [60, 2, 8, 7, 13, 10],
         backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
-
     }]
 };
 
@@ -90,6 +90,7 @@ function setDefaultData(data){
 
     barChartDraw();
     pieChartDraw();
+
 }
 
 
@@ -126,7 +127,6 @@ const htmlLegendPlugin = {
                 `<span>${item.text} : ${tagPercentage(pieData.datasets[0].data[index])}% (${pieData.datasets[0].data[index]})</span>` +
                 `</div>`
         })
-
         document.getElementById('div-legend').innerHTML = rows;
     }
 }
