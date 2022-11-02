@@ -1,4 +1,5 @@
 const { Feed } = require("../models/Feed")
+const { FeedComment } = require("../models/FeedComment");
 
 const feedController = {
     index : async (req, res) => {
@@ -44,6 +45,21 @@ const feedController = {
 
             return res.json({deleteFeedSuccess : true}).status(200);
         })
+    },
+    createFeedComment : async (req, res) => {
+        try{
+            const comment = await FeedComment.create({
+                comment : req.body.comment,
+                commentWriter : req.user._id
+            });
+
+            await Feed.updateOne({_id : req.body.feedId}, {$push : {comments : comment._id}}).exec();
+
+            return res.json({createCommentSuccess : true});
+        } catch (e) {
+            console.log(e);
+            return res.json({createCommentSuccess : false, message : e});
+        }
     }
 }
 

@@ -11,4 +11,6 @@ router.post('/updateFeed', checkAuth, feedController.updateFeed);
 
 router.post('/deleteFeed', checkAuth, feedController.deleteFeed);
 
+router.post('/commentCreate', checkAuth, feedController.createFeedComment);
+
 module.exports = router;

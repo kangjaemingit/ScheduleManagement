@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="/stylesheets/feed/feedPage.css">
     <script src="../javascripts/dashboard/feed.js"></script>
     <script src="../javascripts/feed/feedModal.js"></script>
+    <script src="../javascripts/feed/feedPage.js"></script>
 </head>
 <body>
 <header>
     <%- include('../layout/header.ejs'); %>
 </header>
 <div class="feedPageFeedArea">
-    <div style="display: flex; justify-content: center; flex">
+    <div style="display: flex; justify-content: center;">
         <div class="feedPageTitleArea">
             <span style="font-size: 25px; font-weight: bold">피드</span>
             <button class="btn-primary" style="height: 35px" onclick="feedModalOpen()">새 피드 작성</button>
@@ -42,6 +43,19 @@
                     <div class="listIcon"></div>
                     <span style="margin-left: 5px;"><%=f.schedule.title%></span>
                 </div>
+            </div>
+            <div class="feedCommentArea">
+                <div class="feedCommentBox">
+                    <div class="feedCommentWriterProfile">사</div>
+                    <span class="feedCommentWriterName">강재민</span>
+                    <span class="feedCommentContents">댓글 내용</span>
+                </div>
+            </div>
+            <div class="feedCommentWriteArea">
+                <form onsubmit="commentCreate('<%=f._id%>')">
+                    <input type="text" id="commentInput_<%=f._id%>">
+                    <button type="submit" class="btn-secondary">작성</button>
+                </form>
             </div>
         </div>
         <%});%>

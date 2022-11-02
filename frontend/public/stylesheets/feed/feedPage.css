@@ -99,4 +99,40 @@ html,body{
     opacity: 0.3;
 }
 
+.feedCommentArea{
+    display: flex;
+    flex-direction: column;
+    margin : 0px 0px 10px 10px;
+}
+
+.feedCommentBox{
+    display: flex;
+    align-items: center;
+    margin : 0px 0px 5px 0px;
+}
+
+.feedCommentWriterProfile{
+    width: 25px;
+    height: 25px;
+    border-radius: 70%;
+    background-color: #5F5F5F;
+    margin-right: 5px;
+}
+
+.feedCommentWriterName{
+    font-weight: bold
+}
+
+.feedCommentContents{
+    margin-left: 8px;
+}
+
+.feedCommentWriteArea{
+    display: flex;
+    margin : 0px 0px 10px 10px;
+}
+
+#commentInput{
+    margin-right: 5px
+}
 
