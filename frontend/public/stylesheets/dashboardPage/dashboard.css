@@ -80,10 +80,11 @@ html,body{
 }
 #indexRight{
     display: flex;
-    width:80%;
+    float: right;
+    width:100%;
     background-position: right;
     right: 0px;
-    margin-left: 21px;
+
     animation: slideright 1s ease forwards;
     height: 100%;
 }
@@ -99,7 +100,8 @@ html,body{
 }
 #indexWrap{
     display: flex;
-
+    position: absolute;
+    width: 100%;
     height: 100%;
 }
 #newSchedule{
