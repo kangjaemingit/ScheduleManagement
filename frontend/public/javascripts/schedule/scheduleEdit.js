@@ -15,8 +15,13 @@ function scheduleDetailModalOpen(scheduleId){
                 return;
             }
 
+            const completeImg = res.schedule.complete ?
+                `<img class="scheduleDetailCompleteImg" src="images/complete.png" style="width: 25px; height: 25px;">` :
+                `<img class="scheduleDetailCompleteImg" src="images/ready.png" style="width: 25px; height: 25px;">`
+
             // 데이터 바인딩
             document.getElementById('scheduleModalName').innerText = `<${res.schedule.title}>`;
+            document.getElementById('scheduleModalTitleBox').innerHTML += completeImg;
             document.getElementById('scheduleTitle').value = res.schedule.title;
             document.getElementById('contents').value = res.schedule.contents;
             document.getElementById('startDate').value = res.schedule.date.startDate.slice(0, 16);
@@ -50,6 +55,12 @@ function scheduleDetailModalOpen(scheduleId){
             if(res.scheduleOwner){
                 document.getElementById('editModeBtn').style.display = 'block';
                 document.getElementById('editModeBtn').setAttribute("onclick", `scheduleEditModalOpen('${scheduleId}')`)
+                if(res.schedule.complete){
+                    document.querySelector('.scheduleDetailCompleteImg').setAttribute("onclick", `editComplete('${scheduleId}', false)`)
+                } else{
+                    document.querySelector('.scheduleDetailCompleteImg').setAttribute("onclick", `editComplete('${scheduleId}', true)`)
+                }
+
             }
 
             // 태그 삭제 버튼 보이지 않게 함
@@ -150,4 +161,37 @@ function deleteSchedule(scheduleId){
         })
     }
 
+}
+
+function editComplete(id, bool){
+    const data = {
+        id : id,
+        bool : bool
+    }
+
+    fetch('/updateComplete', {
+        method : 'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(data)
+    }).then((res) => res.json())
+        .then((res) => {
+            if(!res.updateCompleteSuccess){
+                return window.alert(res.message);
+            }
+            let completeImg = document.querySelector('.scheduleDetailCompleteImg');
+
+            if(bool){
+                completeImg.src = "/images/complete.png";
+                completeImg.setAttribute("onclick", `editComplete('${id}', false)`)
+            } else{
+                completeImg.src = "/images/ready.png";
+                completeImg.setAttribute("onclick", `editComplete('${id}', true)`)
+            }
+
+
+        }).catch((err) => {
+        console.log(err);
+    })
 }

@@ -1,4 +1,3 @@
-
 function colorChange(){
     let colorval = document.getElementById('color').value;
     console.log(colorval);
@@ -32,7 +31,7 @@ function colorChange(){
         navBgColor: colorval
     }
     fetch('layout/paint',{
-      method:'post',
+        method:'post',
         headers : {
             'Content-Type' : 'application/json',
         },
@@ -88,4 +87,3 @@ function movePageModal(){
 // }
 // document.getElementById('show').addEventListener('click',show);
 // document.querySelector('.modal-close').addEventListener('click',close);
-

@@ -34,6 +34,7 @@ function scheduleModalClose(){
     document.getElementById('addressExist').checked = false;
     document.getElementById('tagList').innerHTML = null;
     document.getElementById('keyword').value = "";
+    document.querySelector('.scheduleDetailCompleteImg').remove();
 
     // readOnly 해제
     document.getElementById('scheduleModalName').readOnly = false

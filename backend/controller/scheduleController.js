@@ -163,6 +163,18 @@ const scheduleController = {
                 return res.json({getMyScheduleSuccess : true, schedule : result});
             });
     },
+    getMyScheduleByKeyword : (req, res) => {
+        Schedule.find({ $and : [{scheduleWriter:req.user._id},{title : {$regex : req.body.keyword}}]})
+            .populate("tag")
+            .populate("scheduleWriter")
+            .exec((err, result) => {
+                if(err){
+                    console.log(err);
+                    return res.json({getMyScheduleSuccess : false, message : err})
+                }
+                return res.json({getMyScheduleSuccess : true, schedule : result});
+            });
+    },
     getMyScheduleByTag : (req, res) => {
         Schedule.find({$and : [{scheduleWriter:req.user._id}, {tag : {$in : req.body.tag}}]})
             .populate("tag")

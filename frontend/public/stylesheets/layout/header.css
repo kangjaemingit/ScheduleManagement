@@ -61,7 +61,7 @@
     mix-blend-mode: overlay;
     cursor: pointer;
     z-index: 1;
-    opacity: 0%;
+    opacity: 0;
 }
 /* removes default styling from input color element */
 ::-webkit-color-swatch {

@@ -82,6 +82,7 @@ function newCategoryModalClose(){
     document.getElementById('chosenSharer').innerHTML = "";
     document.getElementById('categoryDetailSchedule').innerHTML = "";
     document.getElementById('categoryDetailScheduleArea').style.display = 'none';
+    document.getElementById('chooseSharerBtn').style.display = 'block';
 
 
     document.getElementById('saveCategoryButton').setAttribute("onClick", `saveNewCategory()`)

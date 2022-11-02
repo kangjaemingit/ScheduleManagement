@@ -50,6 +50,8 @@ const dashboardController={
 
             const feed = await Feed.find({})
                 .populate('feedWriter')
+                .populate('schedule')
+                .sort({'createDate' : -1})
                 .exec();
 
             res.render('dashboard/dashboard', { title: 'Express', user : req.user, completeSchedule, readySchedule, sharedSchedule, feed });

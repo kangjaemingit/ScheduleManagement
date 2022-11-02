@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/stylesheets/feed/feedModal.css">
+
+<div class="feedModal" id="feedModal">
+    <div class="feedModalBody" id="feedModalBody">
+        <div class="feedModalTitle" id="feedModalTitle">
+            <div id="feedModalTitleBox" style="display: flex; align-items: center">
+                <p style="font-size: 20px; font-weight: bold" id="feedModalName">새로운 피드 등록</p>
+            </div>
+            <div style="display: flex">
+                <img src="/images/category/close_bg_none.png" id="feedModalClose" class="modalCloseBtn" onclick="feedModalClose()">
+            </div>
+        </div>
+        <div class="feedModalPartition">
+            <div class="feedContentsArea">
+                <label>피드 작성</label>
+                <textarea style="width: 100%; height: 150px; resize: none;" id="feedContentsInput"></textarea>
+            </div>
+            <label style="margin-top: 10px">일정 연결</label>
+            <div class="scheduleSelectArea">
+                <div class="scheduleSearchArea">
+                    <form onsubmit="searchFeedSchedule(keyword)">
+                        <input type="text" id="inputScheduleSearch">
+                        <button type="submit" class="btn-secondary">검색</button>
+                    </form>
+                </div>
+                <div class="scheduleViewArea scrollBox" id="scheduleViewArea">
+
+                </div>
+            </div>
+            <div class="selectedScheduleArea" id="selectedScheduleArea">
+                <label>선택된 일정 : </label>
+                <div id="selectedSchedule"></div>
+                <img src="images/trash.png" class="feedModalControlImg" id="feedScheduleDeleteBtn" onclick="feedScheduleDelete()">
+            </div>
+        </div>
+        <div class="feedCompleteBtnArea" id="feedCompleteBtnArea">
+            <button class="btn-primary" id="btnSaveFeed" onclick="createFeed()">완료</button>
+        </div>
+    </div>
+</div>

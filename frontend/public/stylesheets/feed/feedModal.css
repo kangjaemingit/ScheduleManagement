@@ -1,0 +1,154 @@
+.feedModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+.feedModal.show {
+    display: block;
+    margin-top: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.feedModalBody {
+    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: 550px;
+    padding: 40px;
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.feedModalTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    border-bottom: solid 1px #e3e3e3;
+}
+
+.feedModalPartition{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.feedModalContents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.feedModalInput{
+    width: 100%;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+}
+
+.feedCompleteBtnArea{
+    margin-top:10px ;
+    display: flex;
+    justify-content: center;
+}
+
+.modalCloseBtn{
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+#btnSaveFeed{
+    margin-right: 10px;
+}
+
+.feedContentsArea{
+    display: flex;
+    flex-direction: column;
+}
+
+.scheduleSearchArea{
+    display: flex;
+    justify-content: center;
+}
+
+.scheduleSelectArea{
+    border: 1px solid #e3e3e3;
+    width: 100%;
+    height: 200px;
+    margin: 0px 0px 10px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.scheduleViewArea{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#inputScheduleSearch{
+    margin : 5px;
+}
+
+.feedScheduleBox{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.feedScheduleBox:hover{
+    background-color: #e3e3e3;
+}
+
+.listIcon{
+    width: 5px;
+    height: 5px;
+    border-radius: 70%;
+    background-color: #0073E6;
+    margin-left: 8px;
+}
+
+.feedScheduleTag{
+    color: blue;
+    margin: 0px 3px 0px 3px;
+}
+
+.selectedScheduleArea{
+    display: flex;
+}
+
+.feedModalControlImg{
+    width: 15px;
+    height: 15px;
+    display: none;
+    cursor: pointer;
+    margin-left: 5px;
+}

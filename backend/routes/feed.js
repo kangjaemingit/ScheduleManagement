@@ -3,6 +3,8 @@ var router = express.Router();
 const feedController = require('../controller/feedController')
 const checkAuth = require('../config/auth').checkAuth;
 
+router.get('/', checkAuth, feedController.index);
+
 router.post('/createFeed', checkAuth, feedController.createFeed);
 
 router.post('/updateFeed', checkAuth, feedController.updateFeed);

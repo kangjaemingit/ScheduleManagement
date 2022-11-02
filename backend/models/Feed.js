@@ -5,6 +5,7 @@ const FeedSchema = mongoose.Schema({
         type : String
     },
     feedWriter : {type : mongoose.Schema.Types.ObjectId, ref:"User"},
+    schedule : {type : mongoose.Schema.Types.ObjectId, ref:"Schedule"},
     createDate : {
         type : Date,
         default : new Date()

@@ -1,14 +1,11 @@
 <link rel="stylesheet" href="/stylesheets/dashboardPage/feed.css">
 <div class="feed">
     <div class="styleBox">
-        <div class="feedTitleContainer"><img><div class="feedTitle">피드</div></div>
-        <div class="feedSelectContainer">
-            <form onsubmit="createFeed()">
-                <input type="text" id="feedContentsInput">
-                <div class="btn-secondary" type="submit" onclick="createFeed();">확인</div>
-            </form>
+        <div class="feedTitleContainer">
+            <img>
+            <div class="feedTitle">피드</div>
+            <img src="images/category/edit.png" class="createFeedImg" style="" onclick="feedModalOpen()">
         </div>
-
         <div class="feedArea scrollBox" id="feedArea">
             <%feed.map((f) => {%>
             <div class="feedContentContainer" id="<%=f._id%>">
@@ -24,6 +21,15 @@
                 <div class="feedContents">
                     <p><%=f.feedContents%></p>
                 </div>
+                <div style="display: flex; align-items: center; margin-left: 10px; margin-bottom: 10px;">
+                    <img src="images/chat.png" style="width: 12px; height: 12px; opacity: 0.3;">
+                    <span style="margin-left: 3px;">3</span>
+                    <img src="images/calendar.png" style="width: 12px; height: 12px; opacity: 0.3;margin-left: 10px;">
+                    <div style="display: flex; align-items: center">
+                        <div class="listIcon"></div>
+                        <span style="margin-left: 5px;"><%=f.schedule.title%></span>
+                    </div>
+                </div>
             </div>
             <%});%>
         </div>
@@ -31,3 +37,4 @@
 </div>
 
 <script src="../javascripts/dashboard/feed.js"></script>
+<script src="../javascripts/feed/feedModal.js"></script>

@@ -11,13 +11,13 @@
         <a href="/"><img id="logo" onclick="logo();" class="headerbutton" src="../../images/layoutHeader/heaventreeLogo.png"/></a>
         <ul id="headerUserBox">
             <% if(user.provider==="naver"){%>
-            <img id="changeLogo" src="../../images/layoutHeader/btnG_아이콘원형.png"/>
+                <img id="changeLogo" src="../../images/layoutHeader/btnG_아이콘원형.png"/>
             <%} else if(user.provider==="kakao"){%>
                 <img id="changeLogo" src="../../images/layoutHeader/kakao_logo.png"/>
-                <%}%>
+            <%}%>
             <img id="profilePhoto" src="<%=user.profilePhoto%>"/>
             <p id="userInfo"><%=user.name%></p>
-                <a href="/login/logout" id="logout" class="headerbutton" type="button"  ><img id="logoutImage" src="../../images/layoutHeader/logoutBlack.png"/></a>
+            <a href="/login/logout" id="logout" class="headerbutton" type="button"  ><img id="logoutImage" src="../../images/layoutHeader/logoutBlack.png"/></a>
             <input list="presets" id="color" type="color" onchange="colorChange()" value="#ffffff">
             <datalist id="presets">
                 <option>#f9f9f9</option>

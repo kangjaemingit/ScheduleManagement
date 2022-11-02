@@ -13,6 +13,7 @@ router.post('/autoComplete', checkAuth, scheduleController.autoComplete);
 
 router.get('/getScheduleById/:id', checkAuth, scheduleController.getScheduleById);
 
+router.post('/getMyScheduleByKeyword', checkAuth, scheduleController.getMyScheduleByKeyword);
 
 
 module.exports = router;

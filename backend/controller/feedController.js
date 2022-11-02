@@ -1,10 +1,20 @@
 const { Feed } = require("../models/Feed")
 
 const feedController = {
+    index : async (req, res) => {
+        const feed = await Feed.find({})
+            .populate('feedWriter')
+            .populate('schedule')
+            .sort({'createDate' : -1})
+            .exec();
+
+        res.render('feed/feedPage', {user : req.user, feed});
+    },
     createFeed : async (req, res) => {
         await Feed.create({
             feedContents : req.body.contents,
-            feedWriter : req.user._id
+            feedWriter : req.user._id,
+            schedule : req.body.scheduleId
         }, (err, result) => {
             if(err){
                 console.log(err);
