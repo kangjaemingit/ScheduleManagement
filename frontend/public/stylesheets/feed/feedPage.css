@@ -136,3 +136,11 @@ html,body{
     margin-right: 5px
 }
 
+.feedCommentDeleteBtn{
+    width: 8px;
+    height: 8px;
+    opacity: 0.5;
+    cursor: pointer;
+    margin-left: 5px;
+}
+

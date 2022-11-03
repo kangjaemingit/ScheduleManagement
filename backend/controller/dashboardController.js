@@ -67,12 +67,39 @@ const dashboardController={
                     console.log(err);
                     return res.json({updateCompleteSuccess : false, message : err})
                 }
-
                 return res.json({updateCompleteSuccess : true}).status(200);
 
-
-
             })
+    },
+    completeRate : async (req, res) => {
+        const today = new Date();
+        const compareStartDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, 0, 0, 0)
+        const compareEndDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0)
+        try {
+            const completeCount = await Schedule.count({
+                $and: [
+                    {scheduleWriter: req.user._id},
+                    {complete: true},
+                    {"date.startDate": {$lt: compareStartDate}},
+                    {"date.endDate": {$gte: compareEndDate}}
+                ]
+            })
+                .exec();
+
+            const readyCount = await Schedule.count({
+                $and: [
+                    {scheduleWriter: req.user._id},
+                    {complete: false},
+                    {"date.startDate": {$lt: compareStartDate}},
+                    {"date.endDate": {$gte: compareEndDate}}
+                ]
+            }).exec();
+
+            return res.json({completeRateSuccess : true, completeCount, readyCount}).status(200);
+        } catch (e) {
+            console.log(e);
+            return res.json({completeRateSuccess : false, message : e});
+        }
     }
 }
 module.exports = dashboardController;

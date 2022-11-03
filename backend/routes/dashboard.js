@@ -8,4 +8,5 @@ router.get('/', checkAuth, dashboardController.index);
 
 router.post('/updateComplete', checkAuth, dashboardController.updateScheduleComplete);
 
+router.get('/completeRate', checkAuth, dashboardController.completeRate);
 module.exports = router;

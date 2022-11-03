@@ -6,6 +6,10 @@ const feedController = {
         const feed = await Feed.find({})
             .populate('feedWriter')
             .populate('schedule')
+            .populate({
+                path : 'comments',
+                populate : 'commentWriter'
+            })
             .sort({'createDate' : -1})
             .exec();
 
@@ -55,11 +59,23 @@ const feedController = {
 
             await Feed.updateOne({_id : req.body.feedId}, {$push : {comments : comment._id}}).exec();
 
-            return res.json({createCommentSuccess : true});
+            return res.json({createCommentSuccess : true, comment, user : req.user});
         } catch (e) {
             console.log(e);
             return res.json({createCommentSuccess : false, message : e});
         }
+    },
+    deleteFeedComment : async (req, res) => {
+        try{
+            await FeedComment.deleteOne({_id : req.body.id}).exec();
+            await Feed.updateOne({comments : req.body.id}, {$pull : {comments : req.body.id}}).exec()
+
+            return res.json({deleteCommentSuccess : true}).status(200);
+        } catch (e) {
+            console.log(e);
+            return res.json({deleteCommentSuccess : false, message : e})
+        }
+
     }
 }
 

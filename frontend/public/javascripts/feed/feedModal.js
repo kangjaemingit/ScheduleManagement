@@ -1,4 +1,7 @@
-let selectedScheduleId = "";
+let selectedSchedule = {
+    id: "",
+    title : ""
+};
 function feedModalOpen(){
     fetch('calendar/getMySchedule', {
         method : 'get',
@@ -77,7 +80,7 @@ function searchFeedSchedule(){
                 console.log(res.message);
                 return window.alert(res.message);
             }
-            console.log(res.schedule);
+
             feedScheduleRender(res.schedule);
         }).catch((err) => {
         console.log(err);
@@ -85,7 +88,10 @@ function searchFeedSchedule(){
 }
 
 function feedScheduleSelect(title, id){
-    selectedScheduleId = id;
+    selectedSchedule = {
+        id : id,
+        title : title
+    }
     let rows = "";
 
     rows += `<div style="display: flex; align-items: center">`
@@ -105,10 +111,9 @@ function createFeed()  {
 
     const data = {
         contents : contents,
-        scheduleId : selectedScheduleId
+        scheduleId : selectedSchedule.id
     }
 
-    console.log(data.scheduleId);
 
     fetch('feed/createFeed', {
         method : 'post',
@@ -138,7 +143,7 @@ function appendFeed(feed, user){
     let rows = "";
 
     rows += `<div class="feedTitleArea">`
-        + `<div style="display: flex; align-items: center">`
+        +`<div style="display: flex; align-items: center">`
         + `<img class="feedProfilePhoto" src="${user.profilePhoto}">`
         + `<h4>${user.name}</h4>`
         + `</div>`
@@ -148,7 +153,16 @@ function appendFeed(feed, user){
         + `</div>`
         + `<div class="feedContents">`
         + `<p>${feed.feedContents}</p>`
-        + `</div>`;
+        + `</div>`
+        + `<div class="feedFooter">`
+        + `<img class="feedFooterIcon" src="images/chat.png" >`
+        + `<span style="margin-left: 3px;">${feed.comments.length}</span>`
+        + `<img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">`
+        + `<div style="display: flex; align-items: center">`
+        + `<div class="listIcon"></div>`
+        + `<span style="margin-left: 5px;">${selectedSchedule.title}</span>`
+        + `</div>`
+        + `</div>`
 
     feedContentContainer.innerHTML = rows;
     const parent = document.getElementById('feedArea');
@@ -158,7 +172,7 @@ function appendFeed(feed, user){
 }
 
 function feedScheduleDelete(){
-    selectedScheduleId = "";
+    selectedSchedule = "";
     document.getElementById('selectedSchedule').innerHTML = "";
     document.getElementById('feedScheduleDeleteBtn').style.display = 'none';
 

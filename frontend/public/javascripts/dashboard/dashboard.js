@@ -54,17 +54,19 @@ function moveScheduleBox(id, bool){
         iconAll.setAttribute('onclick', `changeComplete('${id}', false)`);
 
     }
+    chartDataChange();
+
 
     const readyCount = document.getElementsByClassName('readyBox').length;
     const completeCount = document.getElementsByClassName('completeBox').length;
-    const allCount = readyCount + completeCount;
-
+    // const allCount = readyCount + completeCount;
+    //
     readyScheduleCount.innerText = readyCount.toString();
     completeScheduleCount.innerText = completeCount.toString();
-
-    const completeRate = ((completeCount / allCount) * 100).toFixed(1);
-    document.getElementById('completeBar').style.width = completeRate + '%';
-    document.getElementById('completeBar').innerText = completeRate + '%';
+    //
+    // const completeRate = ((completeCount / allCount) * 100).toFixed(1);
+    // document.getElementById('completeBar').style.width = completeRate + '%';
+    // document.getElementById('completeBar').innerText = completeRate + '%';
 }
 
 function readyDragStart(event) {

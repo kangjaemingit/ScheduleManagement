@@ -143,12 +143,14 @@
 
 .selectedScheduleArea{
     display: flex;
+    align-items: center;
 }
 
 .feedModalControlImg{
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     display: none;
     cursor: pointer;
+    opacity: 0.5;
     margin-left: 5px;
 }

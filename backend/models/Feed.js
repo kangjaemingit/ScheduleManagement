@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {FeedComment} = require("./FeedComment");
 
 const FeedSchema = mongoose.Schema({
     feedContents : {
@@ -14,6 +15,13 @@ const FeedSchema = mongoose.Schema({
         type : [{type : mongoose.Schema.Types.ObjectId, ref:"FeedComment"}]
     }
 })
+
+FeedSchema.pre('deleteOne', {document : false, query : true}, async function(next){
+    const { comments } = this.getFilter();
+
+    await FeedComment.deleteMany({$in : {_id : comments}}).exec();
+    next();
+});
 
 const Feed = mongoose.model('Feed', FeedSchema);
 

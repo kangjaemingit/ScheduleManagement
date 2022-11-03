@@ -21,10 +21,10 @@
                 <div class="feedContents">
                     <p><%=f.feedContents%></p>
                 </div>
-                <div style="display: flex; align-items: center; margin-left: 10px; margin-bottom: 10px;">
-                    <img src="images/chat.png" style="width: 12px; height: 12px; opacity: 0.3;">
-                    <span style="margin-left: 3px;">3</span>
-                    <img src="images/calendar.png" style="width: 12px; height: 12px; opacity: 0.3;margin-left: 10px;">
+                <div class="feedFooter">
+                    <img class="feedFooterIcon" src="images/chat.png" >
+                    <span style="margin-left: 3px;"><%=f.comments.length%></span>
+                    <img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">
                     <div style="display: flex; align-items: center">
                         <div class="listIcon"></div>
                         <span style="margin-left: 5px;"><%=f.schedule.title%></span>

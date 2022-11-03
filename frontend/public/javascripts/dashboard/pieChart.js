@@ -1,6 +1,4 @@
-window.onload = function () {
-    doughnutDraw();
-}
+let chart = new Chart();
 
 let doughnutData = {
     labels: ['i', 'd', 'o', 'l', 'b', 'a'],
@@ -10,8 +8,54 @@ let doughnutData = {
     }]
 };
 
+window.onload = function () {
+    // fetch('completeRate', {
+    //     method : 'get',
+    // }).then((res) => res.json())
+    //     .then((res) => {
+    //         if(!res.completeRateSuccess){
+    //             console.log(res.message);
+    //             return window.alert(res.message);
+    //         }
+    //
+    //         doughnutData = {
+    //             labels : ['완료', '진행중'],
+    //             datasets: [{
+    //                 data : [res.readyCount, res.completeCount],
+    //                 backgroundColor: ["#c2fdb9", "#b9e8fc"],
+    //             }]
+    //         }
+    //
+    //
+    //     }).catch((err) => {
+    //     console.log(err);
+    // })
+    doughnutDraw();
+}
+
+function chartDataChange(){
+    const readyCount = document.getElementsByClassName('readyBox').length;
+    const completeCount = document.getElementsByClassName('completeBox').length;
+
+    chart.data.datasets[0].data = [completeCount, readyCount];
+    chart.options.elements.center.text = (completeCount / (readyCount + completeCount)) * 100 + '%';
+    chart.update();
+}
+
+
+
 let doughnutDraw = function (){
     let doughnutPainter = document.getElementById('doughnutChart').getContext('2d');
+    const readyCount = document.getElementsByClassName('readyBox').length;
+    const completeCount = document.getElementsByClassName('completeBox').length;
+
+    doughnutData = {
+        labels : ['완료', '진행중'],
+        datasets: [{
+            data : [completeCount, readyCount],
+            backgroundColor: ["#c2fdb9", "#b9e8fc"],
+        }]
+    }
 
     Chart.register({
         id: 'doughnut-centertext',
@@ -98,7 +142,7 @@ let doughnutDraw = function (){
         }
     });
 
-    window.doughnutChart=new Chart(doughnutPainter,{
+    chart = new Chart(doughnutPainter,{
         type:'doughnut',
         data:doughnutData,
         options:{
@@ -110,7 +154,7 @@ let doughnutDraw = function (){
             elements:{
                 center:{
                     maxText: '100%',
-                    text: '67%',
+                    text: (completeCount / (readyCount + completeCount)) * 100 + '%',
                     fontColor: '#FF6684',
                     backgroundColor: 'red',
                     fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
