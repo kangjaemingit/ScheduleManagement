@@ -8,13 +8,22 @@ html,body{
     -ms-user-select:none;
     user-select:none;
 }
-
+body::-webkit-scrollbar{
+    width: 7px;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: #bfbfbf;
+}
+body::-webkit-scrollbar-track {
+    background-color: #e5e5e5;
+    border-radius: 5px;
+}
 .feedPageFeedArea{
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
-
 }
 
 .feedPageTitleArea{

@@ -15,7 +15,7 @@ function colorChange(){
     if(luma<127.5){
         // 2. style 변경
         p.style.color='white';
-        paint.src="../../images/layoutHeader/paintwhite.png";
+        paint.src="../../images/layoutHeader/painterWhite.png";
         logout.style.color='white';
         hamburger.src="../../images/layoutHeader/hamburger.png";
         logout.style.borderColor="white"
@@ -23,7 +23,7 @@ function colorChange(){
     else{
         // 2. style 변경
         p.style.color='black'
-        paint.src="../../images/layoutHeader/paintblack.png";
+        paint.src="../../images/layoutHeader/painterBlack.png";
         logout.style.color='black'
         hamburger.src="../../images/layoutHeader/hamburgerblack.png";
         logout.style.borderColor="black"
