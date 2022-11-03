@@ -102,6 +102,8 @@ let doughnutDraw = function (){
         type:'doughnut',
         data:doughnutData,
         options:{
+            responsive:false,
+            maintainAspectRatio:true,
             plugins:{
                 legend: {
                     display: false,
