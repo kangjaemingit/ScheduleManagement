@@ -9,19 +9,10 @@ body {
   font-family: 'Pretendard-Regular';
   font-size: 14px;
   overflow: hidden;
-}
-body::-webkit-scrollbar{
-  width: 7px;
-}
-body::-webkit-scrollbar-thumb{
-  border-radius: 5px;
-  background-color: #bfbfbf;
-}
-body::-webkit-scrollbar-track {
-  background-color: #e5e5e5;
-  border-radius: 5px;
+
 }
 .scrollBox{
+  overflow: auto;
   overflow-x: hidden;
 }
 .scrollBox::-webkit-scrollbar{

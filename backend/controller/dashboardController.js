@@ -1,6 +1,7 @@
 const {Schedule} = require("../models/Schedule");
 const {Category} = require("../models/Category");
 const { Feed } = require("../models/Feed");
+const { TodoList }= require("../models/TodoList")
 
 const dashboardController={
     index : async (req, res) => {
@@ -54,7 +55,10 @@ const dashboardController={
                 .sort({'createDate' : -1})
                 .exec();
 
-            res.render('dashboard/dashboard', { title: 'Express', user : req.user, completeSchedule, readySchedule, sharedSchedule, feed });
+            const todoLists = await TodoList.find({todoListWriter:req.user._id})
+                .exec();
+
+            res.render('dashboard/dashboard', { title: 'Express', user : req.user, completeSchedule, readySchedule, sharedSchedule, feed, todoLists });
         } catch (e) {
             console.log(e);
         }

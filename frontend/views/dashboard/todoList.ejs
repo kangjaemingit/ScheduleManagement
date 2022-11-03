@@ -3,10 +3,15 @@
 <div class="todaySchedule1">
     <div class="styleBox1">
     <div class="todayScheduleTitle"> 할 일 </div>
-        <div class="todaySelectBox"><input type="text" id="todaySelect" onkeyup="if(window.event.keyCode==13){enterEvent()}" onclick="todaySelectFocus();" onchange="focusOut();" placeholder="메모할 일정을 적어주세요."><div class="btn-secondary" onclick="createTodoList();">확인</div></div>
-<div style="display: flex;flex-direction: column">
-    <div id="todayScheduleBox">
-
+        <div class="todaySelectBox"><form><input type="text" id="todaySelect" onchange="focusOut();" placeholder="메모할 일정을 적어주세요."></form><div class="btn-secondary" onclick="createTodoList();">확인</div></div>
+<div class="scrollBox" style="display: flex;margin-top: 5px; flex-direction: column; width: 95%; height: 160px; max-height: 80%">
+    <div id="todayScheduleBox" >
+        <%todoLists.map((t) => {%>
+        <div id="<%= t._id %>" class="scheduleCheckBox" style="display: flex;">
+            <input type="checkbox" onclick="todayCheckbox('<%= t._id %>', this)">
+            <div id="scheduleName"><%= t.todoListVal %></div>
+            </div>
+        <%})%>
     </div>
 </div>
     </div>
