@@ -9,7 +9,6 @@ const FeedSchema = mongoose.Schema({
     schedule : {type : mongoose.Schema.Types.ObjectId, ref:"Schedule"},
     createDate : {
         type : Date,
-        default : new Date()
     },
     comments : {
         type : [{type : mongoose.Schema.Types.ObjectId, ref:"FeedComment"}]

@@ -29,20 +29,23 @@
                     <h4><%=f.feedWriter.name%></h4>
                 </div>
                 <div class="feedControlBox">
-                    <img class="feedDeleteBtn" src="/images/trash.png" style="width: 15px; height: 15px;" onclick="deleteFeed('<%=f._id%>')"/>
+                    <img class="feedDeleteBtn" src="images/editing.png" onclick="feedEditModalOpen(<%= JSON.stringify(f)%>)">
+                    <img class="feedDeleteBtn" src="/images/trash.png" onclick="deleteFeed('<%=f._id%>')"/>
                 </div>
             </div>
-            <div class="feedContents">
-                <p><%=f.feedContents%></p>
+            <div class="feedContents" >
+                <p id="feedContents_<%=f._id%>"><%=f.feedContents%></p>
             </div>
             <div class="feedFooter">
                 <img class="feedFooterIcon" src="images/chat.png" style="width: 12px; height: 12px; opacity: 0.3;">
                 <span id="commentsLength_<%=f._id%>" style="margin-left: 3px;"><%=f.comments.length%></span>
+                <% if(f.schedule){%>
                 <img class="feedFooterIcon" src="images/calendar.png" style="width: 12px; height: 12px; opacity: 0.3;margin-left: 10px;">
                 <div style="display: flex; align-items: center">
                     <div class="listIcon"></div>
-                    <span style="margin-left: 5px;"><%=f.schedule.title%></span>
+                    <span style="margin-left: 5px;" id="selectedSchedule_<%=f._id%>"><%=f.schedule.title%></span>
                 </div>
+                <%}%>
             </div>
             <div class="feedCommentArea" id="feedCommentArea_<%=f._id%>">
                 <%f.comments.map((c) => {%>

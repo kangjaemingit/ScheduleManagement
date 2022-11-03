@@ -1,4 +1,17 @@
-function scheduleDetailModalOpen(scheduleId){
+function scheduleEditControlRender(scheduleOwner, schedule){
+    if(scheduleOwner){
+        document.getElementById('editModeBtn').style.display = 'block';
+        document.getElementById('editModeBtn').setAttribute("onclick", `scheduleEditModalOpen('${schedule._id}')`)
+        if(schedule.complete){
+            document.querySelector('.scheduleDetailCompleteImg').setAttribute("onclick", `editComplete('${schedule._id}', false)`)
+        } else{
+            document.querySelector('.scheduleDetailCompleteImg').setAttribute("onclick", `editComplete('${schedule._id}', true)`)
+        }
+        document.querySelector('.scheduleDetailCompleteImg').style.cursor = 'pointer';
+    }
+}
+
+function scheduleDetailModalOpen(scheduleId, calendarPage){
     const scheduleModal = document.querySelector('.scheduleModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
     bodyScrollHidden[0].style.overflow='hidden'
@@ -52,16 +65,10 @@ function scheduleDetailModalOpen(scheduleId){
             document.getElementById('tagInputDiv').style.display = 'none';
 
             // 일정 작성자이면 편집모드 버튼 보이게함
-            if(res.scheduleOwner){
-                document.getElementById('editModeBtn').style.display = 'block';
-                document.getElementById('editModeBtn').setAttribute("onclick", `scheduleEditModalOpen('${scheduleId}')`)
-                if(res.schedule.complete){
-                    document.querySelector('.scheduleDetailCompleteImg').setAttribute("onclick", `editComplete('${scheduleId}', false)`)
-                } else{
-                    document.querySelector('.scheduleDetailCompleteImg').setAttribute("onclick", `editComplete('${scheduleId}', true)`)
-                }
-
+            if(calendarPage){
+                scheduleEditControlRender(res.scheduleOwner, res.schedule);
             }
+
 
             // 태그 삭제 버튼 보이지 않게 함
             let tagsEl = document.getElementsByClassName('deleteTag')

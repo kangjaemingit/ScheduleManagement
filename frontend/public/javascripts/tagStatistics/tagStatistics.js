@@ -135,7 +135,7 @@ function scheduleRender(schedule){
     let rows= "";
 
     schedule.map((s) => {
-        rows += `<div class="totalScheduleContentsGroup" onclick='scheduleDetailModalOpen("${s._id}")'>`
+        rows += `<div class="totalScheduleContentsGroup" onclick='scheduleDetailModalOpen("${s._id}", false)'>`
             + (s.complete ? `<div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>` : `<div class="totalScheduleHeader2"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>`)
             + `<div class="totalScheduleHeader2">${s.title}</div>`
             + `<div class="totalScheduleHeader2">${new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`

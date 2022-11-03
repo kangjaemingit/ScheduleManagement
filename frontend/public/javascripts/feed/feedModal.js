@@ -1,6 +1,6 @@
 let selectedSchedule = {
-    id: "",
-    title : ""
+    id: null,
+    title : null
 };
 function feedModalOpen(){
     fetch('calendar/getMySchedule', {
@@ -26,11 +26,21 @@ function feedModalOpen(){
     }
 }
 
+function feedEditModalOpen(feed){
+    console.log(feed);
+    document.getElementById('feedContentsInput').value = feed.feedContents;
+    feedScheduleSelect(feed.schedule.title, feed.schedule._id)
+    document.getElementById('btnSaveFeed').setAttribute('onclick', `updateFeed('${feed._id}')`)
+
+    feedModalOpen();
+}
+
 function feedModalClose(){
     document.getElementById('selectedSchedule').innerHTML = "";
     document.getElementById('inputScheduleSearch').value = "";
     document.getElementById('feedContentsInput').value = "";
     document.getElementById('feedScheduleDeleteBtn').style.display = 'none';
+    document.getElementById('btnSaveFeed').setAttribute('onclick', `createFeed()`)
 
     const feedModal = document.querySelector('.feedModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
@@ -151,18 +161,23 @@ function appendFeed(feed, user){
         + `<img src="/images/trash.png" style="width: 15px; height: 15px;" onclick="deleteFeed('${feed._id}')"/>`
         + `</div>`
         + `</div>`
-        + `<div class="feedContents">`
-        + `<p>${feed.feedContents}</p>`
+        + `<div class="feedContents" >`
+        + `<p id="feedContents_${feed._id}">${feed.feedContents}</p>`
         + `</div>`
         + `<div class="feedFooter">`
         + `<img class="feedFooterIcon" src="images/chat.png" >`
-        + `<span style="margin-left: 3px;">${feed.comments.length}</span>`
-        + `<img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">`
-        + `<div style="display: flex; align-items: center">`
-        + `<div class="listIcon"></div>`
-        + `<span style="margin-left: 5px;">${selectedSchedule.title}</span>`
-        + `</div>`
-        + `</div>`
+        + `<span style="margin-left: 3px;">${feed.comments.length}</span>`;
+
+        rows += feed.schedule ?
+        `
+            <img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">
+            <div style="display: flex; align-items: center">
+            <div class="listIcon"></div>
+            <span style="margin-left: 5px;" id="selectedSchedule_${feed._id}">${selectedSchedule.title}</span>
+            </div>
+        ` : "";
+
+        rows += `</div>`
 
     feedContentContainer.innerHTML = rows;
     const parent = document.getElementById('feedArea');
@@ -171,8 +186,47 @@ function appendFeed(feed, user){
     document.getElementById('feedContentsInput').value = "";
 }
 
+function updateFeed(feedId){
+    console.log(feedId);
+    const contents = document.getElementById('feedContentsInput').value;
+
+    const data = {
+        feedId : feedId,
+        feedContents : contents,
+        scheduleId : selectedSchedule.id
+    }
+    if(contents === ""){
+        return window.alert("내용을 입력해주세요");
+    }
+
+    fetch('feed/updateFeed', {
+        method : 'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(data)
+    }).then((res) => res.json())
+        .then((res) => {
+            if(!res.updateFeedSuccess){
+                console.log(res.message);
+                return window.alert(res.message);
+            }
+            document.getElementById('feedContents_' + feedId).innerText = contents;
+            document.getElementById('selectedSchedule_' + feedId).innerText = selectedSchedule.title;
+
+            feedModalClose();
+
+
+        }).catch((err) => {
+        console.log(err);
+    })
+
+}
+
 function feedScheduleDelete(){
-    selectedSchedule = "";
+    selectedSchedule.id = null;
+    selectedSchedule.title = null;
+
     document.getElementById('selectedSchedule').innerHTML = "";
     document.getElementById('feedScheduleDeleteBtn').style.display = 'none';
 

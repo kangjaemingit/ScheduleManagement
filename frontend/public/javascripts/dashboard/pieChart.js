@@ -49,6 +49,7 @@ let doughnutDraw = function (){
     const readyCount = document.getElementsByClassName('readyBox').length;
     const completeCount = document.getElementsByClassName('completeBox').length;
 
+
     doughnutData = {
         labels : ['완료', '진행중'],
         datasets: [{
@@ -56,6 +57,15 @@ let doughnutDraw = function (){
             backgroundColor: ["#c2fdb9", "#b9e8fc"],
         }]
     }
+    let completeRate;
+
+    if(readyCount === 0 && completeCount === 0){
+        completeRate = "표시할 완료율이 없습니다."
+    } else{
+        completeRate = (completeCount / (readyCount + completeCount)) * 100 + '%'
+    }
+
+
 
     Chart.register({
         id: 'doughnut-centertext',
@@ -156,7 +166,7 @@ let doughnutDraw = function (){
             elements:{
                 center:{
                     maxText: '100%',
-                    text: (completeCount / (readyCount + completeCount)) * 100 + '%',
+                    text: completeRate,
                     fontColor: '#FF6684',
                     backgroundColor: 'red',
                     fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",

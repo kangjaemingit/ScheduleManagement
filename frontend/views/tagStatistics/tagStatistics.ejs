@@ -50,7 +50,7 @@
             </div>
             <div id="tagStatisticsSchedule" class="scrollBox">
             <% mySchedule.map((s) => { %>
-            <div class="totalScheduleContentsGroup" onclick="scheduleDetailModalOpen('<%=s._id%>')">
+            <div class="totalScheduleContentsGroup" onclick="scheduleDetailModalOpen('<%=s._id%>', false)">
                 <% if(s.complete){ %>
                     <div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>
                 <% } else { %>

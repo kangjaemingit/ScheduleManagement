@@ -19,7 +19,8 @@ const feedController = {
         await Feed.create({
             feedContents : req.body.contents,
             feedWriter : req.user._id,
-            schedule : req.body.scheduleId
+            schedule : req.body.scheduleId,
+            createDate : new Date()
         }, (err, result) => {
             if(err){
                 console.log(err);
@@ -29,8 +30,8 @@ const feedController = {
         })
     },
     updateFeed : (req, res) => {
-        Feed.updateOne({_id : req.body.id},
-            {$set : {feedContents : req.body.feedContents}},
+        Feed.updateOne({_id : req.body.feedId},
+            {$set : {feedContents : req.body.feedContents, schedule : req.body.scheduleId}},
             (err) => {
                 if(err){
                     console.log(err);
