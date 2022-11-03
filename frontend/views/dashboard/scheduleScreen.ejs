@@ -1,6 +1,8 @@
+<div style="width: 100%; height: 50px; padding: 5px; line-height: 50px; font-size: 18px; font-weight: 600; align-items: center">하루일과<button class="btn-secondary" onclick="scheduleModalOpen();" style="margin-right: 10px; float: right;">일정 생성</button></div>
+<div style="display: flex">
 <div class="dashboardScheduleContainer">
 <div class="dashboardScheduleWrap" style="background-color: #fcecb9;">
-    <div style="align-items: center; display: flex; font-size: 16px;">오늘일정<p><%=readySchedule.length + completeSchedule.length%></p><p>사용자 지정 순</p><img/></div>
+    <div style="width: 85%;align-items: center; display: flex;"><h3>오늘일정</h3><p><%=readySchedule.length + completeSchedule.length%></p></div>
     <%readySchedule.map((s) => {%>
         <div class="dashboardScheduleBox" onclick="event.stopImmediatePropagation(); scheduleDetailModalOpen('<%=s._id%>')">
             <div class="titleBox">
@@ -33,7 +35,7 @@
 
 <div class="dashboardScheduleContainer readyArea" ondragover="dragover_handler(event);" ondrop="completeToReadyDrop(event);">
     <div class="dashboardScheduleWrap" id="completeArea" style="background-color: #b9e8fc;">
-        <div style="align-items: center; display: flex">미완료<p id="readyScheduleCount"><%=readySchedule.length%></p><p>사용자 지정 순</p><img/></div>
+        <div style="width: 85%;align-items: center; display: flex"><h3>미완료</h3><p id="readyScheduleCount"><%=readySchedule.length%></p></div>
         <%readySchedule.map((s) => {%>
         <div class="dashboardScheduleBox readyBox" id="<%=s._id%>" draggable="true" ondragstart="readyDragStart(event);" onclick="scheduleDetailModalOpen('<%=s._id%>')">
             <div class="titleBox">
@@ -53,7 +55,7 @@
 
 <div class="dashboardScheduleContainer completeArea" ondragover="dragover_handler(event);" ondrop="readyToCompleteDrop(event);">
     <div class="dashboardScheduleWrap" id="readyArea" style="background-color: #c2fdb9;">
-        <div style="align-items: center; display: flex">완료<p id="completeScheduleCount"><%=completeSchedule.length%></p><p>사용자 지정 순</p><img/></div>
+        <div style="width: 85%;align-items: center; display: flex"><h3>완료</h3><p id="completeScheduleCount"><%=completeSchedule.length%></p></div>
         <%completeSchedule.map((s) => {%>
         <div class="dashboardScheduleBox completeBox" id="<%=s._id%>" draggable="true" ondragstart="readyDragStart(event);" onclick="scheduleDetailModalOpen('<%=s._id%>')">
             <div class="titleBox">
@@ -72,7 +74,7 @@
 
 <div class="dashboardScheduleContainer">
     <div class="dashboardScheduleWrap" style="background-color: #eebbfe;">
-        <div style="align-items: center; display: flex">공유받은 오늘일정<p><%=sharedSchedule.length%></p><p>사용자 지정 순</p><img/></div>
+        <div style="align-items: center; width: 85%; display: flex"><h3>공유받은 오늘일정</h3><p><%=sharedSchedule.length%></p></div>
         <%sharedSchedule.map((s) => {%>
         <div class="dashboardScheduleBox" onclick="scheduleDetailModalOpen('<%=s._id%>')">
             <div class="titleBox">
@@ -92,4 +94,5 @@
         </div>
         <%});%>
     </div>
+</div>
 </div>

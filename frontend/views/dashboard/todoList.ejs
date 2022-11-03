@@ -3,7 +3,7 @@
 <div class="todaySchedule1">
     <div class="styleBox1">
     <div class="todayScheduleTitle"> 할 일 </div>
-    <div class="todaySelectBox"><input type="text" id="todaySelect"><div class="btn-secondary" onclick="createTodoList();">확인</div></div>
+        <div class="todaySelectBox"><input type="text" id="todaySelect" onkeyup="if(window.event.keyCode==13){enterEvent()}" onclick="todaySelectFocus();" onchange="focusOut();" placeholder="메모할 일정을 적어주세요."><div class="btn-secondary" onclick="createTodoList();">확인</div></div>
 <div style="display: flex;flex-direction: column">
     <div id="todayScheduleBox">
 

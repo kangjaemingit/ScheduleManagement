@@ -10,22 +10,23 @@ function colorChange(){
     const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
     const p = document.getElementById("userInfo")
     const paint= document.getElementById('show')
-    const logout = document.getElementById('logoutImage')
+    const logout = document.getElementById('logout')
     const hamburger = document.getElementById('hamburgerToggle')
     if(luma<127.5){
         // 2. style 변경
         p.style.color='white';
         paint.src="../../images/layoutHeader/paintwhite.png";
-        logout.src="../../images/layoutHeader/logoutWhite.png";
+        logout.style.color='white';
         hamburger.src="../../images/layoutHeader/hamburger.png";
-
+        logout.style.borderColor="white"
     }
     else{
         // 2. style 변경
         p.style.color='black'
         paint.src="../../images/layoutHeader/paintblack.png";
-        logout.src="../../images/layoutHeader/logoutBlack.png";
+        logout.style.color='black'
         hamburger.src="../../images/layoutHeader/hamburgerblack.png";
+        logout.style.borderColor="black"
     }
     const colorData = {
         navBgColor: colorval

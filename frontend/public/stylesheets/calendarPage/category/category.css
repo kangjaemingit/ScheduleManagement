@@ -162,12 +162,12 @@ body{
     top:3px;
     left:-6px;
 }
-#imageContainer:hover #userNameContainer{
-    visibility: inherit;
-}
+/*#imageContainer:hover #userNameContainer{*/
+/*    visibility: inherit;*/
+/*}*/
 #categoryContents{
     overflow: hidden;
 }
 #categoryContents:hover{
-    overflow: auto;
+    overflow-y: auto;
 }

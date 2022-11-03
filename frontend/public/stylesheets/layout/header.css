@@ -13,12 +13,21 @@
     align-items: center;
 
 }
+#logout{
+    color: black;
+    justify-content: center;
+    display: flex;
+    width: 70px;
+    height: 30px;
+    border: 2px black solid;
+}
 .headerbutton{
+    text-align: center;
+    line-height: 20px;
     display: flex;
     align-items: center;
     margin-left: 5px;
     margin-right: 5px;
-    text-align: center;
     text-decoration: none;
 }
 .headerModalbuttonContainer p{

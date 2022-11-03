@@ -21,7 +21,7 @@
 <!--    <div class="todayScheduleChartBox"><p>완료률</p><div style="width: 97%; display: flex; border-radius: 10px;background-color: rgba(235,235,235,1);"><div class="completeBar" id="completeBar" style="width: <%=completeRate%>%"><%=completeRate%>%</div></div></div>-->
 <!--</div>-->
 <div id="indexWrap" class="container">
-    <div style="display: flex; width: 30%;">
+    <div style="display: flex; width: 30%;padding: 0 10px 0px 10px;height: 83%">
     <div id="indexLeft" class="mainIndex">
         <div id="indexLeft-top">
             <%- include('./chartArea.ejs')%>
@@ -29,7 +29,7 @@
         </div>
         <%- include('./feed.ejs') %>
     </div>
-    <div style="width: 66%; height: 100%;float:right;padding: 0 10px 10px 10px;">
+    <div style="width: 66%; height: 83%;float:right;padding: 0 10px 10px 10px;">
     <div id="indexRight" class="mainIndex">
         <%- include('./scheduleScreen.ejs') %>
     </div>

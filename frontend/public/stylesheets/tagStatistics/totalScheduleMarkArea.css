@@ -2,6 +2,7 @@ html,body{
     margin: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 #indexWrap{
     padding: 0 20px 0 20px;
@@ -19,7 +20,7 @@ html,body{
 #indexLeft{
     padding-right: 10px;
     background-color: white;
-    height: 100%;
+    height: 83%;
     display: flex;
     flex-direction: column;
     width: 40%;
@@ -48,7 +49,7 @@ html,body{
     background-position: right;
     right: 0px;
     animation: slideright 1s ease forwards;
-    height: 100%;
+    height: 93%;
 }
 @keyframes slideright {
     0%{

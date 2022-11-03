@@ -1,10 +1,19 @@
+html{
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
 body{
     margin: 0px;
     background-color: #f1f3f9;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 #indexLeft{
+    height: 90%;
+    float: left;
     background-color: white;
-    height: 110%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,11 +39,12 @@ body{
     }
 }
 #indexRight{
+    float: right;
     width:80%;
     background-position: right;
     right: 0px;
     animation: slideright 1s ease forwards;
-    height: 110%;
+    height: 90%;
 }
 @keyframes slideright {
     0%{

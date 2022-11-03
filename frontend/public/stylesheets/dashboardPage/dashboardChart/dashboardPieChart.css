@@ -3,10 +3,11 @@
 }
 .tagStatisticsGroup{
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
     align-items: center;
     border: 1px solid rgba(235,235,235,1);
     height: 100%;
+    width: 40%;
 }
 .successStatisticsTitle{
     text-align: center;
@@ -14,6 +15,7 @@
     line-height: 50px;
     font-size: 18px;
     font-weight: 600;
+    padding: 5px;
 }
 .dashboardPaintPieChart{
     height: 80%;

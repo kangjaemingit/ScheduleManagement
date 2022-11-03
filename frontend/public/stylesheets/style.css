@@ -8,8 +8,7 @@
 body {
   font-family: 'Pretendard-Regular';
   font-size: 14px;
-  overflow: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 body::-webkit-scrollbar{
   width: 7px;
