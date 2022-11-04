@@ -21,7 +21,7 @@
             <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">내용</div> <input class="scheduleModalInput" type="text" id="contents"></label>
             <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">시작일</div> <input class="scheduleModalInput" type="datetime-local" id="startDate" onchange="changeStartDate()"></label>
             <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">마감일</div> <input class="scheduleModalInput" type="datetime-local" id="endDate" onchange="changeEndDate()"></label>
-            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">우선순위</div> <select class="scheduleModalInput" id="priority">
+            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">우선순위</div> <select class="scheduleModalInput" id="priority" onchange="selectOptionClick()">
                 <option id="hurryup" value="5" >아주 높음</option>
                 <option id="high" value="4">높음</option>
                 <option id="normal" value="3">보통</option>

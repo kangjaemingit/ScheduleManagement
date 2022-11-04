@@ -16,7 +16,7 @@
     text-indent:5px;
 }
 #todaySelect:after{
-    width: 100%;
+    width: 97%;
     height: 100%;
     margin-right: 4px;
     outline: none;
@@ -27,19 +27,19 @@
 }
 #todaySelect:after:hover{
     background: rgba(235,235,235,1);
-    width: 100%;
+    width: 97%;
     height: 100%;
     text-indent:5px;
 }
 #todaySelect:hover{
     background: rgba(235,235,235,1);
-    width: 100%;
+    width: 97%;
     height: 100%;
     text-indent:5px;
 }
 #todaySelect:focus{
     background: white;
-    width: 100%;
+    width: 97%;
     height: 100%;
     text-indent:5px;
     border: 1px solid;

@@ -150,7 +150,7 @@ body{
     padding: 0px;
 }
 #hurryup {
-    background-color: rgba(255,0,0,0.5);
+    background-color: rgba(255,0,0,0.3);
 }
 
 .modalCloseBtn{
@@ -159,16 +159,16 @@ body{
     cursor: pointer;
 }
 #high{
-    background-color: rgba(255,165,0,0.5);
+    background-color: rgba(255,165,0,0.3);
 }
 #normal{
-    background-color: rgba(255,255,0,0.5);
+    background-color: rgba(255,255,0,0.3);
 }
 #low{
-    background-color: rgba(0,0,255,0.5);
+    background-color: rgba(0,0,255,0.3);
 }
 #laze{
-    background-color: rgba(0,255,0,0.5);
+    background-color: rgba(0,255,0,0.3);
 }
 
 #btnSaveSchedule{
