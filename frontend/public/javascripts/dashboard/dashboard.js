@@ -104,5 +104,17 @@ function dragover_handler(event) {
     // completeArea.appendChild(component);
 }
 
+// function dateFormatter(date){
+//     let dates = new Date(date);
+//     let year = dates.getFullYear();
+//     let month = dates.getMonth() + 1;
+//     let day = dates.getDate();
+//     let hour = dates.getHours();
+//     let minute = dates.getMinutes();
+//
+//     let fullDate = year + ". " + month + ". " + day + " " + hour + " : " + minute;
+//     return fullDate
+// }
+
 
 

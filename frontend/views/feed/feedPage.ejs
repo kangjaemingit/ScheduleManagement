@@ -10,6 +10,18 @@
     <script src="../javascripts/feed/feedPage.js"></script>
 </head>
 <body style="overflow: auto">
+<%
+    function dateFormatter(date){
+        let today = new Date();
+        let inputDate = new Date(date)
+        let offset = today.getTimezoneOffset() * 60000
+        let DateOffset = new Date(inputDate.getTime() - offset);
+
+        let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
+
+        return dateString;
+    }
+%>
 <header>
     <%- include('../layout/header.ejs'); %>
 </header>
@@ -28,24 +40,28 @@
                     <img class="feedProfilePhoto" src="<%=f.feedWriter.profilePhoto%>"/>
                     <h4><%=f.feedWriter.name%></h4>
                 </div>
+                <% if(f.feedWriter._id.toString() === user._id.toString()){%>
                 <div class="feedControlBox">
                     <img class="feedDeleteBtn" src="images/editing.png" onclick="feedEditModalOpen(<%= JSON.stringify(f)%>)">
                     <img class="feedDeleteBtn" src="/images/trash.png" onclick="deleteFeed('<%=f._id%>')"/>
                 </div>
+                <%}%>
             </div>
             <div class="feedContents" >
                 <p id="feedContents_<%=f._id%>"><%=f.feedContents%></p>
             </div>
             <div class="feedFooter">
-                <img class="feedFooterIcon" src="images/chat.png" style="width: 12px; height: 12px; opacity: 0.3;">
+                <img class="feedFooterIcon" src="images/chat.png" >
                 <span id="commentsLength_<%=f._id%>" style="margin-left: 3px;"><%=f.comments.length%></span>
                 <% if(f.schedule){%>
-                <img class="feedFooterIcon" src="images/calendar.png" style="width: 12px; height: 12px; opacity: 0.3;margin-left: 10px;">
+                <img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">
                 <div style="display: flex; align-items: center">
                     <div class="listIcon"></div>
                     <span style="margin-left: 5px;" id="selectedSchedule_<%=f._id%>"><%=f.schedule.title%></span>
                 </div>
                 <%}%>
+                <img class="feedFooterIcon" src="images/clock.png" style="margin-left: 10px; margin-right: 5px">
+                <span style="opacity: 0.4; font-size: 12px"><%=dateFormatter(f.createDate)%></span>
             </div>
             <div class="feedCommentArea" id="feedCommentArea_<%=f._id%>">
                 <%f.comments.map((c) => {%>
@@ -53,7 +69,7 @@
                     <img class="feedCommentWriterProfile" src="<%=c.commentWriter.profilePhoto%>">
                     <span class="feedCommentWriterName"><%=c.commentWriter.name%></span>
                     <span class="feedCommentContents"><%=c.comment%></span>
-                    <% if(1){%>
+                    <% if(f.feedWriter._id.toString() === user._id.toString()){%>
                         <img class="feedCommentDeleteBtn" src="images/close.png" onclick="deleteComment('<%=c._id%>')">
                     <%}%>
                 </div>

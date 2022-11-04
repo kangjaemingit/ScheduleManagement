@@ -15,6 +15,18 @@
 <header>
     <%- include('../layout/header.ejs'); %>
 </header>
+<%
+    function dateFormatter(date){
+        let today = new Date();
+        let inputDate = new Date(date)
+        let offset = today.getTimezoneOffset() * 60000
+        let DateOffset = new Date(inputDate.getTime() - offset);
+
+        let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
+
+        return dateString;
+    }
+%>
 <div id="indexWrap" class="container" style="padding-left: 20px; padding-right: 20px;">
     <div id="indexLeft" class="mainIndex">
         <%- include('tagRightPieChartScreen.ejs') %>
@@ -57,8 +69,8 @@
                     <div class="totalScheduleHeader2"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>
                 <% } %>
                 <div class="totalScheduleHeader2"><%= s.title %></div>
-                <div class="totalScheduleHeader2"><%= new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16) %></div>
-                <div class="totalScheduleHeader2"><%= new Date(s.date.endDate).toISOString().replace('T', ' ').substring(0, 16) %></div>
+                <div class="totalScheduleHeader2"><%= dateFormatter(s.date.startDate)%></div>
+                <div class="totalScheduleHeader2"><%= dateFormatter(s.date.endDate) %></div>
             </div>
             <%});%>
             </div>

@@ -37,8 +37,8 @@ function scheduleDetailModalOpen(scheduleId, calendarPage){
             document.getElementById('scheduleModalTitleBox').innerHTML += completeImg;
             document.getElementById('scheduleTitle').value = res.schedule.title;
             document.getElementById('contents').value = res.schedule.contents;
-            document.getElementById('startDate').value = res.schedule.date.startDate.slice(0, 16);
-            document.getElementById('endDate').value = res.schedule.date.endDate.slice(0, 16);
+            document.getElementById('startDate').value = dateFormat(res.schedule.date.startDate).toISOString().slice(0, 16)
+            document.getElementById('endDate').value = dateFormat(res.schedule.date.endDate).toISOString().slice(0, 16)
             document.getElementById('priority').value = res.schedule.priority;
             if(res.schedule.address !== ""){
                 document.getElementById('addressExist').checked = true;
@@ -201,4 +201,13 @@ function editComplete(id, bool){
         }).catch((err) => {
         console.log(err);
     })
+}
+
+function dateFormat(date){
+    let today = new Date();
+    let inputDate = new Date(date)
+    let offset = today.getTimezoneOffset() * 60000
+    let DateOffset = new Date(inputDate.getTime() - offset);
+
+    return DateOffset;
 }

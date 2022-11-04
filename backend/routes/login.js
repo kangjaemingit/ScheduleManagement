@@ -27,7 +27,7 @@ router.get('/auth/kakao', passport.authenticate('kakao', {failureRedirect: '/log
 router.get('/logout', (req, res, next) => {
     req.logout(function(err) {
         if (err) { return next(err); }
-        res.redirect('/');
+        res.redirect('/login');
     });
 })
 

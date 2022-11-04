@@ -43,11 +43,16 @@ const dashboardController={
                 return schedule
             }));
 
-            sharedSchedule = sharedSchedule.reduce(function (acc, cur){
-                return acc.concat(cur);
-            })
+
+            if(sharedSchedule.length > 0){
+                sharedSchedule = sharedSchedule.reduce(function (acc, cur){
+                    return acc.concat(cur);
+                })
+            }
 
             sharedSchedule = [...new Set(sharedSchedule.map(JSON.stringify))].map(JSON.parse);
+
+            console.log(sharedSchedule);
 
             const feed = await Feed.find({})
                 .populate('feedWriter')

@@ -5,8 +5,8 @@ function dayClickModalOpen(schedule){
     if(schedule){
         let scheduleList = []
         schedule.map((s)=>{
-            let startDay = s.start.toISOString().substring(0,10);
-            let endDay = s.end.toISOString().substring(0,10);
+            let startDay = dateFormat(s.start).toISOString().substring(0, 10);
+            let endDay = dateFormat(s.end).toISOString().substring(0, 10);
             scheduleList += `<tr onclick="scheduleDetailModalOpen('${s._def.extendedProps._id}', true);">`
             +`<td>${s.title}</td>`
             +`<td>${startDay}</td>`
@@ -55,4 +55,11 @@ function dayModalClosed(){
     bodyScrollHidden[0].style.overflow='auto';
 }
 
+function dateFormat(date){
+    let today = new Date();
+    let inputDate = new Date(date)
+    let offset = today.getTimezoneOffset() * 60000
+    let DateOffset = new Date(inputDate.getTime() - offset);
 
+    return DateOffset;
+}

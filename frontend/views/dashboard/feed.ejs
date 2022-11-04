@@ -1,9 +1,21 @@
+<%
+function dateFormatter(date){
+    let today = new Date();
+    let inputDate = new Date(date)
+    let offset = today.getTimezoneOffset() * 60000
+    let DateOffset = new Date(inputDate.getTime() - offset);
+
+    let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
+
+    return dateString;
+}
+%>
 <link rel="stylesheet" href="/stylesheets/dashboardPage/feed.css">
 <div class="feed">
     <div class="styleBox">
         <div class="feedTitleContainer">
             <img>
-            <div class="feedTitle">피드</div>
+            <div class="feedTitle"><a href="/feed" style="text-decoration: none; color: black">피드</a></div>
             <img src="images/category/edit.png" class="createFeedImg" style="" onclick="feedModalOpen()">
         </div>
         <div class="feedArea scrollBox" id="feedArea">
@@ -14,9 +26,6 @@
                         <img class="feedProfilePhoto" src="<%=f.feedWriter.profilePhoto%>"/>
                         <h4><%=f.feedWriter.name%></h4>
                     </div>
-                    <div class="feedControlBox">
-                        <img class="feedDeleteBtn" src="/images/trash.png" style="width: 15px; height: 15px;" onclick="deleteFeed('<%=f._id%>')"/>
-                    </div>
                 </div>
                 <div class="feedContents">
                     <p><%=f.feedContents%></p>
@@ -24,11 +33,15 @@
                 <div class="feedFooter">
                     <img class="feedFooterIcon" src="images/chat.png" >
                     <span style="margin-left: 3px;"><%=f.comments.length%></span>
-                    <img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">
+                    <% if(f.schedule){%>
+                    <img class="feedFooterIcon" src="images/calendar.png" style="width: 12px; height: 12px; opacity: 0.3;margin-left: 10px;">
                     <div style="display: flex; align-items: center">
                         <div class="listIcon"></div>
-                        <span style="margin-left: 5px;"><%=f.schedule.title%></span>
+                        <span style="margin-left: 5px;" id="selectedSchedule_<%=f._id%>"><%=f.schedule.title%></span>
                     </div>
+                    <%}%>
+                    <img class="feedFooterIcon" src="images/clock.png" style="margin-left: 10px; margin-right: 5px">
+                    <span style="opacity: 0.4; font-size: 12px"><%=dateFormatter(f.createDate)%></span>
                 </div>
             </div>
             <%});%>

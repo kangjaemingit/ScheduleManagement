@@ -129,13 +129,13 @@ const scheduleController = {
                 return schedule
             }));
 
-            sharedSchedule = sharedSchedule.reduce(function (acc, cur){
-                return acc.concat(cur);
-            })
-
+            if(sharedSchedule.length > 0){
+                sharedSchedule = sharedSchedule.reduce(function (acc, cur){
+                    return acc.concat(cur);
+                })
+            }
 
             sharedSchedule = [...new Set(sharedSchedule.map(JSON.stringify))].map(JSON.parse);
-
 
             const mySchedule = await Schedule.find({scheduleWriter:req.user._id})
                 .populate("tag")
