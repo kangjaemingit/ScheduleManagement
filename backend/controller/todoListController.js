@@ -27,7 +27,7 @@ const todoListController = {
             });
     },
     deleteTodoList : (req,res)=>{
-        TodoList.findOneAndDelete({_id : req.body._id,todoListWriter:req.user.id},(err)=>
+        TodoList.findOneAndDelete({_id : req.body._id, todoListWriter:req.user._id},(err)=>
         {
             if(err){
                 console.log(err);

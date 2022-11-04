@@ -12,14 +12,25 @@
 <body style="overflow: auto">
 <%
     function dateFormatter(date){
+        console.log(date);
         let today = new Date();
-        let inputDate = new Date(date)
-        let offset = today.getTimezoneOffset() * 60000
-        let DateOffset = new Date(inputDate.getTime() - offset);
+        let inputDate = new Date(date);
+        let todayToSeconds = (today.getTime() / 1000);
+        let dateToSeconds = (inputDate.getTime() / 1000);
+        let elapsedSec = todayToSeconds - dateToSeconds;
 
-        let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
+        let result;
 
-        return dateString;
+        if(elapsedSec > 86400){
+            result = (elapsedSec / 86400).toFixed(0).toString() + "일 전"
+        } else if(elapsedSec > 3600){
+            result = (elapsedSec / 3600).toFixed(0).toString() + "시간 전"
+        } else if(elapsedSec > 60){
+            result = (elapsedSec / 60).toFixed(0).toString() + "분 전"
+        } else{
+            result = "방금 전";
+        }
+        return result;
     }
 %>
 <header>
@@ -48,7 +59,7 @@
                 <%}%>
             </div>
             <div class="feedContents" >
-                <p id="feedContents_<%=f._id%>"><%=f.feedContents%></p>
+                <pre class="feedContentsTextArea" id="feedContents_<%=f._id%>"><%=f.feedContents%></pre>
             </div>
             <div class="feedFooter">
                 <img class="feedFooterIcon" src="images/chat.png" >
@@ -61,7 +72,7 @@
                 </div>
                 <%}%>
                 <img class="feedFooterIcon" src="images/clock.png" style="margin-left: 10px; margin-right: 5px">
-                <span style="opacity: 0.4; font-size: 12px"><%=dateFormatter(f.createDate)%></span>
+                <span class="feedUploadTime"><%=dateFormatter(f.createDate)%></span>
             </div>
             <div class="feedCommentArea" id="feedCommentArea_<%=f._id%>">
                 <%f.comments.map((c) => {%>
@@ -69,16 +80,18 @@
                     <img class="feedCommentWriterProfile" src="<%=c.commentWriter.profilePhoto%>">
                     <span class="feedCommentWriterName"><%=c.commentWriter.name%></span>
                     <span class="feedCommentContents"><%=c.comment%></span>
-                    <% if(f.feedWriter._id.toString() === user._id.toString()){%>
+                    <span class="feedCommentTime"><%=dateFormatter(c.createDate)%></span>
+                    <% if((f.feedWriter._id.toString() === user._id.toString()) || (c.commentWriter._id.toString() === user._id.toString())){%>
                         <img class="feedCommentDeleteBtn" src="images/close.png" onclick="deleteComment('<%=c._id%>')">
                     <%}%>
                 </div>
                 <% }) %>
             </div>
             <div class="feedCommentWriteArea">
-                <form onsubmit="commentCreate('<%=f._id%>')">
-                    <input type="text" id="commentInput_<%=f._id%>">
-                    <button type="submit" class="btn-secondary">작성</button>
+                <img class="feedCommentWriterProfile" style="width: 30px; height: 30px;" src="<%=user.profilePhoto%>">
+                <form class="commentWriteForm" onsubmit="commentCreate('<%=f._id%>')">
+                    <input class="input-primary" type="text" style="height: 24px; width: 100%" id="commentInput_<%=f._id%>">
+                    <button type="submit" class="btn-secondary commentBtn">작성</button>
                 </form>
             </div>
         </div>

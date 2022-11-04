@@ -152,21 +152,25 @@ function appendFeed(feed, user){
 
     let rows = "";
 
-    rows += `<div class="feedTitleArea">`
-        +`<div style="display: flex; align-items: center">`
-        + `<img class="feedProfilePhoto" src="${user.profilePhoto}">`
-        + `<h4>${user.name}</h4>`
-        + `</div>`
-        + `<div class="feedControlBox">`
-        + `<img src="/images/trash.png" style="width: 15px; height: 15px;" onclick="deleteFeed('${feed._id}')"/>`
-        + `</div>`
-        + `</div>`
-        + `<div class="feedContents" >`
-        + `<p id="feedContents_${feed._id}">${feed.feedContents}</p>`
-        + `</div>`
-        + `<div class="feedFooter">`
-        + `<img class="feedFooterIcon" src="images/chat.png" >`
-        + `<span style="margin-left: 3px;">${feed.comments.length}</span>`;
+    rows +=
+        `
+            <div class="feedTitleArea">
+            <div style="display: flex; align-items: center">
+                <img class="feedProfilePhoto" src="${user.profilePhoto}">
+                <h4>${user.name}</h4>
+            </div>
+            <div class="feedControlBox">
+                <img class="feedDeleteBtn" src="images/editing.png" onclick="feedEditModalOpen(${JSON.stringify(feed)})">
+                <img class="feedDeleteBtn" src="/images/trash.png" onclick="deleteFeed('${feed._id}')"/>
+            </div>
+            </div>
+            <div class="feedContents" >
+                <p id="feedContents_${feed._id}">${feed.feedContents}</p>
+            </div>
+            <div class="feedFooter">
+                <img class="feedFooterIcon" src="images/chat.png" >
+                <span style="margin-left: 3px;">${feed.comments.length}</span>
+        `;
 
         rows += feed.schedule ?
         `
@@ -176,6 +180,12 @@ function appendFeed(feed, user){
             <span style="margin-left: 5px;" id="selectedSchedule_${feed._id}">${selectedSchedule.title}</span>
             </div>
         ` : "";
+
+        rows +=
+            `
+                <img class="feedFooterIcon" src="images/clock.png" style="margin-left: 10px; margin-right: 5px">
+                <span style="opacity: 0.4; font-size: 12px">방금 전</span>
+            `
 
         rows += `</div>`
 
@@ -230,4 +240,15 @@ function feedScheduleDelete(){
     document.getElementById('selectedSchedule').innerHTML = "";
     document.getElementById('feedScheduleDeleteBtn').style.display = 'none';
 
+}
+
+function dateFormatter(date){
+    let today = new Date();
+    let inputDate = new Date(date)
+    let offset = today.getTimezoneOffset() * 60000
+    let DateOffset = new Date(inputDate.getTime() - offset);
+
+    let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
+
+    return dateString;
 }

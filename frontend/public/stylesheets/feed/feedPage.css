@@ -3,6 +3,7 @@ html,body{
     height: 100%;
     padding: 0px;
     margin: 0px;
+    background-color: #f1f3f9;
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
@@ -39,8 +40,9 @@ body::-webkit-scrollbar-track {
     border: solid 1px #e3e3e3;
     display: flex;
     flex-direction: column;
-    margin: 3px 0px 3px 0px;
+    margin: 5px 0px 5px 0px;
     width: 50%;
+    background-color: white;
 }
 
 .feedTitleArea{
@@ -60,7 +62,6 @@ body::-webkit-scrollbar-track {
 }
 
 .feedContents{
-    height: 50px;
     width: 100%;
     padding: 20px 10px 20px 10px;
     flex-wrap: wrap;
@@ -153,3 +154,33 @@ body::-webkit-scrollbar-track {
     margin-left: 5px;
 }
 
+.commentBtn{
+    width: 50px;
+    height: 30px;
+    padding : 3px 0px 3px 0px;
+    margin : 0px 5px 0px 5px;
+}
+
+.commentWriteForm{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.feedCommentTime{
+    font-size: 10px;
+    opacity: 0.4;
+    margin-left: 10px;
+}
+
+.feedUploadTime{
+    opacity: 0.4;
+    font-size: 12px;
+}
+
+.feedContentsTextArea{
+    border : none;
+    width: 100%;
+    font-family: 'Pretendard-Regular';
+    font-size: 14px;
+}

@@ -12,7 +12,14 @@ window.onload = function () {
             document.getElementById('scheduleAllCount').innerText = res.scheduleAllCount
             document.getElementById('usedTagKindCount').innerText = res.usedTagKindCount
             document.getElementById('usedTagAllCount').innerText = res.usedTagAllCount
-            setDefaultData(res.usedTags);
+            if(res.usedTags.length){
+                setDefaultData(res.usedTags);
+            }
+            else{
+                let img = `<img src="images/noData.png" style="width: 50%; opacity: 0.07">`
+                document.getElementById('paintPieChart').innerHTML = img;
+            }
+
 
         }).catch((err) => {
         window.alert("통계데이터 불러오기 데이터 통신 실패");

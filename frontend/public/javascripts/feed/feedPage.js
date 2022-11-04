@@ -34,10 +34,13 @@ function appendComment(feedId, comment, user){
 
     let rows = ""
 
-    rows += `<img class="feedCommentWriterProfile" src="${user.profilePhoto}">`
-        + `<span class="feedCommentWriterName">${user.name}</span>`
-        + `<span class="feedCommentContents">${comment.comment}</span>`
-        + `<img class="feedCommentDeleteBtn" src="images/close.png" onclick="deleteComment('${comment._id}', '${feedId}')">`
+    rows += `
+                <img class="feedCommentWriterProfile" src="${user.profilePhoto}">
+                <span class="feedCommentWriterName">${user.name}</span>
+                <span class="feedCommentContents">${comment.comment}</span>
+                <span class="feedCommentTime">방금 전</span>
+                <img class="feedCommentDeleteBtn" src="images/close.png" onclick="deleteComment('${comment._id}', '${feedId}')">
+            `
 
     commentBox.innerHTML = rows;
 

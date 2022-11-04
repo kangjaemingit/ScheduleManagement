@@ -8,7 +8,6 @@ const FeedCommentSchema = mongoose.Schema({
     commentWriter : {type : mongoose.Schema.Types.ObjectId, ref:"User"},
     createDate : {
         type : Date,
-        default : new Date()
     }
 })
 

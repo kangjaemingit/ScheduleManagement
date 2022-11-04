@@ -1,13 +1,23 @@
 <%
 function dateFormatter(date){
     let today = new Date();
-    let inputDate = new Date(date)
-    let offset = today.getTimezoneOffset() * 60000
-    let DateOffset = new Date(inputDate.getTime() - offset);
+    let inputDate = new Date(date);
+    let todayToSeconds = (today.getTime() / 1000);
+    let dateToSeconds = (inputDate.getTime() / 1000);
+    let elapsedSec = todayToSeconds - dateToSeconds;
 
-    let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
+    let result;
 
-    return dateString;
+    if(elapsedSec > 86400){
+        result = (elapsedSec / 86400).toFixed(0).toString() + "일 전"
+    } else if(elapsedSec > 3600){
+        result = (elapsedSec / 3600).toFixed(0).toString() + "시간 전"
+    } else if(elapsedSec > 60){
+        result = (elapsedSec / 60).toFixed(0).toString() + "분 전"
+    } else{
+        result = "방금 전";
+    }
+    return result;
 }
 %>
 <link rel="stylesheet" href="/stylesheets/dashboardPage/feed.css">
@@ -16,7 +26,6 @@ function dateFormatter(date){
         <div class="feedTitleContainer">
             <img>
             <div class="feedTitle"><a href="/feed" style="text-decoration: none; color: black">피드</a></div>
-            <img src="images/category/edit.png" class="createFeedImg" style="" onclick="feedModalOpen()">
         </div>
         <div class="feedArea scrollBox" id="feedArea">
             <%feed.map((f) => {%>
@@ -28,7 +37,7 @@ function dateFormatter(date){
                     </div>
                 </div>
                 <div class="feedContents">
-                    <p><%=f.feedContents%></p>
+                    <pre class="feedContentsTextArea" id="feedContents_<%=f._id%>"><%=f.feedContents%></pre>
                 </div>
                 <div class="feedFooter">
                     <img class="feedFooterIcon" src="images/chat.png" >

@@ -55,7 +55,8 @@ const feedController = {
         try{
             const comment = await FeedComment.create({
                 comment : req.body.comment,
-                commentWriter : req.user._id
+                commentWriter : req.user._id,
+                createDate : new Date()
             });
 
             await Feed.updateOne({_id : req.body.feedId}, {$push : {comments : comment._id}}).exec();
