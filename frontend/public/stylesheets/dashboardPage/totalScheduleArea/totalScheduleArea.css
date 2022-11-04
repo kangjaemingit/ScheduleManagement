@@ -56,3 +56,6 @@
     flex-direction: row;
     height: 100%;
 }
+.scheduleCheckBox:hover{
+    background: rgba(235,235,235,1);
+}

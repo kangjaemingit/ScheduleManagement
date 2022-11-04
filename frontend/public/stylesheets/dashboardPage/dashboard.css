@@ -88,6 +88,7 @@ html,body{
     right: 0px;
     animation: slideright 1s ease forwards;
     height: 100%;
+    padding: 0 10px 0 0;
 }
 @keyframes slideright {
     0%{
@@ -142,7 +143,7 @@ html,body{
 }
 .dashboardScheduleContainer{
     margin-left:10px;
-    width: 33%;
+    width: 50%;
     align-items:start;
 }
 

@@ -1,11 +1,12 @@
 .todaySelectBox{
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 90%;
     margin-left: 5%;
 }
 #todaySelect{
-    width: 100%;
+    width: 97%;
     height: 100%;
     margin-right: 4px;
     outline: none;
@@ -45,15 +46,17 @@
     outline: none;
     border-radius: 10px;
 }
+#todaySelect::-webkit-input-placeholder{
+    font-size: 12px;
+    text-align: center;
+}
 .scrollBox{
     overflow-y: hidden;
 }
 .scrollBox:hover{
     overflow-y: auto;
 }
-#todayScheduleBox{
-    background: lightgoldenrodyellow;
-}
+
 #todayScheduleBox div{
     margin-left: 10px;
 }
@@ -61,7 +64,7 @@
     width: 100%;
     border-bottom:1px solid rgba(205,205,205,1);
 }
-input[type="checkbox"] {
+.todayScheduleCheckBox {
     -webkit-appearance: none;
     position: relative;
     width: 16px;
@@ -72,12 +75,11 @@ input[type="checkbox"] {
     border-radius: 10px;
     background: #fbfbfb;
 }
-input[type="checkbox"]:hover {
+.todayScheduleCheckBox:hover {
     border-color: rgba(170, 170, 170, 0.5);
 }
-
-input[type="checkbox"]:checked {
-    background-color: #ff8955;
+.todayScheduleCheckBox:checked {
+    background-color: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.3);
     color: white;
 }

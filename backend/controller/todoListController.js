@@ -27,13 +27,13 @@ const todoListController = {
             });
     },
     deleteTodoList : (req,res)=>{
-        TodoList.deleteOne({_id : req.body.id},(err)=>
+        TodoList.findOneAndDelete({_id : req.body._id,todoListWriter:req.user.id},(err)=>
         {
             if(err){
                 console.log(err);
                 return res.json({deleteTodoListSuccess:false,message:err});
             }
-            return res.json({deleteTodoListSuccess:true, }).status(200);
+            return res.json({deleteTodoListSuccess:true}).status(200);
         })
     }
 }
