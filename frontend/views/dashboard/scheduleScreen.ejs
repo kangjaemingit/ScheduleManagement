@@ -46,7 +46,7 @@
             <div style="width: 85%;align-items: center; display: flex;"><h3>오늘일정</h3>
                 <p><%= readySchedule.length + completeSchedule.length %></p></div>
             <% readySchedule.map((s) => { %>
-            <div class="dashboardScheduleBox"
+            <div class="dashboardScheduleBox1"
                  onclick="event.stopImmediatePropagation(); scheduleDetailModalOpen('<%= s._id %>')">
                 <div class="titleBox">
                     <div onclick="event.stopImmediatePropagation();"><img class="completeImg" id="icon_all_<%= s._id %>"
@@ -64,7 +64,7 @@
             </div>
             <% }); %>
             <% completeSchedule.map((s) => { %>
-            <div class="dashboardScheduleBox" onclick="scheduleDetailModalOpen('<%= s._id %>')">
+            <div class="dashboardScheduleBox1" onclick="scheduleDetailModalOpen('<%= s._id %>')">
                 <div class="titleBox">
                     <div onclick="event.stopImmediatePropagation();"><img class="completeImg" id="icon_all_<%= s._id %>"
                                                                           src="images/complete.png"
@@ -91,7 +91,7 @@
             <div style="width: 85%;align-items: center; display: flex"><h3>미완료</h3>
                 <p id="readyScheduleCount"><%= readySchedule.length %></p></div>
             <% readySchedule.map((s) => { %>
-            <div class="dashboardScheduleBox readyBox" id="<%= s._id %>" draggable="true"
+            <div class="dashboardScheduleBox1 readyBox" id="<%= s._id %>" draggable="true"
                  ondragstart="readyDragStart(event);" onclick="scheduleDetailModalOpen('<%= s._id %>')">
                 <div class="titleBox">
                     <div onclick="event.stopImmediatePropagation();"><img class="completeImg" id="icon_<%= s._id %>"
@@ -117,7 +117,7 @@
             <div style="width: 85%;align-items: center; display: flex"><h3>완료</h3>
                 <p id="completeScheduleCount"><%= completeSchedule.length %></p></div>
             <% completeSchedule.map((s) => { %>
-            <div class="dashboardScheduleBox completeBox" id="<%= s._id %>" draggable="true"
+            <div class="dashboardScheduleBox1 completeBox" id="<%= s._id %>" draggable="true"
                  ondragstart="readyDragStart(event);" onclick="scheduleDetailModalOpen('<%= s._id %>')">
                 <div class="titleBox">
                     <div onclick="event.stopImmediatePropagation();"><img class="completeImg" id="icon_<%= s._id %>"

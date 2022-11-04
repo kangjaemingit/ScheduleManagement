@@ -162,7 +162,32 @@ function useAddress(checked){
         document.getElementById('address').value = null;
     }
 }
-
+function selectOptionClick(){
+    let langSelect = document.getElementById("priority");
+    let selectId = langSelect.options[langSelect.selectedIndex].id;
+    let hurry = document.getElementById('hurryup');
+    let high = document.getElementById('high');
+    let normal = document.getElementById('normal');
+    let low = document.getElementById('low');
+    let laze = document.getElementById('laze');
+    console.log(hurry.style.backgroundColor)
+    if(selectId===hurry.id)
+    {
+        document.getElementById("priority").style.backgroundColor='rgba(255,0,0,0.3)';
+    }
+    else if(selectId===high.id){
+        document.getElementById("priority").style.backgroundColor='rgba(255,165,0,0.3)';
+    }
+    else if(selectId===normal.id){
+        document.getElementById("priority").style.backgroundColor='rgba(255,255,0,0.3)';
+    }
+    else if(selectId===low.id){
+        document.getElementById("priority").style.backgroundColor='rgba(0,0,255,0.3)';
+    }
+    else if(selectId===laze.id){
+        document.getElementById("priority").style.backgroundColor='rgba(0,255,0,0.3)';
+    }
+}
 
 function tagKeyUpEvent(event){
     let key = event.key || event.keyCode;
