@@ -1,17 +1,3 @@
-let body1 = document.querySelector("body");
-body1.addEventListener('click', clickBodyEvent);
-function clickBodyEvent(event){
-    const scheduleModal = document.querySelector('.scheduleModal');
-    let target = event.target;
-
-    // 1. review_write_info 영역 이면 pass
-    if(scheduleModal.classList.contains('show')){
-        if(target == event.currentTarget.querySelector("#scheduleModal") ){
-            scheduleModalClose();
-        }
-    }
-}
-
 let tags = [];
 function scheduleModalOpen(){
     const scheduleModal = document.querySelector('.scheduleModal');
@@ -357,3 +343,6 @@ function scheduleTitleValidCheck(title){
 
 }
 
+function tagInputCusor(){
+    document.getElementById('tagInput').focus();
+}
