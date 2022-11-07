@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return year + "년" + month + "월";
         },
         //일정 클릭시 이벤트 함수
-        eventClick:function(arr){
+        eventClick:function(e){
             //일정 클릭시 일정상세페이지 가져옴
-            scheduleDetailModalOpen('${s._def.extendedProps._id}', true);
+            scheduleDetailModalOpen(e.event._def.extendedProps._id, true);
         },
         //날짜 클릭시 이벤트 함수
         dateClick: function (arr) {
