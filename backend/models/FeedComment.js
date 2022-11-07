@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { Feed } = require("./Feed");
 
 const FeedCommentSchema = mongoose.Schema({
     comment : {
