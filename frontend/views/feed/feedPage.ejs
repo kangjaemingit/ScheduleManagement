@@ -82,7 +82,7 @@
                     <span class="feedCommentContents"><%=c.comment%></span>
                     <span class="feedCommentTime"><%=dateFormatter(c.createDate)%></span>
                     <% if((f.feedWriter._id.toString() === user._id.toString()) || (c.commentWriter._id.toString() === user._id.toString())){%>
-                        <img class="feedCommentDeleteBtn" src="images/close.png" onclick="deleteComment('<%=c._id%>')">
+                        <img class="feedCommentDeleteBtn" src="images/close.png" onclick="deleteComment('<%=c._id%>', '<%=f._id%>')">
                     <%}%>
                 </div>
                 <% }) %>
