@@ -1,5 +1,19 @@
 let openDayModalBG = document.getElementById('dayClickModalBG');
 let openDayModal = document.getElementById('dayClickModalBody');
+let body3 = document.querySelector("body");
+body3.addEventListener('click', clickBodyEvent3);
+function clickBodyEvent3(event){
+    let target = event.target;
+    console.log(target);
+
+    // 1. review_write_info 영역 이면 pass
+    if(target == event.currentTarget.querySelector("#dayClickModalBG") ){
+        dayModalClosed();
+    }
+    if(target == event.currentTarget.querySelector("#dayClickModalBody") ){
+        dayClickModalOpen();
+    }
+}
 
 function dayClickModalOpen(schedule){
     if(schedule){

@@ -1,33 +1,57 @@
-function blockColorOption(){
-    let colorlist=document.getElementsByClassName('colorlist')
-    let optionList= document.getElementById('optionList')
-    document.getElementById('optionList').style.display='flex'
-    optionList.addEventListener("click", function (event){
-        let targetColor=event.target.style.backgroundColor
+let body = document.querySelector("body");
+body.addEventListener('click', clickBodyEvent);
+function clickBodyEvent(event){
+    let target = event.target;
+    console.log(target);
+
+    // 1. review_write_info 영역 이면 pass
+    if(target == event.currentTarget.querySelector("#show") ){
+        console.log(event.currentTarget.querySelector("#optionList"))
+        return ;}
+    if(target == event.currentTarget.querySelector("#optionList") ){
+        console.log(event.currentTarget.querySelector("#optionList"))
+        return ;}
+    if(target == event.currentTarget.querySelector("#hamburgerToggle") ){
+
+        return ;}
+    else{
+        document.getElementById('optionList').style.display = 'none'
+        movePage.style.display = 'none';
+        hamburger.src = '../../images/layoutHeader/hamburgerblack.png';
+        hamburger.style.width = '50px';
+        hamburger.style.height = '50px';
+    }
+}
+function blockColorOption(event) {
+    let colorlist = document.getElementsByClassName('colorlist')
+    let optionList = document.getElementById('optionList')
+    document.getElementById('optionList').style.display = 'flex'
+    optionList.addEventListener("click", function (event) {
+        let targetColor = event.target.style.backgroundColor
         for (let i = 0; i < document.getElementsByClassName('colorlist').length; i++) {
             if (colorlist[i].style.backgroundColor === targetColor) {
                 console.log(colorlist[i].style.backgroundColor)
-                document.getElementById('headerContainer').style.backgroundColor=document.getElementsByClassName('colorlist')[i].style.backgroundColor;
+                document.getElementById('headerContainer').style.backgroundColor = document.getElementsByClassName('colorlist')[i].style.backgroundColor;
                 let colorVal = colorlist[i].style.backgroundColor
                 //color rgb값 16진수로 변환
-                let rgb = colorVal.replace( /[^%,.\d]/g, "" ).split( "," );
+                let rgb = colorVal.replace(/[^%,.\d]/g, "").split(",");
 
-                rgb.forEach(function (str, x, arr){
+                rgb.forEach(function (str, x, arr) {
 
                     /* 컬러값이 "%"일 경우, 변환하기. */
-                    if ( str.indexOf( "%" ) > -1 ) str = Math.round( parseFloat(str) * 2.55 );
+                    if (str.indexOf("%") > -1) str = Math.round(parseFloat(str) * 2.55);
 
                     /* 16진수 문자로 변환하기. */
-                    str = parseInt( str, 10 ).toString( 16 );
-                    if ( str.length === 1 ) str = "0" + str;
+                    str = parseInt(str, 10).toString(16);
+                    if (str.length === 1) str = "0" + str;
 
-                    arr[ x ] = str;
+                    arr[x] = str;
 
                 });
-                console.log("#" + rgb.join( "" ))
-                let colorHex="#" + rgb.join( "" )
+                console.log("#" + rgb.join(""))
+                let colorHex = "#" + rgb.join("")
                 const c = colorHex.substring(1)
-                const rgb1 = parseInt(c,16)   // rr를 정수로 변환
+                const rgb1 = parseInt(c, 16)   // rr를 정수로 변환
                 const r = (rgb1 >> 16) & 0xff  // red 추출
                 const g = (rgb1 >> 8) & 0xff  // green 추출
                 const b = (rgb1 >> 0) & 0xff  // blue 추출
@@ -65,34 +89,34 @@ function blockColorOption(){
                         if (res.updateSuccess == false) {
                             window.alert(res.message)
                         }
-                        document.getElementById('optionList').style.display='none'
+                        document.getElementById('optionList').style.display = 'none'
                     })
             }
+            document.getElementById('optionList').style.display = 'none'
         }
-            })
+    })
 }
 
 let movePage = document.getElementById('headerUrlBox');
 const hamburger = document.getElementById('hamburgerToggle')
-let buttonType='up';
-function movePageModal(){
-    buttonType=(buttonType=="dropdown")?'up':"dropdown";
-    if(buttonType==="dropdown"){
-        movePage.style.display='flex';
-        hamburger.src='../../images/category/close_bg_none.png';
-        hamburger.style.width='25px';
-        hamburger.style.height='25px';
+let buttonType = 'up';
+
+function movePageModal() {
+    buttonType = (buttonType == "dropdown") ? 'up' : "dropdown";
+    if (buttonType === "dropdown") {
+        movePage.style.display = 'flex';
+        hamburger.src = '../../images/category/close_bg_none.png';
+        hamburger.style.width = '25px';
+        hamburger.style.height = '25px';
+    } else {
+        movePage.style.display = 'none';
+        hamburger.src = '../../images/layoutHeader/hamburgerblack.png';
+        hamburger.style.width = '50px';
+        hamburger.style.height = '50px';
     }
-    else{
-        movePage.style.display='none';
-        hamburger.src='../../images/layoutHeader/hamburgerblack.png';
-        hamburger.style.width='50px';
-        hamburger.style.height='50px';
-    }
-}
-function imgChange(colorVal){
 
 }
+
 // let changeBrowseText=document.getElementById('movePageText');
 // let moveCategoryPage=document.getElementById('Calendar');
 // let moveDashboardPage=document.getElementById('Dashboard');
@@ -119,11 +143,3 @@ function imgChange(colorVal){
 // }
 // document.getElementById('show').addEventListener('click',show);
 // document.querySelector('.modal-close').addEventListener('click',close);
-
-function clickOption(){
-    let optionValue=document.getElementById('optionList')
-
-    optionValue.addEventListener('click',function (event){
-        console.log(event.target)
-    })
-}

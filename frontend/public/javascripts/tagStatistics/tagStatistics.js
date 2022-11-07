@@ -261,6 +261,10 @@ let barChartDraw = function () {
                 }
             },
             plugins: {
+
+                tooltip: {
+                    enabled: false
+                },
                 legend: {
                     display: false,
                 },
