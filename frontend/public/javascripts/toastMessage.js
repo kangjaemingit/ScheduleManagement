@@ -6,7 +6,7 @@ function toast(string) {
     toast.classList.contains("reveal") ?
         (clearTimeout(removeToast), removeToast = setTimeout(function () {
             document.getElementById("toast").classList.remove("reveal")
-        }, 1000)) :
+        }, 1500)) :
         removeToast = setTimeout(function () {
             document.getElementById("toast").classList.remove("reveal")
         }, 1000)

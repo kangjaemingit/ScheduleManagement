@@ -168,7 +168,7 @@ function appendFeed(feed, user){
             </div>
             </div>
             <div class="feedContents" >
-                <p id="feedContents_${feed._id}">${feed.feedContents}</p>
+                <pre class="feedContentsTextArea" id="feedContents_${feed._id}">${feed.feedContents}</pre>
             </div>
             <div class="feedFooter">
                 <img class="feedFooterIcon" src="images/chat.png" >

@@ -24,7 +24,8 @@
 }
 
 .feedContents{
-    width: 100%;
+    display: flex;
+    width: 95%;
     padding: 20px 10px 20px 10px;
     flex-wrap: wrap;
 }
@@ -80,4 +81,5 @@
     width: 100%;
     font-family: 'Pretendard-Regular';
     font-size: 14px;
+    white-space: pre-wrap;
 }
