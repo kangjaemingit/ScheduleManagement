@@ -2,6 +2,7 @@ let selectedSchedule = {
     id: null,
     title : null
 };
+
 function feedModalOpen(){
     fetch('calendar/getMySchedule', {
         method : 'get',
@@ -27,9 +28,11 @@ function feedModalOpen(){
 }
 
 function feedEditModalOpen(feed){
-    console.log(feed);
     document.getElementById('feedContentsInput').value = feed.feedContents;
-    feedScheduleSelect(feed.schedule.title, feed.schedule._id)
+    if(feed.schedule){
+        feedScheduleSelect(feed.schedule.title, feed.schedule._id)
+    }
+
     document.getElementById('btnSaveFeed').setAttribute('onclick', `updateFeed('${feed._id}')`)
 
     feedModalOpen();

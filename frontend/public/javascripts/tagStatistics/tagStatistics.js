@@ -51,6 +51,7 @@ function dynamicColors(){
     return "rgb(" + r + "," + g + "," + b + ")";
 };
 
+let etcData = [];
 function setDefaultData(data){
     let barTagName = [];
     let barTagCount = [];
@@ -81,11 +82,16 @@ function setDefaultData(data){
            pieTagName.push(data[i].tagName);
            pieTagCount.push(data[i].count);
         } else{
+            etcData.push(data[i]._id);
             etcCount += data[i].count;
         }
     }
-    pieTagName.push("기타");
-    pieTagCount.push(etcCount);
+
+    if(data.length > 7){
+        pieTagName.push("기타");
+        pieTagCount.push(etcCount);
+    }
+
 
     pieData = {
         labels: pieTagName,
@@ -145,8 +151,8 @@ function scheduleRender(schedule){
         rows += `<div class="totalScheduleContentsGroup" onclick='scheduleDetailModalOpen("${s._id}", false)'>`
             + (s.complete ? `<div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>` : `<div class="totalScheduleHeader2"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>`)
             + `<div class="totalScheduleHeader2">${s.title}</div>`
-            + `<div class="totalScheduleHeader2">${new Date(s.date.startDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
-            + `<div class="totalScheduleHeader2">${new Date(s.date.endDate).toISOString().replace('T', ' ').substring(0, 16)}</div>`
+            + `<div class="totalScheduleHeader2">${dateFormatter(s.date.startDate)}</div>`
+            + `<div class="totalScheduleHeader2">${dateFormatter(s.date.endDate)}</div>`
             + `</div>`
     })
 
@@ -156,7 +162,7 @@ function scheduleRender(schedule){
 
 function changeSchedule(tag){
     if(tag === "기타"){
-        return;
+        return changeScheduleEtc();
     }
 
     fetch('tagStatistics/findMyTagByTagName/' + tag, {
@@ -174,6 +180,30 @@ function changeSchedule(tag){
         window.alert("태그로 일정 불러오기 실패");
         console.log(err);
     })
+}
+
+function changeScheduleEtc(){
+    fetch('tagStatistics/findMyTagByNotTagName/', {
+        method : 'post',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify({tags: etcData})
+    }).then((res) => res.json())
+        .then((res) => {
+            if(res.getScheduleSuccess === false){
+                window.alert("태그로 일정을 불러오는데 실패했습니다.");
+                console.log(res.message);
+                return;
+            }
+            console.log(res);
+            scheduleRender(res.schedule)
+
+        }).catch((err) => {
+        window.alert("태그로 일정 불러오기 실패");
+        console.log(err);
+    })
+
 }
 
 function tagPercentage(count){
@@ -267,4 +297,15 @@ function reloadSchedule(){
         window.alert("내 일정 불러오기 실패");
         console.log(err);
     })
+}
+
+function dateFormatter(date){
+    let today = new Date();
+    let inputDate = new Date(date)
+    let offset = today.getTimezoneOffset() * 60000
+    let DateOffset = new Date(inputDate.getTime() - offset);
+
+    let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
+
+    return dateString;
 }

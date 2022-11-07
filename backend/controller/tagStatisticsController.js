@@ -80,6 +80,29 @@ const tagStatisticsController={
                 }
                 return res.json({tagInfo : result}).status(200);
             })
+    },
+    findMyTagByNotTagName : (req, res) => {
+        Schedule.find({$and : [{scheduleWriter : req.user._id}, {tag : {$in : req.body.tags}}]})
+            .exec((err, result) => {
+            if(err){
+                console.log(err);
+                return res.json({getScheduleSuccess : false, message : err})
+            }
+            return res.json({schedule : result}).status(200);
+        })
+
+        // Tags.find( {tagName : {$nin : req.body.tags}})
+        //     .populate({
+        //         path : 'schedule',
+        //         match : {scheduleWriter : req.user._id}
+        //     })
+        //     .exec((err, result) => {
+        //         if(err){
+        //             console.log(err);
+        //             return res.json({getTagSuccess : false, message : err})
+        //         }
+        //         return res.json({tagInfo : result}).status(200);
+        //     })
     }
 
 }
