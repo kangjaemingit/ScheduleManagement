@@ -1,10 +1,9 @@
-
 window.onload = function () {
     fetch('tagStatistics/data', {
-        method : 'get'
+        method: 'get'
     }).then((res) => res.json())
         .then((res) => {
-            if(res.statisticsDataSuccess === false){
+            if (res.statisticsDataSuccess === false) {
                 window.alert("통계 데이터를 불러오지 못했습니다.");
                 console.log(res.message);
                 return;
@@ -12,20 +11,16 @@ window.onload = function () {
             document.getElementById('scheduleAllCount').innerText = res.scheduleAllCount
             document.getElementById('usedTagKindCount').innerText = res.usedTagKindCount
             document.getElementById('usedTagAllCount').innerText = res.usedTagAllCount
-            if(res.usedTags.length){
+            if (res.usedTags.length) {
                 setDefaultData(res.usedTags);
-            }
-            else{
+            } else {
                 let img = `<img src="images/noData.png" style="width: 50%; opacity: 0.07">`
                 document.getElementById('paintPieChart').innerHTML = img;
             }
-
-
         }).catch((err) => {
         window.alert("통계데이터 불러오기 데이터 통신 실패");
         console.log(err);
     })
-
 }
 
 let pieData = {
@@ -44,7 +39,7 @@ let barData = {
     }]
 };
 
-function dynamicColors(){
+function dynamicColors() {
     let r = Math.floor(Math.random() * 255);
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
@@ -52,7 +47,8 @@ function dynamicColors(){
 };
 
 let etcData = [];
-function setDefaultData(data){
+
+function setDefaultData(data) {
     let barTagName = [];
     let barTagCount = [];
     let barColors = ['#ffafb0', '#ffafd8', '#eeb7b4', '#f2cfa5', '#fcffb0', '#aee4ff', '#b5c7ed', '#c4f4fe', '#bee9b4', '#fdfa87', '#fcc6f7', '#caa6fe', '#ffafd8', '#afffba', '#e2ffaf', '#fcffb0', '#f2cfa5', '#83a7a3', '#acb890', '#dfd4e4'];
@@ -60,15 +56,14 @@ function setDefaultData(data){
     data.map((el) => {
         barTagName.push(el.tagName);
         barTagCount.push(el.count);
-        // barColors.push(dynamicColors());
     })
 
     barData = {
         labels: barTagName,
         datasets: [{
-            data : barTagCount,
+            data: barTagCount,
             backgroundColor: barColors,
-            datalabels: { anchor:'center',color:'black',align:'center',font:{size:12}}
+            datalabels: {anchor: 'center', color: 'black', align: 'center', font: {size: 12}}
         }]
     }
 
@@ -77,17 +72,17 @@ function setDefaultData(data){
     let pieColors = ['#fbb9ba', '#fdd3ba', '#fcecb9', '#c2fdb9', '#b9e8fc', '#c1bafd', '#eebbfe', '#e3e3e3'];
     let etcCount = 0;
 
-    for(let i = 0; i < data.length; i++){
-        if(i < 7){
-           pieTagName.push(data[i].tagName);
-           pieTagCount.push(data[i].count);
-        } else{
+    for (let i = 0; i < data.length; i++) {
+        if (i < 7) {
+            pieTagName.push(data[i].tagName);
+            pieTagCount.push(data[i].count);
+        } else {
             etcData.push(data[i]._id);
             etcCount += data[i].count;
         }
     }
 
-    if(data.length > 7){
+    if (data.length > 7) {
         pieTagName.push("기타");
         pieTagCount.push(etcCount);
     }
@@ -107,11 +102,10 @@ function setDefaultData(data){
 }
 
 
-
 let pieChartDraw = function () {
     let piePainter = document.getElementById('pieChart').getContext('2d');
 
-    window.pieChart  = new Chart(piePainter, {
+    window.pieChart = new Chart(piePainter, {
         type: 'pie',
         data: pieData,
         borderRadius: 20,
@@ -119,7 +113,7 @@ let pieChartDraw = function () {
             responsive: false,// legendCallback: customLegend
             plugins: {
                 legend: {
-                    display : false,
+                    display: false,
                 }
             },
         },
@@ -128,8 +122,8 @@ let pieChartDraw = function () {
 };
 
 const htmlLegendPlugin = {
-    id : 'htmlLegend',
-    afterUpdate(chart, args, options){
+    id: 'htmlLegend',
+    afterUpdate(chart, args, options) {
         let rows = "";
 
         let allCount = document.getElementById('usedTagAllCount').text;
@@ -144,8 +138,8 @@ const htmlLegendPlugin = {
     }
 }
 
-function scheduleRender(schedule){
-    let rows= "";
+function scheduleRender(schedule) {
+    let rows = "";
 
     schedule.map((s) => {
         rows += `<div class="totalScheduleContentsGroup" onclick='scheduleDetailModalOpen("${s._id}", false)'>`
@@ -160,16 +154,16 @@ function scheduleRender(schedule){
 
 }
 
-function changeSchedule(tag){
-    if(tag === "기타"){
+function changeSchedule(tag) {
+    if (tag === "기타") {
         return changeScheduleEtc();
     }
 
     fetch('tagStatistics/findMyTagByTagName/' + tag, {
-        method : 'get'
+        method: 'get'
     }).then((res) => res.json())
         .then((res) => {
-            if(res.getTagSuccess === false){
+            if (res.getTagSuccess === false) {
                 window.alert("태그로 일정을 불러오는데 실패했습니다.");
                 console.log(res.message);
                 return;
@@ -182,16 +176,16 @@ function changeSchedule(tag){
     })
 }
 
-function changeScheduleEtc(){
+function changeScheduleEtc() {
     fetch('tagStatistics/findMyTagByNotTagName/', {
-        method : 'post',
-        headers : {
-            'Content-Type' : 'application/json',
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({tags: etcData})
     }).then((res) => res.json())
         .then((res) => {
-            if(res.getScheduleSuccess === false){
+            if (res.getScheduleSuccess === false) {
                 window.alert("태그로 일정을 불러오는데 실패했습니다.");
                 console.log(res.message);
                 return;
@@ -206,10 +200,10 @@ function changeScheduleEtc(){
 
 }
 
-function tagPercentage(count){
+function tagPercentage(count) {
     let allCount = document.getElementById('usedTagAllCount').innerText;
 
-    return ((count/allCount) * 100).toFixed(1);
+    return ((count / allCount) * 100).toFixed(1);
 
 }
 
@@ -217,46 +211,46 @@ let barChartDraw = function () {
     let usedTagAllCount = document.getElementById('usedTagAllCount').innerText
     let piePainter = document.getElementById('barChart').getContext('2d');
     let canvasHeight = document.getElementById("barChart");
-        let h = barData.labels.length * 50;
-        canvasHeight.style.height=h+'px';
+    let h = barData.labels.length * 50;
+    canvasHeight.style.height = h + 'px';
     window.pieChart = new Chart(piePainter, {
         type: 'bar',
         data: barData,
-        plugins:[ChartDataLabels],
+        plugins: [ChartDataLabels],
         options: {
-            onresize:true,
+            onresize: true,
             responsive: false,
             parsing: {},
             barPercentage: 0.5,
-            categoryPercentage:0.5,
+            categoryPercentage: 0.5,
             borderRadius: 20,
             barRadius: 20,
             borderSkipped: false,
-            maintainAspectRatio:false,
-            line : {
-              borderWidth : 0,
+            maintainAspectRatio: false,
+            line: {
+                borderWidth: 0,
             },
             scales: {
                 xAxes: {
-                    grid:{
-                        drawBorder:false,
-                        drawTicks:false,
-                        drawOnChartArea:false,
+                    grid: {
+                        drawBorder: false,
+                        drawTicks: false,
+                        drawOnChartArea: false,
 
                     },
-                    title:{
-                        display:false,
+                    title: {
+                        display: false,
                     },
-                    ticks:{
-                        display:false,
+                    ticks: {
+                        display: false,
                     }
                 },
-                yAxes:{
-                    grid:{
-                        borderColor:'#fff',
-                        drawBorder:false,
-                        drawTicks:false,
-                        drawOnChartArea:false,
+                yAxes: {
+                    grid: {
+                        borderColor: '#fff',
+                        drawBorder: false,
+                        drawTicks: false,
+                        drawOnChartArea: false,
                     }
                 }
             },
@@ -270,27 +264,24 @@ let barChartDraw = function () {
                 },
                 datalabels: {
                     formatter: function (value, context) {
-                        return value+' / '+usedTagAllCount + ' (' + ((value / usedTagAllCount) * 100).toFixed(1) + '%)';
+                        return value + ' / ' + usedTagAllCount + ' (' + ((value / usedTagAllCount) * 100).toFixed(1) + '%)';
                     }
                 }
             },
-        onClick:(e)=>{
+            onClick: (e) => {
                 changeSchedule(e.chart.tooltip.title);
-                console.log(e.chart)
-                console.log(e.chart.canvas.style.height)
-                console.log(e.size)
             },
             indexAxis: 'y',
         },
     });
 };
 
-function reloadSchedule(){
+function reloadSchedule() {
     fetch('calendar/getMySchedule', {
-        method : 'get'
+        method: 'get'
     }).then((res) => res.json())
         .then((res) => {
-            if(res.getMyScheduleSuccess === false){
+            if (res.getMyScheduleSuccess === false) {
                 window.alert("일정을 불러오는데 실패했습니다.");
                 console.log(res.message);
                 return;
@@ -303,12 +294,11 @@ function reloadSchedule(){
     })
 }
 
-function dateFormatter(date){
+function dateFormatter(date) {
     let today = new Date();
     let inputDate = new Date(date)
     let offset = today.getTimezoneOffset() * 60000
     let DateOffset = new Date(inputDate.getTime() - offset);
-
     let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
 
     return dateString;

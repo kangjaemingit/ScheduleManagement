@@ -51,7 +51,6 @@ function todayCheckbox(id, checkbox) {
                 console.log(res.message);
                 return window.alert(res.message);
             } else {
-                console.log(id)
                 if (checkbox.checked === true) {
                     document.getElementById(id).remove()
                 }

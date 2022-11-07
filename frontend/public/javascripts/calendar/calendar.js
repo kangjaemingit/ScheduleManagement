@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         dayMaxEvents : true,
         headerToolbar: {
-            start: 'dayGridMonth,timeGridWeek,timeGridDay allScheduleButton,myScheduleButton',
+            start: 'dayGridMonth,allScheduleButton,myScheduleButton',
             center: 'title',
             end: 'prevYear,prev,today,next,nextYear'
         },

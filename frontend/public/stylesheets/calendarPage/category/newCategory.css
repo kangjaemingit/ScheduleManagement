@@ -123,9 +123,7 @@
     cursor: pointer;
     display: none;
 }
-#newCategoryModalLabelTitle{
-    margin: 10px 0 10px 0;
-}
+
 .titleContainer{
     margin-bottom: 5px;
     width: 100%;

@@ -9,27 +9,6 @@ let doughnutData = {
 };
 
 window.onload = function () {
-    // fetch('completeRate', {
-    //     method : 'get',
-    // }).then((res) => res.json())
-    //     .then((res) => {
-    //         if(!res.completeRateSuccess){
-    //             console.log(res.message);
-    //             return window.alert(res.message);
-    //         }
-    //
-    //         doughnutData = {
-    //             labels : ['완료', '진행중'],
-    //             datasets: [{
-    //                 data : [res.readyCount, res.completeCount],
-    //                 backgroundColor: ["#c2fdb9", "#b9e8fc"],
-    //             }]
-    //         }
-    //
-    //
-    //     }).catch((err) => {
-    //     console.log(err);
-    // })
     doughnutDraw();
 }
 

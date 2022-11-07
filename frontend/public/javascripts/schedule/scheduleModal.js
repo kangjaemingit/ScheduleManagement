@@ -1,14 +1,14 @@
 let body1 = document.querySelector("body");
 body1.addEventListener('click', clickBodyEvent);
 function clickBodyEvent(event){
+    const scheduleModal = document.querySelector('.scheduleModal');
     let target = event.target;
 
     // 1. review_write_info 영역 이면 pass
-    if(target == event.currentTarget.querySelector("#scheduleModal") ){
-        scheduleModalClose();
+    if(scheduleModal.classList.contains('show')){
+        if(target == event.currentTarget.querySelector("#scheduleModal") ){
+            scheduleModalClose();
         }
-    if(target == event.currentTarget.querySelector("#scheduleModalBody") ){
-        scheduleModalOpen();
     }
 }
 
@@ -32,7 +32,7 @@ function scheduleModalClose(){
     const scheduleModal = document.querySelector('.scheduleModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
     scheduleModal.classList.toggle('show');
-    bodyScrollHidden[0].style.overflow='auto';
+    bodyScrollHidden[0].style.overflow='hidden';
 
     // 값 비우기
     tags = [];
@@ -69,7 +69,6 @@ function scheduleModalClose(){
 
     document.getElementById('btnDeleteSchedule').removeAttribute('onclick');
     document.getElementById('btnDeleteSchedule').style.display = 'none';
-
 }
 
 
@@ -87,8 +86,6 @@ function changeEndDate(){
         document.getElementById('endDate').value = document.getElementById('startDate').value
         return window.alert("마감일을 시작일과 같거나 시작시간 이전으로 설정할 수 없습니다.");
     }
-
-    console.log(document.getElementById('startDate').value)
 }
 
 function validCheck(schedule){
@@ -183,12 +180,10 @@ function selectOptionClick(){
     let normal = document.getElementById('normal');
     let low = document.getElementById('low');
     let laze = document.getElementById('laze');
-    console.log(hurry.style.backgroundColor)
     if(selectId===hurry.id)
     {
-        let selectValue = langSelect.options[langSelect.selectedIndex].value;
         let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
-        let selectText = langSelect.options[langSelect.selectedIndex].text;
+
         langSelect.style.border=selectBox+'1px solid';
         langSelect.style.color='red';
     }

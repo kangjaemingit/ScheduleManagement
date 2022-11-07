@@ -9,7 +9,6 @@ function clickBodyEvent(event){
     if(target == event.currentTarget.querySelector("#optionList") ){
         return ;}
     if(target == event.currentTarget.querySelector("#hamburgerToggle") ){
-
         return ;}
     else{
         document.getElementById('optionList').style.display = 'none'
@@ -27,25 +26,18 @@ function blockColorOption(event) {
         let targetColor = event.target.style.backgroundColor
         for (let i = 0; i < document.getElementsByClassName('colorlist').length; i++) {
             if (colorlist[i].style.backgroundColor === targetColor) {
-                console.log(colorlist[i].style.backgroundColor)
                 document.getElementById('headerContainer').style.backgroundColor = document.getElementsByClassName('colorlist')[i].style.backgroundColor;
                 let colorVal = colorlist[i].style.backgroundColor
                 //color rgb값 16진수로 변환
                 let rgb = colorVal.replace(/[^%,.\d]/g, "").split(",");
-
                 rgb.forEach(function (str, x, arr) {
-
                     /* 컬러값이 "%"일 경우, 변환하기. */
                     if (str.indexOf("%") > -1) str = Math.round(parseFloat(str) * 2.55);
-
                     /* 16진수 문자로 변환하기. */
                     str = parseInt(str, 10).toString(16);
                     if (str.length === 1) str = "0" + str;
-
                     arr[x] = str;
-
                 });
-                console.log("#" + rgb.join(""))
                 let colorHex = "#" + rgb.join("")
                 const c = colorHex.substring(1)
                 const rgb1 = parseInt(c, 16)   // rr를 정수로 변환
@@ -113,30 +105,3 @@ function movePageModal() {
     }
 
 }
-
-// let changeBrowseText=document.getElementById('movePageText');
-// let moveCategoryPage=document.getElementById('Calendar');
-// let moveDashboardPage=document.getElementById('Dashboard');
-// let moveTagStatisticsPage=document.getElementById('TagStatistics')
-// moveCategoryPage.addEventListener("click", function (){
-//     changeBrowseText.style.marginLeft='65px'
-//     changeBrowseText.innerText = `Calendar`;
-// })
-// moveDashboardPage.addEventListener("click", function (){
-//     changeBrowseText.innerText = "Dashboard";
-//     changeBrowseText.style.marginLeft='65px'
-// })
-// moveTagStatisticsPage.addEventListener("click", function (){
-//     changeBrowseText.innerText = "TagStatistics";
-//     changeBrowseText.style.marginLeft='65px'
-// })
-
-// function headerUrl(){
-//     console.log("들어가냐")
-//     let left = document.getElementById('indexLeft')
-//     let right = document.getElementById('indexRight')
-//     left.style.animation = 'slidedrop 1s linear reverse '
-//     right.style.animation = 'slideright 1s linear reverse'
-// }
-// document.getElementById('show').addEventListener('click',show);
-// document.querySelector('.modal-close').addEventListener('click',close);

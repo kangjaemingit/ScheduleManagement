@@ -174,3 +174,6 @@ body{
 #btnSaveSchedule{
     margin-right: 10px;
 }
+.newCategoryModalLabelTitle{
+    margin: 10px 0 10px 0;
+}
