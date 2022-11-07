@@ -3,15 +3,15 @@ let body2 = document.querySelector("body");
 body2.addEventListener('click', clickBodyEvent2);
 function clickBodyEvent2(event){
     let target = event.target;
-    console.log(target);
+
 
     // 1. review_write_info 영역 이면 pass
-    if(target == event.currentTarget.querySelector("#newCategoryModal") ){
-        newCategoryModalClose();
+    if(newCategoryModal.classList.contains('show')){
+        if(target == event.currentTarget.querySelector("#newCategoryModal") ){
+            newCategoryModalClose();
+        }
     }
-    if(target == event.currentTarget.querySelector("#scheduleModalBody") ){
-        newCategoryModalOpen();
-    }
+
 }
 
 const newCategoryModal = document.querySelector('.newCategoryModal');

@@ -1,4 +1,4 @@
-let chart = new Chart();
+let chart;
 
 let doughnutData = {
     labels: ['i', 'd', 'o', 'l', 'b', 'a'],

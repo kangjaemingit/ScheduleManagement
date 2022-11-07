@@ -17,8 +17,9 @@ const FeedSchema = mongoose.Schema({
 
 FeedSchema.pre('deleteOne', {document : false, query : true}, async function(next){
     const { comments } = this.getFilter();
+    console.log(comments);
 
-    await FeedComment.deleteMany({$in : {_id : comments}}).exec();
+    await FeedComment.deleteMany({_id : comments}).exec();
     next();
 });
 

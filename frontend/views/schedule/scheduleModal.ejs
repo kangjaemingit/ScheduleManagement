@@ -21,7 +21,7 @@
             <div class="scheduleModalContents" id="scheduleModalContents">
                 <label class="scheduleModalLabel">
                     <div id="newCategoryModalLabelTitle">제목</div>
-                    <input class="scheduleModalInput" type="text" maxlength="200" id="scheduleTitle"></label>
+                    <input class="scheduleModalInput" type="text" maxlength=200 id="scheduleTitle" oninput="scheduleTitleValidCheck(this)"></label>
                 <label class="scheduleModalLabel">
                     <div id="newCategoryModalLabelTitle">내용</div>
                     <input class="scheduleModalInput" type="text" id="contents"></label>
@@ -53,7 +53,7 @@
 
                     </div>
                     <div class="tagInputDiv" id="tagInputDiv">
-                        <input type="text" class="tagInput" id="tagInput" placeholder="#해시태그" maxlength="50"
+                        <input type="text" class="tagInput" id="tagInput" placeholder="#해시태그" maxlength=50
                                oninput="autoComplete(this)">
                     </div>
                 </div>

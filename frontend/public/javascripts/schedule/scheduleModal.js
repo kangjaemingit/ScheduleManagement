@@ -2,7 +2,6 @@ let body1 = document.querySelector("body");
 body1.addEventListener('click', clickBodyEvent);
 function clickBodyEvent(event){
     let target = event.target;
-    console.log(target);
 
     // 1. review_write_info 영역 이면 pass
     if(target == event.currentTarget.querySelector("#scheduleModal") ){
@@ -176,16 +175,6 @@ function useAddress(checked){
     }
 }
 
-function optionBlock(){
-    let selectToggleButton=false;
-    selectToggleButton=(selectToggleButton===true)?false:true
-    if(selectToggleButton===true){
-        document.getElementById('optionBlock').style.display='block';
-    }
-    else{
-        document.getElementById('optionBlock').style.display='none';
-    }
-}
 function selectOptionClick(){
     let langSelect = document.getElementById("priority");
     let selectId = langSelect.options[langSelect.selectedIndex].id;
@@ -194,67 +183,55 @@ function selectOptionClick(){
     let normal = document.getElementById('normal');
     let low = document.getElementById('low');
     let laze = document.getElementById('laze');
-    let options = document.getElementsByTagName('option')
     console.log(hurry.style.backgroundColor)
     if(selectId===hurry.id)
     {
-
         let selectValue = langSelect.options[langSelect.selectedIndex].value;
         let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
         let selectText = langSelect.options[langSelect.selectedIndex].text;
         langSelect.style.border=selectBox+'1px solid';
         langSelect.style.color='red';
-        langSelect.style.backgroundColor='white'
-        hurry.style.color='black';
-        normal.style.color='black';
-        low.style.color='black';
-        laze.style.color='black';
-        high.style.color='black';
     }
     else if(selectId===high.id){
         let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
         langSelect.style.border=selectBox+'1px solid';
         langSelect.style.color='orange';
-        langSelect.style.backgroundColor='white'
-        hurry.style.color='black';
-        normal.style.color='black';
-        low.style.color='black';
-        laze.style.color='black';
-        high.style.color='black';
+        setOptionColorDefault()
     }
     else if(selectId===normal.id){
         let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
         langSelect.style.border=selectBox+'1px solid';
         langSelect.style.color='darkgoldenrod';
-        langSelect.style.backgroundColor='white'
-        hurry.style.color='black';
-        normal.style.color='black';
-        low.style.color='black';
-        laze.style.color='black';
-        high.style.color='black';
+        setOptionColorDefault()
     }
     else if(selectId===low.id){
         let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
         langSelect.style.border=selectBox+'1px solid';
         langSelect.style.color='blue';
-        langSelect.style.backgroundColor='white'
-        hurry.style.color='black';
-        normal.style.color='black';
-        low.style.color='black';
-        laze.style.color='black';
-        high.style.color='black';
+        setOptionColorDefault()
     }
     else if(selectId===laze.id){
         let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
         langSelect.style.border=selectBox+'1px solid';
         langSelect.style.color='green';
-        langSelect.style.backgroundColor='white';
-        hurry.style.color='black';
-        normal.style.color='black';
-        low.style.color='black';
-        laze.style.color='black';
-        high.style.color='black';
+        setOptionColorDefault()
     }
+}
+
+function setOptionColorDefault(){
+    let langSelect = document.getElementById("priority");
+    let hurry = document.getElementById('hurryup');
+    let high = document.getElementById('high');
+    let normal = document.getElementById('normal');
+    let low = document.getElementById('low');
+    let laze = document.getElementById('laze');
+
+    langSelect.style.backgroundColor='white';
+    hurry.style.color='black';
+    normal.style.color='black';
+    low.style.color='black';
+    laze.style.color='black';
+    high.style.color='black';
 }
 
 function tagKeyUpEvent(event){
@@ -294,11 +271,11 @@ function tagRenderNotDeleteBtn(){
 function newTag(){
     let tag = document.getElementById('tagInput').value.trim();
     if(tags.includes(tag)){
-        window.alert("동일한 내용의 태그를 작성할 수 없습니다.");
+        toast("동일한 내용의 태그를 작성할 수 없습니다.");
         return;
     }
     if(tag === ""){
-        window.alert("태그를 입력해주세요");
+        toast("태그를 입력해주세요");
         return;
     }
 
@@ -321,11 +298,14 @@ const autoCompleteModal = document.querySelector('.autoCompleteModal');
 const autoCompleteModalBottom = document.querySelector('.autoCompleteModalBottom');
 function autoComplete(key){
     const keyword = key.value;
-    toast(keyword);
     if(keyword.trim() === ""){
         autoCompleteModal.classList.remove('show');
         autoCompleteModalBottom.innerHTML = "";
         return;
+    }
+
+    if(keyword.length > 49){
+        toast("태그는 50자를 초과할 수 없습니다.")
     }
 
     fetch('schedule/autoComplete', {
@@ -361,12 +341,21 @@ function autoCompleteModalClose(){
 function autoCompleteLiClick(tagName){
     console.log("autoCompleteClick")
     if(tags.includes(tagName)){
-        window.alert("동일한 내용의 태그를 작성할 수 없습니다.");
+        toast("동일한 내용의 태그를 작성할 수 없습니다.");
         return;
     }
 
     tags.push(tagName);
     tagRender();
     autoCompleteModal.classList.remove('show');
+}
+
+function scheduleTitleValidCheck(title){
+    const keyword = title.value;
+
+    if(keyword.length >= 200){
+        toast("제목은 200자를 초과할 수 없습니다.");
+    }
+
 }
 

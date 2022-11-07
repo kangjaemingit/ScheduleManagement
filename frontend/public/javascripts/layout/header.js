@@ -2,14 +2,11 @@ let body = document.querySelector("body");
 body.addEventListener('click', clickBodyEvent);
 function clickBodyEvent(event){
     let target = event.target;
-    console.log(target);
 
     // 1. review_write_info 영역 이면 pass
     if(target == event.currentTarget.querySelector("#show") ){
-        console.log(event.currentTarget.querySelector("#optionList"))
         return ;}
     if(target == event.currentTarget.querySelector("#optionList") ){
-        console.log(event.currentTarget.querySelector("#optionList"))
         return ;}
     if(target == event.currentTarget.querySelector("#hamburgerToggle") ){
 
