@@ -343,6 +343,6 @@ function scheduleTitleValidCheck(title){
 
 }
 
-function tagInputCusor(){
+function tagInputCursor(){
     document.getElementById('tagInput').focus();
 }

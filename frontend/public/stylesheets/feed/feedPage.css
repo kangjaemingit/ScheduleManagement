@@ -62,7 +62,7 @@ body::-webkit-scrollbar-track {
 }
 
 .feedContents{
-    width: 100%;
+    width: 95%;
     padding: 20px 10px 20px 10px;
     flex-wrap: wrap;
 }
@@ -183,4 +183,5 @@ body::-webkit-scrollbar-track {
     width: 100%;
     font-family: 'Pretendard-Regular';
     font-size: 14px;
+    white-space: pre-wrap;
 }
