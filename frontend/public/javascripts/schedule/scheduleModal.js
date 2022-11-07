@@ -81,27 +81,27 @@ function changeEndDate(){
 
 function validCheck(schedule){
     if(schedule.title.trim() === ""){
-        window.alert("제목을 입력하세요")
+        toast("일정의 제목을 입력하세요")
         return false;
     }
 
     if(schedule.startDate.trim() === ""){
-        window.alert("시작일을 입력하세요")
+        toast("시작일을 입력하세요")
         return false;
     }
 
     if(schedule.endDate.trim() === ""){
-        window.alert("마감일을 입력하세요")
+        toast("마감일을 입력하세요")
         return false;
     }
 
     if(schedule.startDate >= schedule.endDate){
-        window.alert("시작시간과 마감시간이 동일하거나, 시작시간이 마감시간보다 늦을 수 없습니다.")
+        toast("시작시간과 마감시간이 동일하거나, 시작시간이 마감시간보다 늦을 수 없습니다.")
         return false
     }
 
     if(!schedule.tag.length){
-        window.alert("태그는 1개 이상 입력해야 합니다.")
+        toast("태그는 1개 이상 입력해야 합니다.")
         return false;
     }
 
@@ -308,6 +308,7 @@ const autoCompleteModal = document.querySelector('.autoCompleteModal');
 const autoCompleteModalBottom = document.querySelector('.autoCompleteModalBottom');
 function autoComplete(key){
     const keyword = key.value;
+    toast(keyword);
     if(keyword.trim() === ""){
         autoCompleteModal.classList.remove('show');
         autoCompleteModalBottom.innerHTML = "";
