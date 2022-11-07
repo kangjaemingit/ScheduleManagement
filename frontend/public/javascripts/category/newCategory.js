@@ -3,14 +3,12 @@ let body2 = document.querySelector("body");
 body2.addEventListener('click', clickBodyEvent2);
 function clickBodyEvent2(event){
     let target = event.target;
-    console.log(target);
-
     // 1. review_write_info 영역 이면 pass
-    if(target == event.currentTarget.querySelector("#newCategoryModal") ){
-        newCategoryModalClose();
-    }
-    if(target == event.currentTarget.querySelector("#scheduleModalBody") ){
-        newCategoryModalOpen();
+    if(newCategoryModal.classList.contains('show')){
+        // body.style.overflow = 'hidden';
+        if(target == event.currentTarget.querySelector("#newCategoryModal") ){
+            newCategoryModalClose();
+        }
     }
 }
 
@@ -103,7 +101,7 @@ function newCategoryModalClose(){
     document.getElementById('saveCategoryButton').setAttribute("onClick", `saveNewCategory()`)
 
     newCategoryModal.classList.toggle('show');
-    bodyScrollHidden[0].style.overflow='auto'
+    bodyScrollHidden[0].style.overflow='hidden'
 }
 
 

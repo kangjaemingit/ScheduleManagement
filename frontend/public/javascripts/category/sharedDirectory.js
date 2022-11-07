@@ -107,7 +107,7 @@ function sharedDirectoryModalClose() {
     moveRightContainer.style.marginLeft = '0px'
     moveRightContainer.style.transition = '1s'
     const bodyScrollHidden=document.getElementsByTagName('body');
-    bodyScrollHidden[0].style.overflow = 'auto';
+    bodyScrollHidden[0].style.overflow = 'hidden';
     // const modalOpenBtn = document.getElementById('modalOpenBtn');
     // modalOpenBtn.style.display = 'flex'
 

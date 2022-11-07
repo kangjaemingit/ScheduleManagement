@@ -48,7 +48,7 @@ function feedModalClose(){
     const feedModal = document.querySelector('.feedModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
     feedModal.classList.toggle('show');
-    bodyScrollHidden[0].style.overflow='auto';
+    bodyScrollHidden[0].style.overflow='hidden';
 }
 
 function feedScheduleRender(schedule){
@@ -200,7 +200,6 @@ function appendFeed(feed, user){
 }
 
 function updateFeed(feedId){
-    console.log(feedId);
     const contents = document.getElementById('feedContentsInput').value;
 
     const data = {

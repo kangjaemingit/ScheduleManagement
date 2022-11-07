@@ -1,7 +1,6 @@
 let removeToast;
 
 function toast(string) {
-    console.log("string")
     const toast = document.getElementById("toast");
 
     toast.classList.contains("reveal") ?

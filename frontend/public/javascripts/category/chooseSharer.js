@@ -70,7 +70,6 @@ function searchUser(){
 
 
 function userChecked(user, checkbox){
-    console.log(user);
     if(checkbox.checked){
         userList.push(user);
     } else{

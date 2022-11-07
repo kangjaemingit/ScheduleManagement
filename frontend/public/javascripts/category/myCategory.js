@@ -67,7 +67,6 @@ function categoryDetailModalOpen(category){
 }
 
 function categoryEditModalOpen(category){
-    console.log(category);
     userList = category.sharer;
     tagList = category.tags;
     const bodyScrollHidden=document.getElementsByTagName('body');

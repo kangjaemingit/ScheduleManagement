@@ -6,7 +6,6 @@ const todoListController = {
             todoListVal: req.body.todoListVal,
             todoListWriter: req.user._id,
         }, (err, result) => {
-            console.log(result)
             if (err) {
                 console.log("new Category create Error:" + err);
                 return res.json({newTodoListSuccess: false, message: err});
