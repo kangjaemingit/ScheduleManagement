@@ -1,4 +1,17 @@
+let body1 = document.querySelector("body");
+body1.addEventListener('click', clickBodyEvent);
+function clickBodyEvent(event){
+    let target = event.target;
+    console.log(target);
 
+    // 1. review_write_info 영역 이면 pass
+    if(target == event.currentTarget.querySelector("#scheduleModal") ){
+        scheduleModalClose();
+        }
+    if(target == event.currentTarget.querySelector("#scheduleModalBody") ){
+        scheduleModalOpen();
+    }
+}
 
 let tags = [];
 function scheduleModalOpen(){

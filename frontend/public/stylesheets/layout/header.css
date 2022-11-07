@@ -54,18 +54,21 @@
     left: 20px;
 }
 #show{
+    margin : 0 5px 0 5px;
     height: 27px;
     width: 27px;
     opacity: 100%;
+    cursor: pointer;
 }
 #optionList{
+    /*margin-top: 5px;*/
     padding:5px;
     background: white;
     display: none;
     flex-wrap: wrap;
     position: absolute;
     width: 100px;
-    height: 80px;
+    height: 100px;
     border-radius: 5px;
     z-index: 100;
 }

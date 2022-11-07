@@ -1,3 +1,4 @@
+
 function scheduleEditControlRender(scheduleOwner, schedule){
     if(scheduleOwner){
         document.getElementById('editModeBtn').style.display = 'block';
