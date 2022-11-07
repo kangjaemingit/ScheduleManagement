@@ -8,7 +8,9 @@
             </div>
         </div>
         <%- include("movePageModal") %>
-        <a href="/" style="text-decoration: none; display: flex; line-height: 80px; font-size: 20px; align-items: center">Third<img id="logo" onclick="logo();" class="headerbutton" src="../../images/layoutHeader/cat-1423_512.gif"/>Group</a>
+        <a href="/" style="text-decoration: none; display: flex; line-height: 80px; font-size: 20px; align-items: center">
+            <img id="logo" src="../../images/layoutHeader/heaventreeLogo.png"/>
+        </a>
         <ul id="headerUserBox">
             <% if(user.provider === "naver"){ %>
                 <img id="changeLogo" src="../../images/layoutHeader/btnG_아이콘원형.png"/>
@@ -18,24 +20,11 @@
             <img id="profilePhoto" src="<%= user.profilePhoto %>"/>
             <p id="userInfo"><%= user.name %></p>
             <div style="position: relative;">
-                <label for="color"><img id="show" src="../../images/layoutHeader/painterBlack.png"/></label>
-                <input list="presets" id="color" type="color" onchange="colorChange()" value="#ffffff">
-                <datalist id="presets" style="margin-top: 1px">
-                    <option>#f9f9f9</option>
-                    <option>#ffe1e1</option>
-                    <option>#ffdaca</option>
-                    <option>#e8e2d5</option>
-                    <option>#d3eaf7</option>
-                    <option>#d9f1e9</option>
-                    <option>#ffb1b1</option>
-                    <option>#ffca96</option>
-                    <option>#ffe398</option>
-                    <option>#a5dac5</option>
-                    <option>#add2e7</option>
-                    <option>#505d72</option>
-                    <option>#4c7465</option>
-                    <option>#4c4f50</option>
-                </datalist>
+                <label id="navBarColor" for="bgColor">
+                    <img id="show" onclick="blockColorOption()" src="../../images/layoutHeader/painterBlack.png"/>
+                    <%- include('blockColorOption')%>
+                </label>
+
             </div>
             <a href="/login/logout" id="logout" class="headerbutton" type="button">LogOut</a>
         </ul>

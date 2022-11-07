@@ -162,6 +162,17 @@ function useAddress(checked){
         document.getElementById('address').value = null;
     }
 }
+
+function optionBlock(){
+    let selectToggleButton=false;
+    selectToggleButton=(selectToggleButton===true)?false:true
+    if(selectToggleButton===true){
+        document.getElementById('optionBlock').style.display='block';
+    }
+    else{
+        document.getElementById('optionBlock').style.display='none';
+    }
+}
 function selectOptionClick(){
     let langSelect = document.getElementById("priority");
     let selectId = langSelect.options[langSelect.selectedIndex].id;
@@ -170,22 +181,66 @@ function selectOptionClick(){
     let normal = document.getElementById('normal');
     let low = document.getElementById('low');
     let laze = document.getElementById('laze');
+    let options = document.getElementsByTagName('option')
     console.log(hurry.style.backgroundColor)
     if(selectId===hurry.id)
     {
-        document.getElementById("priority").style.backgroundColor='rgba(255,0,0,0.3)';
+
+        let selectValue = langSelect.options[langSelect.selectedIndex].value;
+        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
+        let selectText = langSelect.options[langSelect.selectedIndex].text;
+        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.color='red';
+        langSelect.style.backgroundColor='white'
+        hurry.style.color='black';
+        normal.style.color='black';
+        low.style.color='black';
+        laze.style.color='black';
+        high.style.color='black';
     }
     else if(selectId===high.id){
-        document.getElementById("priority").style.backgroundColor='rgba(255,165,0,0.3)';
+        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
+        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.color='orange';
+        langSelect.style.backgroundColor='white'
+        hurry.style.color='black';
+        normal.style.color='black';
+        low.style.color='black';
+        laze.style.color='black';
+        high.style.color='black';
     }
     else if(selectId===normal.id){
-        document.getElementById("priority").style.backgroundColor='rgba(255,255,0,0.3)';
+        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
+        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.color='darkgoldenrod';
+        langSelect.style.backgroundColor='white'
+        hurry.style.color='black';
+        normal.style.color='black';
+        low.style.color='black';
+        laze.style.color='black';
+        high.style.color='black';
     }
     else if(selectId===low.id){
-        document.getElementById("priority").style.backgroundColor='rgba(0,0,255,0.3)';
+        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
+        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.color='blue';
+        langSelect.style.backgroundColor='white'
+        hurry.style.color='black';
+        normal.style.color='black';
+        low.style.color='black';
+        laze.style.color='black';
+        high.style.color='black';
     }
     else if(selectId===laze.id){
-        document.getElementById("priority").style.backgroundColor='rgba(0,255,0,0.3)';
+        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
+        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.color='green';
+        langSelect.style.backgroundColor='white';
+        hurry.style.color='black';
+        normal.style.color='black';
+        low.style.color='black';
+        laze.style.color='black';
+        high.style.color='black';
     }
 }
 

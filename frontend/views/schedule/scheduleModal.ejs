@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/stylesheets/dashboardPage/schedule/autoCompleteModal.css">
 <link rel="stylesheet" href="/stylesheets/dashboardPage/schedule/kakaomap.css">
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee3f54e79d473881157156f79ed09cf8&libraries=services"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee3f54e79d473881157156f79ed09cf8&libraries=services"></script>
 <script defer src='javascripts/schedule/kakaomap.js'></script>
 
 <div class="scheduleModal" id="scheduleModal">
@@ -11,39 +12,58 @@
             </div>
             <div style="display: flex">
                 <img src="/images/category/edit.png" id="editModeBtn" class="modalCloseBtn" style="display: none">
-                <img src="/images/category/close_bg_none.png" id="scheduleModalClose" class="modalCloseBtn" onclick="scheduleModalClose()">
+                <img src="/images/category/close_bg_none.png" id="scheduleModalClose" class="modalCloseBtn"
+                     onclick="scheduleModalClose()">
             </div>
 
         </div>
         <div class="scheduleModalPartition">
-        <div class="scheduleModalContents" id="scheduleModalContents">
-            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">제목</div> <input class="scheduleModalInput" type="text" maxlength="200" id="scheduleTitle"></label>
-            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">내용</div> <input class="scheduleModalInput" type="text" id="contents"></label>
-            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">시작일</div> <input class="scheduleModalInput" type="datetime-local" id="startDate" onchange="changeStartDate()"></label>
-            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">마감일</div> <input class="scheduleModalInput" type="datetime-local" id="endDate" onchange="changeEndDate()"></label>
-            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">우선순위</div> <select class="scheduleModalInput" id="priority" onchange="selectOptionClick()">
-                <option id="hurryup" value="5" >아주 높음</option>
-                <option id="high" value="4">높음</option>
-                <option id="normal" value="3">보통</option>
-                <option id="low" value="2">낮음</option>
-                <option id="laze" value="1" selected>매우 낮음</option>
-                </select></label>
-            <label class="scheduleModalLabel"><div id="newCategoryModalLabelTitle">태그</div></label>
-            <%- include('./autoCompleteModal.ejs')%>
-            <div class="tagListArea" id="tagListArea">
-                <div class="tagList" id="tagList">
+            <div class="scheduleModalContents" id="scheduleModalContents">
+                <label class="scheduleModalLabel">
+                    <div id="newCategoryModalLabelTitle">제목</div>
+                    <input class="scheduleModalInput" type="text" maxlength="200" id="scheduleTitle"></label>
+                <label class="scheduleModalLabel">
+                    <div id="newCategoryModalLabelTitle">내용</div>
+                    <input class="scheduleModalInput" type="text" id="contents"></label>
+                <label class="scheduleModalLabel">
+                    <div id="newCategoryModalLabelTitle">시작일</div>
+                    <input class="scheduleModalInput" type="datetime-local" id="startDate" onchange="changeStartDate()"></label>
+                <label class="scheduleModalLabel">
+                    <div id="newCategoryModalLabelTitle">마감일</div>
+                    <input class="scheduleModalInput" type="datetime-local" id="endDate"
+                           onchange="changeEndDate()"></label>
+                <label class="scheduleModalLabel">
+                    <div id="newCategoryModalLabelTitle">우선순위</div>
+                    <select class="scheduleModalInput" id="priority" onchange="selectOptionClick()">
+                        <ul style="background: white">
+                            <option id="hurryup" value="5" style=" background-color: rgba(255,0,0,0.3)">아주 높음</option>
+                            <option id="high" value="4" style="background-color: rgba(255,165,0,0.3)">높음</option>
+                            <option id="normal" value="3" style="background-color: rgba(255,255,0,0.3)">보통</option>
+                            <option id="low" value="2" style="background-color: rgba(0,0,255,0.3);">낮음</option>
+                            <option id="laze" value="1" style="background-color: rgba(0,255,0,0.3)" selected>매우 낮음</option>
+                        </ul>
+                    </select>
+                </label>
+                <label class="scheduleModalLabel">
+                    <div id="newCategoryModalLabelTitle">태그</div>
+                </label>
+                <%- include('./autoCompleteModal.ejs') %>
+                <div class="tagListArea" id="tagListArea">
+                    <div class="tagList" id="tagList">
 
+                    </div>
+                    <div class="tagInputDiv" id="tagInputDiv">
+                        <input type="text" class="tagInput" id="tagInput" placeholder="#해시태그" maxlength="50"
+                               oninput="autoComplete(this)">
+                    </div>
                 </div>
-                <div class="tagInputDiv" id="tagInputDiv">
-                    <input type="text" class="tagInput" id="tagInput" placeholder="#해시태그" maxlength="50" oninput="autoComplete(this)">
-                </div>
+                <label class="scheduleModalLabel"><input type="checkbox" id="addressExist" onchange="useAddress(this)">주소
+                    입력 하기</label>
             </div>
-            <label class="scheduleModalLabel"><input type="checkbox" id="addressExist" onchange="useAddress(this)">주소 입력 하기</label>
-        </div>
-        <div class="mapArea" id="mapArea">
-            <input class="scheduleModalInput" type="text" readonly id="address" placeholder="입력한 주소가 표시됩니다."></p>
-            <%- include('./kakaomap.ejs')%>
-        </div>
+            <div class="mapArea" id="mapArea">
+                <input class="scheduleModalInput" type="text" readonly id="address" placeholder="입력한 주소가 표시됩니다."></p>
+                <%- include('./kakaomap.ejs') %>
+            </div>
         </div>
         <div class="scheduleCompleteBtnArea" id="scheduleCompleteBtnArea">
             <button class="btn-primary" id="btnSaveSchedule" onclick="saveSchedule()">완료</button>

@@ -48,23 +48,37 @@
 }
 #logo{
     align-items: center;
-    height: 70px;
-    width: 70px;
+    line-height: 50px;
+    min-height: 30px;
+    max-width: 200px;
     left: 20px;
-    border-radius: 70px;
 }
 #show{
-    margin-right: 12%;
     height: 27px;
     width: 27px;
-    position: absolute;
-    right:12%;
     opacity: 100%;
+}
+#optionList{
+    padding:5px;
+    background: white;
+    display: none;
+    flex-wrap: wrap;
+    position: absolute;
+    width: 100px;
+    height: 80px;
+    border-radius: 5px;
+    z-index: 100;
+}
+.colorlist{
+    margin:2px;
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
 }
 #logout{
     margin-top:0px;
 }
-#color{
+#bgColor{
     width: 50px;
     height: 30px;
     padding: 0;
@@ -72,6 +86,7 @@
     cursor: pointer;
     z-index: 1;
     opacity: 0;
+    background:white;
 }
 /* removes default styling from input color element */
 ::-webkit-color-swatch {
