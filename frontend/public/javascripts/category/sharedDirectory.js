@@ -108,10 +108,4 @@ function sharedDirectoryModalClose() {
     moveRightContainer.style.transition = '1s'
     const bodyScrollHidden=document.getElementsByTagName('body');
     bodyScrollHidden[0].style.overflow = 'hidden';
-    // const modalOpenBtn = document.getElementById('modalOpenBtn');
-    // modalOpenBtn.style.display = 'flex'
-
-    // const element2 = document.getElementById('categoryRootbg');
-    // // 2. style 변경
-    // element2.style.display = 'none';
 }
