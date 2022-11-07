@@ -81,6 +81,7 @@ function newCategoryModalClose(){
     userList = [];
     tagList = [];
 
+    document.getElementById('categoryName').readOnly = false;
     document.getElementById('categoryName').value = "";
     document.getElementById('tagSelectArea').style.display = 'block';
     document.getElementById('categoryName').innerText = "새로운 카테고리 등록";

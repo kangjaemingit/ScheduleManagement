@@ -273,6 +273,9 @@ function newTag(){
         toast("태그를 입력해주세요");
         return;
     }
+    if(tag.charAt(0) === "#"){
+        tag = tag.slice(1);
+    }
 
     tags.push(tag);
     tagRender();

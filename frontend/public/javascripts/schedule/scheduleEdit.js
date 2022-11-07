@@ -47,6 +47,7 @@ function scheduleDetailModalOpen(scheduleId, calendarPage){
                 document.getElementById('keyword').value = res.schedule.address;
                 useAddress(document.getElementById('addressExist'));
                 searchPlaces();
+                relayout();
             }
             tags = res.schedule.tag.map((t) => {
                 return t.tagName;
