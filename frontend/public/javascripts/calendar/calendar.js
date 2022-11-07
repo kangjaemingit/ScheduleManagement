@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         dayMaxEvents : true,
         headerToolbar: {
-            start: 'dayGridMonth,allScheduleButton,myScheduleButton',
+            start: 'allScheduleButton,myScheduleButton',
             center: 'title',
             end: 'prevYear,prev,today,next,nextYear'
         },
@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
             let year = date.date.year;
             let month = date.date.month + 1;
             return year + "년" + month + "월";
+        },
+        //일정 클릭시 이벤트 함수
+        eventClick:function(arr){
+            //일정 클릭시 일정상세페이지 가져옴
+            scheduleDetailModalOpen('${s._def.extendedProps._id}', true);
         },
         //날짜 클릭시 이벤트 함수
         dateClick: function (arr) {

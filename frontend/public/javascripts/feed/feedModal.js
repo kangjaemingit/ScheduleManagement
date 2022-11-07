@@ -21,7 +21,7 @@ function feedModalOpen(){
     const bodyScrollHidden=document.getElementsByTagName('body');
 
     feedModal.classList.toggle('show');
-    bodyScrollHidden[0].style.overflow='hidden'
+    bodyScrollHidden[0].style.overflow='auto'
     if(feedModal.classList.contains('show')){
         // body.style.overflow = 'hidden';
     }
@@ -48,7 +48,7 @@ function feedModalClose(){
     const feedModal = document.querySelector('.feedModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
     feedModal.classList.toggle('show');
-    bodyScrollHidden[0].style.overflow='hidden';
+    bodyScrollHidden[0].style.overflow='auto';
 }
 
 function feedScheduleRender(schedule){

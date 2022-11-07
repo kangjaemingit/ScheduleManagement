@@ -10,8 +10,6 @@ body{
     height: 100%;
     width:100%;
 }
-
-
 #shareobject{
     display: flex;
     justify-content: center;
@@ -71,17 +69,14 @@ body{
     height: 28px;
     cursor: pointer;
 }
-
 .deleteBtn{
     width : 20px;
     height : 20px;
     cursor : pointer;
 }
-
 #categoryNameGroup{
     cursor: pointer;
 }
-
 #tagGroup{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -162,9 +157,6 @@ body{
     top:3px;
     left:-6px;
 }
-/*#imageContainer:hover #userNameContainer{*/
-/*    visibility: inherit;*/
-/*}*/
 #categoryContents{
     overflow: hidden;
 }

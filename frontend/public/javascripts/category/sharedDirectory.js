@@ -77,7 +77,6 @@ function categorySelect(category) {
         }).catch((err) => {
         console.log(err);
     })
-
     categoryDetailModalOpen(category);
 }
 
@@ -108,4 +107,5 @@ function sharedDirectoryModalClose() {
     moveRightContainer.style.transition = '1s'
     const bodyScrollHidden=document.getElementsByTagName('body');
     bodyScrollHidden[0].style.overflow = 'hidden';
+
 }

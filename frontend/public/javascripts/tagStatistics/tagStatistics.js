@@ -257,7 +257,7 @@ let barChartDraw = function () {
             plugins: {
 
                 tooltip: {
-                    enabled: false
+                    enabled: true
                 },
                 legend: {
                     display: false,

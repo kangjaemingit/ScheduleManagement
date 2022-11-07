@@ -3,11 +3,25 @@ html,body{
     height: 100%;
     padding: 0px;
     margin: 0px;
-    overflow: hidden;
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
     user-select:none
+}
+body{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    width: 7px;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: #bfbfbf;
+}
+body::-webkit-scrollbar-track {
+    background-color: #e5e5e5;
+    border-radius: 5px;
 }
 #title{
     height: 50px;

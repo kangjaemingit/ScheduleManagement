@@ -18,7 +18,6 @@ function createTodoList() {
                     return window.alert(res.message);
                 }
                 appendTodoList(res.todoList);
-                todayCheckbox(res.todoList);
             }).catch((err) => {
             console.log(err);
         })
