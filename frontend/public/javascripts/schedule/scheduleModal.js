@@ -18,8 +18,9 @@ function scheduleModalOpen(){
 function scheduleModalClose(){
     const scheduleModal = document.querySelector('.scheduleModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
+    bodyScrollHidden[0].style.overflow='auto';
     scheduleModal.classList.toggle('show');
-    bodyScrollHidden[0].style.overflow='hidden';
+
 
     // 값 비우기
     tags = [];
@@ -218,7 +219,7 @@ function setOptionColorDefault(){
 
     langSelect.style.backgroundColor='white';
     hurry.style.color='rgba(255,0,0,1)';
-    normal.style.color='darkgoldenrod';
+    normal.style.color = 'darkgoldenrod';
     low.style.color='rgba(0,0,255,1)';
     laze.style.color='rgba(0,255,0,1)';
     high.style.color='rgba(255,165,0,1)';
