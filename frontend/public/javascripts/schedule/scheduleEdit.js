@@ -66,9 +66,25 @@ function scheduleDetailModalOpen(scheduleId, calendarPage){
             document.getElementById('scheduleCompleteBtnArea').style.display = 'none';
             document.getElementById('tagInputDiv').style.display = 'none';
 
+            document.getElementById('scheduleModalName').classList.replace('input-primary', 'input-primary-readOnly');
+            document.getElementById('scheduleTitle').classList.replace('input-primary', 'input-primary-readOnly');
+            document.getElementById('contents').classList.replace('input-primary', 'input-primary-readOnly');
+            document.getElementById('startDate').classList.replace('input-primary', 'input-primary-readOnly');
+            document.getElementById('endDate').classList.replace('input-primary', 'input-primary-readOnly');
+
             // 일정 작성자이면 편집모드 버튼 보이게함
             if(calendarPage){
                 scheduleEditControlRender(res.scheduleOwner, res.schedule);
+            }
+
+            if(!res.scheduleOwner){
+                let scheduleWriteArea = document.getElementById('scheduleWriterArea');
+
+                scheduleWriteArea.innerHTML = `
+                    <span class="scheduleWriterTitle">작성자 : </span>
+                    <img class="scheduleWriterProfilePhoto" src="${res.schedule.scheduleWriter.profilePhoto}"/>
+                    <span>${res.schedule.scheduleWriter.name}</span>
+                `
             }
 
 
@@ -97,6 +113,13 @@ function scheduleEditModalOpen(scheduleId){
     document.getElementById('endDate').readOnly = false
     document.getElementById('priority').disabled = false
     document.getElementById('addressExist').disabled = false
+
+    document.getElementById('scheduleModalName').classList.replace('input-primary-readOnly', 'input-primary');
+    document.getElementById('scheduleTitle').classList.replace('input-primary-readOnly', 'input-primary');
+    document.getElementById('contents').classList.replace('input-primary-readOnly', 'input-primary');
+    document.getElementById('startDate').classList.replace('input-primary-readOnly', 'input-primary');
+    document.getElementById('endDate').classList.replace('input-primary-readOnly', 'input-primary');
+
 
     document.getElementById('menu_wrap').style.display = 'block'
     document.getElementById('scheduleCompleteBtnArea').style.display = 'flex';

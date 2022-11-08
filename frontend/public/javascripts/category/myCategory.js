@@ -50,6 +50,8 @@ function categoryDetailModalOpen(category){
     saveChooseSharer();
 
     document.getElementById('categoryName').readOnly = true;
+    document.getElementById('categoryName').classList.replace('input-primary', 'input-primary-readOnly');
+
     document.getElementById('categoryModalTitle').innerText = `<${category.categoryName}> 카테고리 상세정보`
     document.getElementById('categoryName').value = category.categoryName;
     document.getElementById('sharerCheckBox').disabled = true;

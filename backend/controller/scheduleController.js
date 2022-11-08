@@ -190,13 +190,14 @@ const scheduleController = {
     getScheduleById : (req, res) => {
       Schedule.findOne({_id : req.params.id})
           .populate("tag")
+          .populate("scheduleWriter")
           .exec((err, result) => {
               if(err){
                   console.log(err);
                   return res.json({getScheduleSuccess : false, message : err})
               }
 
-              if(result.scheduleWriter.toString() === req.user._id.toString()){
+              if(result.scheduleWriter._id.toString() === req.user._id.toString()){
                   return res.json({schedule : result, scheduleOwner : true}).status(200);
               } else {
                   return res.json({schedule : result, scheduleOwner : false}).status(200);

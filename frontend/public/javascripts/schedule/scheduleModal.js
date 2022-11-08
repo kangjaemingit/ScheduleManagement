@@ -32,7 +32,11 @@ function scheduleModalClose(){
     document.getElementById('addressExist').checked = false;
     document.getElementById('tagList').innerHTML = null;
     document.getElementById('keyword').value = "";
-    document.querySelector('.scheduleDetailCompleteImg').remove();
+    if(document.querySelector('.scheduleDetailCompleteImg')){
+        document.querySelector('.scheduleDetailCompleteImg').remove();
+    }
+
+    document.getElementById('scheduleWriterArea').innerHTML = "";
 
     // readOnly 해제
     document.getElementById('scheduleModalName').readOnly = false
@@ -41,6 +45,13 @@ function scheduleModalClose(){
     document.getElementById('startDate').readOnly = false
     document.getElementById('endDate').readOnly = false
     document.getElementById('priority').disabled = false
+
+    document.getElementById('scheduleModalName').classList.replace('input-primary-readOnly', 'input-primary');
+    document.getElementById('scheduleTitle').classList.replace('input-primary-readOnly', 'input-primary');
+    document.getElementById('contents').classList.replace('input-primary-readOnly', 'input-primary');
+    document.getElementById('startDate').classList.replace('input-primary-readOnly', 'input-primary');
+    document.getElementById('endDate').classList.replace('input-primary-readOnly', 'input-primary');
+
     document.getElementById('addressExist').disabled = false
     document.getElementById('menu_wrap').style.display = 'block'
     document.getElementById('scheduleCompleteBtnArea').style.display = 'flex';
@@ -55,6 +66,8 @@ function scheduleModalClose(){
 
     document.getElementById('btnDeleteSchedule').removeAttribute('onclick');
     document.getElementById('btnDeleteSchedule').style.display = 'none';
+
+    removeMarker();
 }
 
 
@@ -169,9 +182,9 @@ function selectOptionClick(){
     if(selectId===hurry.id)
     {
         let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
-
         langSelect.style.border=selectBox+'1px solid';
         langSelect.style.color='red';
+        setOptionColorDefault();
     }
     else if(selectId===high.id){
         let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;

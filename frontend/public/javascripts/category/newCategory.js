@@ -69,6 +69,8 @@ function newCategoryModalClose(){
 
     document.getElementById('categoryName').readOnly = false;
     document.getElementById('categoryName').value = "";
+    document.getElementById('categoryName').classList.replace('input-primary-readOnly', 'input-primary');
+
     document.getElementById('tagSelectArea').style.display = 'block';
     document.getElementById('categoryName').innerText = "새로운 카테고리 등록";
     document.getElementById('sharerCheckBox').disabled = false;

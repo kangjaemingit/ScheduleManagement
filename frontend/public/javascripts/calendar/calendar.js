@@ -95,10 +95,11 @@ function defaultSchedule() {
             }
 
             for (let i = 0; i < res.sharedSchedule.length; i++){
+                let eventTitle = res.sharedSchedule[i].title + " (" + res.sharedSchedule[i].scheduleWriter.name + ")"
                 calendar.addEvent({
                     _id: res.sharedSchedule[i]._id,
                     scheduleWriter: res.sharedSchedule[i].scheduleWriter.name,
-                    title: res.sharedSchedule[i].title,
+                    title: eventTitle,
                     start: res.sharedSchedule[i].date.startDate,
                     end: res.sharedSchedule[i].date.endDate,
                     color: "#ff6384",
@@ -111,10 +112,11 @@ function defaultSchedule() {
 function changeCategorySchedule(schedule){
     calendar.removeAllEvents();
     for (let i = 0; i < schedule.length; i++) {
+        let eventTitle = schedule[i].title + " (" + schedule[i].scheduleWriter.name + ")"
         calendar.addEvent({
             _id: schedule[i]._id,
             scheduleWriter: schedule[i].scheduleWriter.name,
-            title: schedule[i].title,
+            title: eventTitle,
             start: schedule[i].date.startDate,
             end: schedule[i].date.endDate,
             color : "#ff6384"

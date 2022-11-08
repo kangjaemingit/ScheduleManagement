@@ -177,3 +177,20 @@ body{
 .newCategoryModalLabelTitle{
     margin: 10px 0 10px 0;
 }
+
+.scheduleWriterArea{
+    display: flex;
+    align-items: center;
+}
+
+.scheduleWriterTitle{
+    font-weight: bold;
+    margin-right: 3px;
+}
+
+.scheduleWriterProfilePhoto{
+    width: 15px;
+    height: 15px;
+    border-radius: 70%;
+    margin-right: 3px;
+}

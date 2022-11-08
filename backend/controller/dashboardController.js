@@ -58,6 +58,7 @@ const dashboardController={
                 .populate('feedWriter')
                 .populate('schedule')
                 .sort({'createDate' : -1})
+                .limit(5)
                 .exec();
 
             const todoLists = await TodoList.find({todoListWriter:req.user._id})
