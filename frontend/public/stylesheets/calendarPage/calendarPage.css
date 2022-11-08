@@ -23,7 +23,7 @@ body::-webkit-scrollbar-track {
     border-radius: 5px;
 }
 #indexLeft{
-    height: 90%;
+    height: 100%;
     float: left;
     background-color: white;
     display: flex;
