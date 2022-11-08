@@ -3,6 +3,13 @@ const { Tags } = require("../models/Tags");
 const {Category} = require("../models/Category");
 
 const scheduleController = {
+    /**
+     * 담당자 : 강재민
+     * 함수 설명 : 새로운 일정을 생성해주는 함수
+     * 주요 기능 : - 새로운 일정 정보를 입력받아 생성해주는 함수입니다.
+     *          - 새로운 태그를 입력받으면 태그를 생성해주었습니다
+     *          - 태그에는 일정 정보를 매핑, 일정에는 태그정보를 매핑하여 양방향 매핑을 하였습니다.
+     * */
     newSchedule : async (req, res) => {
         try{
             // 새로운 일정 객체 생성
@@ -19,6 +26,7 @@ const scheduleController = {
                 }
             })
 
+            // 태그 배열을 반복문을 통해 존재유무 및 일정 매핑, 태그 아이디를 tagArray에 담아줌
             let tagArray = await Promise.all(req.body.tag.map(async (tag) => {
                 // 태그 존재 유무 확인
                 const tagExists = await Tags.findOne({tagName: tag}).exec();
@@ -26,7 +34,6 @@ const scheduleController = {
                 if (tagExists) { // 태그가 존재한다면
                     await Tags.updateOne({_id : tagExists._id}, {$push : {schedule : newSchedule._id}}).exec() // 태그에 일정 ID UPDATE
                     return tagExists._id
-                    // await newSchedule.updateOne({$push : {tag : tagExists._id}}).exec(); // 일정에 태그 ID UPDATE
                 } else { // 태그가 존재하지 않는다면
                     // 새로운 태그 생성
                     const newTag = await Tags.create({
@@ -36,13 +43,13 @@ const scheduleController = {
                     });
                     // 일정에 태그 ID UPDATE
                     return newTag._id;
-                    // await newSchedule.updateOne({$push : {tag : newTag._id}}).exec();
                 }
             }));
 
             // 일정 DB에 저장
             await Schedule.create(newSchedule)
 
+            // 일정에 태그 정보 update
             await Schedule.updateOne({_id: newSchedule._id}, {$set : {tag : tagArray}}).exec();
 
             // 성공값 반환
@@ -53,6 +60,14 @@ const scheduleController = {
             return res.json({newScheduleSuccess : false, message : e})
         }
     },
+    /**
+     * 담당자 : 강재민
+     * 함수 설명 : 일정을 수정하는 함수 입니다.
+     * 주요 기능 : - 수정할 일정 데이터를 입력받아 일정을 수정해주는 함수입니다.
+     *          - 태그 다큐먼트에 매핑되어있는 수정할 일정 id를 모두 삭제하고 재매핑하였습니다.
+     *          - 일정성생과 같은 방법으로 태그의 유무를 판단, 매핑하였습니다.
+     *          - 일정내용을 업데이트 하였습니다
+     * */
     updateSchedule : async (req, res) => {
         try{
             const oldTag = await Schedule.findOne({_id : req.body.scheduleId}).select('tag').exec();
@@ -97,6 +112,11 @@ const scheduleController = {
             return res.json({updateScheduleSuccess : false, message : e})
         }
     },
+    /**
+     * 담당자 : 강재민
+     * 함수 설명 : 일정을 삭제하는 함수입니다.
+     * 주요 기능 : - 삭제할 일정 id를 입력받아 일정을 삭제해주었습니다.
+     * */
     deleteSchedule : (req, res) => {
         Schedule.deleteOne({_id : req.body.scheduleId})
             .exec((err) => {

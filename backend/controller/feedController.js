@@ -2,6 +2,11 @@ const { Feed } = require("../models/Feed")
 const { FeedComment } = require("../models/FeedComment");
 
 const feedController = {
+    /**
+     * 담당자 : 강재민
+     * 함수 설명 : 피드 페이지를 렌더링 해주는 함수입니다.
+     * 주요 기능 : - 모든 피드의 데이터를 찾아 데이터와 함께 피드 페이지를 render 해줍니다.
+     * */
     index : async (req, res) => {
         const feed = await Feed.find({})
             .populate('feedWriter')
@@ -15,6 +20,11 @@ const feedController = {
 
         res.render('feed/feedPage', {user : req.user, feed});
     },
+    /**
+     * 담당자 : 강재민
+     * 함수 설명 : 피드를 생성해주는 함수입니다.
+     * 주요 기능 : - 사용자로부터 피드 데이터를 입력받아 새로운 피드를 생성합니다.
+     * */
     createFeed : async (req, res) => {
         await Feed.create({
             feedContents : req.body.contents,
@@ -29,6 +39,11 @@ const feedController = {
             return res.json({createFeedSuccess : true, feed : result, user : req.user}).status(200);
         })
     },
+    /**
+     * 담당자 : 강재민
+     * 함수 설명 : 피드를 수정하는 함수입니다.
+     * 주요 기능 : - 피드의 내용과 매핑한 일정정보를 입력받아 업데이트 하도록 합니다.
+     * */
     updateFeed : (req, res) => {
         Feed.updateOne({_id : req.body.feedId},
             {$set : {feedContents : req.body.feedContents, schedule : req.body.scheduleId}},
@@ -41,6 +56,11 @@ const feedController = {
                 return res.json({updateFeedSuccess : true}).status(200);
             });
     },
+    /**
+     * 담당자 : 강재민
+     * 함수 설명 : 피드를 삭제하는 함수입니다.
+     * 주요 기능 : - 피드 id를 입력받아 피드를 삭제하는 역할을 합니다.
+     * */
     deleteFeed : (req, res) => {
         Feed.deleteOne({_id : req.body.id}, (err) => {
             if(err){
@@ -51,6 +71,11 @@ const feedController = {
             return res.json({deleteFeedSuccess : true}).status(200);
         })
     },
+    /**
+     * 담당자 : 강재민
+     * 함수 설명 : 피드 댓글을 생성해주는 함수입니다.
+     * 주요 기능 : - 피드댓글의 데이터를 사용자로부터 받아 새로운 댓글을 생성해줍니다.
+     * */
     createFeedComment : async (req, res) => {
         try{
             const comment = await FeedComment.create({
@@ -67,6 +92,12 @@ const feedController = {
             return res.json({createCommentSuccess : false, message : e});
         }
     },
+    /**
+     * 담당자 : 강재민
+     * 함수 설명 : 피드 댓글을 삭제하는 함수입니다.
+     * 주요 기능 : - 피드댓글 id를 입력받아 댓글을 삭제해줍니다.
+     *          - 피드에서 연결된 피드 댓글 id를 삭제해줍니다.
+     * */
     deleteFeedComment : async (req, res) => {
         try{
             await FeedComment.deleteOne({_id : req.body.id}).exec();
