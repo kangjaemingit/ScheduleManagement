@@ -33,10 +33,12 @@
         <%- include('category.ejs'); %>
     </div>
     <div id="indexRight" class="mainIndex">
-        <div id='calendar'></div>
+        <div class="scrollBox" style="height: 100%; width: 100%">
+            <div id='calendar'></div>
+        </div>
     </div>
 </div>
-<div id="toast"></div>
+<!--<div id="toast"></div>-->
 <!--<div id="modalOpenBtn" onclick="sharedDirectoryModalOpen();"><img src="images/category/shardfolder.png" onclick="sharedDirectoryModalOpen();"/></div>-->
 <%- include('../category/sharedDirectory.ejs')%>
 <%- include('../category/newCategory.ejs')%>
