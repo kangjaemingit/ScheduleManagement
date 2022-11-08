@@ -3,7 +3,9 @@
     color: red;
     text-decoration: none;
 }
-
+.fc-daygrid-day-number{
+    cursor: pointer;
+}
 /* 토요일 날짜 파란색 */
 .fc-day-sat a {
     color: blue;
@@ -91,6 +93,7 @@ table thead tr{
 }
 #scheduleTableBody tr:hover{
     background-color: rgba(235,235,235,1);
+    cursor: pointer;
 }
 #scheduleTableBody tr td{
     text-align: center;

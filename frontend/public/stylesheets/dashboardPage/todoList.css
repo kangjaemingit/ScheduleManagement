@@ -55,6 +55,7 @@
 }
 .scrollBox:hover{
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #todayScheduleBox div{

@@ -3,21 +3,7 @@ html,body{
     width: 100%;
     height: 100%;
 }
-body{
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-body::-webkit-scrollbar{
-    width: 7px;
-}
-body::-webkit-scrollbar-thumb{
-    border-radius: 5px;
-    background-color: #bfbfbf;
-}
-body::-webkit-scrollbar-track {
-    background-color: #e5e5e5;
-    border-radius: 5px;
-}
+
 #indexWrap{
     padding: 0 20px 0 20px;
     display: flex;

@@ -52,10 +52,6 @@
 }
 
 .sharerNodeCategory{
-    /*margin-top: 4px;*/
-    /*margin-bottom: 4px;*/
-    /*padding-top: 4px;*/
-    /*padding-bottom: 4px;*/
     height: 40px;
     align-items: center;
     cursor: pointer;
@@ -66,11 +62,16 @@
     background-color: #f3f3f3;
     height: 40px;
 }
-
+.overflowBox{
+    max-height: 77%;
+}
 .sharerNodeCategoryLi{
     padding-left: 20px;
     font-size: 14px;
     align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #sharedDirectoryModalTitle{

@@ -1,3 +1,4 @@
+
 let tags = [];
 function scheduleModalOpen(){
     const scheduleModal = document.querySelector('.scheduleModal');
@@ -181,32 +182,27 @@ function selectOptionClick(){
     let laze = document.getElementById('laze');
     if(selectId===hurry.id)
     {
-        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
-        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.border='rgba(255,0,0,0.3)1px solid';
         langSelect.style.color='red';
-        setOptionColorDefault();
+        setOptionColorDefault()
     }
     else if(selectId===high.id){
-        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
-        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.border='rgba(0,0,255,0.3) 1px solid';
         langSelect.style.color='orange';
         setOptionColorDefault()
     }
     else if(selectId===normal.id){
-        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
-        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.border='rgba(255,165,0,0.3) 1px solid';
         langSelect.style.color='darkgoldenrod';
         setOptionColorDefault()
     }
     else if(selectId===low.id){
-        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
-        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.border='rgba(0,0,255,0.3) 1px solid';
         langSelect.style.color='blue';
         setOptionColorDefault()
     }
     else if(selectId===laze.id){
-        let selectBox = langSelect.options[langSelect.selectedIndex].style.backgroundColor;
-        langSelect.style.border=selectBox+'1px solid';
+        langSelect.style.border='rgba(0,255,0,0.3) 1px solid';
         langSelect.style.color='green';
         setOptionColorDefault()
     }
@@ -221,11 +217,11 @@ function setOptionColorDefault(){
     let laze = document.getElementById('laze');
 
     langSelect.style.backgroundColor='white';
-    hurry.style.color='black';
-    normal.style.color='black';
-    low.style.color='black';
-    laze.style.color='black';
-    high.style.color='black';
+    hurry.style.color='rgba(255,0,0,1)';
+    normal.style.color='darkgoldenrod';
+    low.style.color='rgba(0,0,255,1)';
+    laze.style.color='rgba(0,255,0,1)';
+    high.style.color='rgba(255,165,0,1)';
 }
 
 function tagKeyUpEvent(event){
@@ -358,4 +354,19 @@ function scheduleTitleValidCheck(title){
 
 function tagInputCursor(){
     document.getElementById('tagInput').focus();
+}
+
+//특수문제 제거를 위한 정규식 함수
+function regExp(tag){
+    //특수문자 정규식
+    let reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
+    //특수문자 검증
+    if(reg.test(tag)){
+        //특수문자 제거후 리턴
+        return tag.replace(reg, "");
+    } else {
+        //특수문자가 없으므로 본래 문자 리턴
+        console.log(tag)
+        return tag;
+    }
 }
