@@ -90,7 +90,7 @@ function defaultSchedule() {
                     title: res.mySchedule[i].title,
                     start: res.mySchedule[i].date.startDate,
                     end: res.mySchedule[i].date.endDate,
-                    color: "#4bc0c0",
+                    color: "#96bebd",
                 })
             }
 
@@ -102,7 +102,7 @@ function defaultSchedule() {
                     title: eventTitle,
                     start: res.sharedSchedule[i].date.startDate,
                     end: res.sharedSchedule[i].date.endDate,
-                    color: "#ff6384",
+                    color: "#f0bf7d",
                 })
             }
         });
@@ -119,7 +119,7 @@ function changeCategorySchedule(schedule){
             title: eventTitle,
             start: schedule[i].date.startDate,
             end: schedule[i].date.endDate,
-            color : "#ff6384"
+            color : "#f0bf7d"
         })
     };
     calendar.render()
@@ -148,7 +148,7 @@ function changeCategoryMySchedule(category){
                     title: res.schedule[i].title,
                     start: res.schedule[i].date.startDate,
                     end: res.schedule[i].date.endDate,
-                    color: "#4bc0c0",
+                    color: "#96bebd",
                 })
             }
             calendar.render()
@@ -176,7 +176,7 @@ function MyScheduleRender(){
                     title: res.schedule[i].title,
                     start: res.schedule[i].date.startDate,
                     end: res.schedule[i].date.endDate,
-                    color: "#4bc0c0",
+                    color: "#96bebd",
                 })
             }
         });
