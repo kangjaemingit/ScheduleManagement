@@ -60,7 +60,8 @@
                 <div class="totalScheduleHeader1" >시작일</div>
                 <div class="totalScheduleHeader1" >종료일</div>
             </div>
-            <div id="tagStatisticsSchedule" class="scrollBox">
+            <div class="tagStatisticsOverflow scrollBox">
+            <div id="tagStatisticsSchedule">
             <%if(mySchedule.length){%>
             <% mySchedule.map((s) => { %>
             <div class="totalScheduleContentsGroup" onclick="scheduleDetailModalOpen('<%=s._id%>', false)">
@@ -79,6 +80,7 @@
                     <img src="images/noData.png" style="width: 50%; opacity: 0.07">
                 </div>
             <%}%>
+            </div>
             </div>
         </div>
     </div>

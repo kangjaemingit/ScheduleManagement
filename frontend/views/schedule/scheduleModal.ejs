@@ -27,7 +27,7 @@
                     <input class="scheduleModalInput" type="text" id="contents"></label>
                 <label class="scheduleModalLabel">
                     <div class="newCategoryModalLabelTitle">시작일</div>
-                    <input class="scheduleModalInput" type="datetime-local" id="startDate" onchange="changeStartDate()"></label>
+                    <input class="scheduleModalInput" type="datetime-local" id="startDate" onchange="changeStartDate()" value=""></label>
                 <label class="scheduleModalLabel">
                     <div class="newCategoryModalLabelTitle">마감일</div>
                     <input class="scheduleModalInput" type="datetime-local" id="endDate"
@@ -36,11 +36,11 @@
                     <div class="newCategoryModalLabelTitle">우선순위</div>
                     <select class="scheduleModalInput" id="priority" onchange="selectOptionClick()">
                         <ul style="background: white">
-                            <option id="hurryup" value="5" style=" background-color: rgba(255,0,0,0.3)">아주 높음</option>
-                            <option id="high" value="4" style="background-color: rgba(255,165,0,0.3)">높음</option>
-                            <option id="normal" value="3" style="background-color: rgba(255,255,0,0.3)">보통</option>
-                            <option id="low" value="2" style="background-color: rgba(0,0,255,0.3);">낮음</option>
-                            <option id="laze" value="1" style="background-color: rgba(0,255,0,0.3)" selected>매우 낮음</option>
+                            <option id="hurryup" value="5" style=" background-color:white">아주 높음</option>
+                            <option id="high" value="4" style="background-color: white">높음</option>
+                            <option id="normal" value="3" style="background-color: white">보통</option>
+                            <option id="low" value="2" style="background-color: white">낮음</option>
+                            <option id="laze" value="1" style="background-color: white" selected>매우 낮음</option>
                         </ul>
                     </select>
                 </label>

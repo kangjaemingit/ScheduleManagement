@@ -1,3 +1,18 @@
+body{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    width: 7px;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: #bfbfbf;
+}
+body::-webkit-scrollbar-track {
+    background-color: #e5e5e5;
+    border-radius: 5px;
+}
 .tagStatisticsGroup{
     margin-top: 25px;
     padding: 20px 0 0 0;
