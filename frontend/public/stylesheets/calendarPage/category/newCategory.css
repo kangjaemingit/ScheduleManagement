@@ -123,7 +123,13 @@
     cursor: pointer;
     display: none;
 }
-
+#categoryModalTitle{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    width: 90%;
+}
 .titleContainer{
     margin-bottom: 5px;
     width: 100%;

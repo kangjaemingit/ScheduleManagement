@@ -18,6 +18,7 @@ body {
 }
 .scrollBox::-webkit-scrollbar{
   width: 7px;
+  height: 90%;
 }
 .scrollBox::-webkit-scrollbar-thumb{
   border-radius: 5px;
