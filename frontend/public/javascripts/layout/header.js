@@ -85,14 +85,15 @@ function blockColorOption(event) {
                     arr[x] = str;
                 });
 
-                let colorHex = "#" + rgb.join("")//16진수의 #을 제거
-                const c = colorHex.substring(1)
+                let colorHex = "#" + rgb.join("")   //16진수의 앞에 #붙이기
+                const c = colorHex.substring(1)     //16진수의 #을 제거
                 const rgb1 = parseInt(c, 16)   // rr를 정수로 변환
                 const r = (rgb1 >> 16) & 0xff  // red 추출
                 const g = (rgb1 >> 8) & 0xff  // green 추출
                 const b = (rgb1 >> 0) & 0xff  // blue 추출
                 const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
 
+                //Navbar 색이 변했을때 변경되어야될 요소들 정의
                 const p = document.getElementById("userInfo")
                 const paint = document.getElementById('show')
                 const logout = document.getElementById('logout')
@@ -118,6 +119,7 @@ function blockColorOption(event) {
                     navBgColor: colorVal
                 }
 
+                //사용자에 따라 Navbar 색 설정시 그 색 그대로 사용가능하게 설정
                 fetch('layout/paint', {
                     method: 'post',
                     headers: {
