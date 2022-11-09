@@ -18,7 +18,7 @@ body::-webkit-scrollbar-track {
     padding: 20px 0 0 0;
     border: 1px solid rgba(235,235,235,1);
     padding: 8px;
-    height: 328px;
+    height: 50%;
 }
 .tagStatisticsTitle{
     text-align: center;

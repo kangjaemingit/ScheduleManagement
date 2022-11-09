@@ -1,19 +1,38 @@
+<!--
+    담당자 : 김건희
+    역할  : 갑자기 오늘 내에 해야될 일정이 생기거나 메모할것이 있을때 쓰는 영역
+    기능  : 1. 사용자가 작성한 내용만 제공하며 체크박스 클릭시 삭제
+           2. 처음 상태는 테두리가 없으며 회색으로 채워져 있음
+           3. input영역 클릭시 포커스가 생성되며 테두리가 생성 배경은 흰색
+           4. 포커스가 사라지면 처음상태로 돌아감
+           5. 입력할때 버튼을 눌러도 되지만 엔터도 인식
+           6. 엔터시 submit을 하지 않고도 업데이트
+-->
 <link rel="stylesheet" href="/stylesheets/dashboardPage/totalScheduleArea/totalScheduleArea.css">
 
 <div class="todaySchedule1">
     <div class="styleBox1">
-    <div class="todayScheduleTitle"> 할 일 </div>
-        <div class="todaySelectBox"><form style="height: 28px; margin-right: 8px;"><input type="text" id="todaySelect" onchange="focusOut();" placeholder="메모할 일정을 적어주세요."></form><div class="btn-secondary" onclick="createTodoList();">확인</div></div>
-<div class="scrollBox" style="display: flex;margin-top: 5px; flex-direction: column; width: 95%; height: 155px; max-height: 80%">
-    <div id="todayScheduleBox" >
-        <%todoLists.map((t) => {%>
-        <div id="<%= t._id %>" class="scheduleCheckBox" style="display: flex;">
-            <input type="checkbox" class="todayScheduleCheckBox" onclick="todayCheckbox('<%= t._id %>', this)">
-            <div id="scheduleName"><%= t.todoListVal %></div>
+        <div class="todayScheduleTitle"> 할 일</div>
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center">
+            <div class="todaySelectBox">
+                <form style="height: 28px; margin-right: 8px;">
+                    <input type="text" id="todaySelect" onchange="focusOut();" placeholder="메모할 일정을 적어주세요.">
+                </form>
+                <div class="btn-secondary" onclick="createTodoList();">확인</div>
             </div>
-        <%})%>
-    </div>
-</div>
+            <div class="scrollBox"
+                 style="display: flex;margin-top: 5px; flex-direction: column; width: 95%; height: 155px; max-height: 80%">
+                <div id="todayScheduleBox">
+                    <% todoLists.map((t) => { %>
+                        <div id="<%= t._id %>" class="scheduleCheckBox" style="display: flex;">
+                            <input type="checkbox" class="todayScheduleCheckBox"
+                                   onclick="todayCheckbox('<%= t._id %>', this)">
+                            <div id="scheduleName"><%= t.todoListVal %></div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

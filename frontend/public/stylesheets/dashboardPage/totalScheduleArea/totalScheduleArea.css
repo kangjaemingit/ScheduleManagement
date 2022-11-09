@@ -15,8 +15,19 @@
     display: flex;
     border: 1px solid rgba(235,235,235,1);
 }
+#todayScheduleBox{
+    width: 95%;
+}
 
-.todayScheduleTitle,.feedTitle{
+.todayScheduleTitle{
+    height: 40px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 50px;
+    margin-left: 4%;
+}
+.feedTitle{
     height: 40px;
     width: 100%;
     font-size: 18px;
@@ -58,4 +69,6 @@
 }
 .scheduleCheckBox:hover{
     background: rgba(235,235,235,1);
+    border-radius: 10px;
+
 }
