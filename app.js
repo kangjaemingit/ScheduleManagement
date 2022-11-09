@@ -33,7 +33,6 @@ database();
 
 // Router 연결
 const dashboardRouter = require('./backend/routes/dashboard');
-const usersRouter = require('./backend/routes/users');
 const loginRouter = require('./backend/routes/login');
 const scheduleRouter = require('./backend/routes/schedule');
 const layoutRouter = require('./backend/routes/layout');
@@ -43,7 +42,6 @@ const feedRouter = require('./backend/routes/feed');
 const todoListRouter = require('./backend/routes/todoList')
 
 app.use('/', dashboardRouter);
-app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/schedule', scheduleRouter);
 app.use('/layout',layoutRouter);
