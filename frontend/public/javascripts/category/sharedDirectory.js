@@ -6,7 +6,11 @@
  *            - 공유받은 카테고리 목록을 공유한 사용자 이름에 맞게 데이터를 가공합니다.
  *            - 공유함에 공유한 사용자의 이름과 카테고리를 렌더합니다.
  *            김건희
- *            -
+ *            - 공유함 버튼 클릭시 모달 해당 위치 설정
+ *            - 공유함 버튼 클릭시 모달 이 차지하는 크기만큼 캘린더 밀리게 설정
+ *            - 공유함 버튼 클릭시 모달 보이게 설정
+ *            - 전체 영역 스크롤 안되게 설정
+ *            - 모달 닫았을때 캘린더 다시 원래자리로 오게 설정
  * */
 async function sharedDirectoryModalOpen() {
     const sharedDirectoryModal = document.getElementById('sharedDirectoryModal');
@@ -123,6 +127,12 @@ function sharerChildNodeControl(id) {
     }
 }
 
+/*************************************************************
+ * 담당자 : 김건희
+ * 함수 : sharedDirectoryModalClose()
+ * 기능 : 1. 전체 영역 스크롤 안되게 설정
+ *       2. 모달 닫았을때 캘린더 다시 원래자리로 오게 설정
+ *************************************************************/
 // 팝업 닫기
 function sharedDirectoryModalClose() {
     const sharedDirectoryModal = document.getElementById('sharedDirectoryModal');
@@ -132,5 +142,4 @@ function sharedDirectoryModalClose() {
     moveRightContainer.style.transition = '1s'
     const bodyScrollHidden=document.getElementsByTagName('body');
     bodyScrollHidden[0].style.overflow = 'hidden';
-
 }

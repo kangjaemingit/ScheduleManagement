@@ -1,4 +1,11 @@
-// const calendarEl = document.getElementById("calendar"); //캘린더를 넣어줄 html div
+/***************************************************************************
+ * 담당자 : 김건희
+ * 기능 : 1. 캘린더를 만들기 위한 함수 작성
+ *       2. 캘린더 날짜를 클릭시 그날 일정을 나타내어줄 모달창 띄우기
+ *        2.1. 해당 일자의 일정을 나타낼때 필요한 시작 날과 끝나는 날의 값 계산
+ *       3. 일정 클릭시 해당 일정에 대한 상세페이지 띄우기
+ *       4. 나의 일정만 볼 수있게 하는 버튼과 공유받은 일정을 추가하여 보여주는 버튼 생성
+ ***************************************************************************/
 
 let calendar; // 캘린더 변수 선언
 
@@ -21,12 +28,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
         dayMaxEvents : true,
+        //캘린더 제일 위의 버튼 생성 및 제목 지정 및 위치 지정
         headerToolbar: {
             start: 'allScheduleButton,myScheduleButton',
             center: 'title',
             end: 'prevYear,prev,today,next,nextYear'
         },
         firstDay: 1,
+        //캘린더 제목 지정
         titleFormat: function (date) {
             let year = date.date.year;
             let month = date.date.month + 1;

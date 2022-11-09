@@ -40,6 +40,12 @@ function clickBodyEvent(event){
             hamburger.style.width = '50px';
             hamburger.style.height = '50px';
         }
+        else if(target.src === 'http://localhost:3000/images/layoutHeader/hamburger.png'){
+            movePage.style.display = 'flex';
+            hamburger.src = '../../images/category/close_bg_none.png';
+            hamburger.style.width = '25px';
+            hamburger.style.height = '25px';
+        }
         return;
         }
     // 4. 위에 해당하는 영역이 아닌 다른 영역 클릭시 아래와 같이 진행
