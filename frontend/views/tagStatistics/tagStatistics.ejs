@@ -33,7 +33,7 @@
         <%- include('tagLeftBarChartScreen.ejs') %>
     </div>
     <div id="indexRight" class="mainIndex">
-        <div style="margin-top: 25px; height: 93%; border: 1px rgba(235,235,235,1) solid">
+        <div style="margin-top: 25px; height: 93%; border: 1px rgba(235,235,235,1) solid; overflow: hidden">
         <div id="indexTop">
             <div class="countContainer">
                 <div class="countContainer2">총 일정 개수</div>
@@ -53,7 +53,7 @@
                 <div class="countContainer2" id="resetBtn" onclick="reloadSchedule();"><img style="width: 20px; height: 20px;" src="../../images/tagStatistics/resetbutton.png"> </div>
             </div>
         </div>
-        <div style="padding: 20px;">
+        <div style="padding: 20px; overflow: hidden;">
             <div class="totalScheduleGroupBox">
                 <div class="totalScheduleHeader1" >완료여부</div>
                 <div class="totalScheduleHeader1" >제목</div>
@@ -61,7 +61,7 @@
                 <div class="totalScheduleHeader1" >종료일</div>
             </div>
             <div class="tagStatisticsOverflow scrollBox">
-            <div id="tagStatisticsSchedule">
+            <div id="tagStatisticsSchedule" >
             <%if(mySchedule.length){%>
             <% mySchedule.map((s) => { %>
             <div class="totalScheduleContentsGroup" onclick="scheduleDetailModalOpen('<%=s._id%>', false)">

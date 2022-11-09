@@ -102,7 +102,6 @@ body::-webkit-scrollbar-track {
     right: 0px;
     animation: slideright 1s ease forwards;
     height: 100%;
-    padding: 0 10px 0 0;
 }
 @keyframes slideright {
     0%{
