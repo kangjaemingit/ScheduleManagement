@@ -39,7 +39,7 @@ function appendTodoList(todoList) {
     let addValue = document.getElementById('todaySelect').value;
 
     todayScheduleAdd += `<div id="${todoList._id}" class="scheduleCheckBox" style="display: flex;">`
-        + `<input type="checkbox" onclick="todayCheckbox('${todoList._id}', this)">`
+        + `<input type="checkbox" class="todayScheduleCheckBox" onclick="todayCheckbox('${todoList._id}', this)">`
         + `<div id="scheduleName">${addValue}</div>`
         + `</div>`
 

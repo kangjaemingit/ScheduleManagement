@@ -155,7 +155,7 @@ let doughnutDraw = function (){
                     // if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
                     // if these are not specified either, we default to 1 and 256
                     minFontSize: 10,
-                    maxFontSize: 12,
+                    maxFontSize: 16,
                 }
             },
         }

@@ -19,7 +19,7 @@ html,body{
 }
 #indexLeft{
     padding-right: 10px;
-    height: 83%;
+    height: 96%;
     display: flex;
     flex-direction: column;
     width: 40%;
@@ -48,7 +48,7 @@ html,body{
     background-position: right;
     right: 0px;
     animation: slideright 1s ease forwards;
-    height: 93%;
+    height: 100%;
 }
 @keyframes slideright {
     0%{
@@ -130,7 +130,6 @@ html,body{
     margin-top: 5px;
 }
 .totalScheduleContentsGroup{
-    overflow: auto;
     display: flex;
     justify-content: space-around;
     height: 30px;

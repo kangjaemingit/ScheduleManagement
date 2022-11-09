@@ -188,7 +188,7 @@ function selectOptionClick(){
         setOptionColorDefault()
     }
     else if(selectId===high.id){
-        langSelect.style.border='rgba(0,0,255,0.3) 1px solid';
+        langSelect.style.border='rgba(255,165,0,1) 1px solid';
         langSelect.style.color='orange';
         setOptionColorDefault()
     }
