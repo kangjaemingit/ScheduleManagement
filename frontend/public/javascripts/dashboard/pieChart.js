@@ -1,6 +1,6 @@
-let chart;
+let chart; // 차트 변수 선언
 
-let doughnutData = {
+let doughnutData = { // 차트 default 변수 선언
     labels: ['i', 'd', 'o', 'l', 'b', 'a'],
     datasets: [{
         data: [30, 20],
@@ -8,21 +8,33 @@ let doughnutData = {
     }]
 };
 
+// 페이지가 렌더 됐을 떄 차트를 생성
 window.onload = function () {
     doughnutDraw();
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 완료 상태 변경 시에 차트의 완료율을 변경해주는 함수입니다.
+ * 주요 기능 : - 카운트를 다시 하여 데이터 셋을 변경해줍니다.
+ * */
 function chartDataChange(){
-    const readyCount = document.getElementsByClassName('readyBox').length;
-    const completeCount = document.getElementsByClassName('completeBox').length;
+    const readyCount = document.getElementsByClassName('readyBox').length; // 미완료 카운트
+    const completeCount = document.getElementsByClassName('completeBox').length; // 완료 카운트
 
-    chart.data.datasets[0].data = [completeCount, readyCount];
-    chart.options.elements.center.text = (completeCount / (readyCount + completeCount)) * 100 + '%';
-    chart.update();
+    chart.data.datasets[0].data = [completeCount, readyCount]; // 차트 데이터 셋 변경
+    chart.options.elements.center.text = (completeCount / (readyCount + completeCount)) * 100 + '%'; // 차트 중앙 완료율 변경
+    chart.update(); // 차트 재렌더
 }
 
 
-
+/**
+ * 담당자 : 강재민, 김건희
+ * 함수 설명 : 차트 옵션 변경 및 차트 초기 데이터 설정
+ * 주요 기능 : 강재민
+ *            - 미완료 카운트와 완료 카운트로 데이터 바인딩
+ *            - 차트 중앙의 완료율 변경
+ * */
 let doughnutDraw = function (){
     let doughnutPainter = document.getElementById('doughnutChart').getContext('2d');
     const readyCount = document.getElementsByClassName('readyBox').length;

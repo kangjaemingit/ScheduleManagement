@@ -76,10 +76,20 @@ function moveScheduleBox(id, bool){
     completeScheduleCount.innerText = completeCount.toString();
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 일정 드래그 시작 함수입니다.
+ * 주요 기능 : - 드래그가 시작할 때 시작하는 컴포넌트의 id를 event에 담아줍니다.
+ * */
 function readyDragStart(event) {
-    event.dataTransfer.setData("scheduleBox", event.target.id);
+    event.dataTransfer.setData("scheduleBox", event.target.id); // 드래그 시작 시 컴포넌트 아이디 세팅
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 완료 영역에 컴포넌트를 놓았을 때 실행하는 함수입니다.
+ * 주요 기능 : - event에 실어 보낸 id로 완료상태 변경 함수를 실행합니다.
+ * */
 function readyToCompleteDrop(event) {
     event.preventDefault();
 
@@ -88,6 +98,11 @@ function readyToCompleteDrop(event) {
     else changeComplete(id, true)
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 미완료 영역에 컴포넌트를 놓았을 때 실행하는 함수입니다.
+ * 주요 기능 : - event에 실어 보낸 id로 완료상태 변경 함수를 실행합니다.
+ * */
 function completeToReadyDrop(event){
     event.preventDefault();
 
@@ -96,6 +111,11 @@ function completeToReadyDrop(event){
     else changeComplete(id, false)
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 놓지않고 드래그 영역 위에 컴포넌트가 진입했을 떄 실행되는 함수입니다.
+ * 주요 기능 : - 이벤트가 실행되지 않도록 합니다.
+ * */
 function dragover_handler(event) {
     event.preventDefault();
 }

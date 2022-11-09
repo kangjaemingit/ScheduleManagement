@@ -1,9 +1,16 @@
-let selectedSchedule = {
+let selectedSchedule = { // 선택된 일정 배열 선언
     id: null,
     title : null
 };
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드 생성 모달을 열어주는 함수입니다.
+ * 주요 기능 : - 일정 선택란에 나의 모든 일정을 담아 렌더합니다.
+ *            - 피드 생성 모달을 열어줍니다.
+ * */
 function feedModalOpen(){
+    // 일정 불러오기
     fetch('calendar/getMySchedule', {
         method : 'get',
     }).then((res) => res.json())
@@ -11,11 +18,10 @@ function feedModalOpen(){
             if(!res.getMyScheduleSuccess){
                 return window.alert(res.message);
             }
-            feedScheduleRender(res.schedule);
+            feedScheduleRender(res.schedule); // 피드 모달 일정 렌더
         }).catch((err) => {
         console.log(err);
     })
-
 
     const feedModal = document.querySelector('.feedModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
@@ -27,23 +33,35 @@ function feedModalOpen(){
     }
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드 수정 모달을 열어주는 함수입니다.
+ * 주요 기능 : - 피드 내용을 바인딩해줍니다.
+ *           - 선택된 일정을 바인딩 합니다.
+ *           - 저장 버튼의 onclick 속성을 변경합니다.
+ * */
 function feedEditModalOpen(feed){
-    document.getElementById('feedContentsInput').value = feed.feedContents;
-    if(feed.schedule){
-        feedScheduleSelect(feed.schedule.title, feed.schedule._id)
+    document.getElementById('feedContentsInput').value = feed.feedContents; // 피드 내용 바인딩
+    if(feed.schedule){ // 스케줄이 있을 경우
+        feedScheduleSelect(feed.schedule.title, feed.schedule._id) // 일정 렌더
     }
 
-    document.getElementById('btnSaveFeed').setAttribute('onclick', `updateFeed('${feed._id}')`)
+    document.getElementById('btnSaveFeed').setAttribute('onclick', `updateFeed('${feed._id}')`) // 저장 버튼 속성 변경
 
-    feedModalOpen();
+    feedModalOpen(); // 모달 열기
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드 모달을 닫는 함수입니다.
+ * 주요 기능 : - 모든 값들을 비우고 속성을 초기값으로 변경합니다.
+ * */
 function feedModalClose(){
-    document.getElementById('selectedSchedule').innerHTML = "";
-    document.getElementById('inputScheduleSearch').value = "";
-    document.getElementById('feedContentsInput').value = "";
-    document.getElementById('feedScheduleDeleteBtn').style.display = 'none';
-    document.getElementById('btnSaveFeed').setAttribute('onclick', `createFeed()`)
+    document.getElementById('selectedSchedule').innerHTML = ""; // 선택 일정 초기화
+    document.getElementById('inputScheduleSearch').value = ""; // 검색란 초기화
+    document.getElementById('feedContentsInput').value = ""; // 피드 내용 초기화
+    document.getElementById('feedScheduleDeleteBtn').style.display = 'none'; // 피드 일정 삭제 버튼 안보이게에 함
+    document.getElementById('btnSaveFeed').setAttribute('onclick', `createFeed()`) // 저장 버튼 속성 변경
 
     const feedModal = document.querySelector('.feedModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
@@ -51,6 +69,11 @@ function feedModalClose(){
     bodyScrollHidden[0].style.overflow='auto';
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드 모달 내의 일정 목록을 렌더하는 함수입니다.
+ * 주요 기능 : - 일정 데이터를 인자로 받아 목록을 바인딩 합니다.
+ * */
 function feedScheduleRender(schedule){
     let rows = "";
 
@@ -78,6 +101,11 @@ function feedScheduleRender(schedule){
     document.getElementById('scheduleViewArea').innerHTML = rows;
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드 모달 내의 일정 목록을 검색하는 함수입니다.
+ * 주요 기능 : - 키워드로 일정을 검색하는 API를 실행하여 값을 받아와 피드 일정 렌더 함수를 실행합니다.
+ * */
 function searchFeedSchedule(){
     event.preventDefault();
     const keyword = document.getElementById('inputScheduleSearch').value;
@@ -100,11 +128,18 @@ function searchFeedSchedule(){
     })
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드 모달 내에서 일정을 선택했을 때 실행되는 함수입니다.
+ * 주요 기능 : - 일정 선택 시 선택한 일정 영역에 일정 이름을 표시합니다.
+ * */
 function feedScheduleSelect(title, id){
     selectedSchedule = {
         id : id,
         title : title
-    }
+    } // 전역변수에 일정 정보 담기
+
+    // 데이터 바인딩
     let rows = "";
 
     rows += `<div style="display: flex; align-items: center">`
@@ -115,19 +150,26 @@ function feedScheduleSelect(title, id){
     document.getElementById('feedScheduleDeleteBtn').style.display = 'block';
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드를 생성하는 함수입니다.
+ * 주요 기능 : - 피드 입력 데이터를 가공하여 피드 생성 API를 요청합니다.
+ *            - 피드 저장 후에 새로운 피드를 페이지에 등록합니다.
+ * */
 function createFeed()  {
-    const contents = document.getElementById('feedContentsInput').value;
+    const contents = document.getElementById('feedContentsInput').value; // 피드 내용
 
-    if(contents === ""){
-        return window.alert("내용을 입력해주세요");
+    if(contents === ""){ // 피드 내용 공백 여부 검증
+        return toast("내용을 입력해주세요");
     }
 
+    // 데이터 가공
     const data = {
         contents : contents,
         scheduleId : selectedSchedule.id
     }
 
-
+    // 피드 생성 요청
     fetch('feed/createFeed', {
         method : 'post',
         headers : {
@@ -140,21 +182,26 @@ function createFeed()  {
                 console.log(res.message);
                 return window.alert(res.message);
             }
-            appendFeed(res.feed, res.user);
+            appendFeed(res.feed, res.user); // 피드 추가
             feedModalClose();
 
         }).catch((err) => {
         console.log(err);
     })
 }
-
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드 등록 시 새로운 피드를 렌더 해주는 함수입니다.
+ * 주요 기능 : - 피드 내용과 id로 새로운 피드 컴포넌트를 만들어 추가합니다.
+ * */
 function appendFeed(feed, user){
-    const feedContentContainer = document.createElement('div');
-    feedContentContainer.classList.add('feedContentContainer');
-    feedContentContainer.id = feed._id;
+    const feedContentContainer = document.createElement('div'); // 컨테이너 생성
+    feedContentContainer.classList.add('feedContentContainer'); // 클래스 추가
+    feedContentContainer.id = feed._id; // 컨테이너 아이디 지정
 
     let rows = "";
 
+    // 피드 추가
     rows +=
         `
             <div class="feedTitleArea">
@@ -194,23 +241,30 @@ function appendFeed(feed, user){
 
     feedContentContainer.innerHTML = rows;
     const parent = document.getElementById('feedArea');
-    parent.insertBefore(feedContentContainer, parent.firstChild);
+    parent.insertBefore(feedContentContainer, parent.firstChild); // 첫 번째 위치
 
     document.getElementById('feedContentsInput').value = "";
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드를 수정하는 함수입니다.
+ * 주요 기능 : - 수정된 피드 내용으로 피드 수정 API를 요청합니다.
+ * */
 function updateFeed(feedId){
-    const contents = document.getElementById('feedContentsInput').value;
+    const contents = document.getElementById('feedContentsInput').value; // 피드 내용
 
-    const data = {
+    const data = { // 데이터 가공
         feedId : feedId,
         feedContents : contents,
         scheduleId : selectedSchedule.id
     }
-    if(contents === ""){
-        return window.alert("내용을 입력해주세요");
+
+    if(contents === ""){ // 내용 공백 여부 검증
+        return toast("내용을 입력해주세요");
     }
 
+    // API 요청
     fetch('feed/updateFeed', {
         method : 'post',
         headers : {
@@ -223,11 +277,10 @@ function updateFeed(feedId){
                 console.log(res.message);
                 return window.alert(res.message);
             }
-            document.getElementById('feedContents_' + feedId).innerText = contents;
-            document.getElementById('selectedSchedule_' + feedId).innerText = selectedSchedule.title;
+            document.getElementById('feedContents_' + feedId).innerText = contents; // 기존 피드의 내용 변경
+            document.getElementById('selectedSchedule_' + feedId).innerText = selectedSchedule.title; // 기존 피드의 일정 변경
 
             feedModalClose();
-
 
         }).catch((err) => {
         console.log(err);
@@ -235,22 +288,18 @@ function updateFeed(feedId){
 
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드 생성 혹은 수정시 매핑된 일정을 삭제하는 함수입니다.
+ * 주요 기능 : - 선택된 일정 변수를 비우고, 모달 내의 html text도 비워줍니다.
+ * */
 function feedScheduleDelete(){
+    // 변수 초기화
     selectedSchedule.id = null;
     selectedSchedule.title = null;
 
+    // html 바인딩
     document.getElementById('selectedSchedule').innerHTML = "";
     document.getElementById('feedScheduleDeleteBtn').style.display = 'none';
 
-}
-
-function dateFormatter(date){
-    let today = new Date();
-    let inputDate = new Date(date)
-    let offset = today.getTimezoneOffset() * 60000
-    let DateOffset = new Date(inputDate.getTime() - offset);
-
-    let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
-
-    return dateString;
 }
