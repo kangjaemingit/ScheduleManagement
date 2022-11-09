@@ -99,7 +99,7 @@
     <div style="display: flex;width: 50%">
     <div class="dashboardScheduleContainer readyArea" ondragover="dragover_handler(event);"
          ondrop="completeToReadyDrop(event);">
-        <div class="dashboardScheduleWrap" id="completeArea" style="background-color: #b9e8fc;">
+        <div class="dashboardScheduleWrap" id="readyArea" style="background-color: #b9e8fc;">
             <div style="width: 85%;align-items: center; display: flex"><h3>미완료</h3>
                 <p id="readyScheduleCount"><%= readySchedule.length %></p></div>
             <% readySchedule.map((s) => { %>
@@ -125,7 +125,7 @@
 
     <div class="dashboardScheduleContainer completeArea" ondragover="dragover_handler(event);"
          ondrop="readyToCompleteDrop(event);">
-        <div class="dashboardScheduleWrap" id="readyArea" style="background-color: #c2fdb9;">
+        <div class="dashboardScheduleWrap" id="completeArea" style="background-color: #c2fdb9;">
             <div style="width: 85%;align-items: center; display: flex"><h3>완료</h3>
                 <p id="completeScheduleCount"><%= completeSchedule.length %></p></div>
             <% completeSchedule.map((s) => { %>

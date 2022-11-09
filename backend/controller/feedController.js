@@ -100,7 +100,9 @@ const feedController = {
      * */
     deleteFeedComment : async (req, res) => {
         try{
+            // 피드 댓글 삭제
             await FeedComment.deleteOne({_id : req.body.id}).exec();
+            // 피드에서 매핑된 피드 댓글 id 삭제
             await Feed.updateOne({comments : req.body.id}, {$pull : {comments : req.body.id}}).exec()
 
             return res.json({deleteCommentSuccess : true}).status(200);

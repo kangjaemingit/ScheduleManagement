@@ -1,3 +1,10 @@
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 일정의 완료 상태를 변경해주는 함수입니다.
+ * 주요 기능 : - 완료 상태를 변경할 id와 boolean을 입력받아 변경합니다.
+ *          - boolean이 true일 경우 완료로, false일 경우 미완료 입니다.
+ *          - 상태 변경이 완료되면 일정 박스를 알맞게 이동시키는 함수를 실행합니다.
+ * */
 function changeComplete(id, bool){
     const data = {
         id : id,
@@ -23,50 +30,50 @@ function changeComplete(id, bool){
     })
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 일정의 완료 상태가 변경되었을 때 일정을 이동시켜주는 함수입니다.
+ * 주요 기능 : - 완료 상태가 변경되었을 때 일정 컴포넌트를 찾아 이동시켜주는 역할을 합니다.
+ *           - 완료 상태에 따라 버튼의 모양을 변경시켜줍니다.
+ * */
 function moveScheduleBox(id, bool){
-    const readyArea = document.getElementById('readyArea');
-    const completeArea = document.getElementById('completeArea');
-    const component = document.getElementById(id);
-    const readyScheduleCount = document.getElementById('readyScheduleCount');
-    const completeScheduleCount = document.getElementById('completeScheduleCount');
+    const readyArea = document.getElementById('readyArea'); // 미완료 박스
+    const completeArea = document.getElementById('completeArea'); // 완료 박스
+    const component = document.getElementById(id); // 일정 컴포넌트
+    const readyScheduleCount = document.getElementById('readyScheduleCount'); // 미완료 갯수 란
+    const completeScheduleCount = document.getElementById('completeScheduleCount'); // 완료 갯수 란
 
-    const icon = document.getElementById(`icon_${id}`)
-    const iconAll = document.getElementById(`icon_all_${id}`)
+    const icon = document.getElementById(`icon_${id}`) // 일정 컴포넌트의 완료 아이콘
+    const iconAll = document.getElementById(`icon_all_${id}`) // 일정 전체에 있는 일정 컴포넌트의 완료 아이콘
 
-    if(!bool){
-        readyArea.removeChild(component);
-        completeArea.appendChild(component);
-        component.classList.replace('completeBox', 'readyBox');
-        icon.src = "/images/ready.png";
-        iconAll.src = "/images/ready.png";
+    if(!bool){ // 미완료로 변경
+        completeArea.removeChild(component); // 완료에서 컴포넌트 삭제
+        readyArea.appendChild(component); // 미완료에 컴포넌트 추가
+        component.classList.replace('completeBox', 'readyBox'); // 컴포넌트 클래스 변경
+        icon.src = "/images/ready.png"; // 아이콘 변경
+        iconAll.src = "/images/ready.png"; // 일정 전체 컴포넌트 아이콘 변경
 
-        icon.setAttribute('onclick', `changeComplete('${id}', true)`);
-        iconAll.setAttribute('onclick', `changeComplete('${id}', true)`);
+        icon.setAttribute('onclick', `changeComplete('${id}', true)`); // 아이콘 onclick 속성 변경
+        iconAll.setAttribute('onclick', `changeComplete('${id}', true)`); // 아이콘 onclick 속성 변경
 
-    } else{
-        completeArea.removeChild(component);
-        readyArea.appendChild(component);
-        component.classList.replace('readyBox', 'completeBox');
-        document.getElementById(`icon_${id}`).src = "/images/complete.png";
-        document.getElementById(`icon_all_${id}`).src = "/images/complete.png";
+    } else{ // 완료로 변경
+        readyArea.removeChild(component); // 미완료 박스에서 컴포넌트 삭제
+        completeArea.appendChild(component); // 완료 박스에 컴포넌트 추가
+        component.classList.replace('readyBox', 'completeBox'); // 컴포넌트 클래스 변경
+        document.getElementById(`icon_${id}`).src = "/images/complete.png"; // 아이콘 변경
+        document.getElementById(`icon_all_${id}`).src = "/images/complete.png"; // 아이콘 변경
 
-        icon.setAttribute('onclick', `changeComplete('${id}', false)`);
-        iconAll.setAttribute('onclick', `changeComplete('${id}', false)`);
+        icon.setAttribute('onclick', `changeComplete('${id}', false)`); // 아이콘 onclick 속성 변경
+        iconAll.setAttribute('onclick', `changeComplete('${id}', false)`); // 아이콘 onclick 속성 변경
 
     }
-    chartDataChange();
+    chartDataChange(); // 차트 데이터 변경
 
+    const readyCount = document.getElementsByClassName('readyBox').length; // 미완료 컴포넌트의 갯수 카운트
+    const completeCount = document.getElementsByClassName('completeBox').length; // 완료 컴포넌트의 갯수 카운트
 
-    const readyCount = document.getElementsByClassName('readyBox').length;
-    const completeCount = document.getElementsByClassName('completeBox').length;
-    // const allCount = readyCount + completeCount;
-    //
     readyScheduleCount.innerText = readyCount.toString();
     completeScheduleCount.innerText = completeCount.toString();
-    //
-    // const completeRate = ((completeCount / allCount) * 100).toFixed(1);
-    // document.getElementById('completeBar').style.width = completeRate + '%';
-    // document.getElementById('completeBar').innerText = completeRate + '%';
 }
 
 function readyDragStart(event) {
@@ -91,30 +98,7 @@ function completeToReadyDrop(event){
 
 function dragover_handler(event) {
     event.preventDefault();
-    //
-    // let id = event.dataTransfer.getData("scheduleBox");
-    //
-    //
-    // const readyArea = document.getElementById('readyArea');
-    // const completeArea = document.getElementById('completeArea');
-    // const component = document.getElementById(`${___id}`);
-    // console.log(___id);
-    //
-    // readyArea.removeChild(component);
-    // completeArea.appendChild(component);
 }
-
-// function dateFormatter(date){
-//     let dates = new Date(date);
-//     let year = dates.getFullYear();
-//     let month = dates.getMonth() + 1;
-//     let day = dates.getDate();
-//     let hour = dates.getHours();
-//     let minute = dates.getMinutes();
-//
-//     let fullDate = year + ". " + month + ". " + day + " " + hour + " : " + minute;
-//     return fullDate
-// }
 
 
 

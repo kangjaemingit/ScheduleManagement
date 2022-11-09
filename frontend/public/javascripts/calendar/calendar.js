@@ -1,6 +1,6 @@
 // const calendarEl = document.getElementById("calendar"); //캘린더를 넣어줄 html div
 
-let calendar;
+let calendar; // 캘린더 변수 선언
 
 document.addEventListener('DOMContentLoaded', function () {
     let calendarEl = document.getElementById('calendar');
@@ -70,19 +70,27 @@ document.addEventListener('DOMContentLoaded', function () {
             meridiem: 'short'
         }
     })
-    defaultSchedule();
+    defaultSchedule(); // 일정 초기값 세팅
 });
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 일정 초기값을 세팅해주는 함수입니다.
+ * 주요 기능 : - 캘린더의 모든일정을 삭제한 뒤 개인에게 맞는 본인 일정과 공유받은 일정을 불러와 렌더링 합니다.
+ * */
 function defaultSchedule() {
     calendar.removeAllEvents();
     fetch('calendar/getScheduleByUser', {
         method: 'get',
     }).then((res) => res.json())
         .then(res => {
+            // 일정 불러오기 실패 시
             if (res.scheduleRenderSuccess == false) {
                 window.alert(res.message)
                 return;
             }
+
+            // 나의 일정 이벤트 바인딩
             for (let i = 0; i < res.mySchedule.length; i++) {
                 calendar.addEvent({
                     _id: res.mySchedule[i]._id,
@@ -94,6 +102,7 @@ function defaultSchedule() {
                 })
             }
 
+            // 공유 받은 일정 이벤트 바인딩
             for (let i = 0; i < res.sharedSchedule.length; i++){
                 let eventTitle = res.sharedSchedule[i].title + " (" + res.sharedSchedule[i].scheduleWriter.name + ")"
                 calendar.addEvent({
@@ -109,6 +118,11 @@ function defaultSchedule() {
     calendar.render();
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 공유받은 카테고리 선택시에 일정 변경을 위한 함수입니다.
+ * 주요 기능 : - 기존의 일정 이벤트들을 모두 삭제하고, 인자로 받아온 일정을 캘린더에 추가해주는 역할을 합니다.
+ * */
 function changeCategorySchedule(schedule){
     calendar.removeAllEvents();
     for (let i = 0; i < schedule.length; i++) {
@@ -125,10 +139,16 @@ function changeCategorySchedule(schedule){
     calendar.render()
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 나의 카테고리 선택시에 일정 변경을 위한 함수입니다.
+ * 주요 기능 : - 기존의 일정 이벤트들을 모두 삭제하고, 인자로 받아온 일정을 캘린더에 추가해주는 역할을 합니다.
+ * */
 function changeCategoryMySchedule(category){
     calendar.removeAllEvents();
-    const tags = category.tags.map((t) => {return t._id});
+    const tags = category.tags.map((t) => {return t._id}); // 카테고리에 해당하는 태그 배열
 
+    // 태그 배열을 통해 나의 일정을 불러옴
     fetch('calendar/getMyScheduleByTag', {
         method: 'post',
         headers : {
@@ -137,10 +157,13 @@ function changeCategoryMySchedule(category){
         body: JSON.stringify({tag : tags})
     }).then((res) => res.json())
         .then(res => {
+            // 일정불러오기 실패시
             if(res.getMyScheduleSuccess === false){
                 window.alert(res.message)
                 return;
             }
+
+            // 받아온 일정 바인딩
             for (let i = 0; i < res.schedule.length; i++) {
                 calendar.addEvent({
                     _id: res.schedule[i]._id,
@@ -151,16 +174,25 @@ function changeCategoryMySchedule(category){
                     color: "#96bebd",
                 })
             }
-            calendar.render()
-            categoryDetailScheduleRender(res.schedule);
 
+            // 캘린더 재렌더
+            calendar.render()
+
+            // 카테고리 상세 페이지의 일정목록 렌더링
+            categoryDetailScheduleRender(res.schedule);
         });
 
 
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 나의 일정 렌더링을 위한 함수입니다.
+ * 주요 기능 : - 기존의 일정 이벤트들을 모두 삭제하고, 나의 일정을 요청하여 받아와 캘린더에 추가해줍니다.
+ * */
 function MyScheduleRender(){
-    calendar.removeAllEvents();
+    calendar.removeAllEvents(); // 기존 일정 모두 삭제
+    // 나의 일정 불러오기
     fetch('calendar/getMySchedule', {
         method: 'get',
     }).then((res) => res.json())
@@ -169,6 +201,8 @@ function MyScheduleRender(){
                 window.alert(res.message)
                 return;
             }
+
+            // 일정 이벤트 바인딩
             for (let i = 0; i < res.schedule.length; i++) {
                 calendar.addEvent({
                     _id: res.schedule[i]._id,
@@ -180,5 +214,7 @@ function MyScheduleRender(){
                 })
             }
         });
+
+    // 캘린더 재렌더링
     calendar.render();
 }
