@@ -1,3 +1,7 @@
+/**
+ * 담당자 : 강재민, 김건희
+ * 파일 설명 : 서버 실행을 위한 파일입니다.
+ * */
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

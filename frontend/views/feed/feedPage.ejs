@@ -1,3 +1,8 @@
+<!--
+    담당자 : 강재민
+    파일설명 : 피드 페이지
+-->
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,15 +17,17 @@
 </head>
 <body style="overflow: auto">
 <%
+    // 날짜 포멧 함수
     function dateFormatter(date){
         let today = new Date();
         let inputDate = new Date(date);
-        let todayToSeconds = (today.getTime() / 1000);
-        let dateToSeconds = (inputDate.getTime() / 1000);
+        let todayToSeconds = (today.getTime() / 1000); // 오늘 날짜를 초로 변환
+        let dateToSeconds = (inputDate.getTime() / 1000); // 인자로 받아온 날짜를 초로 변환
         let elapsedSec = todayToSeconds - dateToSeconds;
 
         let result;
 
+        // 시간 별로 '방금전', 'n 분전', 'n 시간 전', 'n 일전' 표시
         if(elapsedSec > 86400){
             result = (elapsedSec / 86400).toFixed(0).toString() + "일 전"
         } else if(elapsedSec > 3600){

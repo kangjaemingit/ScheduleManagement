@@ -53,6 +53,7 @@ let etcData = []; // 기타 태그에 담길 배열
  * 주요 기능 : - 데이터 초기 값을 차트에 설정하고, 차트를 만들어주는 역할을 합니다.
  * */
 function setDefaultData(data) {
+    // 막대 그래프 데이터 셋팅
     let barTagName = [];
     let barTagCount = [];
     let barColors = ['#ffafb0', '#ffafd8', '#eeb7b4', '#f2cfa5', '#fcffb0', '#aee4ff', '#b5c7ed', '#c4f4fe', '#bee9b4', '#fdfa87', '#fcc6f7', '#caa6fe', '#ffafd8', '#afffba', '#e2ffaf', '#fcffb0', '#f2cfa5', '#83a7a3', '#acb890', '#dfd4e4'];
@@ -71,6 +72,7 @@ function setDefaultData(data) {
         }]
     }
 
+    // 파이 차트 데이터 셋팅
     let pieTagName = [];
     let pieTagCount = [];
     let pieColors = ['#fbb9ba', '#fdd3ba', '#fcecb9', '#c2fdb9', '#b9e8fc', '#c1bafd', '#eebbfe', '#e3e3e3'];
@@ -102,7 +104,6 @@ function setDefaultData(data) {
 
     barChartDraw();
     pieChartDraw();
-
 }
 
 
@@ -125,6 +126,11 @@ let pieChartDraw = function () {
     });
 };
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 태그 통계의 원형 차트의 범례를 커스텀 하는 함수입니다.
+ * 주요 기능 : - 차트 우측에 엘리먼트를 생성하여 범례를 커스텀하여 삽입하였습니다.
+ * */
 const htmlLegendPlugin = {
     id: 'htmlLegend',
     afterUpdate(chart, args, options) {
@@ -142,6 +148,11 @@ const htmlLegendPlugin = {
     }
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 우측의 일정 목록을 렌더링 해주는 함수입니다.
+ * 주요 기능 : - 일정 목록을 입력받아 우측의 일정을 바인딩해주는 역할을 합니다.
+ * */
 function scheduleRender(schedule) {
     let rows = "";
 
@@ -158,8 +169,13 @@ function scheduleRender(schedule) {
 
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 원형 차트의 범례와 막대 그래프의 막대를 클릭했을때 그 태그에 해당하는 일정을 불러오는 함수입니다.
+ * 주요 기능 : - 태그를 입력받아 그 태그에 해당하는 나의 일정을 바인딩합니다.
+ * */
 function changeSchedule(tag) {
-    if (tag === "기타") {
+    if (tag === "기타") { // 기타일때 별도 처리
         return changeScheduleEtc();
     }
 
@@ -180,6 +196,11 @@ function changeSchedule(tag) {
     })
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 원형 차트의 범례에서 기타에 해당하는 일정을 불러오기 위한 함수입니다.
+ * 주요 기능 : - etcData에 담아두었던 기타 데이터들을 모두 입력받아 일정을 불러왔습니다.
+ * */
 function changeScheduleEtc() {
     fetch('tagStatistics/findMyTagByNotTagName/', {
         method: 'post',
@@ -204,6 +225,11 @@ function changeScheduleEtc() {
 
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 태그의 퍼센트를 계산해주는 함수입니다.
+ * 주요 기능 : - 전체 태그수 와 해당 태그의 갯수를 통해 퍼센트를 계산하여 return합니다.
+ * */
 function tagPercentage(count) {
     let allCount = document.getElementById('usedTagAllCount').innerText;
 
@@ -280,6 +306,11 @@ let barChartDraw = function () {
     });
 };
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 태그 통계 페이지의 일정 목록을 초기값으로 돌려주는 함수입니다.
+ * 주요 기능 : - 나의 모든 일정을 불러와 일정목록에 표시합니다.
+ * */
 function reloadSchedule() {
     fetch('calendar/getMySchedule', {
         method: 'get'
@@ -298,6 +329,11 @@ function reloadSchedule() {
     })
 }
 
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : UTC 타임 포멧을 KST로 변경해주는 함수입니다.
+ * 주요 기능 : - timezoneOffset을 이용하여 UTC를 KST로 변경하였습니다.
+ * */
 function dateFormatter(date) {
     let today = new Date();
     let inputDate = new Date(date)
