@@ -140,15 +140,6 @@ ul{
 .headerUrlBox{
     display: none;
 }
-/*#headerUrlBox:after{*/
-/*    content:"";*/
-/*    position: absolute;*/
-/*    top: -20px;*/
-/*    right: 90px;*/
-/*    border-left: 10px solid transparent;*/
-/*    border-right: 10px solid transparent;*/
-/*    border-bottom: 20px solid white;*/
-/*}*/
 #browse-category>#headerUrlBox::-webkit-details-marker{
     transform: rotate3d(0,0,1,90deg);
 }
