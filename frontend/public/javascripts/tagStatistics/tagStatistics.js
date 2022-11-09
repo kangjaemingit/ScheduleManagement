@@ -1,3 +1,8 @@
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 태그 통계 페이지가 실행될 때 함께 실행되는 함수입니다.
+ * 주요 기능 : - 태그 통계의 전체 데이터를 받아와 바인딩합니다.
+ * */
 window.onload = function () {
     fetch('tagStatistics/data', {
         method: 'get'
@@ -8,12 +13,12 @@ window.onload = function () {
                 console.log(res.message);
                 return;
             }
-            document.getElementById('scheduleAllCount').innerText = res.scheduleAllCount
-            document.getElementById('usedTagKindCount').innerText = res.usedTagKindCount
-            document.getElementById('usedTagAllCount').innerText = res.usedTagAllCount
-            if (res.usedTags.length) {
-                setDefaultData(res.usedTags);
-            } else {
+            document.getElementById('scheduleAllCount').innerText = res.scheduleAllCount // 총 일정 갯수
+            document.getElementById('usedTagKindCount').innerText = res.usedTagKindCount // 사용한 태그 종류 수
+            document.getElementById('usedTagAllCount').innerText = res.usedTagAllCount // 사용한 전체 태그 수
+            if (res.usedTags.length) { // 태그 배열이 있을 시
+                setDefaultData(res.usedTags); // 초기 값 설정
+            } else { // 태그 배열이 없을 시 데이터 없음 이미지 표시
                 let img = `<img src="images/noData.png" style="width: 50%; opacity: 0.07">`
                 document.getElementById('paintPieChart').innerHTML = img;
             }
@@ -23,6 +28,7 @@ window.onload = function () {
     })
 }
 
+// 파이 차트 데이터 초기화
 let pieData = {
     labels: ['i', 'd', 'o', 'l', 'b', 'a'],
     datasets: [{
@@ -31,6 +37,7 @@ let pieData = {
     }]
 };
 
+// 막대 차트 데이터 초기화
 let barData = {
     labels: ['su', 'ji', 'i', 'u', 'jee', 'su'],
     datasets: [{
@@ -39,21 +46,18 @@ let barData = {
     }]
 };
 
-function dynamicColors() {
-    let r = Math.floor(Math.random() * 255);
-    let g = Math.floor(Math.random() * 255);
-    let b = Math.floor(Math.random() * 255);
-    return "rgb(" + r + "," + g + "," + b + ")";
-};
-
-let etcData = [];
-
+let etcData = []; // 기타 태그에 담길 배열
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 태그 통계 페이지에 초기 값을 설정하는 함수입니다.
+ * 주요 기능 : - 데이터 초기 값을 차트에 설정하고, 차트를 만들어주는 역할을 합니다.
+ * */
 function setDefaultData(data) {
     let barTagName = [];
     let barTagCount = [];
     let barColors = ['#ffafb0', '#ffafd8', '#eeb7b4', '#f2cfa5', '#fcffb0', '#aee4ff', '#b5c7ed', '#c4f4fe', '#bee9b4', '#fdfa87', '#fcc6f7', '#caa6fe', '#ffafd8', '#afffba', '#e2ffaf', '#fcffb0', '#f2cfa5', '#83a7a3', '#acb890', '#dfd4e4'];
 
-    data.map((el) => {
+    data.map((el) => { // 막대 그래프 데이터 바인딩
         barTagName.push(el.tagName);
         barTagCount.push(el.count);
     })

@@ -93,6 +93,12 @@ function displayPlaces(places) {
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
+        /**
+         * 담당자 : 강재민
+         * 함수 설명 : 마커를 클릭했을 때 실행되는 함수입니다.
+         * 주요 기능 : - 다른 마커들을 모두 삭제하고 클릭한 마커만 재세팅합니다.
+         *            - 주소를 모달에 입력합니다.
+         * */
         (function(marker, place, i) {
             kakao.maps.event.addListener(marker, 'click', function() {
                 removeMarker();
@@ -103,6 +109,12 @@ function displayPlaces(places) {
                 setAddress(place)
             })
 
+            /**
+             * 담당자 : 강재민
+             * 함수 설명 : 검색결과의 장소를 클릭했을 때 실행되는 함수입니다.
+             * 주요 기능 : - 다른 마커들을 모두 삭제하고 선택한 장소의 마커만 재세팅합니다.
+             *            - 주소를 모달에 입력합니다.
+             * */
             itemEl.onclick = function(){
                 removeMarker();
                 addMarker(new kakao.maps.LatLng(place.y, place.x), i);
