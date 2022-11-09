@@ -18,7 +18,7 @@ window.onload = function () {
  * 함수 설명 : 완료 상태 변경 시에 차트의 완료율을 변경해주는 함수입니다.
  * 주요 기능 : - 카운트를 다시 하여 데이터 셋을 변경해줍니다.
  * */
-function chartDataChange(){
+function chartDataChange() {
     const readyCount = document.getElementsByClassName('readyBox').length; // 미완료 카운트
     const completeCount = document.getElementsByClassName('completeBox').length; // 완료 카운트
 
@@ -34,62 +34,67 @@ function chartDataChange(){
  * 주요 기능 : 강재민
  *            - 미완료 카운트와 완료 카운트로 데이터 바인딩
  *            - 차트 중앙의 완료율 변경
+ *            김건희
+ *            - 도넛 차트 틀 작성
+ *            - 도넛 차트 중앙에 글씨를 적기 위한 함수 작성
  * */
-let doughnutDraw = function (){
+let doughnutDraw = function () {
     let doughnutPainter = document.getElementById('doughnutChart').getContext('2d');
     const readyCount = document.getElementsByClassName('readyBox').length;
     const completeCount = document.getElementsByClassName('completeBox').length;
 
 
     doughnutData = {
-        labels : ['완료', '진행중'],
+        labels: ['완료', '진행중'],
         datasets: [{
-            data : [completeCount, readyCount],
+            data: [completeCount, readyCount],
             backgroundColor: ["#c2fdb9", "#b9e8fc"],
         }]
     }
     let completeRate;
 
-    if(readyCount === 0 && completeCount === 0){
+    if (readyCount === 0 && completeCount === 0) {
         completeRate = "표시할 완료율이 없습니다."
-    } else{
+    } else {
         completeRate = (completeCount / (readyCount + completeCount)) * 100 + '%'
     }
 
-
-
+    /*************************************************************
+     * 담당자 : 김건희
+     * 기능 : 1. 도넛 차트의 한가운데 글씨를 쓰기위한 선언
+     *************************************************************/
     Chart.register({
         id: 'doughnut-centertext',
-        beforeDraw: function(chart) {
+        beforeDraw: function (chart) {
             if (chart.config.options.elements.center) {
-                // Get ctx from string
-                var ctx = chart.ctx;
+                // 그래프에 문자열 작성
+                let ctx = chart.ctx;
 
-                // Get options from the center object in options
-                var centerConfig = chart.config.options.elements.center;
-                var fontStyle = centerConfig.fontStyle || 'Arial';
-                var txt = centerConfig.text;
-                var color = centerConfig.color || '#000';
-                var maxFontSize = centerConfig.maxFontSize || 75;
-                var sidePadding = centerConfig.sidePadding || 20;
-                var sidePaddingCalculated = (sidePadding / 100) * (chart._metasets[chart._metasets.length-1].data[0].innerRadius * 2)
-                // Start with a base font of 30px
+                // 그래프 옵션에 들어갈 센터 object
+                let centerConfig = chart.config.options.elements.center;
+                let fontStyle = centerConfig.fontStyle || 'Arial';
+                let txt = centerConfig.text;
+                let color = centerConfig.color || '#000';
+                let maxFontSize = centerConfig.maxFontSize || 75;
+                let sidePadding = centerConfig.sidePadding || 20;
+                let sidePaddingCalculated = (sidePadding / 100) * (chart._metasets[chart._metasets.length - 1].data[0].innerRadius * 2)
+                // 기본 폰트 크기는 30px
                 ctx.font = "30px " + fontStyle;
 
-                // Get the width of the string and also the width of the element minus 10 to give it 5px side padding
-                var stringWidth = ctx.measureText(txt).width;
-                var elementWidth = (chart._metasets[chart._metasets.length-1].data[0].innerRadius * 2) - sidePaddingCalculated;
+                // 문자열의 너비와 요소의 너비에서 10을 빼서 5px 측면 패딩해준다.
+                let stringWidth = ctx.measureText(txt).width;
+                let elementWidth = (chart._metasets[chart._metasets.length - 1].data[0].innerRadius * 2) - sidePaddingCalculated;
 
-                // Find out how much the font can grow in width.
-                var widthRatio = elementWidth / stringWidth;
-                var newFontSize = Math.floor(30 * widthRatio);
-                var elementHeight = (chart._metasets[chart._metasets.length-1].data[0].innerRadius * 2);
+                // 글꼴의 너비가 최대 얼마나 커질건지 정하기
+                let widthRatio = elementWidth / stringWidth;
+                let newFontSize = Math.floor(30 * widthRatio);
+                let elementHeight = (chart._metasets[chart._metasets.length - 1].data[0].innerRadius * 2);
 
-                // Pick a new font size so it will not be larger than the height of label.
-                var fontSizeToUse = Math.min(newFontSize, elementHeight, maxFontSize);
-                var minFontSize = centerConfig.minFontSize;
-                var lineHeight = centerConfig.lineHeight || 25;
-                var wrapText = false;
+                // 레이블 높이보다 크지 않도록 새 글꼴 크기를 선택
+                let fontSizeToUse = Math.min(newFontSize, elementHeight, maxFontSize);
+                let minFontSize = centerConfig.minFontSize;
+                let lineHeight = centerConfig.lineHeight || 25;
+                let wrapText = false;
 
                 if (minFontSize === undefined) {
                     minFontSize = 20;
@@ -100,11 +105,11 @@ let doughnutDraw = function (){
                     wrapText = true;
                 }
 
-                // Set font settings to draw it correctly.
+                // 올바르게 그리려면 글꼴 설정을 지정하기
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
-                var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+                let centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+                let centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
                 ctx.font = fontSizeToUse + "px " + fontStyle;
                 ctx.fillStyle = color;
 
@@ -113,15 +118,15 @@ let doughnutDraw = function (){
                     return;
                 }
 
-                var words = txt.split(' ');
-                var line = '';
-                var lines = [];
+                let words = txt.split(' ');
+                let line = '';
+                let lines = [];
 
-                // Break words up into multiple lines if necessary
-                for (var n = 0; n < words.length; n++) {
-                    var testLine = line + words[n] + ' ';
-                    var metrics = ctx.measureText(testLine);
-                    var testWidth = metrics.width;
+                // 필요한 경우 단어를 여러 줄로 나눕니다.
+                for (let n = 0; n < words.length; n++) {
+                    let testLine = line + words[n] + ' ';
+                    let metrics = ctx.measureText(testLine);
+                    let testWidth = metrics.width;
                     if (testWidth > elementWidth && n > 0) {
                         lines.push(line);
                         line = words[n] + ' ';
@@ -130,32 +135,39 @@ let doughnutDraw = function (){
                     }
                 }
 
-                // Move the center up depending on line height and number of lines
+                // 줄 높이와 줄 수에 따라 중심을 위로 이동
                 centerY -= (lines.length / 2) * lineHeight;
 
-                for (var n = 0; n < lines.length; n++) {
+                for (let n = 0; n < lines.length; n++) {
                     ctx.fillText(lines[n], centerX, centerY);
                     centerY += lineHeight;
                 }
-                //Draw text in center
+                //그래프 중간에 텍스트 그려주기
                 ctx.fillText(line, centerX, centerY);
             }
         }
     });
-
-    chart = new Chart(doughnutPainter,{
-        type:'doughnut',
-        data:doughnutData,
-        options:{
-            responsive:false,
-            maintainAspectRatio:true,
-            plugins:{
+    /*************************************************************
+     * 담당자 : 김건희,강재민
+     * 기능 : 김건희
+     *       1. 도넛 차트 그려주기
+     *       2. 도넛 중간에 들어가는 크기 설정
+     *       강재민
+     *       1. 들어갈 텍스트 변수 입력
+     *************************************************************/
+    chart = new Chart(doughnutPainter, {
+        type: 'doughnut',
+        data: doughnutData,
+        options: {
+            responsive: false,
+            maintainAspectRatio: true,
+            plugins: {
                 legend: {
                     display: false,
                 },
             },
-            elements:{
-                center:{
+            elements: {
+                center: {
                     maxText: '100%',
                     text: completeRate,
                     fontColor: '#FF6684',
@@ -163,9 +175,8 @@ let doughnutDraw = function (){
                     fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
                     fontStyle: 'normal',
 
-                    // fontSize: 12,
-                    // if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
-                    // if these are not specified either, we default to 1 and 256
+                    // fontSize가 지정되지 않은 경우 중앙의 최대 공간을 차지하도록 maxText의 크기를 (아래 제한 내에서) 조정합니다.
+                    // 둘 중 하나를 지정하지 않으면 기본값은 1과 256입니다.
                     minFontSize: 10,
                     maxFontSize: 16,
                 }

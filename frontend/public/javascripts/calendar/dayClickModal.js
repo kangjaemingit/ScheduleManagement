@@ -100,6 +100,11 @@ function dayModalClosed(){
     bodyScrollHidden[0].style.overflow='hidden';
 }
 
+/***************************************************************************
+ * 담당자 : 김건희
+ * 함수 : dateFormat()
+ * 기능 :  1. ISOstring()시 날짜 하루 밀리는 현상을 고치기 위해 작성한 함수
+ ***************************************************************************/
 function dateFormat(date){
     let today = new Date();
     let inputDate = new Date(date)

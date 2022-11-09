@@ -173,6 +173,11 @@ function useAddress(checked){
     }
 }
 
+/*****************************************************************
+ * 담당자 : 김건희
+ * 함수 : selectOptionClick()
+ * 기능 : 1. 스케줄 모달 우선순위의 옵션 클릭시 input 글씨색과 테두리색 변화
+ *****************************************************************/
 function selectOptionClick(){
     let langSelect = document.getElementById("priority");
     let selectId = langSelect.options[langSelect.selectedIndex].id;
@@ -209,6 +214,12 @@ function selectOptionClick(){
     }
 }
 
+/*************************************************************
+ * 담당자 : 김건희
+ * 함수 : setOptionColorDefault()
+ * 기능 : 1. 스케줄 모달 우선순위의 옵션 클릭시 option 글씨색이 변화
+ *       1-1 해결방법: 클릭했을때 각 옵션의 글씨색을 재지정해줌으로써 해결
+ *************************************************************/
 function setOptionColorDefault(){
     let langSelect = document.getElementById("priority");
     let hurry = document.getElementById('hurryup');
