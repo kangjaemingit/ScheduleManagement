@@ -6,9 +6,6 @@
  *       4. 각 영역 외에 클릭시 Navbar에 해당하는 모든 모달창 닫기
  * ************************************************************************************/
 let body = document.querySelector("body");
-let movePage = document.getElementById('headerUrlBox');
-const hamburger = document.getElementById('hamburgerToggle');
-
 body.addEventListener('click', clickBodyEvent);
 /**************************************************************************************
  * 담당자 : 김건희
@@ -24,37 +21,9 @@ function clickBodyEvent(event){
     // 2. optionList 영역클릭시 pass
     if(target == event.currentTarget.querySelector("#optionList") ){
         return ;}
-    // 3. hamburgerToggle 영역 클릭시 pass
-    if(target == event.currentTarget.querySelector("#hamburgerToggle") ) {
-        //3.1 hamburgerToggle 영역이면서 클릭시 해당 src와 동일하면 다음과 같이 진행
-        if (target.src === 'http://localhost:3000/images/layoutHeader/hamburgerblack.png') {
-            movePage.style.display = 'flex';
-            hamburger.src = '../../images/category/close_bg_none.png';
-            hamburger.style.width = '25px';
-            hamburger.style.height = '25px';
-        }
-        //3.2 hamburgerToggle 영역이면서 클릭시 해당 src와 동일하면 다음과 같이 진행
-        else if(target.src==='http://localhost:3000/images/category/close_bg_none.png'){
-            movePage.style.display = 'none';
-            hamburger.src = '../../images/layoutHeader/hamburgerblack.png';
-            hamburger.style.width = '50px';
-            hamburger.style.height = '50px';
-        }
-        else if(target.src === 'http://localhost:3000/images/layoutHeader/hamburger.png'){
-            movePage.style.display = 'flex';
-            hamburger.src = '../../images/category/close_bg_none.png';
-            hamburger.style.width = '25px';
-            hamburger.style.height = '25px';
-        }
-        return;
-        }
-    // 4. 위에 해당하는 영역이 아닌 다른 영역 클릭시 아래와 같이 진행
+    // 3. 위에 해당하는 영역이 아닌 다른 영역 클릭시 아래와 같이 진행
     else{
         document.getElementById('optionList').style.display = 'none'
-        movePage.style.display = 'none';
-        hamburger.src = '../../images/layoutHeader/hamburgerblack.png';
-        hamburger.style.width = '50px';
-        hamburger.style.height = '50px';
     }
 }
 /**************************************************************************************
@@ -137,4 +106,23 @@ function blockColorOption(event) {
             document.getElementById('optionList').style.display = 'none';
         }
     })
+}
+let movePage = document.getElementById('headerUrlBox');
+const hamburger = document.getElementById('hamburgerToggle')
+let buttonType = 'up';
+
+function movePageModal() {
+    buttonType = (buttonType == "dropdown") ? 'up' : "dropdown";
+    if (buttonType === "dropdown") {
+        movePage.style.display = 'flex';
+        hamburger.src = '../../images/category/close_bg_none.png';
+        hamburger.style.width = '25px';
+        hamburger.style.height = '25px';
+    } else {
+        movePage.style.display = 'none';
+        hamburger.src = '../../images/layoutHeader/hamburgerblack.png';
+        hamburger.style.width = '50px';
+        hamburger.style.height = '50px';
+    }
+
 }
