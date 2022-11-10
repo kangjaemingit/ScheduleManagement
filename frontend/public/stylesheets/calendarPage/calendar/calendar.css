@@ -1,7 +1,9 @@
 /*
 담당자 : 김건희
 역할 : 풀캘린더 커스텀을 위한 캘린더 전체 css
-기능 :
+기능 :1. 월 화 수 목 금 토 일 순서로 캘린더 커스텀 진행
+     2. 일요일은 빨간색이고 토요일은 파랑색으로 커스텀
+     3. 화면 크기에 따라 폰트 변경
 */
 /* 일요일 날짜 빨간색 */
 .fc-day-sun a {
@@ -16,17 +18,19 @@
     color: blue;
     text-decoration: none;
 }
+/*전체 글자 폰트 및 사이즈 지정*/
 html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
 }
-
+/*캘린더가 그려지는 영역 최대 크기 및 영역 중간으로 지정하기 위해 margin 사용*/
 #calendar {
     max-width: 900px;
     margin: 24px auto;
 }
+/*날짜 클릭시 모달을 보여주기위해 영역 크기 지정 및 위치지정*/
 #dayClickModalBG {
     margin-top: 80px;
     position: fixed;
@@ -55,6 +59,7 @@ html, body {
     transform: translateX(-50%) translateY(-50%);
     z-index: 3;
 }
+/* 일정을 보여주기 위한 일정 영역에서 차지하는 크기 및 위치 지정 */
 #scheduleList{
     display: flex;
     margin-top: 5px;
@@ -62,19 +67,18 @@ html, body {
     height: 350px;
     border: rgba(0,0,0,0.1) 1px solid;
 }
-#dayModalButton{
-    display: flex;
-    justify-content: space-around;
-}
+/*일정바의 텍스트가 그 영역을 넘어가면 생략되게 만들어라*/
 .fc-event-title-container{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+/*날짜 클릭시 생성되는 모달 Title 부분*/
 #dayModalTitle{
     display: flex;
     justify-content: center;
 }
+/*날짜클릭시 생성되는 모달 닫기 버튼의 영역*/
 #dayModalClose{
     position: absolute;
     top: 10%;
@@ -82,29 +86,35 @@ html, body {
     width: 28px;
     height: 28px;
 }
+/*일정이 나오는 영역*/
 table{
     height: 0px;
     align-content: baseline;
     width: 100%;
 }
+/*일정List 헤더부분*/
 table thead{
     text-align: center;
     width: 100%;
 }
+/*일정List 헤더부분의 각 텍스트부분*/
 table thead tr{
     width: 100%;
     box-shadow: 0 1px 0 0 rgba(235,235,235,1);
     background-color: aliceblue;
 }
+/*일정List 테이블 바디의 각 일정마다 마우스 오버시 이벤트*/
 #scheduleTableBody tr:hover{
     background-color: rgba(235,235,235,1);
     cursor: pointer;
 }
+/*일정List 테이블 바디의 각 일정의 텍스트 중앙 정렬*/
 #scheduleTableBody tr td{
     text-align: center;
 }
+/*일정의 이벤트 제목이 그 칸을 넘으면 이뤄질 이벤트*/
 .fc-event-title{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: hidden;           /*스크롤이벤트 없애기*/
+    text-overflow: ellipsis;    /*영역을 넘을시 ...으로 생략 표시만들기*/
+    white-space: nowrap;        /*한 줄만 보이게하기*/
 }

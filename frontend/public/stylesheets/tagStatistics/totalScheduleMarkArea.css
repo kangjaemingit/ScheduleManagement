@@ -1,14 +1,19 @@
+/**********************************/
+/*      담당자 : 김건희             */
+/*역할 : tagStatistics 페이지 커스텀 */
+/**********************************/
 html,body{
     margin: 0;
     width: 100%;
     height: 100%;
 }
-
+/*tagStatistics 페이지의 왼쪽의 영역과 오른쪽 영역을 나눠주기위한 container 박스*/
 #indexWrap{
     padding: 0 20px 0 20px;
     display: flex;
     height: 100%;
 }
+/*tagStatistics 오른쪽 영역인 일정리스트 목록위에 올릴 태그 사용 갯수 및 총 갯수등을 보여줄 영역*/
 #indexTop{
     height: 32px;
     display: flex;
@@ -17,6 +22,7 @@ html,body{
     align-items: center;
     box-shadow: 0 1px 0 0 rgba(235, 235, 235, 1);
 }
+/*tagStatistics 왼쪽 영역*/
 #indexLeft{
     padding-right: 10px;
     height: 96%;
@@ -27,6 +33,7 @@ html,body{
     min-width: 300px;
     animation: slidedrop 1s ease forwards;
 }
+/*왼쪽 영역 애니매이션*/
 @keyframes slidedrop {
     0%{
         transform : translate3d(0,-100%,0) ;
@@ -42,6 +49,7 @@ html,body{
         transform : translate3d(0,0,0) ;
     }
 }
+/*tagStatistics의 오른쪽 영역*/
 #indexRight{
     padding-left:10px;
     width:60%;
@@ -50,6 +58,7 @@ html,body{
     animation: slideright 1s ease forwards;
     height: 100%;
 }
+/*오른쪽 영역 애니매이션*/
 @keyframes slideright {
     0%{
         transform : translate3d(100%,0,0) ;
@@ -67,6 +76,7 @@ html,body{
     margin: 0 20px 0 20px;
     /*box-shadow: -2px 0 0 0 rgba(235,235,235,1);*/
 }
+/*tagStatistics 오른쪽 영역인 일정리스트 목록위에 올릴 태그 사용 갯수 및 총 갯수등을 보여줄 영역 커스텀*/
 .countContainer2{
     display: flex;
     justify-content: center;
@@ -89,7 +99,6 @@ html,body{
 }
 #usedTagAllCount{
     margin-top:5px;
-
     width: 100px;
     display: flex;
     justify-content: center;
