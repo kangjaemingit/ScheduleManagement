@@ -1,7 +1,14 @@
+/**********************************/
+/*      담당자 : 김건희             */
+/*역할 : tagStatistics 페이지 커스텀 */
+/**********************************/
+
+/* tagStatistics 페이지 body 스크롤 커스텀*/
 body{
     overflow-y: auto;
     overflow-x: hidden;
 }
+
 body::-webkit-scrollbar{
     width: 7px;
 }
@@ -13,6 +20,7 @@ body::-webkit-scrollbar-track {
     background-color: #e5e5e5;
     border-radius: 5px;
 }
+/* tagStatistics 왼쪽 영역의 차트 영역 커스텀*/
 .tagStatisticsGroup{
     margin-top: 25px;
     padding: 20px 0 0 0;
@@ -75,6 +83,7 @@ body::-webkit-scrollbar-track {
     justify-content: center;
     display: flex;
 }
+/* tagStatistics 오른쪽 일정여역의 초기화 버튼 커스텀*/
 #resetBtn{
     width: 20px;
     height: 20px;

@@ -1,6 +1,9 @@
-/*
-
-*/
+/***********************************************/
+/*담당자 : 김건희                                */
+/*역할 : 카테고리 영역에 카테고리 생성시 카테고리 디자인*/
+/*이벤트 : 각각의 주석설명 참조                     */
+/***********************************************/
+/*카테고리의 생성 일정생성 공유함 버튼의 영역 생성*/
 #categoryButtonContainer{
     position: relative;
     width: 100%;
@@ -9,10 +12,7 @@
     box-shadow: darkgrey 0 0 5px 0;
     height: 51.95px;
 }
-body{
-    height: 100%;
-    width:100%;
-}
+/*카테고리 containerBox의 왼쪽에 들어갈 컨테이너 생성*/
 #shareobject{
     display: flex;
     justify-content: center;
@@ -25,6 +25,7 @@ body{
     background-color: rgba(0,255,120,0.04);
     height: 90%;
 }
+/*카테고리container 안에 들어있는 태그 p의 텍스트 설정*/
 #shareobject p{
     font-size: 16px;
     font-weight: 600;
@@ -33,10 +34,12 @@ body{
     margin-top: 0px;
     margin-left: 2%;
 }
+/*카테고리container 안에 들어있는 태그 span의 텍스트 설정*/
 #shareobject span{
     font-size: 10px;
     margin-left: 2%;
 }
+/*카테고리 수정 삭제 이미지 및 버튼에 대한 위치,색상등을 설정*/
 #categoryControlArea{
     flex-direction: row;
     justify-content: center;
@@ -47,6 +50,7 @@ body{
     margin: 1% 0 1% 0;
     border-radius: 0 5px 5px 0;
 }
+/*카테고리 컨테이너 커스텀*/
 #categoryContainer{
     margin-top: 5px;
     margin-bottom:5px ;
@@ -58,34 +62,41 @@ body{
     box-shadow: 1px 1px 1px 2px rgba(235,235,235,1);
     height: 90px;
 }
-
+/*카테고리 컨테이너 마우스 오벗 이벤트*/
 #categoryContainer:hover {
     background-color: lightgrey;
 }
+/*카테고리 컨테이너 마우스 오벗 이벤트*/
 #categoryContainer:hover #categoryEdit{
     display: block;
 }
+/*카테고리 컨테이너 마우스 오벗 이벤트*/
 #categoryContainer:hover #categoryDelete{
     display: block;
 }
+/*모든 모달의 닫기버튼 영역 설정*/
 .modalCloseBtn{
     width: 28px;
     height: 28px;
     cursor: pointer;
 }
+/*공유자 모달의 삭제 버튼 설정*/
 .deleteBtn{
     width : 20px;
     height : 20px;
     cursor : pointer;
 }
+
 #categoryNameGroup{
     cursor: pointer;
 }
+
 #categoryNameGroup p{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 #tagGroup{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -95,9 +106,11 @@ body{
     margin-top: 3px;
     margin-left: 7px;
 }
+
 #tagGroup span{
     font-size: 13px;
 }
+
 #providerGroup{
     display: flex;
     overflow: hidden;
@@ -107,17 +120,20 @@ body{
     margin-top: 3px;
     margin-left: 10px;
 }
+
 #imageContainer img{
     width: 25px;
     height: 25px;
     border-radius: 70%;
 }
+/*카테고리 수정 버튼*/
 #categoryEdit{
     display: none;
    margin:10% 0% 40% 0%;
     width: 20px;
     height: 20px;
 }
+/*카테고리 삭제 버튼*/
 #categoryDelete{
     display: none;
     margin:10% 5% 40% 5%;
