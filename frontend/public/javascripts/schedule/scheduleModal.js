@@ -336,16 +336,16 @@ function newTag(){
     if(tags.includes(tag)){ // 동일한 태그 검증
         return toast("동일한 내용의 태그를 작성할 수 없습니다.");
     }
-    if(tag === ""){ // 태그 공백여부 검증
-        return toast("태그를 입력해주세요");
-
-    }
     if(tag.charAt(0) === "#"){ // 태그 맨 앞에 #이 포함되어있으면 # 제거
         tag = tag.slice(1);
     }
 
     if(!regExp(tag)){ // 특수문자 검증
         return toast("'_' 를 제외한 특수문자는 사용할 수 없습니다.")
+    }
+
+    if(tag === ""){ // 태그 공백여부 검증
+        return toast("태그를 입력해주세요");
     }
 
     tags.push(tag); // 태그 추가
