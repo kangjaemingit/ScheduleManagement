@@ -116,7 +116,7 @@ function newCategoryModalClose(){
     document.getElementById('sharerCheckBox').disabled = false; // 공유여부 체크박스 disabled 해제
     document.getElementById('sharerCheckBox').checked = false; // 공유여부 체크박스 체크 해제
     sharerChecked(document.getElementById('sharerCheckBox')); // 공유여부 체크박스 해제에 따른 로직 함수 실행
-    document.getElementById('categoryCompleteBtnArea').style.display = 'block'; // 카테고리 저장 버튼 보이게
+    document.getElementById('categoryCompleteBtnArea').style.display = 'flex'; // 카테고리 저장 버튼 보이게
     document.getElementById('tagSelectedArea').style.width = '50%'; // 태그 선택란 넓이 변경
     document.getElementById('tagSelectedArea').style.height = '200px'; // 태그 선택란 높이 변경
     document.getElementById('tagSelectedBox').innerHTML = ""; // 선택된 태그 란 비우기
