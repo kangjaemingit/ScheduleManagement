@@ -7,6 +7,7 @@
  * ************************************************************************************/
 let body = document.querySelector("body");
 body.addEventListener('click', clickBodyEvent);
+
 /**************************************************************************************
  * 담당자 : 김건희
  * 함수 : clickBodyEvent()
@@ -14,17 +15,35 @@ body.addEventListener('click', clickBodyEvent);
  **************************************************************************************/
 function clickBodyEvent(event){
     let target = event.target;
-
     // 1. show 영역클릭시 pass
     if(target == event.currentTarget.querySelector("#show") ){
         return ;}
     // 2. optionList 영역클릭시 pass
     if(target == event.currentTarget.querySelector("#optionList") ){
         return ;}
-    // 3. 위에 해당하는 영역이 아닌 다른 영역 클릭시 아래와 같이 진행
-    else{
-        document.getElementById('optionList').style.display = 'none'
+    // 3. 각 이미지에 다른 아이디를 주고 그 아이디를 클릭시 진행되는 이벤트
+    if(target.id==='hamburger'){
+        movePage.style.display = 'none';
+        hamburger.src = '../../images/layoutHeader/hamburgerblack.png';
+        hamburger.style.width = '50px';
+        hamburger.style.height = '50px';
     }
+    else if(target.id === 'close_bg_none'){
+        movePage.style.display = 'flex';
+        hamburger.src = '../../images/category/close_bg_none.png';
+        hamburger.style.width = '25px';
+        hamburger.style.height = '25px';
+    }
+    // 4. 위에 해당하는 영역이 아닌 다른 영역 클릭시 아래와 같이 진행
+    else{
+        buttonType='up'
+        document.getElementById('optionList').style.display = 'none'
+        movePage.style.display = 'none';
+        hamburger.src = '../../images/layoutHeader/hamburgerblack.png';
+        hamburger.style.width = '50px';
+        hamburger.style.height = '50px';
+    }
+
 }
 /**************************************************************************************
  * 담당자 : 김건희
@@ -110,19 +129,24 @@ function blockColorOption(event) {
 let movePage = document.getElementById('headerUrlBox');
 const hamburger = document.getElementById('hamburgerToggle')
 let buttonType = 'up';
-
+/**************************************************************************************
+ * 담당자 : 김건희
+ * 기능 : 1. Navbar에서 햄버거 버튼 클릭시 각 페이지 이동하는 모달창 띄우기
+ *       2. Navbar에서 햄버거 버튼 자리에 닫기 버튼을 클릭시 각 페이지 이동하는 모달창 띄우기
+ * ************************************************************************************/
 function movePageModal() {
     buttonType = (buttonType == "dropdown") ? 'up' : "dropdown";
     if (buttonType === "dropdown") {
+        hamburger.id='close_bg_none'
         movePage.style.display = 'flex';
         hamburger.src = '../../images/category/close_bg_none.png';
         hamburger.style.width = '25px';
         hamburger.style.height = '25px';
     } else {
+        hamburger.id='hamburger'
         movePage.style.display = 'none';
         hamburger.src = '../../images/layoutHeader/hamburgerblack.png';
         hamburger.style.width = '50px';
         hamburger.style.height = '50px';
     }
-
 }
