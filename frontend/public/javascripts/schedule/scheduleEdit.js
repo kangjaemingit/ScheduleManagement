@@ -98,8 +98,6 @@ function scheduleDetailModalOpen(scheduleId, calendarPage){
                 `
             }
 
-            // 태그 삭제 버튼 보이지 않게 함
-            let tagsEl = document.getElementsByClassName('deleteTag')
 
         }).catch((e) => {
         console.log(e);

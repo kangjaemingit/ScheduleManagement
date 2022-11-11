@@ -10,10 +10,13 @@
     <title>일정관리시스템 :: 피드</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/feed/feedPage.css">
+    <link rel="stylesheet" href="/stylesheets/dashboardPage/schedule/scheduleModal.css">
     <script src="../javascripts/dashboard/feed.js"></script>
     <script src="../javascripts/feed/feedModal.js"></script>
     <script src="../javascripts/feed/feedPage.js"></script>
     <script src="../javascripts/toastMessage.js"></script>
+    <script defer src="../javascripts/schedule/scheduleModal.js"></script>
+    <script defer src="../javascripts/schedule/scheduleEdit.js"></script>
 </head>
 <body style="overflow: auto">
 <%
@@ -73,7 +76,7 @@
                 <span id="commentsLength_<%=f._id%>" style="margin-left: 3px;"><%=f.comments.length%></span>
                 <% if(f.schedule){%>
                 <img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">
-                <div style="display: flex; align-items: center">
+                <div style="display: flex; align-items: center; cursor:pointer;" onclick="scheduleDetailModalOpen('<%=f.schedule._id%>', false)">
                     <div class="listIcon"></div>
                     <span style="margin-left: 5px;" id="selectedSchedule_<%=f._id%>"><%=f.schedule.title%></span>
                 </div>
@@ -107,5 +110,6 @@
 </div>
 <div id="toast"></div>
 <%- include('./feedModal.ejs')%>
+<%- include('../schedule/scheduleModal.ejs')%>
 </body>
 </html>
