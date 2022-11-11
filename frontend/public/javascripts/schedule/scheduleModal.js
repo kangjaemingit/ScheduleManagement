@@ -333,11 +333,12 @@ function tagRenderNotDeleteBtn(){
  * */
 function newTag(){
     let tag = document.getElementById('tagInput').value.trim();
-    if(tags.includes(tag)){ // 동일한 태그 검증
-        return toast("동일한 내용의 태그를 작성할 수 없습니다.");
-    }
     if(tag.charAt(0) === "#"){ // 태그 맨 앞에 #이 포함되어있으면 # 제거
         tag = tag.slice(1);
+    }
+
+    if(tags.includes(tag)){ // 동일한 태그 검증
+        return toast("동일한 내용의 태그를 작성할 수 없습니다.");
     }
 
     if(!regExp(tag)){ // 특수문자 검증
