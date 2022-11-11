@@ -76,7 +76,7 @@
                 <span id="commentsLength_<%=f._id%>" style="margin-left: 3px;"><%=f.comments.length%></span>
                 <% if(f.schedule){%>
                 <img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">
-                <div style="display: flex; align-items: center; cursor:pointer;" onclick="scheduleDetailModalOpen('<%=f.schedule._id%>', false)">
+                <div style="display: flex; align-items: center;">
                     <div class="listIcon"></div>
                     <span style="margin-left: 5px;" id="selectedSchedule_<%=f._id%>"><%=f.schedule.title%></span>
                 </div>

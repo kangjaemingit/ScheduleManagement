@@ -225,7 +225,7 @@ function appendFeed(feed, user){
         rows += feed.schedule ?
         `
             <img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">
-            <div style="display: flex; align-items: center; cursor: pointer" onclick="scheduleDetailModalOpen('${feed.schedule}', false)">
+            <div style="display: flex; align-items: center;">
             <div class="listIcon"></div>
             <span style="margin-left: 5px;" id="selectedSchedule_${feed._id}">${selectedSchedule.title}</span>
             </div>
