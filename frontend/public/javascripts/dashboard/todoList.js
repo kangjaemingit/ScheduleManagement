@@ -33,6 +33,7 @@ function createTodoList() {
  * 함수 : appendTodoList()
  * 기능 : 1. backend에 저장했는 값을 가지고 frondend에 값들을 뿌려주는 역할
  *       2. 입력값을 입력하기 위해 엔터 또는 버튼을 누를시 input 입력값을 초기화
+ *       3. 입력란에 아무값도 없을 경우 알람기능 추가
  *********************************************************************/
 function appendTodoList(todoList) {
     let todayScheduleAdd = "";
@@ -118,6 +119,11 @@ document.addEventListener('keydown', function(event) {
     };
 }, true);
 
+/*********************************************************************
+ * 담당자 : 김건희
+ * 함수 : deleteTodoList()
+ * 기능 : 1. 생성되는 div 아무곳이나 클릭시 삭제
+ *********************************************************************/
 function deleteTodoList(id){
     console.log(id)
     fetch('todoList/deleteTodoList', {
