@@ -74,5 +74,5 @@
 .scheduleCheckBox:hover{
     background: rgba(235,235,235,1);
     border-radius: 10px;
-
+    cursor: pointer;
 }
