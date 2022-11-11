@@ -56,7 +56,7 @@ body::-webkit-scrollbar-track {
 }
 #indexRight{
     float: right;
-    width:80%;
+    width:100%;
     background-position: right;
     right: 0px;
     animation: slideright 1s ease forwards;
