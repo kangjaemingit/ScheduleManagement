@@ -37,14 +37,18 @@ function createTodoList() {
 function appendTodoList(todoList) {
     let todayScheduleAdd = "";
     let addValue = document.getElementById('todaySelect').value;
+    if(addValue===""){
+        alert("입력란에 아무것도 없습니다. 입력하여주세요")
+    }
+    else {
+        todayScheduleAdd += `<div id="${todoList._id}" onclick="deleteTodoList('${todoList._id}')" class="scheduleCheckBox" style="display: flex;">`
+            + `<input type="checkbox" class="todayScheduleCheckBox" onclick="todayCheckbox('${todoList._id}', this)">`
+            + `<div id="scheduleName">${addValue}</div>`
+            + `</div>`
 
-    todayScheduleAdd += `<div id="${todoList._id}" class="scheduleCheckBox" style="display: flex;">`
-        + `<input type="checkbox" class="todayScheduleCheckBox" onclick="todayCheckbox('${todoList._id}', this)">`
-        + `<div id="scheduleName">${addValue}</div>`
-        + `</div>`
-
-    document.getElementById('todayScheduleBox').innerHTML += todayScheduleAdd;
-    document.getElementById('todaySelect').value = ""
+        document.getElementById('todayScheduleBox').innerHTML += todayScheduleAdd;
+        document.getElementById('todaySelect').value = ""
+    }
 }
 /************************************************************************
  * 담당자 : 김건희
@@ -113,3 +117,25 @@ document.addEventListener('keydown', function(event) {
         createTodoList();
     };
 }, true);
+
+function deleteTodoList(id){
+    console.log(id)
+    fetch('todoList/deleteTodoList', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({_id: id})
+    }).then((res) => res.json())
+        .then((res) => {
+            if (!res.deleteTodoListSuccess) {
+                console.log(res.message);
+                return window.alert(res.message);
+            } else {
+                    document.getElementById(id).remove()
+
+            }
+        }).catch((err)=>{
+        console.log(err)
+    })
+}
