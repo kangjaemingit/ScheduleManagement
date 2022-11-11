@@ -129,7 +129,7 @@ function newCategoryModalClose(){
     document.getElementById('saveCategoryButton').setAttribute("onClick", `saveNewCategory()`) // 카테고리 저장 버튼 onclick 속성 변경
 
     newCategoryModal.classList.toggle('show'); // 모달 닫기
-    bodyScrollHidden[0].style.overflow='auto' // 스크롤 보이게
+    // bodyScrollHidden[0].style.overflow='auto' // 스크롤 보이게
 }
 
 /**
