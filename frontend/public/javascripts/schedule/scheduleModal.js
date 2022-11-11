@@ -30,7 +30,7 @@ function scheduleModalOpen(){
 function scheduleModalClose(){
     const scheduleModal = document.querySelector('.scheduleModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
-    bodyScrollHidden[0].style.overflow='auto';
+    // bodyScrollHidden[0].style.overflow='auto';
     scheduleModal.classList.toggle('show');
 
 
