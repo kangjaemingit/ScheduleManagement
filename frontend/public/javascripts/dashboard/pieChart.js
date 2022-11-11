@@ -23,7 +23,7 @@ function chartDataChange() {
     const completeCount = document.getElementsByClassName('completeBox').length; // 완료 카운트
 
     chart.data.datasets[0].data = [completeCount, readyCount]; // 차트 데이터 셋 변경
-    chart.options.elements.center.text = (completeCount / (readyCount + completeCount)) * 100 + '%'; // 차트 중앙 완료율 변경
+    chart.options.elements.center.text = ((completeCount / (readyCount + completeCount)) * 100).toFixed(1) + '%'; // 차트 중앙 완료율 변경
     chart.update(); // 차트 재렌더
 }
 
@@ -56,7 +56,7 @@ let doughnutDraw = function () {
     if (readyCount === 0 && completeCount === 0) {
         completeRate = "표시할 완료율이 없습니다."
     } else {
-        completeRate = (completeCount / (readyCount + completeCount)) * 100 + '%'
+        completeRate = ((completeCount / (readyCount + completeCount)) * 100).toFixed(1) + '%'
     }
 
     /*************************************************************
