@@ -32,6 +32,7 @@
     border-radius: 10px;
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
     transform: translateX(-50%) translateY(-50%);
+    overflow: auto;
 }
 
 .chooseSharerModalTitle{
@@ -63,7 +64,6 @@
     width: 40%;
     height: 500px;
     border: 1px lightgray solid;
-    flex-wrap: wrap;
     overflow: auto;
     margin : 10px;
 }
@@ -75,7 +75,6 @@
     width: 40%;
     height: 500px;
     border: 1px lightgray solid;
-    flex-wrap: wrap;
     overflow: auto;
     margin : 10px;
 }
