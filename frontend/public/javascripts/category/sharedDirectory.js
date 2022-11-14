@@ -16,7 +16,7 @@ async function sharedDirectoryModalOpen() {
     const sharedDirectoryModal = document.getElementById('sharedDirectoryModal');
     sharedDirectoryModal.style.display = 'block';
     const moveRightContainer = document.getElementById('indexRight');
-    moveRightContainer.style.marginLeft = '301px';
+    moveRightContainer.style.marginLeft = '302px';
     moveRightContainer.style.transition = '0.1s'
     const bodyScrollHidden=document.getElementsByTagName('body');
     bodyScrollHidden[0].style.overflow = 'hidden';

@@ -37,8 +37,10 @@
 %>
 <div id="indexWrap" class="container" style="padding-left: 20px; padding-right: 20px;">
     <div id="indexLeft" class="mainIndex">
+        <div style="margin-top: 25px; height: 93%; border: 1px rgba(235,235,235,1) solid; overflow: hidden">
         <%- include('tagRightPieChartScreen.ejs') %>
         <%- include('tagLeftBarChartScreen.ejs') %>
+        </div>
     </div>
     <div id="indexRight" class="mainIndex">
         <div style="margin-top: 25px; height: 93%; border: 1px rgba(235,235,235,1) solid; overflow: hidden">
@@ -70,9 +72,13 @@
             </div>
             <div class="tagStatisticsOverflow scrollBox">
             <div id="tagStatisticsSchedule" >
+                <div style="display: none"><%let count=0%></div>
             <%if(mySchedule.length){%>
+
             <% mySchedule.map((s) => { %>
-            <div class="totalScheduleContentsGroup" onclick="scheduleDetailModalOpen('<%=s._id%>', false)">
+                        <div style="display: none"><%=count+=1%></div>
+            <%if(count%2===1){%>
+            <div class="totalScheduleContentsGroup" style="background-color: white" onclick="scheduleDetailModalOpen('<%=s._id%>', false)">
                 <% if(s.complete){ %>
                     <div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>
                 <% } else { %>
@@ -82,6 +88,19 @@
                 <div class="totalScheduleHeader2"><%= dateFormatter(s.date.startDate)%></div>
                 <div class="totalScheduleHeader2"><%= dateFormatter(s.date.endDate) %></div>
             </div>
+                    <%}%>
+                    <%if(count%2===0){%>
+                    <div class="totalScheduleContentsGroup" style="background-color: rgba(0,150,255,0.05)" onclick="scheduleDetailModalOpen('<%=s._id%>', false)">
+                        <% if(s.complete){ %>
+                            <div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>
+                        <% } else { %>
+                            <div class="totalScheduleHeader2"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>
+                        <% } %>
+                        <div class="totalScheduleHeader2"><%= s.title %></div>
+                        <div class="totalScheduleHeader2"><%= dateFormatter(s.date.startDate)%></div>
+                        <div class="totalScheduleHeader2"><%= dateFormatter(s.date.endDate) %></div>
+                    </div>
+                    <%}%>
             <%});%>
             <%} else {%>
                 <div style="display: flex; justify-content: center; align-items: center; width: 100%">

@@ -158,8 +158,7 @@ function deleteTodoList(id){
                 console.log(res.message);
                 return window.alert(res.message);
             } else {
-                    document.getElementById(id).remove()
-
+                document.getElementById(id).remove();
             }
         }).catch((err)=>{
         console.log(err)

@@ -183,7 +183,8 @@
     left:-6px;
 }
 #categoryContents{
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 #categoryContents:hover{
     overflow-y: auto;

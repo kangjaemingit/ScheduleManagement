@@ -64,7 +64,6 @@
     cursor: pointer;
 }
 #optionList{
-    /*margin-top: 5px;*/
     padding:5px;
     background: white;
     display: none;
@@ -76,6 +75,7 @@
     z-index: 100;
 }
 .colorlist{
+    cursor: pointer;
     margin:2px;
     border-radius: 10px;
     width: 20px;
