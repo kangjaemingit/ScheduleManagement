@@ -19,9 +19,9 @@
 <header>
     <%- include('../layout/header.ejs'); %>
 </header>
-<div style="width: 100%;height: 50px; background-color: white"></div>
+
 <div id="indexWrap" class="container">
-    <div style="display: flex; width: 30%;padding: 0 10px 0px 10px;height: 83%">
+    <div style="display: flex; margin-left: 20px; width: 40%;padding: 0 10px 0px 0px;height: 83%; margin-top: 25px;">
     <div id="indexLeft" class="mainIndex">
         <div id="indexLeft-top">
             <%- include('./chartArea.ejs')%>
@@ -29,7 +29,7 @@
         </div>
         <%- include('./feed.ejs') %>
     </div>
-    <div style="width: 66%; height: 83%;float:right;padding: 0 10px 10px 10px; overflow: hidden">
+    <div style="width: 66%; margin-right: 20px; height: 100%;float:right;padding: 0 0px 0px 10px; overflow: hidden; margin-top: 25px;">
     <div id="indexRight" class="mainIndex scrollBox">
         <%- include('./scheduleScreen.ejs') %>
     </div>

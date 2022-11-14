@@ -63,6 +63,7 @@ body::-webkit-scrollbar-track {
     float:right;
 }
 #indexLeft{
+    border: 1px solid rgba(235,235,235,1);
     background-color: white;
     height: 100%;
     display: flex;
@@ -70,7 +71,7 @@ body::-webkit-scrollbar-track {
     align-items: center;
     width: 100%;
     background-position: left;
-    min-width: 30%;
+    min-width: 40%;
     animation: slidedrop 1s ease forwards;
 }
 @keyframes slidedrop {
@@ -105,7 +106,7 @@ body::-webkit-scrollbar-track {
     background-position: right;
     right: 0px;
     animation: slideright 1s ease forwards;
-    height: 100%;
+    height: 83%;
 }
 @keyframes slideright {
     0%{
@@ -136,6 +137,7 @@ body::-webkit-scrollbar-track {
     margin-bottom: 8px;
     padding-bottom: 10px;
     border-radius: 10px;
+    cursor:pointer;
 }
 
 .titleBox{
@@ -145,6 +147,9 @@ body::-webkit-scrollbar-track {
     align-items: center;
 }
 .titleBox span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: 16px;
     margin-left: 5px;
 }

@@ -165,7 +165,6 @@ const htmlLegendPlugin = {
  * */
 function scheduleRender(schedule) {
     let rows = "";
-
     schedule.map((s) => {
         rows += `<div class="totalScheduleContentsGroup" onclick='scheduleDetailModalOpen("${s._id}", false)'>`
             + (s.complete ? `<div class="totalScheduleHeader2"><img src="/images/complete.png" style="width: 15px; height: 15px"></div>` : `<div class="totalScheduleHeader2"><img src="/images/ready.png" style="width: 15px; height: 15px"></div>`)
@@ -174,9 +173,7 @@ function scheduleRender(schedule) {
             + `<div class="totalScheduleHeader2">${dateFormatter(s.date.endDate)}</div>`
             + `</div>`
     })
-
     document.getElementById('tagStatisticsSchedule').innerHTML = rows
-
 }
 
 /**
@@ -199,7 +196,7 @@ function changeSchedule(tag) {
                 return;
             }
             scheduleRender(res.tagInfo.schedule)
-
+            listBackgroundColor();
         }).catch((err) => {
         window.alert("태그로 일정 불러오기 실패");
         console.log(err);
@@ -227,7 +224,7 @@ function changeScheduleEtc() {
             }
             console.log(res);
             scheduleRender(res.schedule)
-
+            listBackgroundColor();
         }).catch((err) => {
         window.alert("태그로 일정 불러오기 실패");
         console.log(err);
@@ -338,7 +335,7 @@ function reloadSchedule() {
                 return;
             }
             scheduleRender(res.schedule)
-
+            listBackgroundColor();
         }).catch((err) => {
         window.alert("내 일정 불러오기 실패");
         console.log(err);
@@ -358,4 +355,14 @@ function dateFormatter(date) {
     let dateString = DateOffset.toISOString().slice(0, 16).replace("T", " ")
 
     return dateString;
+}
+function listBackgroundColor() {
+    const totalScheduleContentsGroup = document.getElementsByClassName('totalScheduleContentsGroup')
+    for (let i = 0; i < totalScheduleContentsGroup.length; i++) {
+        if (i % 2 === 0) {
+            totalScheduleContentsGroup[i].style.backgroundColor = 'white';
+        } else if (i % 2 === 1) {
+            totalScheduleContentsGroup[i].style.backgroundColor = 'rgba(0,150,255,0.05)';
+        }
+    }
 }

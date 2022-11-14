@@ -15,13 +15,13 @@
         <div class="todayScheduleTitle"> 할 일</div>
         <div style="width: 100%; display: flex; flex-direction: column; align-items: center">
             <div class="todaySelectBox">
-                <form style="height: 28px; margin-right: 8px;">
+                <form style="height: 28px; margin-right: 8px;width: 90%">
                     <input type="text" id="todaySelect" onchange="focusOut();" placeholder="메모할 일정을 적어주세요.">
                 </form>
                 <div class="btn-secondary" onclick="createTodoList();">확인</div>
             </div>
             <div class="scrollBox"
-                 style="display: flex;margin-top: 5px; flex-direction: column; width: 95%; height: 155px; max-height: 80%">
+                 style="display: flex;margin-top: 5px; flex-direction: column; width: 90%; height: 155px; max-height: 80%">
                 <div id="todayScheduleBox">
                     <% todoLists.map((t) => { %>
                         <div id="<%= t._id %>" class="scheduleCheckBox" style="display: flex;">
