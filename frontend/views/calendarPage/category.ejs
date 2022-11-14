@@ -23,17 +23,14 @@
             <p><%=category.categoryName%></p>
         </div>
         <div id="tagGroup">
-<!--                <img src="images/icon-tag.png" style="width: 12px; height: 12px;">-->
-            <% category.tags.map((tag) => {%>
-                <span style="background-color: #f9f9f9"><%=tag.tagName%></span>
-            <%})%>
-        </div>
-        <div id="providerGroup">
-<!--                <img src="images/icon-share.png" style="width: 12px; height: 12px;">-->
-
-            <% category.sharer.map((user) => {%>
-            <div id="imageContainer"><img src="<%=user.profilePhoto%>"><span id="userNameContainer"><%=user.name%></span></div>
-            <%})%>
+            <div style="border-right: 1px solid">
+            <img src="/images/category/tags.png">:
+            <span><%=category.tags.length%></span>
+            </div>
+            <div>
+                <img src="/images/category/group.png">:
+           <span id="userNameContainer"><%=category.sharer.length%></span>
+            </div>
         </div>
     </div>
 
