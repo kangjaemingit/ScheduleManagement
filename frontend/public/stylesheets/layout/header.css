@@ -70,17 +70,19 @@
     display: none;
     flex-wrap: wrap;
     position: absolute;
-    width: 420%;
-    height: 1000%;
+    width: 150px;
+    height: 260px;
     border-radius: 5px;
     z-index: 100;
+    align-items: center;
+    box-shadow: 1px 1px 2px 0 rgb(200,200,200,1)
 }
 .colorlist{
     cursor: pointer;
     margin:5px;
     border-radius: 100%;
-    width: 25%;
-    height: 14%;
+    width: 40px;
+    height: 40px;
 }
 .colorlist:hover{
     transform: scale(1.1);
