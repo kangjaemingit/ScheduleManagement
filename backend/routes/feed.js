@@ -44,4 +44,6 @@ router.post('/commentCreate', checkAuth, feedController.createFeedComment);
  * 주요 기능 : - 피드 컨트롤러의 deleteFeedComment 함수와 주소를 연결해주는 역할을 합니다.
  * */
 router.post('/commentDelete', checkAuth, feedController.deleteFeedComment);
+
+router.get('/getFeed/:page', checkAuth, feedController.getFeed);
 module.exports = router;

@@ -48,7 +48,7 @@ const dashboardController={
 
             // 공유받은 카테고리로 해당 일정 불러오기
             let sharedSchedule = await Promise.all(sharedCategory.map(async (sc) => {
-                const schedule = await Schedule.find({$and : [
+                const schedule = Schedule.find({$and : [
                         {scheduleWriter : sc.categoryWriter},
                         {tag : { $in : sc.tags}},
                         {"date.startDate" : {$lt : compareStartDate}},

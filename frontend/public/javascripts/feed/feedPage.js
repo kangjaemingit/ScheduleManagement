@@ -98,3 +98,56 @@ function setCommentsLength(n, feedId){
     document.getElementById('commentsLength_' + feedId).innerText = count;
 
 }
+
+
+/**
+ * 담당자 : 강재민
+ * 함수 설명 : 피드 페이지의 무한스크롤을 담당하는 함수입니다.
+ * 주요 기능 : - intersectionObserver를 사용하여 무한스크롤 구현
+ *            - 옵저버가 마지막 컴포넌트를 관찰하고 있다가 30%가 viewport에 들어오면 페이지 연장
+ * */
+let page = 1;
+let observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            observer.unobserve(entry.target);
+            getFeed();
+            page++;
+        }
+    })
+}
+
+function getFeed(){
+    fetch('feed/getFeed/' + page, {
+        method : 'get',
+    }).then((res) => res.json())
+        .then((res) => {
+            if(!res.getFeedSuccess){
+                console.log(res.message);
+                return window.alert(res.message);
+            }
+            res.feed.map((f) => {
+                appendFeed(f, res.user, f.comments, false);
+            })
+
+
+            if(res.feed.length < 5){
+                observer.disconnect();
+            } else{
+                setLastContainer();
+            }
+        }).catch((err) => {
+        console.log(err);
+    })
+}
+
+function setLastContainer(){
+    let fcc = document.querySelectorAll('.feedContentContainer');
+    observer.observe(fcc[fcc.length - 1]);
+}
+
+const observer = new IntersectionObserver(observerCallback, {threshold : 0.3});
+
+window.onload = () => {
+    setLastContainer();
+}

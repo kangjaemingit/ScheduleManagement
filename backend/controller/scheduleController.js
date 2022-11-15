@@ -161,7 +161,7 @@ const scheduleController = {
 
             // 공유받은 카테고리를 통해 공유받은 일정을 검색
             let sharedSchedule = await Promise.all(sharedCategory.map(async (sc) => {
-                const schedule = await Schedule.find({$and : [{scheduleWriter : sc.categoryWriter}, {tag : { $in : sc.tags}}]})
+                const schedule = Schedule.find({$and : [{scheduleWriter : sc.categoryWriter}, {tag : { $in : sc.tags}}]})
                     .populate("tag")
                     .populate("scheduleWriter")
                     .exec();

@@ -16,6 +16,7 @@ const feedController = {
                 populate : 'commentWriter'
             })
             .sort({'createDate' : -1})
+            .limit(5)
             .exec();
 
         res.render('feed/feedPage', {user : req.user, feed});
@@ -26,18 +27,28 @@ const feedController = {
      * 주요 기능 : - 사용자로부터 피드 데이터를 입력받아 새로운 피드를 생성합니다.
      * */
     createFeed : async (req, res) => {
-        await Feed.create({
-            feedContents : req.body.contents,
-            feedWriter : req.user._id,
-            schedule : req.body.scheduleId,
-            createDate : new Date()
-        }, (err, result) => {
-            if(err){
-                console.log(err);
-                return res.json({createFeedSuccess : false, message : err})
-            }
-            return res.json({createFeedSuccess : true, feed : result, user : req.user}).status(200);
-        })
+        try{
+            const newFeed = await Feed.create({
+                feedContents : req.body.contents,
+                feedWriter : req.user._id,
+                schedule : req.body.scheduleId,
+                createDate : new Date()
+            })
+
+            const feed = await Feed.findOne({_id : newFeed._id})
+                .populate('feedWriter')
+                .populate('schedule')
+                .populate({
+                    path : 'comments',
+                    populate : 'commentWriter'
+                }).exec()
+
+            return res.json({createFeedSuccess : true, feed, user : req.user}).status(200);
+        } catch (e){
+            console.log(e);
+            return res.json({createFeedSuccess : false, message : e});
+        }
+
     },
     /**
      * 담당자 : 강재민
@@ -111,6 +122,28 @@ const feedController = {
             return res.json({deleteCommentSuccess : false, message : e})
         }
 
+    },
+    getFeed : async (req, res) => {
+        const skipCount = req.params.page * 5;
+        Feed.find({})
+            .populate('feedWriter')
+            .populate('schedule')
+            .populate({
+                path : 'comments',
+                populate : 'commentWriter'
+            })
+            .sort({'createDate' : -1})
+            .skip(skipCount)
+            .limit(5)
+            .exec((err, result) => {
+                if(err){
+                    return res.json({getFeedSuccess : false, message : err})
+                }
+
+                return res.json({getFeedSuccess : true, feed : result, user : req.user})
+
+
+            });
     }
 }
 

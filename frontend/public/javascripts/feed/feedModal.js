@@ -63,6 +63,9 @@ function feedModalClose(){
     document.getElementById('feedScheduleDeleteBtn').style.display = 'none'; // 피드 일정 삭제 버튼 안보이게에 함
     document.getElementById('btnSaveFeed').setAttribute('onclick', `createFeed()`) // 저장 버튼 속성 변경
 
+    selectedSchedule.id = null;
+    selectedSchedule.title = null;
+
     const feedModal = document.querySelector('.feedModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
     feedModal.classList.toggle('show');
@@ -182,7 +185,7 @@ function createFeed()  {
                 console.log(res.message);
                 return window.alert(res.message);
             }
-            appendFeed(res.feed, res.user); // 피드 추가
+            appendFeed(res.feed, res.user, [], true); // 피드 추가
             feedModalClose();
 
         }).catch((err) => {
@@ -194,7 +197,7 @@ function createFeed()  {
  * 함수 설명 : 피드 등록 시 새로운 피드를 렌더 해주는 함수입니다.
  * 주요 기능 : - 피드 내용과 id로 새로운 피드 컴포넌트를 만들어 추가합니다.
  * */
-function appendFeed(feed, user){
+function appendFeed(feed, user, comments, create){
     const feedContentContainer = document.createElement('div'); // 컨테이너 생성
     feedContentContainer.classList.add('feedContentContainer'); // 클래스 추가
     feedContentContainer.id = feed._id; // 컨테이너 아이디 지정
@@ -206,42 +209,88 @@ function appendFeed(feed, user){
         `
             <div class="feedTitleArea">
             <div style="display: flex; align-items: center">
-                <img class="feedProfilePhoto" src="${user.profilePhoto}">
-                <h4>${user.name}</h4>
+                <img class="feedProfilePhoto" src="${feed.feedWriter.profilePhoto}">
+                <h4>${feed.feedWriter.name}</h4>
             </div>
+        `;
+
+    if(feed.feedWriter._id.toString() === user._id.toString()){
+        rows +=
+            `
             <div class="feedControlBox">
-                <img class="feedDeleteBtn" src="images/editing.png" onclick="feedEditModalOpen(${JSON.stringify(feed)})">
+                <img class="feedDeleteBtn" src="/images/editing.png" onclick=\`feedEditModalOpen(${feed})\`>
                 <img class="feedDeleteBtn" src="/images/trash.png" onclick="deleteFeed('${feed._id}')"/>
             </div>
+        `
+    }
+
+
+    rows +=
+        `
             </div>
             <div class="feedContents" >
                 <pre class="feedContentsTextArea" id="feedContents_${feed._id}">${feed.feedContents}</pre>
             </div>
             <div class="feedFooter">
-                <img class="feedFooterIcon" src="images/chat.png" >
-                <span style="margin-left: 3px;">${feed.comments.length}</span>
+                <img class="feedFooterIcon" src="images/chat.png">
+                <span style="margin-left: 3px;" id="commentsLength_${feed._id}">${comments.length}</span>
         `;
 
-        rows += feed.schedule ?
-        `
-            <img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">
-            <div style="display: flex; align-items: center;">
-            <div class="listIcon"></div>
-            <span style="margin-left: 5px;" id="selectedSchedule_${feed._id}">${selectedSchedule.title}</span>
-            </div>
-        ` : "";
+    rows += feed.schedule ?
+    `
+        <img class="feedFooterIcon" src="images/calendar.png" style="margin-left: 10px;">
+        <div style="display: flex; align-items: center;">
+        <div class="listIcon"></div>
+        <span style="margin-left: 5px;" id="selectedSchedule_${feed._id}">${feed.schedule.title}</span>
+        </div>
+    ` : "";
 
+    rows +=
+        `
+            <img class="feedFooterIcon" src="images/clock.png" style="margin-left: 10px; margin-right: 5px">
+            <span style="opacity: 0.4; font-size: 12px">${dateFormatter(feed.createDate)}</span>
+        `
+
+    rows += `</div>`;
+
+    rows +=`<div class="feedCommentArea" id="feedCommentArea_${feed._id}">`
+    comments.map((c) => {
         rows +=
             `
-                <img class="feedFooterIcon" src="images/clock.png" style="margin-left: 10px; margin-right: 5px">
-                <span style="opacity: 0.4; font-size: 12px">방금 전</span>
+                <div class="feedCommentBox" id="${c._id}">
+                <img class="feedCommentWriterProfile" src="${c.commentWriter.profilePhoto}">
+                <span class="feedCommentWriterName">${c.commentWriter.name}</span>
+                <span class="feedCommentContents">${c.comment}</span>
+                <span class="feedCommentTime">${dateFormatter(c.createDate)}</span>
             `
-
+            if((feed.feedWriter._id.toString() === user._id.toString()) || (c.commentWriter._id.toString() === user._id.toString())){
+                    rows += `<img class="feedCommentDeleteBtn" src="images/close.png" onclick="deleteComment('${c._id}', '${feed._id}')">`
+                }
         rows += `</div>`
+
+    })
+    rows += `</div>`
+    rows +=
+        `
+            <div class="feedCommentWriteArea">
+                <img class="feedCommentWriterProfile" style="width: 30px; height: 30px;" src="${user.profilePhoto}">
+                <form class="commentWriteForm" onsubmit="commentCreate('${feed._id}')">
+                    <input class="input-primary" type="text" style="height: 24px; width: 100%" id="commentInput_${feed._id}">
+                    <button type="submit" class="btn-secondary commentBtn">작성</button>
+                </form>
+            </div>
+        `;
+
+
 
     feedContentContainer.innerHTML = rows;
     const parent = document.getElementById('feedArea');
-    parent.insertBefore(feedContentContainer, parent.firstChild); // 첫 번째 위치
+    if(create){
+        parent.insertBefore(feedContentContainer, parent.firstChild); // 첫 번째 위치
+    } else{
+        parent.appendChild(feedContentContainer); // 마지막 위치
+    }
+
 
     document.getElementById('feedContentsInput').value = "";
 }
@@ -302,4 +351,26 @@ function feedScheduleDelete(){
     document.getElementById('selectedSchedule').innerHTML = "";
     document.getElementById('feedScheduleDeleteBtn').style.display = 'none';
 
+}
+
+function dateFormatter(date){
+    let today = new Date();
+    let inputDate = new Date(date);
+    let todayToSeconds = (today.getTime() / 1000); // 오늘 날짜를 초로 변환
+    let dateToSeconds = (inputDate.getTime() / 1000); // 인자로 받아온 날짜를 초로 변환
+    let elapsedSec = todayToSeconds - dateToSeconds;
+
+    let result;
+
+    // 시간 별로 '방금전', 'n 분전', 'n 시간 전', 'n 일전' 표시
+    if(elapsedSec > 86400){
+        result = (elapsedSec / 86400).toFixed(0).toString() + "일 전"
+    } else if(elapsedSec > 3600){
+        result = (elapsedSec / 3600).toFixed(0).toString() + "시간 전"
+    } else if(elapsedSec > 60){
+        result = (elapsedSec / 60).toFixed(0).toString() + "분 전"
+    } else{
+        result = "방금 전";
+    }
+    return result;
 }
