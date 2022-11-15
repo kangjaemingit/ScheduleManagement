@@ -300,7 +300,11 @@ let barChartDraw = function () {
             plugins: {
 
                 tooltip: {
-                    enabled: true
+                    enabled: true,
+                    // backgroundColor:'transparent',
+                    // titleFontColor:'transparent',
+                    // bodyFontColor:'transparent',
+                    // displayColors:false
                 },
                 legend: {
                     display: false,
@@ -356,6 +360,12 @@ function dateFormatter(date) {
 
     return dateString;
 }
+
+/***************************************************************************
+ * 담당자 : 김건희
+ * 함수 : listBackgroundColor()
+ * 기능 :  1. 생성되는 리스트가 홀수일때와 짝수일때 뒷 배경 색을 서로 다르게 줘서 패턴 생성
+ ***************************************************************************/
 function listBackgroundColor() {
     const totalScheduleContentsGroup = document.getElementsByClassName('totalScheduleContentsGroup')
     for (let i = 0; i < totalScheduleContentsGroup.length; i++) {

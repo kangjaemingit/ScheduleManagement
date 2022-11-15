@@ -62,7 +62,7 @@ html, body {
 /* 일정을 보여주기 위한 일정 영역에서 차지하는 크기 및 위치 지정 */
 #scheduleList{
     display: flex;
-    margin-top: 5px;
+    margin-top: 20px;
     margin-bottom: 5px;
     height: 350px;
     border: rgba(0,0,0,0.1) 1px solid;
@@ -76,13 +76,15 @@ html, body {
 /*날짜 클릭시 생성되는 모달 Title 부분*/
 #dayModalTitle{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(235,235,235,1);
+    line-height: 40px;
 }
 /*날짜클릭시 생성되는 모달 닫기 버튼의 영역*/
 #dayModalClose{
     position: absolute;
     top: 10%;
-    right: 11.5%;
+    right: 7%;
     width: 28px;
     height: 28px;
 }
@@ -111,6 +113,7 @@ table thead tr{
 }
 /*일정List 테이블 바디의 각 일정의 텍스트 중앙 정렬*/
 #scheduleTableBody tr td{
+    font-size: 15px;
     text-align: center;
 }
 /*일정의 이벤트 제목이 그 칸을 넘으면 이뤄질 이벤트*/
@@ -118,4 +121,8 @@ table thead tr{
     overflow: hidden;           /*스크롤이벤트 없애기*/
     text-overflow: ellipsis;    /*영역을 넘을시 ...으로 생략 표시만들기*/
     white-space: nowrap;        /*한 줄만 보이게하기*/
+}
+table thead tr th{
+    font-size: 15px;
+    font-weight: 600;
 }
