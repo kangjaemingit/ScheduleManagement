@@ -85,7 +85,7 @@ function blockColorOption(event) {
                 const p = document.getElementById("userInfo")
                 const paint = document.getElementById('show')
                 const logout = document.getElementById('logout')
-                const hamburger = document.getElementById('hamburger')
+                const hamburger = document.getElementById('hamburgerToggle')
                 const close_bg_none = document.getElementById('close_bg_none')
 
                 if (luma < 127.5) {
