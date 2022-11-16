@@ -180,9 +180,8 @@ body {
 }
 
 .input-primary-readOnly{
-  margin-top: 7%;
-  width: 98%;
-  height: 7%;
+  width: 100%;
+  height: 32px;
   font-size: 15px;
   border: 0;
   border-radius: 15px;

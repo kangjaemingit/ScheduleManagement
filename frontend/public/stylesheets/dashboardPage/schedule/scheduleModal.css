@@ -136,7 +136,18 @@
     border : none;
     display: none;
 }
-
+#mapAddressInput{
+    margin-top: 7%;
+    width: 98%;
+    height: 7%;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    cursor: unset;
+}
 .mapArea{
     width: 80%;
     height: 95%;

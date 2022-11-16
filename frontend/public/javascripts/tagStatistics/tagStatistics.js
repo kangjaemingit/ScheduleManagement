@@ -298,16 +298,12 @@ let barChartDraw = function () {
                         drawTicks: false,
                         drawOnChartArea: false,
                     }
-                }
+                },
             },
             plugins: {
 
                 tooltip: {
                     enabled: true,
-                    // backgroundColor:'transparent',
-                    // titleFontColor:'transparent',
-                    // bodyFontColor:'transparent',
-                    // displayColors:false
                 },
                 legend: {
                     display: false,
