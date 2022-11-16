@@ -105,9 +105,10 @@ const categoryController = {
      * 담당자 : 강재민
      * 함수 설명 : 카테고리 생성 모달에서 사용자를 검색하기 위해 사용하는 함수입니다.
      * 주요 기능 : - 사용자명 혹은 사용자 E-mail에서 입력받은 값을 포함하는 사용자를 찾아 return 합니다.
+     * 수정 사항 : 본인의 데이터는 return 하지 않는 것으로 변경
      * */
     searchUser : (req, res) => {
-        User.find({$or : [{name : {$regex : req.body.keyword}}, {email : {$regex : req.body.keyword}}]}
+        User.find({$and : [{$or : [{name : {$regex : req.body.keyword}}, {email : {$regex : req.body.keyword}}]}, {_id : {$ne : req.user._id}}]}
         , (err, result) => {
             if(err){
                 console.log(err);
