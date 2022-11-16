@@ -256,6 +256,9 @@ let barChartDraw = function () {
     let canvasHeight = document.getElementById("barChart");
     let h = barData.labels.length * 50;
     canvasHeight.style.height = h + 'px';
+    if(window.chartObj!=undefined){
+        window.chartObj.destroy();
+    }
     window.pieChart = new Chart(piePainter, {
         type: 'bar',
         data: barData,
