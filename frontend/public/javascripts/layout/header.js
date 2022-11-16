@@ -86,22 +86,42 @@ function blockColorOption(event) {
                 const paint = document.getElementById('show')
                 const logout = document.getElementById('logout')
                 const hamburger = document.getElementById('hamburgerToggle')
+                const hamburgerWhite = document.getElementById('hamburger')
                 const close_bg_none = document.getElementById('close_bg_none')
 
                 if (luma < 127.5) {
                     // 2. 어두울때 style 변경
-                    p.style.color = 'white';
-                    paint.src = "../../images/layoutHeader/painterWhite.png";
-                    logout.style.color = 'white';
-                    hamburger.src = "../../images/layoutHeader/hamburger.png";
-                    logout.style.borderColor = "white";
+                    if(hamburger.id) {
+                        p.style.color = 'white';
+                        paint.src = "../../images/layoutHeader/painterWhite.png";
+                        logout.style.color = 'white';
+                        hamburger.src = "../../images/layoutHeader/hamburger.png";
+                        logout.style.borderColor = "white";
+                    }
+                    else if(hamburgerWhite.id){
+                        p.style.color = 'white';
+                        paint.src = "../../images/layoutHeader/painterWhite.png";
+                        logout.style.color = 'white';
+                        hamburger.src = "../../images/layoutHeader/hamburger.png";
+                        logout.style.borderColor = "white";
+                    }
                 } else {
-                    // 2. 밝을때 style 변경
-                    p.style.color = 'black';
-                    paint.src = "../../images/layoutHeader/painterBlack.png";
-                    logout.style.color = 'black';
-                    hamburger.src = "../../images/layoutHeader/hamburgerblack.png";
-                    logout.style.borderColor = "black";
+                    if(hamburger.id) {
+                        // 2. 밝을때 style 변경
+                        p.style.color = 'black';
+                        paint.src = "../../images/layoutHeader/painterBlack.png";
+                        logout.style.color = 'black';
+                        hamburger.src = "../../images/layoutHeader/hamburgerblack.png";
+                        logout.style.borderColor = "black";
+                    }
+                    else if(hamburgerWhite.id){
+                        // 2. 밝을때 style 변경
+                        p.style.color = 'black';
+                        paint.src = "../../images/layoutHeader/painterBlack.png";
+                        logout.style.color = 'black';
+                        hamburger.src = "../../images/layoutHeader/hamburgerblack.png";
+                        logout.style.borderColor = "black";
+                    }
                 }
 
                 const colorData = {
