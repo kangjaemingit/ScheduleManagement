@@ -277,12 +277,15 @@ let barChartDraw = function () {
                 borderWidth: 0,
             },
             scales: {
-                xAxes: {
+                x: {
+                    border:{
+                      display:false
+                    },
                     grid: {
+                        borderColor: '#fff',
                         drawBorder: false,
                         drawTicks: false,
                         drawOnChartArea: false,
-
                     },
                     title: {
                         display: false,
@@ -291,17 +294,21 @@ let barChartDraw = function () {
                         display: false,
                     }
                 },
-                yAxes: {
+                y: {
+                    border:{
+                      color: '#fff'
+                    },
                     grid: {
+                        display:false,
                         borderColor: '#fff',
                         drawBorder: false,
                         drawTicks: false,
                         drawOnChartArea: false,
-                    }
+                    },
+                    alignToPixels: true,
                 },
             },
             plugins: {
-
                 tooltip: {
                     enabled: true,
                 },
