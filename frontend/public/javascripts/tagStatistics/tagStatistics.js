@@ -252,14 +252,11 @@ function tagPercentage(count) {
  **************************************************************************************/
 let barChartDraw = function () {
     let usedTagAllCount = document.getElementById('usedTagAllCount').innerText
-    let piePainter = document.getElementById('barChart').getContext('2d');
+    let barPainter = document.getElementById('barChart').getContext('2d');
     let canvasHeight = document.getElementById("barChart");
     let h = barData.labels.length * 50;
     canvasHeight.style.height = h + 'px';
-    if(window.chartObj!=undefined){
-        window.chartObj.destroy();
-    }
-    window.pieChart = new Chart(piePainter, {
+    window.barChart = new Chart(barPainter, {
         type: 'bar',
         data: barData,
         plugins: [ChartDataLabels],
@@ -305,6 +302,7 @@ let barChartDraw = function () {
                         drawTicks: false,
                         drawOnChartArea: false,
                     },
+
                     alignToPixels: true,
                 },
             },
