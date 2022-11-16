@@ -20,8 +20,9 @@
                 </form>
                 <div class="btn-secondary" onclick="createTodoList();">확인</div>
             </div>
+
             <div class="scrollBox"
-                 style="display: flex;margin-top: 5px; flex-direction: column; width: 90%; height: 155px; max-height: 80%">
+                 style="display: flex;margin-top: 5px; flex-direction: column; width: 90%; max-height: 80%">
                 <div id="todayScheduleBox">
                     <% todoLists.map((t) => { %>
                         <div id="<%= t._id %>" class="scheduleCheckBox" style="display: flex;">
