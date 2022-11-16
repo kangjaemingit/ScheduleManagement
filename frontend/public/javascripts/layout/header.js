@@ -91,22 +91,22 @@ function blockColorOption(event) {
 
                 if (luma < 127.5) {
                     // 2. 어두울때 style 변경
-                    if(hamburger.id) {
+                    if(hamburger) {
                         p.style.color = 'white';
                         paint.src = "../../images/layoutHeader/painterWhite.png";
                         logout.style.color = 'white';
                         hamburger.src = "../../images/layoutHeader/hamburger.png";
                         logout.style.borderColor = "white";
                     }
-                    else if(hamburgerWhite.id){
+                    else if(hamburgerWhite){
                         p.style.color = 'white';
                         paint.src = "../../images/layoutHeader/painterWhite.png";
                         logout.style.color = 'white';
-                        hamburger.src = "../../images/layoutHeader/hamburger.png";
+                        hamburgerWhite.src = "../../images/layoutHeader/hamburger.png";
                         logout.style.borderColor = "white";
                     }
                 } else {
-                    if(hamburger.id) {
+                    if(hamburger) {
                         // 2. 밝을때 style 변경
                         p.style.color = 'black';
                         paint.src = "../../images/layoutHeader/painterBlack.png";
@@ -114,12 +114,12 @@ function blockColorOption(event) {
                         hamburger.src = "../../images/layoutHeader/hamburgerblack.png";
                         logout.style.borderColor = "black";
                     }
-                    else if(hamburgerWhite.id){
+                    else if(hamburgerWhite){
                         // 2. 밝을때 style 변경
                         p.style.color = 'black';
                         paint.src = "../../images/layoutHeader/painterBlack.png";
                         logout.style.color = 'black';
-                        hamburger.src = "../../images/layoutHeader/hamburgerblack.png";
+                        hamburgerWhite.src = "../../images/layoutHeader/hamburgerblack.png";
                         logout.style.borderColor = "black";
                     }
                 }
