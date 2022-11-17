@@ -31,9 +31,12 @@ function scheduleModalClose(){
     const replaceBody=document.getElementById('replaceBody')
     const scheduleModal = document.querySelector('.scheduleModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
-    // bodyScrollHidden[0].style.overflow='auto';
+
     if(replaceBody) {
         replaceBody.style.overflow = 'auto'
+    }
+    else{
+        // bodyScrollHidden[0].style.overflow='auto';
     }
     scheduleModal.classList.toggle('show');
 

@@ -64,6 +64,7 @@ function blockColorOption(event) {
             if (colorlist[i].style.backgroundColor === targetColor) {
                 document.getElementById('headerContainer').style.backgroundColor = document.getElementsByClassName('colorlist')[i].style.backgroundColor;
                 let colorVal = colorlist[i].style.backgroundColor
+
                 let rgb = colorVal.replace(/[^%,.\d]/g, "").split(",");                             //color rgb값 16진수로 변환
                 rgb.forEach(function (str, x, arr)
                 {

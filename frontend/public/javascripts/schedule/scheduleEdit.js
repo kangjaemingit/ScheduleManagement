@@ -24,8 +24,12 @@ function scheduleEditControlRender(scheduleOwner, schedule){
 function scheduleDetailModalOpen(scheduleId, calendarPage){
     const scheduleModal = document.querySelector('.scheduleModal'); // 일정 모달
     const replaceBody=document.getElementById('replaceBody')
+    const bodyScrollHidden=document.getElementsByTagName('body')
     if(replaceBody) {
         replaceBody.style.overflow = 'hidden' // 스크롤 숨기기
+    }
+    else{
+        bodyScrollHidden[0].style.overflow='hidden'
     }
     // 일정 정보 불러오기
     fetch('/schedule/getScheduleById/' + scheduleId, {
