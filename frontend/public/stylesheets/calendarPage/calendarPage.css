@@ -75,6 +75,8 @@ body::-webkit-scrollbar-track {
 #indexWrap{
     display: flex;
     height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
 }
 html{
     width: 100%;

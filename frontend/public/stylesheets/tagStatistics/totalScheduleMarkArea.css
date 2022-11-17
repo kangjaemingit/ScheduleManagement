@@ -6,9 +6,12 @@ html,body{
     margin: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 /*tagStatistics 페이지의 왼쪽의 영역과 오른쪽 영역을 나눠주기위한 container 박스*/
 #indexWrap{
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 0 20px 0 20px;
     display: flex;
     height: 100%;
@@ -153,4 +156,8 @@ html,body{
     height: 30px;
     margin: 0;
     align-items: center;
+}
+#replaceBody{
+    width: 100%;
+    height: 100%;
 }

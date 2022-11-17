@@ -146,7 +146,6 @@ document.addEventListener('keydown', function(event) {
  * 기능 : 1. 생성되는 div 아무곳이나 클릭시 삭제
  *********************************************************************/
 function deleteTodoList(id){
-    console.log(id)
     fetch('todoList/deleteTodoList', {
         method: 'post',
         headers: {

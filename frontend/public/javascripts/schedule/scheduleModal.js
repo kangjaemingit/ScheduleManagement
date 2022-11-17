@@ -28,9 +28,13 @@ function scheduleModalOpen(){
  * 주요 기능 : - 상황에 따라 바인딩된 값들을 모두 제거 하고, 일정모달을 닫습니다.
  * */
 function scheduleModalClose(){
+    const replaceBody=document.getElementById('replaceBody')
     const scheduleModal = document.querySelector('.scheduleModal');
     const bodyScrollHidden=document.getElementsByTagName('body');
     // bodyScrollHidden[0].style.overflow='auto';
+    if(replaceBody) {
+        replaceBody.style.overflow = 'auto'
+    }
     scheduleModal.classList.toggle('show');
 
 

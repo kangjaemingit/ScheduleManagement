@@ -25,7 +25,7 @@
                  style="display: flex;margin-top: 5px; flex-direction: column; width: 90%; max-height: 80%">
                 <div id="todayScheduleBox">
                     <% todoLists.map((t) => { %>
-                        <div id="<%= t._id %>" class="scheduleCheckBox" style="display: flex;">
+                        <div id="<%= t._id %>" class="scheduleCheckBox" onclick="deleteTodoList('<%= t._id %>')" style="display: flex;">
                             <input type="checkbox" class="todayScheduleCheckBox"
                                    onclick="todayCheckbox('<%= t._id %>', this)">
                             <div id="scheduleName"><%= t.todoListVal %></div>
